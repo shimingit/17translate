@@ -1,0 +1,172 @@
+.lizhi{
+	
+	width: 98.2%;
+	height:90px;
+	border:1px solid lightgray;
+	margin: 1px;
+	float: left;
+	text-align: left;
+	
+}
+.lizhi ul li{
+	font-weight: normal;
+	color: gray;
+	
+}
+.guanzhu{
+	
+	width: 41%;
+	height:90px;
+	border:1px solid lightgray;
+	margin: 2px;
+	float: right;
+}
+#daimag{
+
+	width: 45px;
+	height: 45px;
+	margin: 2px;
+	font-size: 12px;
+	color: gray;
+	cursor: pointer;
+}
+#daimagchange{
+
+	width: 52px;
+	height: 52px;
+	margin: 2px;
+	font-size: 12px;
+	color: gray;
+	cursor: pointer;
+	border:1.5px solid white;
+	z-index:  100;
+}
+#daspan{
+	font-size: 12px;
+	color: #00BFFF;
+	margin-left:-5px; 	
+}
+#fan{
+	font-size: 12px;
+	color: gray;
+	margin-left:-15px;
+	margin-top: 10px; 
+
+	
+}
+.dawrap{
+	width:100%;
+	height:100px;
+	margin-top: 2px;
+
+}
+.dawrap .dadesc1{
+	width:47px;
+	height:49px;
+	border:1px solid lightgray;
+	margin:2px;
+	float: left;
+}
+.dawrap .dadesc2{
+	width:47px;
+	height:49px;
+	border:1px solid lightgray;
+	margin-left:2px;
+	float: left;
+}
+.dawrap .dadesc3{
+	width:47px;
+	height:49px;
+	border:1px solid lightgray;
+	margin-left:2px;
+	float:left;
+}
+.dawrap .dadesc4{
+	width:47px;
+	height:49px;
+	border:1px solid lightgray;
+	margin-left:2px;
+	float: left;
+}
+
+.da{
+	width:100%;
+	border-bottom:1px dashed lightgray;
+	text-align: left;
+	height:30px;
+}
+.da h1{
+	
+	font-size: 14px;
+	font-weight: bold;
+	color:#696969;
+	margin: 2px;
+}
+.da h1 span{
+	
+	color:#BDB76B;
+	font-weight: normal;
+}
+.join{
+	height:251px;
+	width:58%;
+	border:1px solid lightgray;
+	float: right;
+}
+.pillar {
+  background:transparent; 
+  width:40%;
+  float: left;
+  }
+.pillar h1, .pillar p {
+  margin:0 10px;
+  }
+.pillar h1 {
+  font-size:14px;
+  font-weight:bold; 
+  color:#696969;
+  text-align: left;
+  margin-left: 2px;
+  }
+.pillar p {
+  padding-bottom:0.5em;
+  }
+.pillar .b1, .pillar .b2, .pillar .b3, .pillar .b4 {
+  display:block; 
+  overflow:hidden;
+  font-size:1px;
+  }
+.pillar .b1, .pillar .b2, .pillar .b4 {
+  height:1px;
+  }
+.pillar .b2, .pillar .b3 {
+  background:lightgray; 
+  border-left:1px solid #fff; 
+  border-right:1px solid #fff;
+  }
+.pillar .b4 {
+  background:#fff; 
+  border-left:4px solid #fff; 
+  border-right:4px solid #fff;
+  }
+.pillar .b1 {
+  margin:0 2px; 
+  background:#fff;
+  }
+.pillar .b2 {
+  margin:0 1px; 
+  border-width:0 1px;
+  }
+.pillar .b3 {
+  height:2px; 
+  margin:0;
+  }
+.pillar .b4 {
+  margin:0 2px;
+  }
+.pillar .boxcontent {
+  display:block; 
+  border-left:2px dashed lightgray; 
+  border-right:2px dashed lightgray; 
+  margin:0 5px;
+  }

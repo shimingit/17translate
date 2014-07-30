@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=gbk" />
+		<title>File Uploader</title>
+			<link href="css/basic.css" type="text/css" rel="stylesheet" />
+			<style>
+				/* Logo */
+				.header {
+					background: #247201 url(http://filamentgroup.com/images/headerbg-new.jpg) no-repeat bottom left;
+				}
+				#fg-logo {
+					text-indent: -9999px;
+					margin: 0 auto;
+					width: 287px;
+					height: 52px;
+					background-image: url(http://filamentgroup.com/images/fg-logo-icon.png);
+				}
+				@media (-webkit-min-device-pixel-ratio: 1.5), (min-device-pixel-ratio: 1.5){
+					#fg-logo {
+						background-size: 287px 52px;
+						background-image: url(http://filamentgroup.com/images/fg-logo-icon-lrg.png);
+					}
+				}
+			</style>
+			<script type="text/javascript" src="js/enhance.js"></script>
+			<script type="text/javascript">
+				// Run capabilities test
+				enhance({
+					loadScripts: [
+						'https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js',
+						'js/jQuery.fileinput.js',
+						'js/example.js'
+					],
+					loadStyles: ['css/enhanced.css']
+				});
+		    </script>
+	</head>
+	<body>
+
+	<!-- realistic form attributes: <form action="#" method="post" enctype="multipart/form-data"> -->
+	<div align="left">
+	<form action="#">
+	
+			<label for="file" class="word">请选择图片</label>
+			<input type="file" name="file" id="file" />
+			<input type="submit" name="upload" id="upload" value="上传图片" />
+	</form>
+		</div>
+	</body>
+	
+</html>

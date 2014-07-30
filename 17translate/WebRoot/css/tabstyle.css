@@ -1,0 +1,23 @@
+/* Demo styles by http://www.mb5u.com
+----------------------------------*/
+body {
+	font-family: "Arial","Verdana","sans-serif";
+	margin: 1em;
+	font-size: 12px;
+}
+#wrapper {
+	width: 26em;
+	text-align: left;
+}
+
+#copyright {
+font-size: 0.9em;
+margin: 1em 0;
+position: absolute;
+bottom: 0;
+}
+#a{
+	
+	color:#A9A9A9;
+	font-weight: bold;
+}

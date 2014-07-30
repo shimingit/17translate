@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>head.html</title>
+
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+<meta http-equiv="description" content="this is my page">
+<meta http-equiv="content-type" content="text/html; charset=gb2312">
+
+<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+<link href="css/headstyle.css" type="text/css" rel="stylesheet" />
+<link href="css/box_style.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="js/jquery.1.4.2-min.js"></script>
+<script type="text/javascript" src="js/jquery.XYTipsWindow.min.2.8.js"></script>
+<style type="text/css">
+* {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+a,img {
+	border: 0;
+}
+
+body {
+	font: 12px/180% Arial, Helvetica, sans-serif, "新宋体";
+	background: #EEE;
+}
+
+.demo {
+	width: 991px;
+	padding: 0px 1px 1px 1px;
+	background: #FFF;
+	border: 1px solid #CCC;
+}
+
+.demo h2 {
+	font-size: 14px;
+	height: 30px;
+	margin: 10px 0 0 0;
+}
+/* menu */
+.menu {
+	height: 32px;
+	overflow: hidden;
+}
+
+.menu ul li {
+	float: left;
+	position: relative;
+	text-align: center;
+	line-height: 32px;
+	height: 32px;
+	overflow: hidden;
+}
+
+.menu ul li a {
+	position: relative; /* 必要元素 */
+	display: block;
+	width: 75px;
+	height: 32px;
+	font-size: 12px;
+	font-weight: bold;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.menu ul li a span {
+	position: absolute; /* 必要元素 */
+	left: 0;
+	width: 70px;
+}
+
+.menu ul li a span.out {
+	top: 0px;
+}
+
+.menu ul li a span.over,.menu ul li a span.bg {
+	top: -45px;
+}
+.las{
+margin-right:15px;
+ float:right;
+ width:100px;
+ line-height: 32px;
+ font-size: 12px;
+ font-weight: bold;
+ text-align: right;
+}
+.las a{
+	text-decoration: none;
+	cursor: pointer;
+	margin: 5px;
+}
+/* 实例二 */
+#menu2 {
+	background: #89A4B1;
+}
+#menu2 ul{
+	margin-left: 5px;
+}
+#menu2 ul li a {
+	color: #FFF;
+}
+
+#menu2 ul li a span.over {
+	background: #A9CC2D;
+	color: #FFF;
+}
+#headimg{
+	width:991px;
+	height:100px; 
+	margin-bottom: 2px;
+}
+</style>
+
+</head>
+
+<body>
+	<script type="text/javascript">
+	$(document).ready(function()
+	{
+		//实例一
+	$("#menu li a").wrapInner('<span class="out"></span>' ).append('<span class="bg"></span>');
+	$("#menu li a").each(function(){
+		$('<span class="over">' +  $(this).text() + '</span>').appendTo(this);
+	});
+
+	$("#menu li a").hover(function(){
+		$(".out",this).stop().animate({'top':'45px'},250);
+		$(".over",this).stop().animate({'top':'0px'},250);
+		$(".bg",this).stop().animate({'top':'0px'},120);
+	},function(){
+		$(".out",this).stop().animate({'top':'0px'},250);
+		$(".over",this).stop().animate({'top':'-45px'},250);
+		$(".bg",this).stop().animate({'top':'-45px'},120);
+	});
+
+	//实例一
+	$("#menu2 li a").wrapInner('<span class="out"></span>');
+	$("#menu2 li a").each(function(){
+		$('<span class="over">' + $(this).text() + '</span>').appendTo(this);
+	});
+
+	$("#menu2 li a").hover(function(){
+		$(".out",this).stop().animate({'top':'45px'},200);
+		$(".over",this).stop().animate({'top':	'0px'},200);
+	},function(){
+		$(".out",this).stop().animate({'top':'0px'},200);
+		$(".over",this).stop().animate({'top':'-45px'},200);
+	});
+	
+	$("#register").click(function()
+	{
+		$.XYTipsWindow
+		({
+			___title:"快点加入我们吧~ 让你的人生更加精彩",
+			___content:"iframe:registerpage.html",
+			___width:"840",
+			___height:"470",
+			___showbg:true,
+			___drag:"___boxTitle"
+		});
+		return false;
+	});
+	
+	});
+</script>
+	<div>
+		<img  src="images/head.jpg" id="headimg"/>
+	</div>
+	<div class="demo">
+		
+		<div id="menu2" class="menu">
+			<ul>
+				<li><a href="main.jsp">主页</a>
+				</li>
+				<li><a href="recomendNews.jsp">在线任务</a>
+				</li>
+				<li><a href="#">精选</a>
+				</li>
+				<li><a href="placeOrder.jsp">我要翻译</a>
+				</li>
+				<li><a href="#">服务范围</a>
+				</li>
+				<li><a href="#">联系我们</a>
+				</li>
+			</ul>
+			<div class="las">
+			 <a href="login.jsp">登录</a>
+				
+			 <a id="register" href="#">注册</a>
+			
+			
+			</div>
+		</div>
+	</div>
+</body>
+</html>
