@@ -3,16 +3,18 @@
 <struts>
 	<package name="struts2" extends="struts-default">
 	
-		
-		
+		<!-- 微信 -->
 		<action name="weixinAction" class="weixinDealAction" method="dealPostAndGet">
 			<result name="success">index.jsp</result>
 		</action>
-	
+	 
+		<!-- 校验码 -->
 		<action name="identifycode" class="idetifycodeaction" method="generateIdentifyCode">
 	 	</action>
-	
-	
-	
+		
+		<!-- 主页转发 -->
+		<action name="fanyi" class="mainAction">
+			<result name="success">main.jsp</result>
+		</action>
 	</package>
 </struts>    

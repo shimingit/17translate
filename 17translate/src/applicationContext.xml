@@ -30,12 +30,17 @@
 		</property>
 		
 	</bean>
+	
 	<!-- 处理微信业务逻辑 -->
 	<bean id="weixinDealAction" class="org.translate.min.action.WeixinDealAction"></bean>
+	<!-- 主页转发 -->
+	<bean id="mainAction" class="org.translate.min.action.MainAction"></bean>
+	
 	<!-- 生成 验证码-->
 	<bean id="identifycode" class="org.translate.min.biz.impl.IdentifyCodeImpl"></bean>
 	<bean id="idetifycodeaction" class="org.translate.min.action.IdentifyCodeAction">
 		<property name="code" ref="identifycode"/>
 	</bean>
-	
+
+		
 	</beans>
