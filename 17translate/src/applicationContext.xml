@@ -35,6 +35,8 @@
 	<bean id="weixinDealAction" class="org.translate.min.action.WeixinDealAction"></bean>
 	<!-- 主页转发 -->
 	<bean id="mainAction" class="org.translate.min.action.MainAction"></bean>
+	<!-- 登录验证 -->
+	<bean id="loginAction" class="org.translate.min.action.LoginAction"></bean>
 	
 	<!-- 生成 验证码-->
 	<bean id="identifycode" class="org.translate.min.biz.impl.IdentifyCodeImpl"></bean>

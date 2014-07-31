@@ -3,6 +3,22 @@
 <struts>
 	<package name="struts2" extends="struts-default">
 	
+		<!-- 模板 
+		<action name="" class="">
+			<result name="success"></result>
+		</action>
+		-->
+		
+	
+		<!-- 登录验证 -->
+		<action name="login" class="loginAction" method="identifyLogin">
+			<result type="json">
+				<param name="jsonResult">
+					jsonResult
+				</param>
+			</result>
+		</action>
+		
 		<!-- 微信 -->
 		<action name="weixinAction" class="weixinDealAction" method="dealPostAndGet">
 			<result name="success">index.jsp</result>
@@ -11,6 +27,7 @@
 		<!-- 校验码 -->
 		<action name="identifycode" class="idetifycodeaction" method="generateIdentifyCode">
 	 	</action>
+		
 		
 		<!-- 主页转发 -->
 		<action name="fanyi" class="mainAction">

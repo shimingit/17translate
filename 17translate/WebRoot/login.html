@@ -7,6 +7,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=gbk">
         <!-- CSS -->
         <link rel="stylesheet" href="css/loginstyle.css">
+        <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
 
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
@@ -31,6 +32,7 @@
 	}
 
 </style>
+
 <script type="text/javascript">
 
 	function changeCode(){
@@ -39,6 +41,52 @@
 	
 	str.src="identifycode?"+Math.random();
 	}
+	
+	
+	$(document).ready(function()
+	{
+		$(".submit_button").click(function()
+		{
+			var username = $(".username").val();
+			var password = $(".password").val();
+			var identifyCode = $(".Captcha").val();
+			
+			if(username.length <= 0 || username == " ")
+			{
+				$(".error").html("用户名不为空！");
+			}
+			else if(password.length <= 0 || password == " ")
+			{
+				$(".error").html("用户密码不为空！");
+			}
+			else if(identifyCode.length <= 0 || identifyCode == " ")
+			{
+				$(".error").html("验证码不为空！");
+			}
+			$.ajax(
+			{
+				url:'login',
+				type:'post',
+				dataType: 'json',
+				data:{'username':username, 'password':password, 'identifyCode':identifyCode},
+				success:function(data){
+					var jsonResult = eval("(" + data + ")");
+					switch(jsonResult.name)
+					{
+						case "username":$(".error").html("用户名填写错误！");break;
+						case "password":$(".error").html("密码填写错误！");break;
+						case "identifyCode":$(".error").html("验证码填写错误！");break;
+						case "success":location.href="fanyi";
+					}
+				},
+				error:function(){
+					$(".error").html("数据提交发生错误！");
+				}
+			});
+			
+			return false;
+		});
+	});
 	</script>
     </head>
 
@@ -46,16 +94,18 @@
 
         <div class="page-container">
             <h1>登录(Login)</h1>
-            <form action="" method="post">
+
+             <div class="error"></div>
+            <form action="login" method="post">
                 <input type="text" name="username" class="username" placeholder="请输入您的用户名！">
                 <input type="password" name="password" class="password" placeholder="请输入您的用户密码！">
-                <input type="text" name="Captcha" class="Captcha" placeholder="请输入验证码！">
+                <input type="text" name="identifyCode" class="Captcha" placeholder="请输入验证码！">
                 <div class="identifycode">
                 <img id="img" src="identifycode"/>
             	   <span class='change'  onclick="changeCode(); ">换一张</span> 
                 </div>
                 <button type="submit" class="submit_button">登录</button>
-                <div class="error"><span>+</span></div>
+                
             </form>
             
         </div>
