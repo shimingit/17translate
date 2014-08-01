@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+	<table name="client" catalog="translationbyfee"
+		class="org.translate.min.entity.Client">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+	<table name="clientcomments" catalog="translationbyfee"
+		class="org.translate.min.entity.ClientComment">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+	<table name="field" catalog="translationbyfee"
+		class="org.translate.min.entity.Field">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+	<table name="free_translators" catalog="translationbyfee"
+		class="org.translate.min.entity.FreeTranslator">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+	<table name="goodatfields" catalog="translationbyfee"
+		class="org.translate.min.entity.GoodAtField">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+	<table name="goodatlanguages" catalog="translationbyfee"
+		class="org.translate.min.entity.GoodAtLanguage">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+	<table name="languages" catalog="translationbyfee"
+		class="org.translate.min.entity.Language">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+	<table name="livein_translators" catalog="translationbyfee"
+		class="org.translate.min.entity.LiveinTranslator">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+	<table name="news" catalog="translationbyfee"
+		class="org.translate.min.entity.News">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+	<table name="orders" catalog="translationbyfee"
+		class="org.translate.min.entity.Order">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+<table name="translationarrange" catalog="translationbyfee"
+	class="org.translate.min.entity.TranslationArrange">
+	<primary-key>
+		<generator class="native"></generator>
+	</primary-key>
+</table>
+</hibernate-reverse-engineering>

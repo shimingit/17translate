@@ -1,80 +1,144 @@
 package org.translate.min.entity;
 
-public class FreeTranslator
+/**
+ * FreeTranslator entity. @author MyEclipse Persistence Tools
+ */
+
+public class FreeTranslator implements java.io.Serializable
 {
+
+	// Fields
+
+	private Integer ftranslatorId;
 	private String fuserName;
 	private String fpassword;
 	private String fmailBox;
 	private String fphoneNumber;
-	private String fphoto;
+	private byte[] fphoto;
 	private String fselfDescription;
-	private String ffan;
-	private String ftranslationCoin;
-	
+	private Integer ffans;
+	private Integer ftranslationCoin;
+
+	// Constructors
+
+	/** default constructor */
+	public FreeTranslator()
+	{
+	}
+
+	/** minimal constructor */
+	public FreeTranslator(String fuserName, String fpassword, String fmailBox)
+	{
+		this.fuserName = fuserName;
+		this.fpassword = fpassword;
+		this.fmailBox = fmailBox;
+	}
+
+	/** full constructor */
+	public FreeTranslator(String fuserName, String fpassword, String fmailBox,
+			String fphoneNumber, byte[] fphoto, String fselfDescription,
+			Integer ffans, Integer ftranslationCoin)
+	{
+		this.fuserName = fuserName;
+		this.fpassword = fpassword;
+		this.fmailBox = fmailBox;
+		this.fphoneNumber = fphoneNumber;
+		this.fphoto = fphoto;
+		this.fselfDescription = fselfDescription;
+		this.ffans = ffans;
+		this.ftranslationCoin = ftranslationCoin;
+	}
+
+	// Property accessors
+
+	public Integer getFtranslatorId()
+	{
+		return this.ftranslatorId;
+	}
+
+	public void setFtranslatorId(Integer ftranslatorId)
+	{
+		this.ftranslatorId = ftranslatorId;
+	}
+
 	public String getFuserName()
 	{
-		return fuserName;
+		return this.fuserName;
 	}
+
 	public void setFuserName(String fuserName)
 	{
 		this.fuserName = fuserName;
 	}
+
 	public String getFpassword()
 	{
-		return fpassword;
+		return this.fpassword;
 	}
+
 	public void setFpassword(String fpassword)
 	{
 		this.fpassword = fpassword;
 	}
+
 	public String getFmailBox()
 	{
-		return fmailBox;
+		return this.fmailBox;
 	}
+
 	public void setFmailBox(String fmailBox)
 	{
 		this.fmailBox = fmailBox;
 	}
+
 	public String getFphoneNumber()
 	{
-		return fphoneNumber;
+		return this.fphoneNumber;
 	}
+
 	public void setFphoneNumber(String fphoneNumber)
 	{
 		this.fphoneNumber = fphoneNumber;
 	}
-	public String getFphoto()
+
+	public byte[] getFphoto()
 	{
-		return fphoto;
+		return this.fphoto;
 	}
-	public void setFphoto(String fphoto)
+
+	public void setFphoto(byte[] fphoto)
 	{
 		this.fphoto = fphoto;
 	}
+
 	public String getFselfDescription()
 	{
-		return fselfDescription;
+		return this.fselfDescription;
 	}
+
 	public void setFselfDescription(String fselfDescription)
 	{
 		this.fselfDescription = fselfDescription;
 	}
-	public String getFfan()
+
+	public Integer getFfans()
 	{
-		return ffan;
+		return this.ffans;
 	}
-	public void setFfan(String ffan)
+
+	public void setFfans(Integer ffans)
 	{
-		this.ffan = ffan;
+		this.ffans = ffans;
 	}
-	public String getFtranslationCoin()
+
+	public Integer getFtranslationCoin()
 	{
-		return ftranslationCoin;
+		return this.ftranslationCoin;
 	}
-	public void setFtranslationCoin(String ftranslationCoin)
+
+	public void setFtranslationCoin(Integer ftranslationCoin)
 	{
 		this.ftranslationCoin = ftranslationCoin;
 	}
-	
-	
+
 }
