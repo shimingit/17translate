@@ -45,6 +45,7 @@
 	
 	$(document).ready(function()
 	{
+		clearInfo();
 		$(".submit_button").click(function()
 		{
 			var username = $(".username").val();
@@ -63,30 +64,30 @@
 			{
 				$(".error").html("验证码不为空！");
 			}
-			$.ajax(
-			{
-				url:'login',
-				type:'post',
-				dataType: 'json',
-				data:{'username':username, 'password':password, 'identifyCode':identifyCode},
-				success:function(data){
-					var jsonResult = eval("(" + data + ")");
-					switch(jsonResult.name)
+			$.ajax({  
+            url: 'mylogin',  
+            type: 'post',  
+            data: {username:username, password:password, identifyCode:identifyCode},  
+            success: callback
+            });  
+			return false;
+		});
+	});
+	function callback(data){
+				switch(data.jsonResult)
 					{
 						case "username":$(".error").html("用户名填写错误！");break;
 						case "password":$(".error").html("密码填写错误！");break;
 						case "identifyCode":$(".error").html("验证码填写错误！");break;
 						case "success":location.href="fanyi";
-					}
-				},
-				error:function(){
-					$(".error").html("数据提交发生错误！");
+					} 
 				}
-			});
-			
-			return false;
-		});
-	});
+	function clearInfo()
+	{
+		$(".username").html("");
+		$(".password").html("");
+		$(".Captcha").html("");
+	}
 	</script>
     </head>
 

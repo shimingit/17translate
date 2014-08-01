@@ -28,11 +28,7 @@ public class LoginAction extends ActionSupport implements RequestAware,SessionAw
 		//获取后台产生的验证码
 		String generateCode = (String)session.get("identifyCode");
 		
-		System.out.println("username:" + username + "\npassword:" + password +
-				"\nidentifyCode:" + identifyCode );
 		
-		
-		jsonResult="";
 		return SUCCESS;
 	}
 	
