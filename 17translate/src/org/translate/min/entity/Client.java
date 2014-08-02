@@ -20,7 +20,7 @@ public class Client implements java.io.Serializable
 	private String phoneNumber;
 	private String schoolName;
 	private Set orders = new HashSet(0);
-	private Set news = new HashSet(0);
+	private Set newses = new HashSet(0);
 
 	// Constructors
 
@@ -40,7 +40,7 @@ public class Client implements java.io.Serializable
 	/** full constructor */
 	public Client(String userName, String password, String mailBox,
 			String clintName, String phoneNumber, String schoolName,
-			Set orders, Set news)
+			Set orders, Set newses)
 	{
 		this.userName = userName;
 		this.password = password;
@@ -49,7 +49,7 @@ public class Client implements java.io.Serializable
 		this.phoneNumber = phoneNumber;
 		this.schoolName = schoolName;
 		this.orders = orders;
-		this.news = news;
+		this.newses = newses;
 	}
 
 	// Property accessors
@@ -134,14 +134,14 @@ public class Client implements java.io.Serializable
 		this.orders = orders;
 	}
 
-	public Set getNews()
+	public Set getNewses()
 	{
-		return this.news;
+		return this.newses;
 	}
 
-	public void setNews(Set news)
+	public void setNewses(Set newses)
 	{
-		this.news = news;
+		this.newses = newses;
 	}
 
 }

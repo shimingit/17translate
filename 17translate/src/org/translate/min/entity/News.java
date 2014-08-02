@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * New entity. @author MyEclipse Persistence Tools
+ * News entity. @author MyEclipse Persistence Tools
  */
 
 public class News implements java.io.Serializable

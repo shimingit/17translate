@@ -12,7 +12,9 @@
 		-->
 		
 	
+		
 	
+		
 		<!-- 微信 -->
 		<action name="weixinAction" class="weixinDealAction" method="dealPostAndGet">
 			<result name="success">index.jsp</result>
@@ -29,10 +31,15 @@
 		</action>
 	</package>
 	
-	<!-- 登录验证 -->
+	
 	<package name="json" extends="json-default">  
-                   <action name="mylogin" class="loginAction" method="identifyLogin">  
-                            <result type="json" ></result>  
-                   </action>  
+		<!-- 登录验证用户填写信息 -->
+        <action name="mylogin" class="loginAction" method="identifyLogin">  
+                 <result type="json" ></result>  
+        </action>  
+        <!-- 验证用户是否登录-->
+		<action name="isLogin" class="isLoginAction" method="isLogin">
+			<result type="json"></result>
+		</action>
     </package>  
 </struts>    

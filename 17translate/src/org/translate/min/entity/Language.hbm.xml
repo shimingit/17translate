@@ -23,13 +23,13 @@
             </key>
             <one-to-many class="org.translate.min.entity.GoodAtLanguage" />
         </set>
-        <set name="news" inverse="true">
+        <set name="newses" inverse="true">
             <key>
                 <column name="languageId" not-null="true">
                     <comment>原文语言，外键</comment>
                 </column>
             </key>
-            <one-to-many class="org.translate.min.entity.New" />
+            <one-to-many class="org.translate.min.entity.News" />
         </set>
     </class>
 </hibernate-mapping>

@@ -27,11 +27,10 @@ public class FreeTranslator implements java.io.Serializable
 	}
 
 	/** minimal constructor */
-	public FreeTranslator(String fuserName, String fpassword, String fmailBox)
+	public FreeTranslator(String fuserName, String fpassword)
 	{
 		this.fuserName = fuserName;
 		this.fpassword = fpassword;
-		this.fmailBox = fmailBox;
 	}
 
 	/** full constructor */

@@ -80,7 +80,7 @@ body {
 .menu ul li a span.over,.menu ul li a span.bg {
 	top: -45px;
 }
-.las{
+.las1{
 margin-right:15px;
  float:right;
  width:100px;
@@ -88,6 +88,20 @@ margin-right:15px;
  font-size: 12px;
  font-weight: bold;
  text-align: right;
+}
+.las2{
+margin-right:18px;
+ float:right;
+ width:130px;
+ line-height: 32px;
+ font-size: 12px;
+ font-weight: bold;
+ text-align: right;
+}
+.las2 a{
+	text-decoration: none;
+	cursor: pointer;
+	margin: 5px 5px 5px 10px;
 }
 .las a{
 	text-decoration: none;
@@ -166,7 +180,25 @@ margin-right:15px;
 		return false;
 	});
 	
+	
+	$.ajax({  
+            url: 'isLogin',  
+            type: 'post',  
+            data: {},  
+            success: function(data)
+					{
+						//var dataObj = eval("(" + data +")");
+						if(data.isLogin == "true")
+						{
+							$(".las1").css("display","none");
+							$(".las2").css("display","block");
+							$("#username").html(data.username);
+						}
+					}
+            }); 
 	});
+	
+	
 </script>
 	<div>
 		<img  src="images/head.jpg" id="headimg"/>
@@ -188,12 +220,15 @@ margin-right:15px;
 				<li><a href="#">联系我们</a>
 				</li>
 			</ul>
-			<div class="las">
+			<div class="las1" style="display: block;">
 			 <a href="login.jsp">登录</a>
 				
-			 <a id="register" href="#">注册</a>
-			
-			
+			 <a id="register" href="#">注册</a>		
+			</div>
+			<div class="las2" style="display: none;">
+			 <span>您好，<span id="username"></span></span>
+				
+			 <a id="register" href="#">我的信息</a>		
 			</div>
 		</div>
 	</div>

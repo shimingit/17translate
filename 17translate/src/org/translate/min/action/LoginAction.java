@@ -1,10 +1,12 @@
 package org.translate.min.action;
 
+import java.util.List;
 import java.util.Map;
-
 
 import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
+import org.translate.min.biz.FreeTranslatorBiz;
+import org.translate.min.entity.FreeTranslator;
 
 import com.opensymphony.xwork2.ActionSupport;
  
@@ -17,6 +19,7 @@ public class LoginAction extends ActionSupport implements RequestAware,SessionAw
 	private String password;
 	private String identifyCode;
 	private String jsonResult;
+	private FreeTranslatorBiz ftlb;
 
 	private Map<String, Object> session;
 
@@ -26,9 +29,37 @@ public class LoginAction extends ActionSupport implements RequestAware,SessionAw
 	public String identifyLogin()
 	{
 		//获取后台产生的验证码
-		String generateCode = (String)session.get("identifyCode");
+		String genetrateCode = (String)session.get("identifyCode");
 		
+		if(!genetrateCode.equals(identifyCode))
+		{
+			jsonResult = "identifyCode";
+		}
+		else
+		{
+			System.out.println(ftlb);
+			List<FreeTranslator> translator =  ftlb.getFreeTranslator(username);
+			System.out.println(translator.size());
+			if(translator.size() == 0)
+			{
+				jsonResult = "username";
+			}
+			else 
+			{
+				translator = ftlb.getFreeTranslator(username, password);
+				if(translator.size() == 0)
+				{
+					jsonResult = "password";
+				}
+				else
+				{
+					jsonResult = "success";
+					session.put("user", username);
+				}
+			}
+		}
 		
+		System.out.println("jsonResult:" +jsonResult);
 		return SUCCESS;
 	}
 	
@@ -87,6 +118,11 @@ public class LoginAction extends ActionSupport implements RequestAware,SessionAw
 	public void setJsonResult(String jsonResult)
 	{
 		this.jsonResult = jsonResult;
+	}
+	
+	public void setFtlb(FreeTranslatorBiz ftlb)
+	{
+		this.ftlb = ftlb;
 	}
 	
 	

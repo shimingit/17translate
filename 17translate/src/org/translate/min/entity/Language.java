@@ -15,7 +15,7 @@ public class Language implements java.io.Serializable
 	private Integer languageId;
 	private String languageName;
 	private Set goodAtLanguages = new HashSet(0);
-	private Set news = new HashSet(0);
+	private Set newses = new HashSet(0);
 
 	// Constructors
 
@@ -31,11 +31,11 @@ public class Language implements java.io.Serializable
 	}
 
 	/** full constructor */
-	public Language(String languageName, Set goodAtLanguages, Set news)
+	public Language(String languageName, Set goodAtLanguages, Set newses)
 	{
 		this.languageName = languageName;
 		this.goodAtLanguages = goodAtLanguages;
-		this.news = news;
+		this.newses = newses;
 	}
 
 	// Property accessors
@@ -70,14 +70,14 @@ public class Language implements java.io.Serializable
 		this.goodAtLanguages = goodAtLanguages;
 	}
 
-	public Set getNews()
+	public Set getNewses()
 	{
-		return this.news;
+		return this.newses;
 	}
 
-	public void setNews(Set news)
+	public void setNewses(Set newses)
 	{
-		this.news = news;
+		this.newses = newses;
 	}
 
 }

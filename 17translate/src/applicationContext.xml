@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans
-	xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:p="http://www.springframework.org/schema/p"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	  http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
 
 
 	<bean id="dataSource"
@@ -12,7 +13,7 @@
 			value="com.mysql.jdbc.Driver">
 		</property>
 		<property name="url"
-			value="jdbc:mysql://localhost:3306/translatevyfee">
+			value="jdbc:mysql://localhost:3306/translationbyfee">
 		</property>
 		<property name="username" value="root"></property>
 	</bean>
@@ -26,8 +27,11 @@
 				<prop key="hibernate.dialect">
 					org.hibernate.dialect.MySQLDialect
 				</prop>
+				<prop key="hibernate.show_sql">true</prop>  
+                <prop key="hibernate.format_sql">true</prop> 
 			</props>
 		</property>
+
 
 		<property name="mappingResources">
 			<list>
@@ -46,28 +50,62 @@
 				<value>
 					org/translate/min/entity/GoodAtLanguage.hbm.xml
 				</value>
-				<value>org/translate/min/entity/News.hbm.xml</value>
 				<value>org/translate/min/entity/Client.hbm.xml</value>
 				<value>
 					org/translate/min/entity/LiveinTranslator.hbm.xml
 				</value>
 				<value>
 					org/translate/min/entity/ClientComment.hbm.xml
-				</value></list>
+				</value>
+				<value>org/translate/min/entity/News.hbm.xml</value></list>
 		</property></bean>
 	
-	<!-- 处理微信业务逻辑 -->
+	
+	<!-- 声明事务管理器 -->
+	<bean id="myHibernateManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<!-- 定义事务通知 -->
+	<tx:advice id="txAdvice" transaction-manager="myHibernateManager">
+		<tx:attributes>
+			<tx:method name="get*" propagation="SUPPORTS" read-only="true"/>
+			<tx:method name="search*" propagation="SUPPORTS" read-only="true"/>
+			<tx:method name="*" propagation="SUPPORTS"/>
+		</tx:attributes>	
+	</tx:advice>
+	<!-- 定义切面，并将事务通知和切面组合 -->
+	<aop:config>  
+		<aop:pointcut id="bizMethods" expression="execution(* org.translate.min.biz.*.*(..))"/>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="bizMethods"/>
+	</aop:config>
+	
+
+	
+	
+	<!-- 处理微信业务逻辑 -->  
 	<bean id="weixinDealAction" class="org.translate.min.action.WeixinDealAction"></bean>
 	<!-- 主页转发 -->
 	<bean id="mainAction" class="org.translate.min.action.MainAction"></bean>
-	<!-- 登录验证 -->
-	<bean id="loginAction" class="org.translate.min.action.LoginAction"></bean>
-	
 	<!-- 生成 验证码-->
 	<bean id="identifycode" class="org.translate.min.biz.impl.IdentifyCodeImpl"></bean>
 	<bean id="idetifycodeaction" class="org.translate.min.action.IdentifyCodeAction">
 		<property name="code" ref="identifycode"/>
 	</bean>
 
+	<!-- 查找登陆用户 -->
+	<bean id="freeTranslatorDao" class="org.translate.min.dao.impl.FreeTranslateDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="freeTranslatorBiz" class="org.translate.min.biz.impl.FreeTranslatorBizImpl">
+		<property name="ftld" ref="freeTranslatorDao"/>
+	</bean>
+	<bean id="loginAction" class="org.translate.min.action.LoginAction">
+		<property name="ftlb" ref="freeTranslatorBiz"/>
+	</bean>
+	<!-- 验证用户是否登录 -->
+	<bean id="isLoginAction" class="org.translate.min.action.IsLoginAction">
+	</bean>
+
+	
 		
 	</beans>

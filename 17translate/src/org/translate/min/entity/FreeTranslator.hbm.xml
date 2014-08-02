@@ -21,7 +21,7 @@
             </column>
         </property>
         <property name="fmailBox" type="string">
-            <column name="fmailBox" length="30" not-null="true">
+            <column name="fmailBox" length="30">
                 <comment>译员登录邮箱</comment>
             </column>
         </property>
