@@ -14,7 +14,10 @@
 	
 		
 	
-		
+		<!-- 处理用户下单 -->
+		<action name="placeorder" class="org.translate.min.action.PlaceOrderAction" method="dealPlaceOrder">
+			<result name="success">main.jsp</result>
+		</action>
 		<!-- 微信 -->
 		<action name="weixinAction" class="weixinDealAction" method="dealPostAndGet">
 			<result name="success">index.jsp</result>

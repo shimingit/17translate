@@ -65,7 +65,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    	
 			});
 			$("#origin li a").click(function(){
-				var txt = $(this).text(); 
+				var txt = $(this).text();
+				$("#originlanguage").val(txt);
 			    $("#originp").html(txt); 
 			    var value = $(this).attr("rel"); 
 			    $("#origin").hide(); 
@@ -83,6 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			});
 			$("#object li a").click(function(){
 				var txt = $(this).text(); 
+				$("#objectlanguage").val(txt);
 			    $("#objectp").html(txt); 
 			    var value = $(this).attr("rel"); 
 			    $("#object").hide(); 
@@ -100,6 +102,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			});
 			$("#domain li a").click(function(){
 				var txt = $(this).text(); 
+				$("#fromfield").val(txt);
 			    $("#doaminp").html(txt); 
 			    var value = $(this).attr("rel"); 
 			    $("#domain").hide(); 
@@ -125,7 +128,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	
     	
     	<div class="divtwo">
-    	<form action="placeorder" method="get">
+    	<form action="placeorder" method="post">
     		<div class="two_part01">
 		    	<div class="articleinfo">
 		    		<b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
@@ -169,14 +172,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="laclass">
 							
 							<div class="min"><span class="word" style="font-size: 14px">原文语种:</span></div>
-							<input type="hidden" name="originlanguage" value="" id="originlanguage"/>
+							<input type="hidden" name="originlanguage" value="英语" id="originlanguage"/>
 							<div class="dropdown"> 
 							    <p id="originp" class="uilan word">英语</p> 
 								    <ul id="origin" class="word"> 
+								        <li><a href="#" rel="1">中文</a></li> 
 								        <li><a href="#" rel="1">日语</a></li> 
 								        <li><a href="#" rel="2">德语</a></li> 
 								        <li><a href="#" rel="3">法语</a></li> 
 								        <li><a href="#" rel="4">俄语</a></li> 
+								        <li><a href="#" rel="4">英语</a></li> 
 								        <li><a href="#" rel="5">西班牙语</a></li> 
 								    </ul> 
 							</div> 
@@ -185,14 +190,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 						<div class="laclass">
 							<div class="min"><span class="word" style="font-size: 14px">目标语种:</span></div>
-							<input type="hidden" name="objectlanguage" value="" id="objectlanguage"/>
+							<input type="hidden" name="objectlanguage" value="英语" id="objectlanguage"/>
 							<div class="dropdown"> 
 							    <p id="objectp" class="uilan word">英语</p> 
 								    <ul id="object" class="word"> 
+								        <li><a href="#" rel="1">中文</a></li> 
 								        <li><a href="#" rel="1">日语</a></li> 
 								        <li><a href="#" rel="2">德语</a></li> 
 								        <li><a href="#" rel="3">法语</a></li> 
 								        <li><a href="#" rel="4">俄语</a></li> 
+								        <li><a href="#" rel="4">英语</a></li> 
 								        <li><a href="#" rel="5">西班牙语</a></li> 
 								    </ul> 
 							</div> 
@@ -200,7 +207,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 						<div class="laclass">
 							<div class="min"><span class="word" style="font-size: 14px">翻译领域:</span></div>
-							<input type="hidden" name="fromfield" value="" id="fromfield"/>
+							<input type="hidden" name="fromfield" value="学生论文" id="fromfield"/>
 							<div class="dropdown"> 
 							    <p id="domainp" class="uilan word">学生论文</p> 
 								    <ul id="domain" class="word"> 
@@ -209,6 +216,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								        <li><a href="#" rel="3">重要会议</a></li> 
 								        <li><a href="#" rel="4">校园通知</a></li> 
 								        <li><a href="#" rel="5">娱乐生活</a></li> 
+								        <li><a href="#" rel="5">学生论文</a></li> 
 								    </ul> 
 							</div> 
 						
