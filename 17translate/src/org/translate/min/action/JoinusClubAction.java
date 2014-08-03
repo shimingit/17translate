@@ -1,14 +1,18 @@
 package org.translate.min.action;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Map;
 
+import org.apache.struts2.interceptor.RequestAware;
+import org.apache.struts2.interceptor.SessionAware;
+import org.translate.min.biz.LiveinTranslatorBiz;
+import org.translate.min.biz.UtilBiz;
 import org.translate.min.entity.LiveinTranslator;
 import org.translate.min.util.CodingUtil;
+import org.translate.min.util.DateUtil;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class JoinusClubAction extends ActionSupport
+public class JoinusClubAction extends ActionSupport implements RequestAware,SessionAware
 {
 
 	private static final long serialVersionUID = 1L;
@@ -20,19 +24,30 @@ public class JoinusClubAction extends ActionSupport
 	private String[] gtfields;
 	private String selfdescription;
 	private String certification;
+	private UtilBiz ubz;
+	private LiveinTranslatorBiz ltlb;
+	private Map<String, Object> session;
+
+	private Map<String, Object> request;
 
 	public String dealJoinus()
 	{
 		//对用户上传信息进行重新编码
 		encodeInfo();
 		
-		Set goodAtFields = new HashSet();
-		Set goodAtLaguages = new HashSet();
+				
+		//获取当前登录用户的账号密码
+		String username = (String) session.get("username");
+		String password = (String) session.get("password");
 		
+		LiveinTranslator ltl = new LiveinTranslator(username,password,emailbox,0,
+				Integer.parseInt(translatespan),
+				certification,selfdescription,null,DateUtil.creatDate(),0,null,phonenumber
+				);
 		
-		
-		
-		LiveinTranslator ltl = new LiveinTranslator();
+		ltlb.addLiveinTranslator(ltl);
+		ubz.addGtfields(gtfields,username);
+		ubz.addGtlanguages(gtlanguages,username);
 		
 		
 		return SUCCESS;
@@ -115,7 +130,32 @@ public class JoinusClubAction extends ActionSupport
 	{
 		this.certification = certification;
 	}
-	
+	public UtilBiz getUbz()
+	{
+		return ubz;
+	}
+	public void setUbz(UtilBiz ubz)
+	{
+		this.ubz = ubz;
+	}
+	public void setSession(Map<String, Object> session)
+	{
+		this.session = session;
+		
+	}
+	public void setRequest(Map<String, Object> request)
+	{
+		this.request = request;
+		
+	}
+	public LiveinTranslatorBiz getLtlb()
+	{
+		return ltlb;
+	}
+	public void setLtlb(LiveinTranslatorBiz ltlb)
+	{
+		this.ltlb = ltlb;
+	}
 	
 }
  

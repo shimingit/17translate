@@ -1,12 +1,9 @@
 package org.translate.min.action;
 
-import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
-import org.translate.min.biz.FreeTranslatorBiz;
-import org.translate.min.entity.FreeTranslator;
 
 import com.opensymphony.xwork2.ActionSupport;
  
@@ -24,7 +21,7 @@ public class IsLoginAction extends ActionSupport implements RequestAware,Session
 	public String isLogin()
 	{
 		
-		String user = (String) session.get("user");
+		String user = (String) session.get("username");
 		
 		if(null != user)
 		{

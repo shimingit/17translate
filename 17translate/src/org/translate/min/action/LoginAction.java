@@ -54,7 +54,8 @@ public class LoginAction extends ActionSupport implements RequestAware,SessionAw
 				else
 				{
 					jsonResult = "success";
-					session.put("user", username);
+					session.put("username", username);
+					session.put("password", password);
 				}
 			}
 		}

@@ -102,12 +102,29 @@
 	<bean id="loginAction" class="org.translate.min.action.LoginAction">
 		<property name="ftlb" ref="freeTranslatorBiz"/>
 	</bean>
+	
+	<!-- 处理新加入的翻译员 -->
+	<bean id="utilDao" class="org.translate.min.dao.impl.UtilDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="utilBiz" class="org.translate.min.biz.impl.UtilBizImpl">
+		<property name="utildao" ref="utilDao"/>
+	</bean>
+	<bean id="liveinTranslatorDao" class="org.translate.min.dao.impl.LiveinTranslateDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="liveinTranslatorBiz" class="org.translate.min.biz.impl.LiveinTranslatorBizImpl">
+		<property name="ltld" ref="liveinTranslatorDao"/>
+	</bean>
+	<bean id="joinusclubAction" class="org.translate.min.action.JoinusClubAction">
+		<property name="ubz" ref="utilBiz"/>
+		<property name="ltlb" ref="liveinTranslatorBiz"/>
+	</bean>
+	
 	<!-- 验证用户是否登录 -->
 	<bean id="isLoginAction" class="org.translate.min.action.IsLoginAction">
 	</bean>
-	<!-- 处理新加入的翻译员 -->
-	<bean id="joinusclubAction" class="org.translate.min.action.JoinusClubAction">
-	</bean>
+
 
 	
 		

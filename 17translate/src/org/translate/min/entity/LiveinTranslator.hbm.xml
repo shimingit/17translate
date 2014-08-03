@@ -66,12 +66,12 @@
             </column>
         </property>
         <property name="resumeName" type="string">
-            <column name="resumeName" length="30" not-null="true">
+            <column name="resumeName" length="30" not-null="false">
                 <comment>译员上传的简历名字</comment>
             </column>
         </property>
         <property name="liveinDate" type="timestamp">
-            <column name="liveinDate" length="19" not-null="true">
+            <column name="liveinDate" length="19" not-null="false">
                 <comment>译员什么时候入驻</comment>
             </column>
         </property>
@@ -81,7 +81,7 @@
             </column>
         </property>
         <property name="translationLevel" type="string">
-            <column name="translationLevel" length="10" not-null="true">
+            <column name="translationLevel" length="10" not-null="false">
                 <comment>译员翻译水平级别</comment>
             </column>
         </property>

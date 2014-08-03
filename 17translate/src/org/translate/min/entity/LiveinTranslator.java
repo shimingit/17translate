@@ -43,8 +43,8 @@ public class LiveinTranslator implements java.io.Serializable
 	/** minimal constructor */
 	public LiveinTranslator(String luserName, String lpassword,
 			String lmailBox, Integer liveinType, float transExperience,
-			String qualifyDescription, String resumeName, Date liveinDate,
-			float liveinSpan, String translationLevel)
+			String qualifyDescription,String lselfDescription, String resumeName, Date liveinDate,
+			float liveinSpan, String translationLevel,String phonenumber)
 	{
 		this.luserName = luserName;
 		this.lpassword = lpassword;
@@ -56,6 +56,9 @@ public class LiveinTranslator implements java.io.Serializable
 		this.liveinDate = liveinDate;
 		this.liveinSpan = liveinSpan;
 		this.translationLevel = translationLevel;
+		this.lselfDescription = lselfDescription;
+		this.lphoneNumber = phonenumber;
+
 	}
 
 	/** full constructor */

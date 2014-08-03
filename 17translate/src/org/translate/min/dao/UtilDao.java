@@ -8,5 +8,7 @@ public interface UtilDao
 {
 	public List<Language> getLanguage(String languagename);
 	public List<Field> getField(String fieldname);
+	public void addGtfield(String username,String fieldname);
+	public void addGtlanguage(String username, String languagename);
 }
  

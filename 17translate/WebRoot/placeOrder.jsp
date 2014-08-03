@@ -125,7 +125,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	
     	
     	<div class="divtwo">
-    		
+    	<form action="placeorder" method="get">
     		<div class="two_part01">
 		    	<div class="articleinfo">
 		    		<b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
@@ -155,6 +155,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 					<b class="b4b d1"></b><b class="b3b d1"></b><b class="b2b d1"></b><b class="b1b"></b>
 		    	</div>
+		    	<div class="sub" style="height: 50px;text-align: left;text-align: left">
+					<input type="submit" id="allsubmit" name="allsubmit" value="提交订单" style="background: #FFE4C4;color: black;font-size: 14px;font-weight: bold;height: 40px;width:180px;border-color: #808000"/>
+					<input type="reset" id="allreset" name="allreset" value="重置订单" style="background: #FFE4C4;color: black;font-size: 14px;font-weight: bold;height: 40px;width:180px;margin-left: 40px;border-color: #808000"/>		
+			    </div>
 	    	</div>
     		
     		
@@ -165,6 +169,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="laclass">
 							
 							<div class="min"><span class="word" style="font-size: 14px">原文语种:</span></div>
+							<input type="hidden" name="originlanguage" value="" id="originlanguage"/>
 							<div class="dropdown"> 
 							    <p id="originp" class="uilan word">英语</p> 
 								    <ul id="origin" class="word"> 
@@ -180,6 +185,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 						<div class="laclass">
 							<div class="min"><span class="word" style="font-size: 14px">目标语种:</span></div>
+							<input type="hidden" name="objectlanguage" value="" id="objectlanguage"/>
 							<div class="dropdown"> 
 							    <p id="objectp" class="uilan word">英语</p> 
 								    <ul id="object" class="word"> 
@@ -194,6 +200,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 						<div class="laclass">
 							<div class="min"><span class="word" style="font-size: 14px">翻译领域:</span></div>
+							<input type="hidden" name="fromfield" value="" id="fromfield"/>
 							<div class="dropdown"> 
 							    <p id="domainp" class="uilan word">学生论文</p> 
 								    <ul id="domain" class="word"> 
@@ -213,7 +220,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		</div>
     		
     		
-    	
+    	</form>
     	</div>
     	
     	
