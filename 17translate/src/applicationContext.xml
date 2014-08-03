@@ -105,6 +105,9 @@
 	<!-- 验证用户是否登录 -->
 	<bean id="isLoginAction" class="org.translate.min.action.IsLoginAction">
 	</bean>
+	<!-- 处理新加入的翻译员 -->
+	<bean id="joinusclubAction" class="org.translate.min.action.JoinusClubAction">
+	</bean>
 
 	
 		

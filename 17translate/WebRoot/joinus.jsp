@@ -109,25 +109,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		
     		<div class="two_cont">
 				<b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
-					<div  class="b d1 h" >
+					<div  class="b d1 h"  >
 						
 						
 						<div class="two_content tc_01" >
 							<p class="word" style="font-size:16px;margin: 10px 0 auto 8px;">请如实填写您的相关信息<span style="font-size: 12px;color: #F4A460">( 星号为必填信息 )</span></p>
 						</div>
-						
+						<form action="joinusclub" method="get">
 						<div class="two_content ">
 							<div class="namediv">
-								<span class="word" style="font-size: 16px">姓名：</span><input class="inout" name="inout" type="text" value=""><span style="color:red;margin:auto 2px auto 2px">*</span>
+								<span class="word" style="font-size: 16px">姓名：</span><input class="inout" name="realname" type="text" value=""><span style="color:red;margin:auto 2px auto 2px">*</span>
 							</div>
 							<div class="namediv">
-								<span class="word" style="font-size: 16px">电话号码：</span><input class="inout" name="inout" type="text" value=""><span style="color:red;margin:auto 2px auto 2px">*</span>
+								<span class="word" style="font-size: 16px">电话号码：</span><input class="inout" name="phonenumber" type="text" value=""><span style="color:red;margin:auto 2px auto 2px">*</span>
 							</div>
 							<div class="namediv">
-								<span class="word" style="font-size: 16px">邮箱：</span><input class="inout" name="inout" type="text" value=""><span style="color:rgb(247,248,249);margin:auto 2px auto 2px">*</span>
+								<span class="word" style="font-size: 16px">邮箱：</span><input class="inout" name="emailbox" type="text" value=""><span style="color:rgb(247,248,249);margin:auto 2px auto 2px">*</span>
 							</div>
 							<div class="namediv">
-								<span class="word" style="font-size: 16px">翻译经验：</span><select class="inout" value="">
+								<span class="word" style="font-size: 16px">翻译经验：</span><select class="inout" name="translatespan" value="">
 									<option value="0">0 - 1年
 									<option value="1">1 - 2年
 									<option value="2">2 - 3年
@@ -141,34 +141,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="galanguage word"><span style="font-size: 16px">擅长语言:</span></div>
 							<div class="language">
 								<div class="check">
-									<input type="checkbox" value="" style="width:20px;height:20px"/><span class="word" style="vertical-align:6px;">英语</span>
+									<input type="checkbox" value="英语" style="width:20px;height:20px" name="gtlanguages"/><span class="word" style="vertical-align:6px;">英语</span>
 								</div>
 								<div class="check">
-									<input type="checkbox" value="" style="width:20px;height:20px"/><span class="word" style="vertical-align:6px;">日语</span>
+									<input type="checkbox" value="日语" style="width:20px;height:20px" name="gtlanguages"/><span class="word" style="vertical-align:6px;">日语</span>
 								</div>
 								<div class="check">
-									<input type="checkbox" value="" style="width:20px;height:20px"/><span class="word" style="vertical-align:6px;">德语</span>
+									<input type="checkbox" value="德语" style="width:20px;height:20px" name="gtlanguages"/><span class="word" style="vertical-align:6px;">德语</span>
 								</div>
 								<div class="check">
-									<input type="checkbox" value="" style="width:20px;height:20px"/><span class="word" style="vertical-align:6px;">韩语</span>
+									<input type="checkbox" value="韩语" style="width:20px;height:20px" name="gtlanguages"/><span class="word" style="vertical-align:6px;">韩语</span>
 								</div>
 								<div class="check">
-									<input type="checkbox" value="" style="width:20px;height:20px"/><span class="word" style="vertical-align:6px;">法语</span>
+									<input type="checkbox" value="法语" style="width:20px;height:20px" name="gtlanguages"/><span class="word" style="vertical-align:6px;">法语</span>
 								</div>
 								<div class="check">
-									<input type="checkbox" value="" style="width:20px;height:20px"/><span class="word" style="vertical-align:6px;">俄语</span>
+									<input type="checkbox" value="俄语" style="width:20px;height:20px" name="gtlanguages"/><span class="word" style="vertical-align:6px;">俄语</span>
 								</div>
 								<div class="check">
-									<input type="checkbox" value="" style="width:20px;height:20px"/><span class="word" style="vertical-align:6px;">西班牙语</span>
+									<input type="checkbox" value="西班牙语" style="width:20px;height:20px" name="gtlanguages"/><span class="word" style="vertical-align:6px;">西班牙语</span>
 								</div>
 								<div class="check">
-									<input type="checkbox" value="" style="width:20px;height:20px"/><span class="word" style="vertical-align:6px;">意大利语</span>
+									<input type="checkbox" value="意大利语" style="width:20px;height:20px" name="gtlanguages"/><span class="word" style="vertical-align:6px;">意大利语</span>
 								</div>
 								<div class="check">
-									<input type="checkbox" value="" style="width:20px;height:20px"/><span class="word" style="vertical-align:6px;">阿拉伯语</span>
+									<input type="checkbox" value="阿拉伯语" style="width:20px;height:20px" name="gtlanguages"/><span class="word" style="vertical-align:6px;">阿拉伯语</span>
 								</div>
 								<div class="check">
-									<input type="checkbox" value="" style="width:20px;height:20px"/><span class="word" style="vertical-align:6px;">葡萄牙语</span>
+									<input type="checkbox" value="葡萄牙语" style="width:20px;height:20px" name="gtlanguages"/><span class="word" style="vertical-align:6px;">葡萄牙语</span>
 								</div>
 							</div>
 						
@@ -179,28 +179,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							
 							<div class="fields">
 								<div class="check">
-									<input type="checkbox" value="" style="width:20px;height:20px"/><span class="word" style="vertical-align:6px;">重要会议</span>
+									<input type="checkbox" value="重要会议" style="width:20px;height:20px" name="gtfields"/><span class="word" style="vertical-align:6px;">重要会议</span>
 								</div>
 								<div class="check">
-									<input type="checkbox" value="" style="width:20px;height:20px"/><span class="word" style="vertical-align:6px;">重要通知</span>
+									<input type="checkbox" value="重要通知" style="width:20px;height:20px" name="gtfields"/><span class="word" style="vertical-align:6px;">重要通知</span>
 								</div>
 								<div class="check">
-									<input type="checkbox" value="" style="width:20px;height:20px"/><span class="word" style="vertical-align:6px;">校园广播</span>
+									<input type="checkbox" value="校园广播" style="width:20px;height:20px" name="gtfields"/><span class="word" style="vertical-align:6px;">校园广播</span>
 								</div>
 								<div class="check">
-									<input type="checkbox" value="" style="width:20px;height:20px"/><span class="word" style="vertical-align:6px;">招生简章</span>
+									<input type="checkbox" value="招生简章" style="width:20px;height:20px" name="gtfields"/><span class="word" style="vertical-align:6px;">招生简章</span>
 								</div>
 								<div class="check">
-									<input type="checkbox" value="" style="width:20px;height:20px"/><span class="word" style="vertical-align:6px;">学生论文</span>
+									<input type="checkbox" value="学生论文" style="width:20px;height:20px" name="gtfields"/><span class="word" style="vertical-align:6px;">学生论文</span>
 								</div>
 								<div class="check">
-									<input type="checkbox" value="" style="width:20px;height:20px"/><span class="word" style="vertical-align:6px;">老师简介</span>
+									<input type="checkbox" value="老师简介" style="width:20px;height:20px" name="gtfields"/><span class="word" style="vertical-align:6px;">老师简介</span>
 								</div>
 								<div class="check">
-									<input type="checkbox" value="" style="width:20px;height:20px"/><span class="word" style="vertical-align:6px;">趣味生活</span>
+									<input type="checkbox" value="趣味生活" style="width:20px;height:20px" name="gtfields"/><span class="word" style="vertical-align:6px;">趣味生活</span>
 								</div>
 								<div class="check">
-									<input type="checkbox" value="" style="width:20px;height:20px"/><span class="word" style="vertical-align:6px;">院系介绍</span>
+									<input type="checkbox" value="院系介绍" style="width:20px;height:20px" name="gtfields"/><span class="word" style="vertical-align:6px;">院系介绍</span>
 								</div>
 							</div>
 						
@@ -208,7 +208,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="two_content" style="height:190px;">
 							<div class="selfdesc word"><span style="font-size: 16px">自我介绍:</span></div>
 							<div class="desc" style="text-align: left">
-								<textarea class="textarea word" id="desc" name="desc" rows="9" cols="80" style="padding:6px;font-size: 14px;height:170;width:670px"></textarea>
+								<textarea class="textarea word" id="selfdescription" name="selfdescription" rows="9" cols="80" style="padding:6px;font-size: 14px;height:170;width:670px"></textarea>
 							</div>
 						</div>
 						<div class="two_content" style="height:190px;">
@@ -233,6 +233,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 						</div>
 						
+					
 						
 						
 						
@@ -241,11 +242,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						
 						
 						
-						
-					</div>
+					</div></form>
 				<b class="b4b d1"></b><b class="b3b d1"></b><b class="b2b d1"></b><b class="b1b"></b>
     		</div>
-    		
+    			
     	</div>
     
     	

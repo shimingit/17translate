@@ -25,6 +25,12 @@
 	 	</action>
 		
 		
+		<!-- 处理添加新译员 -->
+		<action name="joinusclub" class="joinusclubAction" method="dealJoinus">
+			<result name="success">
+				main.jsp
+			</result>
+		</action>
 		<!-- 主页转发 -->
 		<action name="fanyi" class="mainAction">
 			<result name="success">main.jsp</result>
