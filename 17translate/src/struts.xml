@@ -15,7 +15,7 @@
 		
 	
 		<!-- 处理用户下单 -->
-		<action name="placeorder" class="org.translate.min.action.PlaceOrderAction" method="dealPlaceOrder">
+		<action name="placeorder" class="placeOrderAction" method="dealPlaceOrder">
 			<result name="success">main.jsp</result>
 		</action>
 		<!-- 微信 -->

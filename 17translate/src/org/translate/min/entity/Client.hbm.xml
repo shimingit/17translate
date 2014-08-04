@@ -21,7 +21,7 @@
             </column>
         </property>
         <property name="mailBox" type="string">
-            <column name="mailBox" length="30" not-null="true">
+            <column name="mailBox" length="30">
                 <comment>注册邮箱</comment>
             </column>
         </property>
@@ -38,6 +38,11 @@
         <property name="schoolName" type="string">
             <column name="schoolName" length="30">
                 <comment>高校名称</comment>
+            </column>
+        </property>
+        <property name="photo" type="binary">
+            <column name="photo">
+                <comment>照片</comment>
             </column>
         </property>
         <set name="orders" inverse="true">

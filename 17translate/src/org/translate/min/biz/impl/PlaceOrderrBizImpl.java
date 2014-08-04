@@ -1,45 +1,42 @@
 package org.translate.min.biz.impl;
 
-import java.util.List;
+import org.translate.min.biz.PlaceOrderBiz;
+import org.translate.min.dao.PlaceOrderDao;
+import org.translate.min.entity.News;
+import org.translate.min.entity.Order;
 
-import org.translate.min.biz.FreeTranslatorBiz;
-import org.translate.min.dao.FreeTranslatorDao;
-import org.translate.min.entity.FreeTranslator;
-
-public class PlaceOrderrBizImpl implements FreeTranslatorBiz
+public class PlaceOrderrBizImpl implements PlaceOrderBiz
 {
 
-	private FreeTranslatorDao ftld;
+	private PlaceOrderDao pod;
 	
-	public PlaceOrderrBizImpl()
+	public void dealPlaceorder(String username, String passworde, String link,
+			String title, String author, String description,
+			String articlecontent, String originlanguage,
+			String objectlanguage, String fromfield, int wordcount)
 	{
-		System.out.println("FreeTranslatorBizImpl");
+		// TODO Auto-generated method stub
+		
 	}
-	
-	public List<FreeTranslator> getFreeTranslator(String username)
+	public void addNews(News news)
 	{
-		System.out.println("FreeTranslatorBizImpl");
-		return ftld.getTranslator(username);
-	}
-
-	public List<FreeTranslator> getFreeTranslator(String username,
-			String password)
-	{
-		return ftld.getTranslator(username, password);
+		pod.addNews(news);
 	}
 
-	
-	
-	
-	public FreeTranslatorDao getFtld()
+	public PlaceOrderDao getPod()
 	{
-		return ftld;
+		return pod;
 	}
 
-	public void setFtld(FreeTranslatorDao ftld)
+	public void setPod(PlaceOrderDao pod)
 	{
-		this.ftld = ftld;
+		this.pod = pod;
 	}
+
 	
 
+
+	
+	
+	
 }

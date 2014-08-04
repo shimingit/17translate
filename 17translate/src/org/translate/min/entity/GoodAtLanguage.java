@@ -1,62 +1,67 @@
 package org.translate.min.entity;
 
+
+
 /**
  * GoodAtLanguage entity. @author MyEclipse Persistence Tools
  */
 
-public class GoodAtLanguage implements java.io.Serializable
-{
+public class GoodAtLanguage  implements java.io.Serializable {
 
-	// Fields
 
-	private Integer gatLanguageId;
-	private LiveinTranslator liveinTranslator;
-	private Language language;
+    // Fields    
 
-	// Constructors
+     private Integer gatLanguageId;
+     private LiveinTranslator liveinTranslator;
+     private Language language;
 
-	/** default constructor */
-	public GoodAtLanguage()
-	{
-	}
 
-	/** full constructor */
-	public GoodAtLanguage(LiveinTranslator liveinTranslator, Language language)
-	{
-		this.liveinTranslator = liveinTranslator;
-		this.language = language;
-	}
+    // Constructors
 
-	// Property accessors
+    /** default constructor */
+    public GoodAtLanguage() {
+    }
 
-	public Integer getGatLanguageId()
-	{
-		return this.gatLanguageId;
-	}
+    
+    /** full constructor */
+    public GoodAtLanguage(LiveinTranslator liveinTranslator, Language language) {
+        this.liveinTranslator = liveinTranslator;
+        this.language = language;
+    }
 
-	public void setGatLanguageId(Integer gatLanguageId)
-	{
-		this.gatLanguageId = gatLanguageId;
-	}
+   
+    // Property accessors
 
-	public LiveinTranslator getLiveinTranslator()
-	{
-		return this.liveinTranslator;
-	}
+    public Integer getGatLanguageId() {
+        return this.gatLanguageId;
+    }
+    
+    public void setGatLanguageId(Integer gatLanguageId) {
+        this.gatLanguageId = gatLanguageId;
+    }
 
-	public void setLiveinTranslator(LiveinTranslator liveinTranslator)
-	{
-		this.liveinTranslator = liveinTranslator;
-	}
+    public LiveinTranslator getLiveinTranslator() {
+        return this.liveinTranslator;
+    }
+    
+    public void setLiveinTranslator(LiveinTranslator liveinTranslator) {
+        this.liveinTranslator = liveinTranslator;
+    }
 
-	public Language getLanguage()
-	{
-		return this.language;
-	}
+    public Language getLanguage() {
+        return this.language;
+    }
+    
+    public void setLanguage(Language language) {
+        this.language = language;
+    }
+   
 
-	public void setLanguage(Language language)
-	{
-		this.language = language;
-	}
+
+
+
+
+
+
 
 }

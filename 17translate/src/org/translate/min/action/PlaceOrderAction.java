@@ -4,7 +4,10 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
+import org.translate.min.biz.PlaceOrderBiz;
+import org.translate.min.entity.News;
 import org.translate.min.util.CodingUtil;
+import org.translate.min.util.CountingWords;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -20,14 +23,23 @@ public class PlaceOrderAction extends ActionSupport implements RequestAware,
 	private String originlanguage;
 	private String objectlanguage;
 	private String fromfield;
-	
+	private PlaceOrderBiz pob;
+	private Map<String, Object> session;
+
+	private Map<String, Object> request;
 
 	public String dealPlaceOrder()
 	{
 		//encodeinfo();
+		//获取当前登录用户的用户名密码
+		String username = (String) session.get("username");
+		String password = (String) session.get("password");
+		//计算原文字数
+		int wordcount = CountingWords.count(originlanguage, articlecontent);
 		
-		
-		
+		pob.dealPlaceorder(username, password, link, title, author, description, articlecontent, originlanguage,
+				objectlanguage, fromfield, wordcount);
+	
 		return SUCCESS;
 	}
 	
@@ -44,16 +56,18 @@ public class PlaceOrderAction extends ActionSupport implements RequestAware,
 		objectlanguage = CodingUtil.encode(objectlanguage);
 		fromfield = CodingUtil.encode(fromfield);
 	}
-	public void setSession(Map<String, Object> arg0)
+	
+	
+	
+	
+	public void setSession(Map<String, Object> session)
 	{
-		// TODO Auto-generated method stub
-
+		this.session = session;
 	}
 
-	public void setRequest(Map<String, Object> arg0)
+	public void setRequest(Map<String, Object> request)
 	{
-		// TODO Auto-generated method stub
-
+		this.request = request;
 	}
 
 	public String getLink()
@@ -132,6 +146,14 @@ public class PlaceOrderAction extends ActionSupport implements RequestAware,
 	public void setOriginlanguage(String originlanguage)
 	{
 		this.originlanguage = originlanguage;
+	}
+	public PlaceOrderBiz getPob()
+	{
+		return pob;
+	}
+	public void setPob(PlaceOrderBiz pob)
+	{
+		this.pob = pob;
 	}
 	
 }

@@ -21,7 +21,7 @@
             </column>
         </property>
         <property name="lmailBox" type="string">
-            <column name="lmailBox" length="30" not-null="true">
+            <column name="lmailBox" length="30">
                 <comment>译员登录邮箱</comment>
             </column>
         </property>
@@ -51,37 +51,37 @@
             </column>
         </property>
         <property name="liveinType" type="integer">
-            <column name="liveinType" not-null="true">
+            <column name="liveinType">
                 <comment>0代表个人入驻，1代表团队入驻</comment>
             </column>
         </property>
         <property name="transExperience" type="float">
-            <column name="transExperience" precision="12" scale="0" not-null="true">
+            <column name="transExperience" precision="12" scale="0">
                 <comment>译员有多长时间的翻译经验</comment>
             </column>
         </property>
         <property name="qualifyDescription" type="string">
-            <column name="qualifyDescription" length="65535" not-null="true">
+            <column name="qualifyDescription" length="65535">
                 <comment>译员翻译资质描述信息</comment>
             </column>
         </property>
         <property name="resumeName" type="string">
-            <column name="resumeName" length="30" not-null="false">
+            <column name="resumeName" length="30">
                 <comment>译员上传的简历名字</comment>
             </column>
         </property>
         <property name="liveinDate" type="timestamp">
-            <column name="liveinDate" length="19" not-null="false">
+            <column name="liveinDate" length="19">
                 <comment>译员什么时候入驻</comment>
             </column>
         </property>
         <property name="liveinSpan" type="float">
-            <column name="liveinSpan" precision="12" scale="0" not-null="true">
+            <column name="liveinSpan" precision="12" scale="0">
                 <comment>译员已入驻平台多久时间</comment>
             </column>
         </property>
         <property name="translationLevel" type="string">
-            <column name="translationLevel" length="10" not-null="false">
+            <column name="translationLevel" length="10">
                 <comment>译员翻译水平级别</comment>
             </column>
         </property>

@@ -1,62 +1,67 @@
 package org.translate.min.entity;
 
+
+
 /**
  * GoodAtField entity. @author MyEclipse Persistence Tools
  */
 
-public class GoodAtField implements java.io.Serializable
-{
+public class GoodAtField  implements java.io.Serializable {
 
-	// Fields
 
-	private Integer gatFieldId;
-	private LiveinTranslator liveinTranslator;
-	private Field field;
+    // Fields    
 
-	// Constructors
+     private Integer gatFieldId;
+     private LiveinTranslator liveinTranslator;
+     private Field field;
 
-	/** default constructor */
-	public GoodAtField()
-	{
-	}
 
-	/** full constructor */
-	public GoodAtField(LiveinTranslator liveinTranslator, Field field)
-	{
-		this.liveinTranslator = liveinTranslator;
-		this.field = field;
-	}
+    // Constructors
 
-	// Property accessors
+    /** default constructor */
+    public GoodAtField() {
+    }
 
-	public Integer getGatFieldId()
-	{
-		return this.gatFieldId;
-	}
+    
+    /** full constructor */
+    public GoodAtField(LiveinTranslator liveinTranslator, Field field) {
+        this.liveinTranslator = liveinTranslator;
+        this.field = field;
+    }
 
-	public void setGatFieldId(Integer gatFieldId)
-	{
-		this.gatFieldId = gatFieldId;
-	}
+   
+    // Property accessors
 
-	public LiveinTranslator getLiveinTranslator()
-	{
-		return this.liveinTranslator;
-	}
+    public Integer getGatFieldId() {
+        return this.gatFieldId;
+    }
+    
+    public void setGatFieldId(Integer gatFieldId) {
+        this.gatFieldId = gatFieldId;
+    }
 
-	public void setLiveinTranslator(LiveinTranslator liveinTranslator)
-	{
-		this.liveinTranslator = liveinTranslator;
-	}
+    public LiveinTranslator getLiveinTranslator() {
+        return this.liveinTranslator;
+    }
+    
+    public void setLiveinTranslator(LiveinTranslator liveinTranslator) {
+        this.liveinTranslator = liveinTranslator;
+    }
 
-	public Field getField()
-	{
-		return this.field;
-	}
+    public Field getField() {
+        return this.field;
+    }
+    
+    public void setField(Field field) {
+        this.field = field;
+    }
+   
 
-	public void setField(Field field)
-	{
-		this.field = field;
-	}
+
+
+
+
+
+
 
 }

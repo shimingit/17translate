@@ -1,75 +1,77 @@
 package org.translate.min.entity;
 
+
+
 /**
  * TranslationArrange entity. @author MyEclipse Persistence Tools
  */
 
-public class TranslationArrange implements java.io.Serializable
-{
+public class TranslationArrange  implements java.io.Serializable {
 
-	// Fields
 
-	private Integer tranArrangeId;
-	private LiveinTranslator liveinTranslator;
-	private Order order;
-	private String translateStatus;
+    // Fields    
 
-	// Constructors
+     private Integer tranArrangeId;
+     private LiveinTranslator liveinTranslator;
+     private Order order;
+     private String translateStatus;
 
-	/** default constructor */
-	public TranslationArrange()
-	{
-	}
 
-	/** full constructor */
-	public TranslationArrange(LiveinTranslator liveinTranslator, Order order,
-			String translateStatus)
-	{
-		this.liveinTranslator = liveinTranslator;
-		this.order = order;
-		this.translateStatus = translateStatus;
-	}
+    // Constructors
 
-	// Property accessors
+    /** default constructor */
+    public TranslationArrange() {
+    }
 
-	public Integer getTranArrangeId()
-	{
-		return this.tranArrangeId;
-	}
+    
+    /** full constructor */
+    public TranslationArrange(LiveinTranslator liveinTranslator, Order order, String translateStatus) {
+        this.liveinTranslator = liveinTranslator;
+        this.order = order;
+        this.translateStatus = translateStatus;
+    }
 
-	public void setTranArrangeId(Integer tranArrangeId)
-	{
-		this.tranArrangeId = tranArrangeId;
-	}
+   
+    // Property accessors
 
-	public LiveinTranslator getLiveinTranslator()
-	{
-		return this.liveinTranslator;
-	}
+    public Integer getTranArrangeId() {
+        return this.tranArrangeId;
+    }
+    
+    public void setTranArrangeId(Integer tranArrangeId) {
+        this.tranArrangeId = tranArrangeId;
+    }
 
-	public void setLiveinTranslator(LiveinTranslator liveinTranslator)
-	{
-		this.liveinTranslator = liveinTranslator;
-	}
+    public LiveinTranslator getLiveinTranslator() {
+        return this.liveinTranslator;
+    }
+    
+    public void setLiveinTranslator(LiveinTranslator liveinTranslator) {
+        this.liveinTranslator = liveinTranslator;
+    }
 
-	public Order getOrder()
-	{
-		return this.order;
-	}
+    public Order getOrder() {
+        return this.order;
+    }
+    
+    public void setOrder(Order order) {
+        this.order = order;
+    }
 
-	public void setOrder(Order order)
-	{
-		this.order = order;
-	}
+    public String getTranslateStatus() {
+        return this.translateStatus;
+    }
+    
+    public void setTranslateStatus(String translateStatus) {
+        this.translateStatus = translateStatus;
+    }
+   
 
-	public String getTranslateStatus()
-	{
-		return this.translateStatus;
-	}
 
-	public void setTranslateStatus(String translateStatus)
-	{
-		this.translateStatus = translateStatus;
-	}
+
+
+
+
+
 
 }

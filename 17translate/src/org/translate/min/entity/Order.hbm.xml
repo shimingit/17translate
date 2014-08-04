@@ -21,23 +21,28 @@
             </column>
         </many-to-one>
         <property name="orderDate" type="timestamp">
-            <column name="orderDate" length="19" not-null="true">
+            <column name="orderDate" length="19">
                 <comment>客户下单时间</comment>
             </column>
         </property>
         <property name="objectLanguage" type="string">
-            <column name="objectLanguage" length="20" not-null="true">
+            <column name="objectLanguage" length="20">
                 <comment>新闻翻译的目标语言</comment>
             </column>
         </property>
         <property name="anticipateTime" type="string">
-            <column name="anticipateTime" length="20" not-null="true">
+            <column name="anticipateTime" length="20">
                 <comment>完成翻译预计时长</comment>
             </column>
         </property>
         <property name="translationCost" type="float">
-            <column name="translationCost" precision="12" scale="0" not-null="true">
+            <column name="translationCost" precision="12" scale="0">
                 <comment>翻译费用</comment>
+            </column>
+        </property>
+        <property name="isPay" type="string">
+            <column name="isPay" length="10">
+                <comment>是否付费</comment>
             </column>
         </property>
         <set name="clientComments" inverse="true">

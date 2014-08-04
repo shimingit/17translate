@@ -2,75 +2,77 @@ package org.translate.min.entity;
 
 import java.util.Date;
 
+
 /**
  * ClientComment entity. @author MyEclipse Persistence Tools
  */
 
-public class ClientComment implements java.io.Serializable
-{
+public class ClientComment  implements java.io.Serializable {
 
-	// Fields
 
-	private Integer commentId;
-	private Order order;
-	private String commnetContent;
-	private Date commentDate;
+    // Fields    
 
-	// Constructors
+     private Integer commentId;
+     private Order order;
+     private String commnetContent;
+     private Date commentDate;
 
-	/** default constructor */
-	public ClientComment()
-	{
-	}
 
-	/** full constructor */
-	public ClientComment(Order order, String commnetContent, Date commentDate)
-	{
-		this.order = order;
-		this.commnetContent = commnetContent;
-		this.commentDate = commentDate;
-	}
+    // Constructors
 
-	// Property accessors
+    /** default constructor */
+    public ClientComment() {
+    }
 
-	public Integer getCommentId()
-	{
-		return this.commentId;
-	}
+    
+    /** full constructor */
+    public ClientComment(Order order, String commnetContent, Date commentDate) {
+        this.order = order;
+        this.commnetContent = commnetContent;
+        this.commentDate = commentDate;
+    }
 
-	public void setCommentId(Integer commentId)
-	{
-		this.commentId = commentId;
-	}
+   
+    // Property accessors
 
-	public Order getOrder()
-	{
-		return this.order;
-	}
+    public Integer getCommentId() {
+        return this.commentId;
+    }
+    
+    public void setCommentId(Integer commentId) {
+        this.commentId = commentId;
+    }
 
-	public void setOrder(Order order)
-	{
-		this.order = order;
-	}
+    public Order getOrder() {
+        return this.order;
+    }
+    
+    public void setOrder(Order order) {
+        this.order = order;
+    }
 
-	public String getCommnetContent()
-	{
-		return this.commnetContent;
-	}
+    public String getCommnetContent() {
+        return this.commnetContent;
+    }
+    
+    public void setCommnetContent(String commnetContent) {
+        this.commnetContent = commnetContent;
+    }
 
-	public void setCommnetContent(String commnetContent)
-	{
-		this.commnetContent = commnetContent;
-	}
+    public Date getCommentDate() {
+        return this.commentDate;
+    }
+    
+    public void setCommentDate(Date commentDate) {
+        this.commentDate = commentDate;
+    }
+   
 
-	public Date getCommentDate()
-	{
-		return this.commentDate;
-	}
 
-	public void setCommentDate(Date commentDate)
-	{
-		this.commentDate = commentDate;
-	}
+
+
+
+
+
 
 }

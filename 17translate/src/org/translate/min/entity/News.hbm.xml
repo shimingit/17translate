@@ -45,6 +45,16 @@
                 <comment>新闻描述信息</comment>
             </column>
         </property>
+        <property name="author" type="string">
+            <column name="author" length="20">
+                <comment>新闻作者</comment>
+            </column>
+        </property>
+        <property name="fromField" type="string">
+            <column name="fromField" length="30">
+                <comment>新闻所属领域</comment>
+            </column>
+        </property>
         <set name="orders" inverse="true">
             <key>
                 <column name="newId" not-null="true">

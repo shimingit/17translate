@@ -92,6 +92,16 @@
 		<property name="code" ref="identifycode"/>
 	</bean>
 
+	<!-- 处理用户订单 -->
+	<bean id="placeOrderDao" class="org.translate.min.dao.impl.PlaceOrderDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="placeOrderBiz" class="org.translate.min.biz.impl.PlaceOrderrBizImpl">
+		<property name="pod" ref="placeOrderDao"/>
+	</bean>
+	<bean id="placeOrderAction" class="org.translate.min.action.PlaceOrderAction">
+		<property name="pob" ref="placeOrderBiz"/>
+	</bean>
 	<!-- 查找登陆用户 -->
 	<bean id="freeTranslatorDao" class="org.translate.min.dao.impl.FreeTranslateDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"/>

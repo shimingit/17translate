@@ -20,6 +20,7 @@ public class Order implements java.io.Serializable
 	private String objectLanguage;
 	private String anticipateTime;
 	private float translationCost;
+	private String isPay;
 	private Set clientComments = new HashSet(0);
 	private Set translationArranges = new HashSet(0);
 
@@ -31,21 +32,17 @@ public class Order implements java.io.Serializable
 	}
 
 	/** minimal constructor */
-	public Order(News news, Client client, Date orderDate,
-			String objectLanguage, String anticipateTime, float translationCost)
+	public Order(News news, Client client)
 	{
 		this.news = news;
 		this.client = client;
-		this.orderDate = orderDate;
-		this.objectLanguage = objectLanguage;
-		this.anticipateTime = anticipateTime;
-		this.translationCost = translationCost;
 	}
 
 	/** full constructor */
 	public Order(News news, Client client, Date orderDate,
 			String objectLanguage, String anticipateTime,
-			float translationCost, Set clientComments, Set translationArranges)
+			float translationCost, String isPay, Set clientComments,
+			Set translationArranges)
 	{
 		this.news = news;
 		this.client = client;
@@ -53,6 +50,7 @@ public class Order implements java.io.Serializable
 		this.objectLanguage = objectLanguage;
 		this.anticipateTime = anticipateTime;
 		this.translationCost = translationCost;
+		this.isPay = isPay;
 		this.clientComments = clientComments;
 		this.translationArranges = translationArranges;
 	}
@@ -127,6 +125,16 @@ public class Order implements java.io.Serializable
 	public void setTranslationCost(float translationCost)
 	{
 		this.translationCost = translationCost;
+	}
+
+	public String getIsPay()
+	{
+		return this.isPay;
+	}
+
+	public void setIsPay(String isPay)
+	{
+		this.isPay = isPay;
 	}
 
 	public Set getClientComments()

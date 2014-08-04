@@ -3,63 +3,67 @@ package org.translate.min.entity;
 import java.util.HashSet;
 import java.util.Set;
 
+
 /**
  * Field entity. @author MyEclipse Persistence Tools
  */
 
-public class Field implements java.io.Serializable
-{
+public class Field  implements java.io.Serializable {
 
-	// Fields
 
-	private Integer fieldId;
-	private String fieldName;
-	private Set goodAtFields = new HashSet(0);
+    // Fields    
 
-	// Constructors
+     private Integer fieldId;
+     private String fieldName;
+     private Set goodAtFields = new HashSet(0);
 
-	/** default constructor */
-	public Field()
-	{
-	}
 
-	/** full constructor */
-	public Field(String fieldName, Set goodAtFields)
-	{
-		this.fieldName = fieldName;
-		this.goodAtFields = goodAtFields;
-	}
+    // Constructors
 
-	// Property accessors
+    /** default constructor */
+    public Field() {
+    }
 
-	public Integer getFieldId()
-	{
-		return this.fieldId;
-	}
+    
+    /** full constructor */
+    public Field(String fieldName, Set goodAtFields) {
+        this.fieldName = fieldName;
+        this.goodAtFields = goodAtFields;
+    }
 
-	public void setFieldId(Integer fieldId)
-	{
-		this.fieldId = fieldId;
-	}
+   
+    // Property accessors
 
-	public String getFieldName()
-	{
-		return this.fieldName;
-	}
+    public Integer getFieldId() {
+        return this.fieldId;
+    }
+    
+    public void setFieldId(Integer fieldId) {
+        this.fieldId = fieldId;
+    }
 
-	public void setFieldName(String fieldName)
-	{
-		this.fieldName = fieldName;
-	}
+    public String getFieldName() {
+        return this.fieldName;
+    }
+    
+    public void setFieldName(String fieldName) {
+        this.fieldName = fieldName;
+    }
 
-	public Set getGoodAtFields()
-	{
-		return this.goodAtFields;
-	}
+    public Set getGoodAtFields() {
+        return this.goodAtFields;
+    }
+    
+    public void setGoodAtFields(Set goodAtFields) {
+        this.goodAtFields = goodAtFields;
+    }
+   
 
-	public void setGoodAtFields(Set goodAtFields)
-	{
-		this.goodAtFields = goodAtFields;
-	}
+
+
+
+
+
+
 
 }
