@@ -1,4 +1,4 @@
-#Sat Jul 26 22:24:52 GMT+08:00 2014
+#Mon Aug 04 18:46:49 GMT+08:00 2014
 eclipse.preferences.version=1
-validator.Checked=WebRoot/js/jquery.min.js,WebRoot/js/jquery-ui.js,WebRoot/js/jquery-1.8.2.min.js,WebRoot/js/jquery-ui.min.js
+validator.Checked=WebRoot/js/jquery.min.js,WebRoot/js/jquery-ui.js,src/struts.xml,WebRoot/js/jquery-1.8.2.min.js,WebRoot/js/jquery-ui.min.js
 validator.Unchecked=

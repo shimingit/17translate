@@ -24,6 +24,8 @@ public class PlaceOrderAction extends ActionSupport implements RequestAware,
 	private String objectlanguage;
 	private String fromfield;
 	private PlaceOrderBiz pob;
+	private int wordcount;
+	private long cost;
 	private Map<String, Object> session;
 
 	private Map<String, Object> request;
@@ -35,8 +37,9 @@ public class PlaceOrderAction extends ActionSupport implements RequestAware,
 		String username = (String) session.get("username");
 		String password = (String) session.get("password");
 		//计算原文字数
-		int wordcount = CountingWords.count(originlanguage, articlecontent);
+		wordcount = CountingWords.count(originlanguage, articlecontent);
 		
+		//更新数据库
 		pob.dealPlaceorder(username, password, link, title, author, description, articlecontent, originlanguage,
 				objectlanguage, fromfield, wordcount);
 	
@@ -154,6 +157,22 @@ public class PlaceOrderAction extends ActionSupport implements RequestAware,
 	public void setPob(PlaceOrderBiz pob)
 	{
 		this.pob = pob;
+	}
+	public int getWordcount()
+	{
+		return wordcount;
+	}
+	public void setWordcount(int wordcount)
+	{
+		this.wordcount = wordcount;
+	}
+	public long getCost()
+	{
+		return cost;
+	}
+	public void setCost(long cost)
+	{
+		this.cost = cost;
 	}
 	
 }

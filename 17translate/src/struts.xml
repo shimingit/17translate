@@ -16,7 +16,7 @@
 	
 		<!-- 处理用户下单 -->
 		<action name="placeorder" class="placeOrderAction" method="dealPlaceOrder">
-			<result name="success">main.jsp</result>
+			<result name="success">payfee.jsp?totalwords=${wordcount}&amp;totalcost=${cost}&amp;origin=${originlanguage}&amp;object=${objectlanguage}</result>
 		</action>
 		<!-- 微信 -->
 		<action name="weixinAction" class="weixinDealAction" method="dealPostAndGet">
