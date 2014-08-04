@@ -62,8 +62,14 @@
 			<generator class="native"></generator>
 		</primary-key>
 	</table>
-<table name="translationarrange" catalog="translationbyfee"
-	class="org.translate.min.entity.TranslationArrange">
+	<table name="translationarrange" catalog="translationbyfee"
+		class="org.translate.min.entity.TranslationArrange">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+<table name="roles" catalog="translationbyfee"
+	class="org.translate.min.entity.Roles">
 	<primary-key>
 		<generator class="native"></generator>
 	</primary-key>

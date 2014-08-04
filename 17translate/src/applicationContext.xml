@@ -57,7 +57,8 @@
 				<value>
 					org/translate/min/entity/ClientComment.hbm.xml
 				</value>
-				<value>org/translate/min/entity/News.hbm.xml</value></list>
+				<value>org/translate/min/entity/News.hbm.xml</value>
+				<value>org/translate/min/entity/Roles.hbm.xml</value></list>
 		</property></bean>
 	
 	
