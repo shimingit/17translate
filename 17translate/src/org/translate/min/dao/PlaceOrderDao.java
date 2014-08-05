@@ -6,7 +6,7 @@ import org.translate.min.entity.Order;
 
 public interface PlaceOrderDao
 {
-	public void dealPlaceorder(String username,String passworde,String link,
+	public boolean dealPlaceorder(String username,String passworde,String link,
 			String title,String author,String description,String articlecontent,
 			String originlanguage,String objectlanguage,String fromfield,int wordcount);
 	public void addNews(News news);

@@ -3,9 +3,9 @@ package org.translate.min.util;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class CountingWords
+public class ArticleUtil
 {
-	public static int count(String originlan,String content)
+	public static int countwords(String originlan,String content)
 	{
 		String partten = "";
 		int count = 0;
@@ -25,5 +25,33 @@ public class CountingWords
 		    count++;
 		}
 		return count;
+	}
+	
+	public static float conutcost(int wordscount,String origin,String object)
+	{
+		float cost = 50F;
+		float factor = 1F;
+		
+		if("中文".equals(origin))
+		{
+			if("英语".equals(object))
+				factor = 1F;
+			else if("日语".equals(object))
+				factor = 1.2F;
+			else if("韩语".equals(object))
+				factor = 1.3F;
+			else if("德语".equals(object))
+				factor = 1.5F;
+		}
+		else if("英语".equals(origin))
+		{
+			if("中文".equals(object))
+				factor = 1.5F;
+			else if("日语".equals(object))
+				factor = 1.6F;
+			else if("德语".equals(object))
+				factor = 1.7F;
+		}
+		return cost * factor;
 	}
 }

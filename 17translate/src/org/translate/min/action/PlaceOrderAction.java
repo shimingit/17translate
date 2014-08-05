@@ -7,7 +7,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import org.translate.min.biz.PlaceOrderBiz;
 import org.translate.min.entity.News;
 import org.translate.min.util.CodingUtil;
-import org.translate.min.util.CountingWords;
+import org.translate.min.util.ArticleUtil;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -25,7 +25,7 @@ public class PlaceOrderAction extends ActionSupport implements RequestAware,
 	private String fromfield;
 	private PlaceOrderBiz pob;
 	private int wordcount;
-	private long cost;
+	private float cost;
 	private Map<String, Object> session;
 
 	private Map<String, Object> request;
@@ -37,8 +37,8 @@ public class PlaceOrderAction extends ActionSupport implements RequestAware,
 		String username = (String) session.get("username");
 		String password = (String) session.get("password");
 		//计算原文字数
-		wordcount = CountingWords.count(originlanguage, articlecontent);
-		
+		wordcount = ArticleUtil.countwords(originlanguage, articlecontent);
+		cost = ArticleUtil.conutcost(wordcount, originlanguage, objectlanguage);
 		//更新数据库
 		pob.dealPlaceorder(username, password, link, title, author, description, articlecontent, originlanguage,
 				objectlanguage, fromfield, wordcount);
@@ -166,11 +166,11 @@ public class PlaceOrderAction extends ActionSupport implements RequestAware,
 	{
 		this.wordcount = wordcount;
 	}
-	public long getCost()
+	public float getCost()
 	{
 		return cost;
 	}
-	public void setCost(long cost)
+	public void setCost(float cost)
 	{
 		this.cost = cost;
 	}

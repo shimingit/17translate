@@ -20,12 +20,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 	<%
+		int totalwords = Integer.parseInt(request.getParameter("totalwords"));
+		float totalcost = Float.parseFloat(request.getParameter("totalcost"));
+		String origin = request.getParameter("origin");
+		String object = request.getParameter("object");
 		
-	
+		
 	 %>
   </head>
   
   <body>
-    This is my JSP page. <br>
+    <%=totalwords %>
+    <%=totalcost %>
+    <%=origin %>
+    <%=object %>
   </body>
 </html>

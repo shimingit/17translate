@@ -22,7 +22,7 @@ public class PlaceOrderDaoImpl extends HibernateDaoSupport implements PlaceOrder
 		super.getHibernateTemplate().save(news);
 	}
 
-	public void dealPlaceorder(final String username, final String passworde, final String link,
+	public boolean dealPlaceorder(final String username, final String passworde, final String link,
 			final String title, final String author, final String description,
 			final String articlecontent, final String originlanguage,
 			final String objectlanguage, final String fromfield, final int wordcount)
@@ -49,9 +49,14 @@ public class PlaceOrderDaoImpl extends HibernateDaoSupport implements PlaceOrder
 				poc.setInt(11, wordcount);
 				poc.execute();
 				//conn.commit();//Ã·Ωª
-				return null;
+				System.out.println(poc.getBoolean("hasfinished"));
+				if(poc.getBoolean("hasfinished"))
+					return true;
+				else
+					return false;
 			}
 		});
+		return false;
 	}
 
 	
