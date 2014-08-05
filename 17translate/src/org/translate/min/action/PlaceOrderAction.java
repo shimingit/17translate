@@ -23,6 +23,7 @@ public class PlaceOrderAction extends ActionSupport implements RequestAware,
 	private String originlanguage;
 	private String objectlanguage;
 	private String fromfield;
+	private String orderId;
 	private PlaceOrderBiz pob;
 	private int wordcount;
 	private float cost;
@@ -39,10 +40,12 @@ public class PlaceOrderAction extends ActionSupport implements RequestAware,
 		//计算原文字数
 		wordcount = ArticleUtil.countwords(originlanguage, articlecontent);
 		cost = ArticleUtil.conutcost(wordcount, originlanguage, objectlanguage);
+		orderId = ArticleUtil.getOrderIdByUUId();
 		//更新数据库
-		pob.dealPlaceorder(username, password, link, title, author, description, articlecontent, originlanguage,
-				objectlanguage, fromfield, wordcount);
-	
+		boolean hasfinished = pob.dealPlaceorder(username, password, link, title, author, description, articlecontent, originlanguage,
+				objectlanguage, fromfield, wordcount,orderId);
+		
+		
 		return SUCCESS;
 	}
 	
@@ -173,6 +176,14 @@ public class PlaceOrderAction extends ActionSupport implements RequestAware,
 	public void setCost(float cost)
 	{
 		this.cost = cost;
+	}
+	public String getOrderId()
+	{
+		return orderId;
+	}
+	public void setOrderId(String orderId)
+	{
+		this.orderId = orderId;
 	}
 	
 }

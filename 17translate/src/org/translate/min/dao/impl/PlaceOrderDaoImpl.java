@@ -12,7 +12,6 @@ import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.translate.min.dao.PlaceOrderDao;
 import org.translate.min.entity.News;
-import org.translate.min.entity.Order;
 
 public class PlaceOrderDaoImpl extends HibernateDaoSupport implements PlaceOrderDao
 {
@@ -25,7 +24,8 @@ public class PlaceOrderDaoImpl extends HibernateDaoSupport implements PlaceOrder
 	public boolean dealPlaceorder(final String username, final String passworde, final String link,
 			final String title, final String author, final String description,
 			final String articlecontent, final String originlanguage,
-			final String objectlanguage, final String fromfield, final int wordcount)
+			final String objectlanguage, final String fromfield, 
+			final int wordcount, final String orderserialid)
 	{
 		super.getHibernateTemplate().execute(new 
 				HibernateCallback<Object>()
@@ -35,7 +35,7 @@ public class PlaceOrderDaoImpl extends HibernateDaoSupport implements PlaceOrder
 					SQLException
 			{
 				Connection conn = session.connection();
-				CallableStatement poc = conn.prepareCall("call dealPlaceOrder(?,?,?,?,?,?,?,?,?,?,?,?)");
+				CallableStatement poc = conn.prepareCall("call dealPlaceOrder(?,?,?,?,?,?,?,?,?,?,?,?,?)");
 				poc.setString(1, username);
 				poc.setString(2, passworde);
 				poc.setString(3, link);
@@ -47,7 +47,8 @@ public class PlaceOrderDaoImpl extends HibernateDaoSupport implements PlaceOrder
 				poc.setString(9, objectlanguage);
 				poc.setString(10, fromfield);
 				poc.setInt(11, wordcount);
-				poc.setBoolean(12, false);
+				poc.setString(12, orderserialid);
+				poc.setBoolean(13, false);
 				poc.execute();
 				//conn.commit();//Ã·Ωª
 				//System.out.println(poc.);

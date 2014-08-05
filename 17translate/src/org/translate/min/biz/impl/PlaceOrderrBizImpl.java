@@ -9,13 +9,13 @@ public class PlaceOrderrBizImpl implements PlaceOrderBiz
 
 	private PlaceOrderDao pod;
 	
-	public void dealPlaceorder(String username, String passworde, String link,
+	public boolean dealPlaceorder(String username, String passworde, String link,
 			String title, String author, String description,
 			String articlecontent, String originlanguage,
-			String objectlanguage, String fromfield, int wordcount)
+			String objectlanguage, String fromfield, int wordcount, String orderserialid)
 	{
-		pod.dealPlaceorder(username, passworde, link, title, author, description, 
-				articlecontent, originlanguage, objectlanguage, fromfield, wordcount);
+		return pod.dealPlaceorder(username, passworde, link, title, author, description, 
+				articlecontent, originlanguage, objectlanguage, fromfield, wordcount,orderserialid);
 	}
 	public void addNews(News news)
 	{

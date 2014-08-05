@@ -45,6 +45,11 @@
                 <comment>是否付费</comment>
             </column>
         </property>
+        <property name="orderSerialId" type="string">
+            <column name="orderSerialId" length="20">
+                <comment>订单序列号，唯一</comment>
+            </column>
+        </property>
         <set name="clientComments" inverse="true">
             <key>
                 <column name="orderId" not-null="true">

@@ -1,5 +1,6 @@
 package org.translate.min.util;
 
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -54,4 +55,27 @@ public class ArticleUtil
 		}
 		return cost * factor;
 	}
+	//生成唯一订单号
+	public static String getOrderIdByUUId()
+	{
+		int machineId = 1;//集群机器编号
+		int hashCodeV = UUID.randomUUID().toString().hashCode();
+		if(hashCodeV < 0)
+			hashCodeV = -hashCodeV;
+		return machineId+String.format("%015d", hashCodeV);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
