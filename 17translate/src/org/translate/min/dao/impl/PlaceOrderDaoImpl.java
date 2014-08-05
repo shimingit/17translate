@@ -27,7 +27,7 @@ public class PlaceOrderDaoImpl extends HibernateDaoSupport implements PlaceOrder
 			final String articlecontent, final String originlanguage,
 			final String objectlanguage, final String fromfield, final int wordcount)
 	{
-		super.getHibernateTemplate().executeFind(new 
+		super.getHibernateTemplate().execute(new 
 				HibernateCallback<Object>()
 		{
 
@@ -35,7 +35,7 @@ public class PlaceOrderDaoImpl extends HibernateDaoSupport implements PlaceOrder
 					SQLException
 			{
 				Connection conn = session.connection();
-				CallableStatement poc = conn.prepareCall("call dealPlaceOrder(?,?,?,?,?,?,?,?,?,?,?)");
+				CallableStatement poc = conn.prepareCall("call dealPlaceOrder(?,?,?,?,?,?,?,?,?,?,?,?)");
 				poc.setString(1, username);
 				poc.setString(2, passworde);
 				poc.setString(3, link);
@@ -47,9 +47,10 @@ public class PlaceOrderDaoImpl extends HibernateDaoSupport implements PlaceOrder
 				poc.setString(9, objectlanguage);
 				poc.setString(10, fromfield);
 				poc.setInt(11, wordcount);
+				poc.setBoolean(12, false);
 				poc.execute();
 				//conn.commit();//Ã·Ωª
-				System.out.println(poc.getBoolean("hasfinished"));
+				//System.out.println(poc.);
 				if(poc.getBoolean("hasfinished"))
 					return true;
 				else

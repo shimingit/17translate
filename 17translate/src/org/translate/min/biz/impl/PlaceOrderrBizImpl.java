@@ -3,7 +3,6 @@ package org.translate.min.biz.impl;
 import org.translate.min.biz.PlaceOrderBiz;
 import org.translate.min.dao.PlaceOrderDao;
 import org.translate.min.entity.News;
-import org.translate.min.entity.Order;
 
 public class PlaceOrderrBizImpl implements PlaceOrderBiz
 {
@@ -15,8 +14,8 @@ public class PlaceOrderrBizImpl implements PlaceOrderBiz
 			String articlecontent, String originlanguage,
 			String objectlanguage, String fromfield, int wordcount)
 	{
-		// TODO Auto-generated method stub
-		
+		pod.dealPlaceorder(username, passworde, link, title, author, description, 
+				articlecontent, originlanguage, objectlanguage, fromfield, wordcount);
 	}
 	public void addNews(News news)
 	{
