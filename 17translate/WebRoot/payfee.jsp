@@ -38,6 +38,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				1000);
 				return false;
 			});
+			$("#image1").mouseover(function()
+			{
+				$(this).css("border","2px solid #90EE90");
+				$("#arrow1").css("display","block");
+				$("#arrow2").css("display","none");
+			});
+			$("#image1").mouseout(function()
+			{
+				$(this).css("border","none");
+			});
+			$("#image2").mouseover(function()
+			{
+				$(this).css("border","2px solid #90EE90");
+				$("#arrow2").css("display","block");
+				$("#arrow1").css("display","none");
+			});
+			$("#image2").mouseout(function()
+			{
+				$(this).css("border","none");
+			});
 		});
 		
 	function showEWM(){
@@ -87,15 +107,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div  class="b d1 k"  >
 						<div id="t"><span class="word" style="margin-left:4px;color:green">付款方式</span></div>
 						<div id="pay">
-							<div class="left"><img src="images/jiantou.jpg" style="width:80px;height:60px;border: 2px solid red;"></img></div>
-							<div class="middle"><img src="images/zhifubao.jpg" style="width:85px;height:60px;border: 2px solid red;"></img></div>
+							<div class="left"><img id="arrow1" src="images/jiantou.jpg" style="width:80px;height:60px;"></img></div>
+							<div class="middle"><a href="#"><img id="image1" src="images/zhifubao.jpg" style="width:85px;height:60px;"></img></a></div>
 							<div class="right">
 								<span class="word">支付宝支付，快捷支付，信用卡和借记卡</span>
 							</div>
 						</div>
 						<div id="pay">
-							<div class="left"><img src="images/jiantou.jpg" style="width:80px;height:60px;border: 2px solid red;display: none"></img></div>
-							<div class="middle"><img src="images/kuaiqian.jpg" style="width:85px;height:60px;border: 2px solid red;"></img></div>
+							<div class="left"><img id="arrow2" src="images/jiantou.jpg" style="width:80px;height:60px;display: none"></img></div>
+							<div class="middle"><a href="#"><img id="image2" src="images/kuaiqian.jpg" style="width:85px;height:60px;"></img></a></div>
 							<div class="right">
 								<span class="word">支持企业银行</span>
 							</div>

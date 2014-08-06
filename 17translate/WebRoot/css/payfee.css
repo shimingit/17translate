@@ -6,18 +6,15 @@
 	width:993px;
 	height: 400px;
 	margin-top:20px; 
-	border:1px solid red;
 }
 .two_partone{
 	width:100%;
 	height:170px;
-	border:1px solid green;
 }
 .two_parttwo{
 	width:100%;
 	height:215px;
 	margin-top:15px;
-	border:1px solid green;
 }
 .k #t{
 	width:100%;
@@ -30,32 +27,28 @@
 	height:30px;
 	margin-top:10px;
 	text-align:left;
-	border:1px solid yellow;
 }
 .k #pay{
 	width:75%;
 	height:65px;
 	margin-top:10px;
 	text-align:left;
-	border:1px solid yellow;
 }
 .left{
 	width:100px;
 	height:100%;
-	border:1px solid red;
 	float: left;
 }
 .middle{
 	width:90px;
-	height:100%;
-	border:1px solid red;
+	height:90%;
 	margin-left:10px;
 	float: left;
+	cursor: pointer;
 }
 .right{
 	width:400px;
 	height:68%;
-	border:1px solid red;
 	margin-left:10px;
 	float: left;
 	padding-top: 20px;
