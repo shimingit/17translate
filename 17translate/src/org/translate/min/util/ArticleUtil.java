@@ -5,7 +5,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ArticleUtil
-{
+{	
+	//计算原文字数
 	public static int countwords(String originlan,String content)
 	{
 		String partten = "";
@@ -27,7 +28,7 @@ public class ArticleUtil
 		}
 		return count;
 	}
-	
+	//计算翻译费用
 	public static float conutcost(int wordscount,String origin,String object)
 	{
 		float cost = 50F;

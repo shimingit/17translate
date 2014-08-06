@@ -104,7 +104,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     	<div class="two_parttwo">
     		<b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
-					<div  class="b d1 k"  >
+					<div  class="b d1 k"  style="background: rgb(255,255,255)">
 						<div id="t"><span class="word" style="margin-left:4px;color:green">付款方式</span></div>
 						<div id="pay">
 							<div class="left"><img id="arrow1" src="images/jiantou.jpg" style="width:80px;height:60px;"></img></div>
@@ -119,6 +119,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="right">
 								<span class="word">支持企业银行</span>
 							</div>
+						</div>
+						<div id="payinfo">
+							<span class="word" >
+								<a href="#">我的订单</a>
+								<a href="#">继续下单</a>
+							</span>
 						</div>
 			        </div>
 		    <b class="b4b d1"></b><b class="b3b d1"></b><b class="b2b d1"></b><b class="b1b"></b>

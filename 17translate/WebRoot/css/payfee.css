@@ -30,9 +30,15 @@
 }
 .k #pay{
 	width:75%;
-	height:65px;
+	height:61px;
 	margin-top:10px;
 	text-align:left;
+}
+.k #payinfo{
+	
+	width:94%;
+	height:30px;
+	text-align: right;
 }
 .left{
 	width:100px;
@@ -45,6 +51,9 @@
 	margin-left:10px;
 	float: left;
 	cursor: pointer;
+}
+.word a,.word a:visited{
+	color:rgb(30,144,255);
 }
 .right{
 	width:400px;
