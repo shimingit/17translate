@@ -14,6 +14,10 @@
 	
 		
 	
+		<!-- 查看选中原文 -->
+		<action name="translatenew" class=""translateNewAction"" method="dealTranslateNew">
+			<result name="success">originArticle.jsp</result>
+		</action>
 		<!-- 处理在线任务 -->
 		<action name="recomendnews" class="recomendNewsAction" method="dealRecomendNewsAction">
 			<result name="success">recomendNews.jsp</result>

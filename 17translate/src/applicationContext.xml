@@ -130,6 +130,9 @@
 	<bean id="recomendNewsAction" class="org.translate.min.action.RecomendNewsAction">
 		<property name="redb" ref="recomendNewsBiz"/>
 	</bean>
+	<bean id="translateNewAction" class="org.translate.min.action.TranslateNewAction">
+		<property name="redb" ref="recomendNewsBiz"/>
+	</bean>
 	<!-- 处理新加入的翻译员 -->
 	<bean id="utilDao" class="org.translate.min.dao.impl.UtilDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"/>
