@@ -61,6 +61,9 @@
 				<value>org/translate/min/entity/Roles.hbm.xml</value>
 				<value>
 					org/translate/min/entity/ObjectNews.hbm.xml
+				</value>
+				<value>
+					org/translate/min/entity/PublicNews.hbm.xml
 				</value></list>
 		</property></bean>
 	
@@ -117,6 +120,16 @@
 		<property name="ftlb" ref="freeTranslatorBiz"/>
 	</bean>
 	
+	<!-- 处理在线任务-->
+	<bean id="recomendNewsDao" class="org.translate.min.dao.impl.RecomendNewsDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="recomendNewsBiz" class="org.translate.min.biz.impl.RecomendNewsBizImpl">
+		<property name="red" ref="recomendNewsDao"/>
+	</bean>
+	<bean id="recomendNewsAction" class="org.translate.min.action.RecomendNewsAction">
+		<property name="redb" ref="recomendNewsBiz"/>
+	</bean>
 	<!-- 处理新加入的翻译员 -->
 	<bean id="utilDao" class="org.translate.min.dao.impl.UtilDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"/>

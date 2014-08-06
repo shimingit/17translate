@@ -74,8 +74,14 @@
 			<generator class="native"></generator>
 		</primary-key>
 	</table>
-<table name="objectnews" catalog="translationbyfee"
-	class="org.translate.min.entity.ObjectNews">
+	<table name="objectnews" catalog="translationbyfee"
+		class="org.translate.min.entity.ObjectNews">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+<table name="publicnews" catalog="translationbyfee"
+	class="org.translate.min.entity.PublicNews">
 	<primary-key>
 		<generator class="native"></generator>
 	</primary-key>

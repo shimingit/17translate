@@ -14,6 +14,10 @@
 	
 		
 	
+		<!-- 处理在线任务 -->
+		<action name="recomendnews" class="recomendNewsAction" method="dealRecomendNewsAction">
+			<result name="success">recomendNews.jsp</result>
+		</action>
 		<!-- 处理用户下单 -->
 		<action name="placeorder" class="placeOrderAction" method="dealPlaceOrder">
 			<result name="success">payfee.jsp?totalwords=${wordcount}&amp;totalcost=${cost}&amp;origin=${originlanguage}&amp;object=${objectlanguage}&amp;orderId=${orderId}</result>

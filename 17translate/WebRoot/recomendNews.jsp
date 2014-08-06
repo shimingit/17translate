@@ -1,4 +1,5 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*,org.translate.min.entity.PublicNewsId" pageEncoding="UTF-8"%>
+
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -80,7 +81,25 @@ function showEWM(){
 function hideEWM(){
 	document.getElementById("EWM").style.display = 'none';
 }
+
 </script>
+<%
+	List<PublicNewsId> publicnews = (List<PublicNewsId> )session.getAttribute("publicnews");
+	int currentpage = -1;//当前页面
+	int totalpage = -1;//总共页数
+	int pageNum = 8;//每页最多显示8条新闻
+	int newsindex = -1;//当前指向第几条新闻
+	if(null == request.getParameter("currentpage"))
+		currentpage = 1;
+	else 
+		currentpage = Integer.parseInt(request.getParameter("currentpage"));
+	if(publicnews.size() % 8 == 0)
+		totalpage = publicnews.size() / 8;
+	else
+		totalpage = publicnews.size() / 8 + 1;
+	newsindex = (currentpage - 1) * 8;
+
+ %>
   </head>
   
   <body>
@@ -97,148 +116,52 @@ function hideEWM(){
 	    	
 				<div class="b d1 k">
 					
-					<div style="width:100%;height:32px;border-bottom: 1px solid rgb(232,232,232);margin-top:5px;text-align: left"><span class="word" style="margin-left:6px">在线翻译任务</span></div>
+					<div style="width:100%;height:32px;border-bottom: 1px solid rgb(232,232,232);margin-top:5px;text-align: left"><span class="word" style="margin-left:6px;font-size: 15px;">在线翻译任务</span></div>
 					
 					
 					
-					
-					
-					
-					<div id="" class="specialnews">
+				<div style="width:100%;height:712px;">
+				
+					<%
+						for(int i = newsindex; i < newsindex + 8 && (newsindex + 1) <= publicnews.size();i++)
+						{					
+							PublicNewsId news = publicnews.get(newsindex);
+					 %>
+					<div  class="specialnews">
 						<div class="title">
-							<span class="word1"><a href="#">5种科学方法，养成持久好习惯</a>&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">作者：王芳</span></span>
+							<span class="word1"><a href="translatenew?newsid=<%=news.getNewId()%>"><%=news.getNewTitle() %></a>&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">作者：<%=news.getAuthor() %></span></span>
 						</div>
 						<div class="field">
 							<span class="word1" style="font-weight: normal">
-								原文语种：中文&nbsp;&nbsp;目标语种：英语
+								原文语种：<%=news.getOriginlanguage() %>&nbsp;&nbsp;目标语种：<%=news.getObjectlanguage() %>
 							</span>
-							<span class="word1" style="float: right;font-weight: normal">翻译状态：<span style="color:green">已完成</span></span>
+							<span class="word1" style="float: right;font-weight: normal">翻译状态：<span style="color:red">待翻译</span></span>
 						</div>
 						<div class="link">
 							<span class="word1" style="font-weight: normal">
-								原文链接：<a>https://github.com/shimingit/17translate</a>
+								原文链接：<a href="<%=news.getNetLink()%>"><%=news.getNetLink() %></a>
 							</span>
 						</div>
 					</div>
-					<div id="" class="specialnews">
-						<div class="title">
-							<span class="word1"><a href="#">5种科学方法，养成持久好习惯</a>&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">作者：王芳</span></span>
-						</div>
-						<div class="field">
-							<span class="word1" style="font-weight: normal">
-								原文语种：中文&nbsp;&nbsp;目标语种：英语
-							</span>
-							<span class="word1" style="float: right;font-weight: normal">翻译状态：<span style="color:#FF4500">待翻译</span></span>
-						</div>
-						<div class="link">
-							<span class="word1" style="font-weight: normal">
-								<a>https://github.com/shimingit/17translate</a>
-							</span>
-						</div>
-					</div>
-					<div id="" class="specialnews">
-						<div class="title">
-							<span class="word1"><a href="#">5种科学方法，养成持久好习惯</a>&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">作者：王芳</span></span>
-						</div>
-						<div class="field">
-							<span class="word1" style="font-weight: normal">
-								原文语种：中文&nbsp;&nbsp;目标语种：英语
-							</span>
-							<span class="word1" style="float: right;font-weight: normal">翻译状态：<span style="color:#FF4500">待翻译</span></span>
-						</div>
-						<div class="link">
-							<span class="word1" style="font-weight: normal">
-								原文链接：<a>https://github.com/shimingit/17translate</a>
-							</span>
-						</div>
-					</div>
-					<div id="" class="specialnews">
-						<div class="title">
-							<span class="word1"><a href="#">5种科学方法，养成持久好习惯</a>&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">作者：王芳</span></span>
-						</div>
-						<div class="field">
-							<span class="word1" style="font-weight: normal">
-								原文语种：中文&nbsp;&nbsp;目标语种：英语
-							</span>
-							<span class="word1" style="float: right;font-weight: normal">翻译状态：<span style="color:#FF4500">待翻译</span></span>
-						</div>
-						<div class="link">
-							<span class="word1" style="font-weight: normal">
-								原文链接：<a>https://github.com/shimingit/17translate</a>
-							</span>
-						</div>
-					</div>
-					<div id="" class="specialnews">
-						<div class="title">
-							<span class="word1"><a href="#">5种科学方法，养成持久好习惯</a>&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">作者：王芳</span></span>
-						</div>
-						<div class="field">
-							<span class="word1" style="font-weight: normal">
-								原文语种：中文&nbsp;&nbsp;目标语种：英语
-							</span>
-							<span class="word1" style="float: right;font-weight: normal">翻译状态：<span style="color:#FF4500">待翻译</span></span>
-						</div>
-						<div class="link">
-							<span class="word1" style="font-weight: normal">
-								原文链接：<a>https://github.com/shimingit/17translate</a>
-							</span>
-						</div>
-					</div>
-					<div id="" class="specialnews">
-						<div class="title">
-							<span class="word1"><a href="#">5种科学方法，养成持久好习惯</a>&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">作者：王芳</span></span>
-						</div>
-						<div class="field">
-							<span class="word1" style="font-weight: normal">
-								原文语种：中文&nbsp;&nbsp;目标语种：英语
-							</span>
-							<span class="word1" style="float: right;font-weight: normal">翻译状态：<span style="color:#FF4500">待翻译</span></span>
-						</div>
-						<div class="link">
-							<span class="word1" style="font-weight: normal">
-								原文链接：<a>https://github.com/shimingit/17translate</a>
-							</span>
-						</div>
-					</div>
-					<div id="" class="specialnews">
-						<div class="title">
-							<span class="word1"><a href="#">5种科学方法，养成持久好习惯</a>&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">作者：王芳</span></span>
-						</div>
-						<div class="field">
-							<span class="word1" style="font-weight: normal">
-								原文语种：中文&nbsp;&nbsp;目标语种：英语
-							</span>
-							<span class="word1" style="float: right;font-weight: normal">翻译状态：<span style="color:#FF4500">待翻译</span></span>
-						</div>
-						<div class="link">
-							<span class="word1" style="font-weight: normal">
-								原文链接：<a>https://github.com/shimingit/17translate</a>
-							</span>
-						</div>
-					</div>
-					<div id="" class="specialnews">
-						<div class="title">
-							<span class="word1"><a href="#">5种科学方法，养成持久好习惯</a>&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">作者：王芳</span></span>
-						</div>
-						<div class="field">
-							<span class="word1" style="font-weight: normal">
-								原文语种：中文&nbsp;&nbsp;目标语种：英语
-							</span>
-							<span class="word1" style="float: right;font-weight: normal">翻译状态：<span style="color:#FF4500">待翻译</span></span>
-						</div>
-						<div class="link">
-							<span class="word1" style="font-weight: normal">
-								原文链接：<a>https://github.com/shimingit/17translate</a>
-							</span>
-						</div>
-					</div>
+					<%} %>
+				</div>
 					
 					<div class="page">
 						<span class="word1">
-							共&nbsp;<span style="color:green">12</span>&nbsp;页&nbsp;&nbsp;当前页面&nbsp;&nbsp;第&nbsp;<span style="color:green">2</span>&nbsp;页&nbsp;&nbsp;
-							<a href="#" style="color:green">首页</a>&nbsp;&nbsp;<a href="#" style="color:green">上一页</a>&nbsp;&nbsp;<a href="#" style="color:green">下一页</a>&nbsp;&nbsp;<a href="#" style="color:green">尾页</a>
+							共&nbsp;<span style="color:green"><%=totalpage %></span>&nbsp;页&nbsp;&nbsp;当前页面&nbsp;&nbsp;第&nbsp;<span style="color:green"><%=currentpage %></span>&nbsp;页&nbsp;&nbsp;
+							<a href="recomendNews.jsp?currentpage=1" style="color:green">首页</a>
+							<%if(currentpage == 1){ %>
+							&nbsp;&nbsp;<a href="recomendNews.jsp?currentpage=1" style="color:green">上一页</a>
+							&nbsp;&nbsp;<a href="recomendNews.jsp?currentpage=<%=(currentpage + 1) %>" style="color:green">下一页</a>
+							<%}else if(currentpage == totalpage) %>
+							&nbsp;&nbsp;<a href="recomendNews.jsp?currentpage=<%=currentpage - 1 %>" style="color:green">上一页</a>
+							&nbsp;&nbsp;<a href="recomendNews.jsp?currentpage=<%=totalpage %>" style="color:green">下一页</a>	
+							<%} else{%>
+							&nbsp;&nbsp;<a href="recomendNews.jsp?currentpage=<%=currentpage-1 %>" style="color:green">上一页</a>
+							&nbsp;&nbsp;<a href="recomendNews.jsp?currentpage=<%=(currentpage + 1) %>" style="color:green">下一页</a>
+							<%} %>
+							&nbsp;&nbsp;<a href="recomendNews.jsp?currentpage=<%=totalpage %>" style="color:green">尾页</a>
 						</span>
-					
 					</div>
 					
 					
