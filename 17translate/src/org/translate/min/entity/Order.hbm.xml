@@ -15,6 +15,11 @@
                 <comment>待译新闻编号，外键，依赖news表</comment>
             </column>
         </many-to-one>
+        <many-to-one name="objectNews" class="org.translate.min.entity.ObjectNews" fetch="select">
+            <column name="objectNewId">
+                <comment>目标新闻编号</comment>
+            </column>
+        </many-to-one>
         <many-to-one name="client" class="org.translate.min.entity.Client" fetch="select">
             <column name="clientId" not-null="true">
                 <comment>下单客户编号，外键，依赖client表</comment>
@@ -48,6 +53,11 @@
         <property name="orderSerialId" type="string">
             <column name="orderSerialId" length="20">
                 <comment>订单序列号，唯一</comment>
+            </column>
+        </property>
+        <property name="status" type="string">
+            <column name="status" length="20" not-null="true">
+                <comment>翻译状态</comment>
             </column>
         </property>
         <set name="clientComments" inverse="true">

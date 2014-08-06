@@ -15,6 +15,7 @@ public class Order implements java.io.Serializable
 
 	private Integer orderId;
 	private News news;
+	private ObjectNews objectNews;
 	private Client client;
 	private Date orderDate;
 	private String objectLanguage;
@@ -22,6 +23,7 @@ public class Order implements java.io.Serializable
 	private float translationCost;
 	private String isPay;
 	private String orderSerialId;
+	private String status;
 	private Set clientComments = new HashSet(0);
 	private Set translationArranges = new HashSet(0);
 
@@ -33,19 +35,21 @@ public class Order implements java.io.Serializable
 	}
 
 	/** minimal constructor */
-	public Order(News news, Client client)
+	public Order(News news, Client client, String status)
 	{
 		this.news = news;
 		this.client = client;
+		this.status = status;
 	}
 
 	/** full constructor */
-	public Order(News news, Client client, Date orderDate,
-			String objectLanguage, String anticipateTime,
+	public Order(News news, ObjectNews objectNews, Client client,
+			Date orderDate, String objectLanguage, String anticipateTime,
 			float translationCost, String isPay, String orderSerialId,
-			Set clientComments, Set translationArranges)
+			String status, Set clientComments, Set translationArranges)
 	{
 		this.news = news;
+		this.objectNews = objectNews;
 		this.client = client;
 		this.orderDate = orderDate;
 		this.objectLanguage = objectLanguage;
@@ -53,6 +57,7 @@ public class Order implements java.io.Serializable
 		this.translationCost = translationCost;
 		this.isPay = isPay;
 		this.orderSerialId = orderSerialId;
+		this.status = status;
 		this.clientComments = clientComments;
 		this.translationArranges = translationArranges;
 	}
@@ -77,6 +82,16 @@ public class Order implements java.io.Serializable
 	public void setNews(News news)
 	{
 		this.news = news;
+	}
+
+	public ObjectNews getObjectNews()
+	{
+		return this.objectNews;
+	}
+
+	public void setObjectNews(ObjectNews objectNews)
+	{
+		this.objectNews = objectNews;
 	}
 
 	public Client getClient()
@@ -147,6 +162,16 @@ public class Order implements java.io.Serializable
 	public void setOrderSerialId(String orderSerialId)
 	{
 		this.orderSerialId = orderSerialId;
+	}
+
+	public String getStatus()
+	{
+		return this.status;
+	}
+
+	public void setStatus(String status)
+	{
+		this.status = status;
 	}
 
 	public Set getClientComments()
