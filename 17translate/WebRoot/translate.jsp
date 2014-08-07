@@ -19,9 +19,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	
+	
+	<link type='text/css' href='css/confirm.css' rel='stylesheet' media='screen' />
+	<script src='js/jquery.simplemodal.js' type='text/javascript'></script>
+	<script src='js/confirm.js' type='text/javascript'></script>
+	
+	
+	<link rel="stylesheet" type="text/css" href="css/prompt.css">
 	<link  rel="stylesheet" type="text/css" href="css/xuanfustyle.css">
 	<link  rel="stylesheet" type="text/css" href="css/translate.css">
 	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script> 
+	<script type="text/javascript" src="js/jquery.prompt.js"></script>
 <script type="text/javascript">
 		$(document).ready(function()
 		{
@@ -53,6 +62,43 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			$(this).css("border","1px solid gray");
 		});
 		
+		$("#savedraft").click(function()
+		{
+			var drafttitle = $("#drafttitle").val();
+			var draftdescription = $("#draftdescription");
+			var newsid = $("#originnewsid").val();
+			var articlecontent = $("#wysiwyg").val();
+			
+			$.ajax({  
+            url: 'draftnews',  
+            type: 'post',  
+            data: {drafttitle:drafttitle,draftdescription:draftdescription,originnewsid:newsid,articlecontent:articlecontent},  
+            success: function(data)
+					{
+						//var dataObj = eval("(" + data +")");
+						if(data.isSaveOk == "ok")
+						{
+							var def = {
+										content:"<span style='font-weight:bold;'>您的翻译草稿保存成功！</span>",
+										time:1000
+									   };
+							$.Prompt(def);
+							$.Prompt();
+						}
+						else
+						{
+							var def = {
+										content:"<span style='font-weight:bold;'>对不起，您的草稿保存失败！</span>",
+										time:1000
+									   };
+							$.Prompt(def);
+							$.Prompt();
+						}
+					}
+                 }); 
+           return false;
+		});
+		
 });
 function showEWM(){
 			document.getElementById("EWM").style.display = 'block';
@@ -74,9 +120,9 @@ function showEWM(){
     	
     	
 	    <div class='divtwo'>
-	    <form action="draftnews" method="post">
+	    <form name="submitnews" action="submittnews" method="post">
 	    	<div class="info">
-	    		<input type="hidden" name="originnewsid" value="<%=thisnews.getNewId()%>"/>
+	    		<input type="hidden" id="originnewsid" name="originnewsid" value="<%=thisnews.getNewId()%>"/>
 					<div class="b d1 k">
 						<div class="art word" style="font-size: 16px;color:black">译文信息</div>
 						<div>
@@ -104,7 +150,7 @@ function showEWM(){
 							<textarea class="word oricontent" disabled="disabled"></textarea>
 							<div class="oribun" >
 								<input class="but" type="button" id="cancel" name="cancel" value="取消">
-								<input class="but" type="button" id="save" name="save" value="保存草稿">
+								<input class="but" type="button" id="savedraft" name="save" value="保存草稿">
 							</div>
 						</div>
 						
@@ -113,8 +159,20 @@ function showEWM(){
 								<%@include file="textedit.html" %>
 							</div>
 							<div class="oribun" style="text-align: right;">
-								<input class="but" type="button" id="sum" name="sub" value="提交译文" style="margin-right:13px">
+								
+								<input class="but" type="button" id="submitnews" name="submitnews" value="提交译文" style="margin-right:13px">
+								
+								
 							</div>
+							
+							<div id='confirm' style='display:none;'>
+								<a href='#' title='Close' class='modalCloseX simplemodal-close'>x</a>
+								<div class='header'><span>确认</span></div>
+								<p class='message'></p>
+								<div class='buttons'>
+								<div class='no simplemodal-close'>是</div><div class='yes'>否</div>
+							</div>
+							
 						</div>
 				<b class="b4b d1"></b><b class="b3b d1"></b><b class="b2b d1"></b><b class="b1b"></b>	
 	    	</div>

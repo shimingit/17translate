@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.translate.min.biz.RecomendNewsBiz;
 import org.translate.min.dao.RecomendNewsDao;
+import org.translate.min.entity.DraftNews;
 import org.translate.min.entity.News;
 import org.translate.min.entity.PublicNews;
 
@@ -11,6 +12,12 @@ public class RecomendNewsBizImpl implements RecomendNewsBiz
 {
 
 	private RecomendNewsDao red;
+
+	public void addDraftNews(DraftNews news)
+	{
+		red.addDraftNews(news);
+		
+	}
 
 	public List<News> getNewsById(int newsid)
 	{
@@ -31,7 +38,7 @@ public class RecomendNewsBizImpl implements RecomendNewsBiz
 	{
 		this.red = red;
 	}
-
+	
 	
 	
 	

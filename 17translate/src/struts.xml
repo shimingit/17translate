@@ -59,5 +59,9 @@
 		<action name="isLogin" class="isLoginAction" method="isLogin">
 			<result type="json"></result>
 		</action>
+        <!-- 保存翻译草稿-->
+		<action name="draftnews" class="draftNewsAction" method="savaDraftNews">
+			<result type="json"></result>
+		</action>
     </package>  
 </struts>    

@@ -14,6 +14,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.translate.min.dao.RecomendNewsDao;
+import org.translate.min.entity.DraftNews;
 import org.translate.min.entity.News;
 import org.translate.min.entity.PublicNews;
 
@@ -47,6 +48,12 @@ public class RecomendNewsDaoImpl extends HibernateDaoSupport implements Recomend
 				return c.list();
 			}
 		});
+	}
+
+	public void addDraftNews(DraftNews news)
+	{
+		super.getHibernateTemplate().save(news);
+		
 	}
 
 	

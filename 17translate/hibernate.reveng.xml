@@ -80,8 +80,20 @@
 			<generator class="native"></generator>
 		</primary-key>
 	</table>
-<table name="publicnews" catalog="translationbyfee"
-	class="org.translate.min.entity.PublicNews">
+	<table name="publicnews" catalog="translationbyfee"
+		class="org.translate.min.entity.PublicNews">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+	<table name="draftnews" catalog="translationbyfee"
+		class="org.translate.min.entity.DraftNews">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+<table name="finishednews" catalog="translationbyfee"
+	class="org.translate.min.entity.FinishedNew">
 	<primary-key>
 		<generator class="native"></generator>
 	</primary-key>

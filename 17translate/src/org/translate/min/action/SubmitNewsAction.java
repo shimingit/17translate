@@ -6,11 +6,10 @@ import java.util.Map;
 import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 import org.translate.min.biz.RecomendNewsBiz;
-import org.translate.min.entity.DraftNews;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class DraftNewsAction extends ActionSupport implements RequestAware,
+public class SubmitNewsAction extends ActionSupport implements RequestAware,
 		SessionAware
 {
 
@@ -22,7 +21,6 @@ public class DraftNewsAction extends ActionSupport implements RequestAware,
 	private String draftdescription;
 	private String articlecontent;
 	private RecomendNewsBiz redb;
-	private String isSaveOk;
 	
 	private Map<String, Object> session;
 	
@@ -36,10 +34,7 @@ public class DraftNewsAction extends ActionSupport implements RequestAware,
 		
 		username = (String) session.get("username");
 		
-		DraftNews draftnews = new DraftNews(username,originnewsid,
-				drafttitle,draftdescription,articlecontent,new Date());
-		redb.addDraftNews(draftnews);
-		isSaveOk = "ok";
+		
 		return SUCCESS;
 	}
 	
@@ -114,13 +109,4 @@ public class DraftNewsAction extends ActionSupport implements RequestAware,
 	{
 		this.redb = redb;
 	}
-	public String getIsSaveOk()
-	{
-		return isSaveOk;
-	}
-	public void setIsSaveOk(String isSaveOk)
-	{
-		this.isSaveOk = isSaveOk;
-	}
-	
 }

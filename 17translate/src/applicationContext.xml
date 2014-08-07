@@ -64,6 +64,15 @@
 				</value>
 				<value>
 					org/translate/min/entity/PublicNews.hbm.xml
+				</value>
+				<value>
+					org/translator/min/entity/DraftNews.hbm.xml
+				</value>
+				<value>
+					org/translate/min/entity/DraftNews.hbm.xml
+				</value>
+				<value>
+					org/translate/min/entity/FinishedNew.hbm.xml
 				</value></list>
 		</property></bean>
 	
@@ -131,6 +140,9 @@
 		<property name="redb" ref="recomendNewsBiz"/>
 	</bean>
 	<bean id="translateNewAction" class="org.translate.min.action.TranslateNewAction">
+		<property name="redb" ref="recomendNewsBiz"/>
+	</bean>
+	<bean id="draftNewsAction" class="org.translate.min.action.DraftNewsAction">
 		<property name="redb" ref="recomendNewsBiz"/>
 	</bean>
 	<!-- 处理新加入的翻译员 -->
