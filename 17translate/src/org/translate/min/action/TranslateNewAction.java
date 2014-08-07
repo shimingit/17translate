@@ -1,10 +1,12 @@
 package org.translate.min.action;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 import org.translate.min.biz.RecomendNewsBiz;
+import org.translate.min.entity.News;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -19,7 +21,13 @@ public class TranslateNewAction extends ActionSupport implements RequestAware,Se
 	private static final long serialVersionUID = 1L;
 	public String dealTranslateNew() 
 	{
-		return SUCCESS;
+		List<News> news = redb.getNewsById(newid);
+		if(news.size() > 0)
+		{
+			session.put("thisnews", news.get(0));
+		    return SUCCESS;
+		}
+		return ERROR;
 	}
 	public void setSession(Map<String, Object> session)
 	{
@@ -45,5 +53,4 @@ public class TranslateNewAction extends ActionSupport implements RequestAware,Se
 	{
 		this.redb = redb;
 	}
-	
 }
