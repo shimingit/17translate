@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*,org.translate.min.entity.News" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -61,6 +61,9 @@ function showEWM(){
 		document.getElementById("EWM").style.display = 'none';
 	}
 </script>
+<%
+	News thisnews = (News)session.getAttribute("thisnews");
+ %>
   </head>
   
   <body>
@@ -71,19 +74,23 @@ function showEWM(){
     	
     	
 	    <div class='divtwo'>
+	    <form action="draftnews" method="post">
 	    	<div class="info">
-	    		
+	    		<input type="hidden" name="originnewsid" value="<%=thisnews.getNewId()%>"/>
 					<div class="b d1 k">
 						<div class="art word" style="font-size: 16px;color:black">译文信息</div>
 						<div>
-								<div class="infocont"><span class="word">链接:</span><input type="text" id="link" name="link" style="height:35px;width:350px" disabled="disabled"/></div>
+								<div class="infocont"><span class="word">链接:</span><input type="text" id="link" name="link" value="<%=thisnews.getNetLink() %>" style="height:35px;width:350px" disabled="disabled"/></div>
+								<div class="infocont" style="float:right"><span class="word" style="color:black">标题简介译文</span><img src="images/fanyiarrow2.png" style="height:40px;width:40px"/></div>
 						</div>
 						<div>
 							<div class="infocont"><span class="word">标题:</span><input type="text" id="title" name="title" style="height:35px;width:350px" disabled="disabled"/></div>
+							<div class="infocont" style="float:right"><span class="word">标题:</span><input type="text" id="drafttitle" name="drafttitle" value="<%=thisnews.getNewTitle() %>" style="height:35px;width:350px"/></div>
 						</div>
 					
 						<div>
 							<div class="infocont" style="height:78px"><span class="word">简介:</span><textarea class="word" id="description" name="description" style="height:73px;width:350px;vertical-align: middle;" disabled="disabled"/></textarea></div>
+							<div class="infocont" style="height:78px;float: right"><span class="word">简介:</span><textarea class="word" id="draftdescription" name="draftdescription" style="height:73px;width:350px;vertical-align: middle;"/><%=thisnews.getDescription() %></textarea></div>
 						</div>
 					</div>
 				<b class="b4b d1"></b><b class="b3b d1"></b><b class="b2b d1"></b><b class="b1b"></b>	
@@ -112,9 +119,9 @@ function showEWM(){
 				<b class="b4b d1"></b><b class="b3b d1"></b><b class="b2b d1"></b><b class="b1b"></b>	
 	    	</div>
 	    
-	    
+	     </form>
 	    </div>
-	    
+	   
 	    
 	    
 	    

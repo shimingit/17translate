@@ -34,11 +34,12 @@
 
 
 .infocont{
-	width:100%;
+	width:45%;
 	height: 50px;
 	margin-top:4px;
 	padding-left: 44px;
 	text-align: left;
+	float:left;
 }
 .infocont span{
 	font-size: 15px;
