@@ -1,6 +1,5 @@
 package org.translate.min.action;
 
-import java.util.Date;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.RequestAware;
@@ -33,9 +32,12 @@ public class SubmitNewsAction extends ActionSupport implements RequestAware,
 	{
 		
 		username = (String) session.get("username");
-		
-		
-		return SUCCESS;
+		boolean isSubmitOk = redb.addFinishedNews(originnewsid, username, drafttitle, draftdescription, articlecontent);
+				
+		if(isSubmitOk)
+			return SUCCESS;
+
+		return ERROR;
 	}
 	
 	

@@ -145,6 +145,9 @@
 	<bean id="draftNewsAction" class="org.translate.min.action.DraftNewsAction">
 		<property name="redb" ref="recomendNewsBiz"/>
 	</bean>
+	<bean id="submitNewsAction" class="org.translate.min.action.SubmitNewsAction">
+		<property name="redb" ref="recomendNewsBiz"/>
+	</bean>
 	<!-- 处理新加入的翻译员 -->
 	<bean id="utilDao" class="org.translate.min.dao.impl.UtilDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"/>

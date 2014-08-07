@@ -14,8 +14,13 @@
 	
 		
 	
+		<!-- 提交完成的译文 -->
+		<action name="submitnews" class="submitNewsAction" method="savaDraftNews">
+			<result name="success">recomendNews.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
 		<!-- 查看选中原文 -->
-		<action name="translatenew" class=""translateNewAction"" method="dealTranslateNew">
+		<action name="translatenew" class="translateNewAction" method="dealTranslateNew">
 			<result name="success">originArticle.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>

@@ -12,4 +12,6 @@ public interface RecomendNewsBiz
 	public List<PublicNews> getPublicNews();
 	public List<News> getNewsById(int newsid);
 	public void addDraftNews(DraftNews news);
+	public boolean addFinishedNews(int originnewsid,String translatorusername,String finishedtitle,
+			String finisheddescription,String finishedcontent);
 }

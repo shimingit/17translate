@@ -13,6 +13,14 @@ public class RecomendNewsBizImpl implements RecomendNewsBiz
 
 	private RecomendNewsDao red;
 
+	public boolean addFinishedNews(int originnewsid, String translatorusername,
+			String finishedtitle, String finisheddescription,
+			String finishedcontent)
+	{
+		// TODO Auto-generated method stub
+		return red.addFinishedNews(originnewsid, translatorusername, finishedtitle, finisheddescription, finishedcontent);
+	}
+	
 	public void addDraftNews(DraftNews news)
 	{
 		red.addDraftNews(news);
@@ -38,6 +46,7 @@ public class RecomendNewsBizImpl implements RecomendNewsBiz
 	{
 		this.red = red;
 	}
+
 	
 	
 	
