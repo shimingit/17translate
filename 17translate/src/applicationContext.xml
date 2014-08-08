@@ -166,6 +166,9 @@
 	<!-- 验证用户是否登录 -->
 	<bean id="isLoginAction" class="org.translate.min.action.IsLoginAction">
 	</bean>
+	<!-- 用户退出 -->
+	<bean id="exitAction" class="org.translate.min.action.ExitAction">
+	</bean>
 
 
 	

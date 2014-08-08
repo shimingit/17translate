@@ -92,7 +92,7 @@ margin-right:15px;
 .las2{
 margin-right:18px;
  float:right;
- width:130px;
+ width:170px;
  line-height: 32px;
  font-size: 12px;
  font-weight: bold;
@@ -101,7 +101,7 @@ margin-right:18px;
 .las2 a{
 	text-decoration: none;
 	cursor: pointer;
-	margin: 5px 5px 5px 10px;
+	margin: 5px 2px 5px 2px;
 }
 .las a{
 	text-decoration: none;
@@ -196,6 +196,14 @@ margin-right:18px;
 						}
 					}
             }); 
+            
+       $("#exit").click(function()
+       {
+       		var flag = confirm("您确定退出吗？");
+       		if(!flag)return false;
+       		return true;
+       
+       });
 	});
 	
 	
@@ -228,7 +236,8 @@ margin-right:18px;
 			<div class="las2" style="display: none;">
 			 <span>您好，<span id="username"></span></span>
 				
-			 <a id="register" href="#">我的信息</a>		
+			 <a id="myinfo" href="#" style="margin-left: 18px;">我的信息</a>		
+			 <a id="exit" href="exit">退出</a>		
 			</div>
 		</div>
 	</div>

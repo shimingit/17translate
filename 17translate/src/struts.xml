@@ -52,6 +52,10 @@
 		<action name="fanyi" class="mainAction">
 			<result name="success">main.jsp</result>
 		</action>
+		<!-- 用户退出 -->
+		<action name="exit" class="exitAction">
+			<result name="success">main.jsp</result>
+		</action>
 	</package>
 	
 	
