@@ -68,5 +68,9 @@
 		<action name="draftnews" class="draftNewsAction" method="savaDraftNews">
 			<result type="json"></result>
 		</action>
+		<!-- 提交完成的译文 -->
+		<action name="submitnews" class="submitNewsAction" method="savaDraftNews">
+			<result type="json"></result>
+		</action>
     </package>  
 </struts>    

@@ -8,4 +8,5 @@ public interface FreeTranslatorBiz
 {
 	public List<FreeTranslator> getFreeTranslator(String username);
 	public List<FreeTranslator> getFreeTranslator(String username, String password);
+	public String getRole(String username, String password);
 }

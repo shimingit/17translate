@@ -66,9 +66,6 @@
 					org/translate/min/entity/PublicNews.hbm.xml
 				</value>
 				<value>
-					org/translator/min/entity/DraftNews.hbm.xml
-				</value>
-				<value>
 					org/translate/min/entity/DraftNews.hbm.xml
 				</value>
 				<value>

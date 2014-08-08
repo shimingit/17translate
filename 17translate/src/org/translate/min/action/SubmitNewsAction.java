@@ -20,6 +20,7 @@ public class SubmitNewsAction extends ActionSupport implements RequestAware,
 	private String draftdescription;
 	private String articlecontent;
 	private RecomendNewsBiz redb;
+	private String isSaveOk;
 	
 	private Map<String, Object> session;
 	
@@ -31,13 +32,18 @@ public class SubmitNewsAction extends ActionSupport implements RequestAware,
 	public String savaDraftNews()
 	{
 		
-		username = (String) session.get("username");
+		//username = (String) session.get("username");
+		username = "sa";
+		System.out.println(username+">"+originnewsid+">"+drafttitle+">"+draftdescription+">"+articlecontent);
 		boolean isSubmitOk = redb.addFinishedNews(originnewsid, username, drafttitle, draftdescription, articlecontent);
-				
 		if(isSubmitOk)
-			return SUCCESS;
+		{
+			isSaveOk = "ok";
+			
+		}
+			
 
-		return ERROR;
+		return SUCCESS;
 	}
 	
 	
@@ -110,5 +116,13 @@ public class SubmitNewsAction extends ActionSupport implements RequestAware,
 	public void setRedb(RecomendNewsBiz redb)
 	{
 		this.redb = redb;
+	}
+	public String getIsSaveOk()
+	{
+		return isSaveOk;
+	}
+	public void setIsSaveOk(String isSaveOk)
+	{
+		this.isSaveOk = isSaveOk;
 	}
 }

@@ -12,7 +12,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class TranslateNewAction extends ActionSupport implements RequestAware,SessionAware
 {
-	private int newid;
+	private int newsid;
 	private Map<String, Object> session;
 	
 	private Map<String, Object> request;
@@ -21,10 +21,11 @@ public class TranslateNewAction extends ActionSupport implements RequestAware,Se
 	private static final long serialVersionUID = 1L;
 	public String dealTranslateNew() 
 	{
-		List<News> news = redb.getNewsById(newid);
+		List<News> news = redb.getNewsById(newsid);
 		if(news.size() > 0)
 		{
 			session.put("thisnews", news.get(0));
+			System.out.println(news.get(0).getLanguage().getLanguageName());
 		    return SUCCESS;
 		}
 		return ERROR;
@@ -37,13 +38,13 @@ public class TranslateNewAction extends ActionSupport implements RequestAware,Se
 	{
 		this.request = request;
 	}
-	public int getNewid()
+	public int getNewsid()
 	{
-		return newid;
+		return newsid;
 	}
-	public void setNewid(int newid)
+	public void setNewsid(int newsid)
 	{
-		this.newid = newid;
+		this.newsid = newsid;
 	}
 	public RecomendNewsBiz getRedb()
 	{

@@ -8,4 +8,5 @@ public interface FreeTranslatorDao
 {
 	public List<FreeTranslator> getTranslator(String username);
 	public List<FreeTranslator> getTranslator(String username, String password);
+	public String getRole(String username,String password);
 }

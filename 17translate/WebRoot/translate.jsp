@@ -21,16 +21,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 	
 	
-	<link type='text/css' href='css/confirm.css' rel='stylesheet' media='screen' />
-	<script src='js/jquery.simplemodal.js' type='text/javascript'></script>
-	<script src='js/confirm.js' type='text/javascript'></script>
 	
 	
-	<link rel="stylesheet" type="text/css" href="css/prompt.css">
 	<link  rel="stylesheet" type="text/css" href="css/xuanfustyle.css">
 	<link  rel="stylesheet" type="text/css" href="css/translate.css">
 	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script> 
-	<script type="text/javascript" src="js/jquery.prompt.js"></script>
 <script type="text/javascript">
 		$(document).ready(function()
 		{
@@ -62,39 +57,57 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			$(this).css("border","1px solid gray");
 		});
 		
+		$("#submitnews").click(function()
+		{
+			var drafttitle = $("#drafttitle").val();
+			var draftdescription = $("#draftdescription").val();
+			var newsid = $("#originnewsid").val();
+			var articlecontent = $("#wysiwyg").val();
+			var flag = confirm("确定提交您的作品？");
+			if(!flag) return false;
+			$.ajax({  
+            url: 'submitnews',  
+            type: 'post',  
+            data: {drafttitle:drafttitle,draftdescription:draftdescription,originnewsid:newsid,articlecontent:articlecontent},  
+            success: function(data)
+					{
+						var dataObj = eval("(" + data +")");
+						if(dataObj.isSaveOk == "ok")
+						{
+							alert("译文提交成功！");
+						}
+						else
+						{
+							alert("译文提交失败！");
+						}
+					},
+				error:function(){alert("译文上传失败！");}
+                 }); 
+           return false;
+		});
 		$("#savedraft").click(function()
 		{
 			var drafttitle = $("#drafttitle").val();
-			var draftdescription = $("#draftdescription");
+			var draftdescription = $("#draftdescription").val();
 			var newsid = $("#originnewsid").val();
 			var articlecontent = $("#wysiwyg").val();
-			
 			$.ajax({  
             url: 'draftnews',  
             type: 'post',  
             data: {drafttitle:drafttitle,draftdescription:draftdescription,originnewsid:newsid,articlecontent:articlecontent},  
             success: function(data)
 					{
-						//var dataObj = eval("(" + data +")");
-						if(data.isSaveOk == "ok")
+						var dataObj = eval("(" + data +")");
+						if(dataObj.isSaveOk == "ok")
 						{
-							var def = {
-										content:"<span style='font-weight:bold;'>您的翻译草稿保存成功！</span>",
-										time:1000
-									   };
-							$.Prompt(def);
-							$.Prompt();
+							alert("您的草稿保存成功！");
 						}
 						else
 						{
-							var def = {
-										content:"<span style='font-weight:bold;'>对不起，您的草稿保存失败！</span>",
-										time:1000
-									   };
-							$.Prompt(def);
-							$.Prompt();
+							alert("对不起，草稿保存失败！");
 						}
-					}
+					},
+				error:function(){alert("对不起，草稿保存失败！");}
                  }); 
            return false;
 		});
@@ -120,7 +133,7 @@ function showEWM(){
     	
     	
 	    <div class='divtwo'>
-	    <form name="submitnews" action="submittnews" method="post">
+	    <form action="submitnews" method="post">
 	    	<div class="info">
 	    		<input type="hidden" id="originnewsid" name="originnewsid" value="<%=thisnews.getNewId()%>"/>
 					<div class="b d1 k">
@@ -130,13 +143,13 @@ function showEWM(){
 								<div class="infocont" style="float:right"><span class="word" style="color:black">标题简介译文</span><img src="images/fanyiarrow2.png" style="height:40px;width:40px"/></div>
 						</div>
 						<div>
-							<div class="infocont"><span class="word">标题:</span><input type="text" id="title" name="title" style="height:35px;width:350px" disabled="disabled"/></div>
-							<div class="infocont" style="float:right"><span class="word">标题:</span><input type="text" id="drafttitle" name="drafttitle" value="<%=thisnews.getNewTitle() %>" style="height:35px;width:350px"/></div>
+							<div class="infocont"><span class="word">标题:</span><input type="text" id="title" name="title" style="height:35px;width:350px" value="<%=thisnews.getNewTitle() %>" disabled="disabled"/></div>
+							<div class="infocont" style="float:right"><span class="word">标题:</span><input type="text" id="drafttitle" name="drafttitle" value="" style="height:35px;width:350px"/></div>
 						</div>
 					
 						<div>
-							<div class="infocont" style="height:78px"><span class="word">简介:</span><textarea class="word" id="description" name="description" style="height:73px;width:350px;vertical-align: middle;" disabled="disabled"/></textarea></div>
-							<div class="infocont" style="height:78px;float: right"><span class="word">简介:</span><textarea class="word" id="draftdescription" name="draftdescription" style="height:73px;width:350px;vertical-align: middle;"/><%=thisnews.getDescription() %></textarea></div>
+							<div class="infocont" style="height:78px"><span class="word">简介:</span><textarea class="word" id="description" name="description" style="height:73px;width:350px;vertical-align: middle;font-weight: normal;" disabled="disabled"/><%=thisnews.getDescription() %></textarea></div>
+							<div class="infocont" style="height:78px;float: right"><span class="word">简介:</span><textarea  id="draftdescription" name="draftdescription" style="height:73px;width:350px;vertical-align: middle;"></textarea></div>
 						</div>
 					</div>
 				<b class="b4b d1"></b><b class="b3b d1"></b><b class="b2b d1"></b><b class="b1b"></b>	
@@ -147,8 +160,10 @@ function showEWM(){
 						
 						<div class="originarticle">
 							<div class="art word" style="font-size: 16px;color:black">原文</div>
-							<textarea class="word oricontent" disabled="disabled"></textarea>
-							<div class="oribun" >
+							<div style="width:100%;height:950px;overflow: auto;border-bottom: 1px solid lightgray">
+								<%=thisnews.getNewContent() %>
+							</div>
+							<div class="oribun" style="margin-top: 10px;">
 								<input class="but" type="button" id="cancel" name="cancel" value="取消">
 								<input class="but" type="button" id="savedraft" name="save" value="保存草稿">
 							</div>
@@ -176,7 +191,7 @@ function showEWM(){
 						</div>
 				<b class="b4b d1"></b><b class="b3b d1"></b><b class="b2b d1"></b><b class="b1b"></b>	
 	    	</div>
-	    
+	    </div>
 	     </form>
 	    </div>
 	   

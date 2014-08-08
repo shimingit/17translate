@@ -1,12 +1,10 @@
 package org.translate.min.action;
 
-import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 import org.translate.min.biz.FreeTranslatorBiz;
-import org.translate.min.entity.FreeTranslator;
 
 import com.opensymphony.xwork2.ActionSupport;
  
@@ -19,6 +17,7 @@ public class LoginAction extends ActionSupport implements RequestAware,SessionAw
 	private String password;
 	private String identifyCode;
 	private String jsonResult;
+	private String role;
 	private FreeTranslatorBiz ftlb;
 
 	private Map<String, Object> session;
@@ -37,27 +36,25 @@ public class LoginAction extends ActionSupport implements RequestAware,SessionAw
 		}
 		else
 		{
-			System.out.println(ftlb);
-			List<FreeTranslator> translator =  ftlb.getFreeTranslator(username);
-			System.out.println(translator.size());
-			if(translator.size() == 0)
+			String  result =  ftlb.getRole(username,password);
+			System.out.println("role:" + result);
+			if("username".equals(result))
 			{
 				jsonResult = "username";
 			}
-			else 
+			else if("password".equals(result))
 			{
-				translator = ftlb.getFreeTranslator(username, password);
-				if(translator.size() == 0)
-				{
-					jsonResult = "password";
-				}
-				else
-				{
-					jsonResult = "success";
-					session.put("username", username);
-					session.put("password", password);
-				}
+				jsonResult = "password";
 			}
+			else
+			{
+				jsonResult = "success";
+				role = result;
+				session.put("username", username);
+				session.put("password", password);
+				session.put("role", role);
+			}
+			
 		}
 		
 		System.out.println("jsonResult:" +jsonResult);
@@ -124,6 +121,14 @@ public class LoginAction extends ActionSupport implements RequestAware,SessionAw
 	public void setFtlb(FreeTranslatorBiz ftlb)
 	{
 		this.ftlb = ftlb;
+	}
+	public String getRole()
+	{
+		return role;
+	}
+	public void setRole(String role)
+	{
+		this.role = role;
 	}
 	
 	

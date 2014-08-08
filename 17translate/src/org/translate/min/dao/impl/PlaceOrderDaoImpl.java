@@ -27,7 +27,7 @@ public class PlaceOrderDaoImpl extends HibernateDaoSupport implements PlaceOrder
 			final String objectlanguage, final String fromfield, 
 			final int wordcount, final String orderserialid)
 	{
-		super.getHibernateTemplate().execute(new 
+		return (Boolean) super.getHibernateTemplate().execute(new 
 				HibernateCallback<Object>()
 		{
 
@@ -58,7 +58,6 @@ public class PlaceOrderDaoImpl extends HibernateDaoSupport implements PlaceOrder
 					return false;
 			}
 		});
-		return false;
 	}
 
 	

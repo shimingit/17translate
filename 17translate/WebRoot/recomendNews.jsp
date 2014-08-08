@@ -25,6 +25,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="css/recomendNews.css">
 	<link  rel="stylesheet" type="text/css" href="css/xuanfustyle.css">
 	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script> 
+<style type="text/css">
+.title,.field,.link{
+	width:90%;
+	height:25;
+	text-align: left;
+}
+</style>
 <script type="text/javascript">
 $(document).ready(function()
 {
@@ -97,8 +104,10 @@ function hideEWM(){
 		totalpage = publicnews.size() / 8;
 	else
 		totalpage = publicnews.size() / 8 + 1;
+	if(currentpage > totalpage)
+		currentpage = totalpage;
 	newsindex = (currentpage - 1) * 8;
-
+	
  %>
   </head>
   
@@ -123,12 +132,12 @@ function hideEWM(){
 				<div style="width:100%;height:712px;">
 				
 					<%
-						for(int i = newsindex; i < newsindex + 8 && (newsindex + 1) <= publicnews.size();i++)
+						for(int i = newsindex; i < newsindex + 8 && (i + 1) <= publicnews.size();i++)
 						{					
 							PublicNewsId news = publicnews.get(newsindex);
 					 %>
 					<div  class="specialnews">
-						<div class="title">
+						<div class="title" >
 							<span class="word1"><a href="translatenew?newsid=<%=news.getNewId()%>"><%=news.getNewTitle() %></a>&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">作者：<%=news.getAuthor() %></span></span>
 						</div>
 						<div class="field">
@@ -153,10 +162,11 @@ function hideEWM(){
 							<%if(currentpage == 1){ %>
 							&nbsp;&nbsp;<a href="recomendNews.jsp?currentpage=1" style="color:green">上一页</a>
 							&nbsp;&nbsp;<a href="recomendNews.jsp?currentpage=<%=(currentpage + 1) %>" style="color:green">下一页</a>
-							<%}else if(currentpage == totalpage) %>
+							<%}else if(currentpage == totalpage){ %>
 							&nbsp;&nbsp;<a href="recomendNews.jsp?currentpage=<%=currentpage - 1 %>" style="color:green">上一页</a>
 							&nbsp;&nbsp;<a href="recomendNews.jsp?currentpage=<%=totalpage %>" style="color:green">下一页</a>	
-							<%} else{%>
+							<%} 
+							else{%>
 							&nbsp;&nbsp;<a href="recomendNews.jsp?currentpage=<%=currentpage-1 %>" style="color:green">上一页</a>
 							&nbsp;&nbsp;<a href="recomendNews.jsp?currentpage=<%=(currentpage + 1) %>" style="color:green">下一页</a>
 							<%} %>

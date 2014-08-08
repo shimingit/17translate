@@ -15,7 +15,9 @@ import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.translate.min.dao.RecomendNewsDao;
 import org.translate.min.entity.DraftNews;
+import org.translate.min.entity.News;
 import org.translate.min.entity.PublicNews;
+import org.translate.min.entity.PublicNewsId;
 
 public class RecomendNewsDaoImpl extends HibernateDaoSupport implements RecomendNewsDao
 {
@@ -42,7 +44,7 @@ public class RecomendNewsDaoImpl extends HibernateDaoSupport implements Recomend
 			public Object doInHibernate(Session session) throws HibernateException,
 					SQLException
 			{
-				Criteria c = session.createCriteria(PublicNews.class);
+				Criteria c = session.createCriteria(News.class);
 				c.add(Restrictions.eq("newId", newsid));
 				return c.list();
 			}
@@ -59,7 +61,7 @@ public class RecomendNewsDaoImpl extends HibernateDaoSupport implements Recomend
 			final String finishedtitle, final String finisheddescription,
 			final String finishedcontent)
 	{
-		super.getHibernateTemplate().execute(new 
+		 return (Boolean) super.getHibernateTemplate().execute(new 
 				HibernateCallback<Object>()
 		{
 
@@ -76,14 +78,14 @@ public class RecomendNewsDaoImpl extends HibernateDaoSupport implements Recomend
 				poc.setBoolean(6, false);
 				poc.execute();
 				//conn.commit();//Ã·Ωª
-				//System.out.println(poc.);
 				if(poc.getBoolean("hasfinished"))
 					return true;
 				else
 					return false;
+				
 			}
 		});
-		return false;
+	
 	}
 
 	

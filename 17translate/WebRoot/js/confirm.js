@@ -15,7 +15,7 @@
 $(document).ready(function () {
 	$('#submitnews').click(function (e) {
 		e.preventDefault();
-
+		alert("");
 		// example of calling the confirm function
 		// you must use a callback function to perform the "yes" action
 		confirm("<span style='font-weight:bold'>\u786e\u5b9a\u63d0\u4ea4\u60a8\u7684\u4f5c\u54c1\u5417\uff1f</span>", function () {

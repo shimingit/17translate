@@ -40,6 +40,12 @@ public class FreeTranslatorBizImpl implements FreeTranslatorBiz
 	{
 		this.ftld = ftld;
 	}
+
+	public String getRole(String username, String password)
+	{
+		// TODO Auto-generated method stub
+		return ftld.getRole(username, password);
+	}
 	
 
 }

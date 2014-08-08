@@ -1,5 +1,7 @@
 package org.translate.min.dao.impl;
 
+import java.sql.CallableStatement;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -45,6 +47,28 @@ public class FreeTranslateDaoImpl extends HibernateDaoSupport implements FreeTra
 				c.add(Restrictions.eq("fuserName", username));
 				c.add(Restrictions.eq("fpassword", password));
 				return c.list();
+			}
+		});
+	}
+
+	public String getRole(final String username, final String password)
+	{
+		return  (String) super.getHibernateTemplate().execute(new 
+				HibernateCallback<Object>()
+		{
+
+			public Object doInHibernate(Session session) throws HibernateException,
+					SQLException
+			{
+				Connection conn = session.connection();
+				CallableStatement poc = conn.prepareCall("call checkrole(?,?,?)");
+				poc.setString(1, username);
+				poc.setString(2, password);
+				poc.setString(3, "@role");
+				poc.execute();
+				//conn.commit();//Ã·Ωª
+				//System.out.println(poc.);
+				return poc.getString("role");
 			}
 		});
 	}

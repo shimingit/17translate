@@ -34,8 +34,9 @@ public class DraftNewsAction extends ActionSupport implements RequestAware,
 	public String savaDraftNews()
 	{
 		
-		username = (String) session.get("username");
-		
+		//username = (String) session.get("username");
+		username="sa";
+		System.out.println(username+">"+originnewsid+">"+drafttitle+">"+draftdescription+">"+articlecontent);
 		DraftNews draftnews = new DraftNews(username,originnewsid,
 				drafttitle,draftdescription,articlecontent,new Date());
 		redb.addDraftNews(draftnews);

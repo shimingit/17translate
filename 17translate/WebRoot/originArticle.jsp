@@ -98,22 +98,22 @@ function hideEWM(){
 
     <div class="divtwo">
     	
-    	<div class="two_part01">
+    	<div class="two_part01" >
 	    	<b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
-				<div class="b d1 k">
+				<div class="b d1 k" style="overflow: auto">
 					
 					
 				
-					<p class="word" style="padding: 4px;">
+			
 						&nbsp;&nbsp;<%=thisnews.getNewContent() %>					
-					</p>
+	
 					
 					
 				</div>
 			<b class="b4b d1"></b><b class="b3b d1"></b><b class="b2b d1"></b><b class="b1b"></b>
     	</div>
     	
-    	<div class="two_part02">
+    	<div class="two_part02" >
     		
     		<div id="types">
     		
@@ -132,7 +132,7 @@ function hideEWM(){
 								   		<span class="word1" >标题：</span>
 								   </div>
 								   <div class="item">
-								   		<span class="word1" style="font-size: 15px;color:rgb(110,110,110)"><%=thisnews.getNewTitle() %>></span>
+								   		<span class="word1" style="font-size: 15px;color:rgb(110,110,110)"><%=thisnews.getNewTitle() %></span>
 								   </div>
 								   <div class="item" style="height: 20px">
 								   		<span class="word1" >作者：<span style="color:rgb(110,110,110)"><%=thisnews.getAuthor() %></span></span>
@@ -149,7 +149,7 @@ function hideEWM(){
 								   <div class="item">
 								   		<span class="word1" >简介：</span>
 								   </div>
-								   <div class="item" style="height:60px">
+								   <div class="item" style="height:80px;overflow: auto">
 										<span class="word1" style="color:rgb(110,110,110)"><%=thisnews.getDescription() %></span>
 								   </div>
 								</div>
@@ -165,7 +165,7 @@ function hideEWM(){
     	</div>
     
     </div>
-
+</div>
 	<div class="divthree">
 		
 		<div class="partone">
@@ -186,7 +186,7 @@ function hideEWM(){
 	
 	</div>
   
-	</div>
+
 
 
 
@@ -208,5 +208,6 @@ function hideEWM(){
 	</li>
 
 	</ul>
+	</div>
   </body>
 </html>
