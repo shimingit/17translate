@@ -32,8 +32,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	</div>
 
     	<div class="divtwo">
-    	
+
     		<div class="two_partone">
+    		<b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
 				 <div class="b d1 h">
 				 	<div class="divimg">
 				 		<img id="myimg" src="images/daren.jpg"/>

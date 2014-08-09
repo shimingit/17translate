@@ -34,7 +34,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<div class="divtwo">
     	
     		<div class="two_partone">
+    		 <b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
 				 <div class="b d1 h">
+				
 				 	<div class="divimg">
 				 		<img id="myimg" src="images/daren.jpg"/>
 				 		<form action="">
@@ -106,7 +108,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 		<div class="draftitem" >
 							<div id="drafttitle">
 								<span class="word2"><a href="#">您的翻译被收录，获得100个翻译笔</a></span>
-								<span class="word2" style="margin-right: 10px;font-size:12px;float: right">获奖时间：<span style="color:green">2014/8/9  7:50</span></span>
+								<span class="word2" style="margin-right: 10px;font-size:12px;float: right">通知时间：<span style="color:green">2014/8/9  7:50</span></span>
 							</div>
 							<div id="draftinfo">
 								<span class="word2" style="font-size:12px">通知类型：<span style="color:green">奖励</span></span>

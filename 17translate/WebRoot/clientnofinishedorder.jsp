@@ -106,26 +106,52 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 	
 				 	<div class="detialinfo">
 				 		<div style="width:100%;height:40px;line-height: 40px;text-align: left;border-bottom: 1px dotted rgb(210,210,210);">
-				 			<span class="word" style="margin-left:10px;">我的资料</span>
-				 			<span class="word1" style="light-height:40px;margin-left: 428px;"><a href="joinus.jsp">修改资料</a></span>
-				 			<span class="word1" style="light-height:40px;margin-left: 4px;"><a href="joinus.jsp">修改密码</a></span>
+				 			<span class="word" style="margin-left:10px;">未完成订单</span>
+				 			<span class="word1" style="light-height:40px;margin-left: 488px;"><a href="joinus.jsp">继续下单</a></span>
 				 		</div>
-				 		<div class="infoitem">
-				 			<span class="word" style="margin-left:10px;float: left;color: gray;font-size: 12px;">真实姓名:</span>
-				 			<span class="word" style="margin-left:50px;float: left;color: gray;font-size: 12px;">王芳</span>
+				 		
+				 		
+				 		
+				 		<div class="draftitem" >
+							<div id="drafttitle">
+								<span class="word2"><a href="#">加强我们的思想道德建设</a></span>
+								<span class="word2" style="margin-right: 10px;font-size:12px;float: right">下单时间：<span style="color:green">2014/8/9  7:50</span></span>
+							</div>
+							<div id="draftinfo">
+								<span class="word2" style="font-size:12px">付款状态：<span style="color:green">未付款</span></span>
+								<span class="word2" style="font-size:12px">须付费：<span style="color:green"> 50 </span>元</span>
+								<span class="word4" style="light-height:30px;float: right;margin-right: 15px;"><a href="joinus.jsp">完成付款</a></span>
+							</div>
 				 		</div>
-				 		<div class="infoitem">
-				 			<span class="word" style="margin-left:10px;float: left;color: gray;font-size: 12px;">电话号码:</span>
-				 			<span class="word" style="margin-left:50px;float: left;color: gray;font-size: 12px;">13035310271</span>
+				 		
+				 		<div class="draftitem" >
+							<div id="drafttitle">
+								<span class="word2"><a href="#">加强我们的思想道德建设</a></span>
+								<span class="word2" style="margin-right: 10px;font-size:12px;float: right">下单时间：<span style="color:green">2014/8/9  7:50</span></span>
+							</div>
+							<div id="draftinfo">
+								<span class="word2" style="font-size:12px">付款状态：<span style="color:green">已付款</span></span>
+								<span class="word2" style="font-size:12px">须付费：<span style="color:green"> 50 </span>元</span>
+								<span class="word2" style="font-size:12px">翻译状态：<span style="color:green">翻译中</span></span>
+								<span class="word2" style="font-size:12px">预计翻译时间：<span style="color:green">12 </span>小时</span>
+							</div>
 				 		</div>
-				 		<div class="infoitem">
-				 			<span class="word" style="margin-left:10px;float: left;color: gray;font-size: 12px;">电子邮箱:</span>
-				 			<span class="word" style="margin-left:50px;float: left;color: gray;font-size: 12px;">13035310271@163.com</span>
+				 		<div class="draftitem" >
+							<div id="drafttitle">
+								<span class="word2"><a href="#">加强我们的思想道德建设</a></span>
+								<span class="word2" style="margin-right: 10px;font-size:12px;float: right">下单时间：<span style="color:green">2014/8/9  7:50</span></span>
+							</div>
+							<div id="draftinfo">
+								<span class="word2" style="font-size:12px">付款状态：<span style="color:green">已付款</span></span>
+								<span class="word2" style="font-size:12px">须付费：<span style="color:green"> 50 </span>元</span>
+								<span class="word2" style="font-size:12px">翻译状态：<span style="color:green">已完成</span></span>
+								<span class="word4" style="light-height:30px;float: right;margin-right: 15px;"><a href="joinus.jsp">获取译文</a></span>
+							</div>
 				 		</div>
-				 		<div class="infoitem">
-				 			<span class="word" style="margin-left:10px;float: left;color: gray;font-size: 12px;">学校名称:</span>
-				 			<span class="word" style="margin-left:50px;float: left;color: gray;font-size: 12px;">湖南科技大学</span>
-				 		</div>
+				 		
+				 		
+				 		
+				 		
 				 	</div>
 				 </div>
     			<b class="b4b d1"></b><b class="b3b d1"></b><b class="b2b d1"></b><b class="b1b"></b>

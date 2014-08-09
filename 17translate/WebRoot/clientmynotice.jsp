@@ -106,26 +106,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 	
 				 	<div class="detialinfo">
 				 		<div style="width:100%;height:40px;line-height: 40px;text-align: left;border-bottom: 1px dotted rgb(210,210,210);">
-				 			<span class="word" style="margin-left:10px;">我的资料</span>
-				 			<span class="word1" style="light-height:40px;margin-left: 428px;"><a href="joinus.jsp">修改资料</a></span>
-				 			<span class="word1" style="light-height:40px;margin-left: 4px;"><a href="joinus.jsp">修改密码</a></span>
+				 			<span class="word" style="margin-left:10px;">我的通知</span>
 				 		</div>
-				 		<div class="infoitem">
-				 			<span class="word" style="margin-left:10px;float: left;color: gray;font-size: 12px;">真实姓名:</span>
-				 			<span class="word" style="margin-left:50px;float: left;color: gray;font-size: 12px;">王芳</span>
+				 		
+				 		
+				 		
+				 		<div class="draftitem" >
+							<div id="drafttitle">
+								<span class="word2"><a href="#">您的翻译被收录，获得100个翻译笔</a></span>
+								<span class="word2" style="margin-right: 10px;font-size:12px;float: right">通知时间：<span style="color:green">2014/8/9  7:50</span></span>
+							</div>
+							<div id="draftinfo">
+								<span class="word2" style="font-size:12px">通知类型：<span style="color:green">奖励</span></span>
+							</div>
 				 		</div>
-				 		<div class="infoitem">
-				 			<span class="word" style="margin-left:10px;float: left;color: gray;font-size: 12px;">电话号码:</span>
-				 			<span class="word" style="margin-left:50px;float: left;color: gray;font-size: 12px;">13035310271</span>
-				 		</div>
-				 		<div class="infoitem">
-				 			<span class="word" style="margin-left:10px;float: left;color: gray;font-size: 12px;">电子邮箱:</span>
-				 			<span class="word" style="margin-left:50px;float: left;color: gray;font-size: 12px;">13035310271@163.com</span>
-				 		</div>
-				 		<div class="infoitem">
-				 			<span class="word" style="margin-left:10px;float: left;color: gray;font-size: 12px;">学校名称:</span>
-				 			<span class="word" style="margin-left:50px;float: left;color: gray;font-size: 12px;">湖南科技大学</span>
-				 		</div>
+				 		
+				 		
+				 		
+				 		
 				 	</div>
 				 </div>
     			<b class="b4b d1"></b><b class="b3b d1"></b><b class="b2b d1"></b><b class="b1b"></b>

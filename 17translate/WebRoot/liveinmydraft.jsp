@@ -17,10 +17,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 
-	<link rel="stylesheet" type="text/css" href="css/freeinfo.css">
-	<link rel="stylesheet" type="text/css" href="css/freemydraft.css">
-
-
+	<link rel="stylesheet" type="text/css" href="css/liveininfo.css">
+	
+	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script> 
+	
+<script type="text/javascript">
+	$(document).ready(function()
+	{
+		$(".language").mouseenter(function()
+		{
+			$(this).css("border","2px solid #DCDCDC");
+		});
+		$(".language").mouseleave(function()
+		{
+			$(this).css("border","");
+		});
+	});
+</script>
   </head>
   
   <body>
@@ -34,7 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<div class="divtwo">
     	
     		<div class="two_partone">
-    		<b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
+    			<b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
 				 <div class="b d1 h">
 				 	<div class="divimg">
 				 		<img id="myimg" src="images/daren.jpg"/>
@@ -48,17 +61,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 				<td colspan="2" style="color:#008B8B"><a href="#" style="font-weight: bold;">toshimin130</a></td>
 				 			</tr>
 				 			<tr>
+				 				<td>姓名：</td>
+				 				<td>王芳</td>
+				 			</tr>
+				 			<tr>
 				 				<td>电话:</td>
 				 				<td>13035310271</td>
 				 			</tr>
-				 			<tr>
-				 				<td>翻译币：</td>
-				 				<td>100枚</td>
-				 			</tr>
-				 			<tr>
-				 				<td>粉丝：</td>
-				 				<td>100个</td>
-				 			</tr>
+
 				 			<tr>
 				 				<td colspan="2" style="height:20px;">邮箱：</td>
 				 			</tr>
@@ -78,6 +88,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				    		<span class="word"><a href="#">我的资料</a></span>
 				    	</div>
 				    	<div id="item">
+				    		<span class="word"><a href="#">我的钱包</a></span>
+				    	</div>
+				    	<div id="item">
 				    		<span class="word"><a href="#">我的通知</a></span>
 				    	</div>
 				    </div>
@@ -93,8 +106,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 <div class="b d1 k">
 				 	<div class="desctitle">
 				 		<span class="word" style="line-height: 40px;margin-left: 10px">我的简介</span>
-				 		<span class="word" style="light-height:40px;margin-left: 350px;font-size: 12px">成为译员已<span style="color:blue"> 365 </span>天</span>
-				 		<span class="word1" style="light-height:40px;margin-left: 14px;"><a href="joinus.jsp">我要入驻平台</a></span>
+				 		<span class="word" style="light-height:40px;margin-left: 198px;font-size: 12px;font-weight: normal;">译员等级:<span style="color:blue"> 高级 </span></span>
+				 		<span class="word" style="light-height:40px;margin-left: 8px;font-size: 12px;font-weight: normal;">翻译币:<span style="color:blue"> 100 </span>枚</span>
+				 		<span class="word" style="light-height:40px;margin-left: 6px;font-size: 12px;font-weight: normal;">译粉:<span style="color:blue"> 100 </span>个</span>
+				 		<span class="word" style="light-height:40px;margin-left: 28px;font-size: 12px;font-weight: normal;">入驻平台已<span style="color:blue"> 365 </span>天</span>
 				 	</div>
 				 	<div class="desc">
 				 		<span class="word" style="margin-left:14px;color: gray;font-size: 12px;">有3年得翻译经验，熟悉多种领域翻译。勤奋好学。</span>
@@ -103,7 +118,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 		<div style="width:100%;height:40px;line-height: 40px;text-align: left;border-bottom: 1px dotted rgb(210,210,210);">
 				 			<span class="word" style="margin-left:10px;">我的草稿</span>
 				 		</div>
-				 	
+				 		
+				 		
 				 		<div class="draftitem" >
 							<div id="drafttitle">
 								<span class="word2"><a href="#">加强我们思想道德建设</a></span>
@@ -144,8 +160,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<span class="word2" style="font-size:12px">目标语言：<span style="color:green">英语</span></span>
 							</div>
 				 		</div>
-				 	
-				 	
+				 		
+				 		
+				 		
+				 		
 				 	</div>
 				 </div>
     			<b class="b4b d1"></b><b class="b3b d1"></b><b class="b2b d1"></b><b class="b1b"></b>
