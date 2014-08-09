@@ -76,5 +76,9 @@
 		<action name="submitnews" class="submitNewsAction" method="savaDraftNews">
 			<result type="json"></result>
 		</action>
+		<!-- 处理我的信息 -->
+		<action name="myinfo" class="myInfoAction" method="dealMyInfo">
+			<result type="json"></result>
+		</action>
     </package>  
 </struts>    

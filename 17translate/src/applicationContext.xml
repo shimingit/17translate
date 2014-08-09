@@ -125,6 +125,16 @@
 	<bean id="loginAction" class="org.translate.min.action.LoginAction">
 		<property name="ftlb" ref="freeTranslatorBiz"/>
 	</bean>
+	<!-- 处理我的信息 -->
+	<bean id="myInfoDao" class="org.translate.min.dao.impl.MyInfoDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="myInfoBiz" class="org.translate.min.biz.impl.MyInfoBizImpl">
+		<property name="myinfodao" ref="myInfoDao"/>
+	</bean>
+	<bean id="myInfoAction" class="org.translate.min.action.MyInfoAction">
+		<property name="myinfobiz" ref="myInfoBiz"/>
+	</bean>
 	
 	<!-- 处理在线任务-->
 	<bean id="recomendNewsDao" class="org.translate.min.dao.impl.RecomendNewsDaoImpl">

@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*,org.translate.min.entity.*;" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -20,20 +20,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="css/clientinfo.css">
 	
 	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script> 
-	
-<script type="text/javascript">
-	$(document).ready(function()
-	{
-		$(".language").mouseenter(function()
-		{
-			$(this).css("border","2px solid #DCDCDC");
-		});
-		$(".language").mouseleave(function()
-		{
-			$(this).css("border","");
-		});
-	});
-</script>
+	<%
+		Client clientinfo = (Client)session.getAttribute("myinfo");
+		if(clientinfo == null)
+			clientinfo = new Client();
+		
+	 %>
   </head>
   
   <body>
@@ -41,7 +33,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     	<div class="divone">
     		<jsp:include page="loginHead.html"></jsp:include>	
-    	
     	</div>
 
     	<div class="divtwo">
@@ -58,22 +49,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 	<div class="divname">
 				 		<table style="width: 180px;margin-top: 2px;">
 				 			<tr>
-				 				<td colspan="2" style="color:#008B8B"><a href="#" style="font-weight: bold;">toshimin130</a></td>
+				 				<td colspan="2" style="color:#008B8B"><a href="#" style="font-weight: bold;"><%=clientinfo.getUserName() %></a></td>
 				 			</tr>
 				 			<tr>
 				 				<td>姓名：</td>
-				 				<td>王芳</td>
+				 				<td><%=clientinfo.getClintName() %></td>
 				 			</tr>
 				 			<tr>
 				 				<td>电话:</td>
-				 				<td>13035310271</td>
+				 				<td><%=clientinfo.getPhoneNumber() %></td>
 				 			</tr>
 
 				 			<tr>
 				 				<td colspan="2" style="height:20px;">邮箱：</td>
 				 			</tr>
 				 			<tr>
-				 				<td colspan="2" style="height:20px">toshimin130@163.com</td>
+				 				<td colspan="2" style="height:20px"><%=clientinfo.getMailBox() %></td>
 				 			</tr>
 				 		</table>
 				 	</div>
@@ -112,19 +103,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 		</div>
 				 		<div class="infoitem">
 				 			<span class="word" style="margin-left:10px;float: left;color: gray;font-size: 12px;">真实姓名:</span>
-				 			<span class="word" style="margin-left:50px;float: left;color: gray;font-size: 12px;">王芳</span>
+				 			<span class="word" style="margin-left:50px;float: left;color: gray;font-size: 12px;"><%=clientinfo.getClintName() %></span>
 				 		</div>
 				 		<div class="infoitem">
 				 			<span class="word" style="margin-left:10px;float: left;color: gray;font-size: 12px;">电话号码:</span>
-				 			<span class="word" style="margin-left:50px;float: left;color: gray;font-size: 12px;">13035310271</span>
+				 			<span class="word" style="margin-left:50px;float: left;color: gray;font-size: 12px;"><%=clientinfo.getPhoneNumber() %></span>
 				 		</div>
 				 		<div class="infoitem">
 				 			<span class="word" style="margin-left:10px;float: left;color: gray;font-size: 12px;">电子邮箱:</span>
-				 			<span class="word" style="margin-left:50px;float: left;color: gray;font-size: 12px;">13035310271@163.com</span>
+				 			<span class="word" style="margin-left:50px;float: left;color: gray;font-size: 12px;"><%=clientinfo.getMailBox() %></span>
 				 		</div>
 				 		<div class="infoitem">
 				 			<span class="word" style="margin-left:10px;float: left;color: gray;font-size: 12px;">学校名称:</span>
-				 			<span class="word" style="margin-left:50px;float: left;color: gray;font-size: 12px;">湖南科技大学</span>
+				 			<span class="word" style="margin-left:50px;float: left;color: gray;font-size: 12px;"><%=clientinfo.getSchoolName() %></span>
 				 		</div>
 				 	</div>
 				 </div>

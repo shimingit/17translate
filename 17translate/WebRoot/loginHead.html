@@ -196,7 +196,7 @@ margin-right:18px;
 						}
 					}
             }); 
-            
+       
        $("#exit").click(function()
        {
        		var flag = confirm("您确定退出吗？");
@@ -204,6 +204,39 @@ margin-right:18px;
        		return true;
        
        });
+       
+       
+       $("#myinfo").click(function()
+       {
+       		var currentuser = $("#username").html();
+       		alert(currentuser);
+       		$.ajax({  
+            url: 'myinfo',  
+            type: 'post',  
+            data: {currentuser:currentuser},  
+            success: function(data)
+					{
+						//var dataObj = eval("(" + data +")");
+						if(data.role == "client")
+						{
+							location.href = "clientinfo.jsp";
+						}
+						else if(data.role == "free")
+						{
+							location.href = "freeinfo.jsp";
+						}
+						else if(data.role == "livein")
+						{
+							location.href = "liveininfo.jsp";
+						}
+						else
+						{
+							alert("页面跳转失败！");
+						}
+					}
+                  });
+              return false;    
+         });
 	});
 	
 	
@@ -236,7 +269,7 @@ margin-right:18px;
 			<div class="las2" style="display: none;">
 			 <span>您好，<span id="username"></span></span>
 				
-			 <a id="myinfo" href="myinfo" style="margin-left: 18px;">我的信息</a>		
+			 <a id="myinfo" href="#" style="margin-left: 18px;">我的信息</a>		
 			 <a id="exit" href="exit">退出</a>		
 			</div>
 		</div>

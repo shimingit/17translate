@@ -100,7 +100,7 @@ function hideEWM(){
 		currentpage = 1;
 	else 
 		currentpage = Integer.parseInt(request.getParameter("currentpage"));
-	if(publicnews.size() % 8 == 0)
+	if(publicnews.size() % 8 == 0 && publicnews.size() != 0)
 		totalpage = publicnews.size() / 8;
 	else
 		totalpage = publicnews.size() / 8 + 1;
