@@ -92,8 +92,41 @@
 			<generator class="native"></generator>
 		</primary-key>
 	</table>
-<table name="finishednews" catalog="translationbyfee"
-	class="org.translate.min.entity.FinishedNew">
+	<table name="finishednews" catalog="translationbyfee"
+		class="org.translate.min.entity.FinishedNew">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+	<table name="notice" catalog="translationbyfee"
+		class="org.translate.min.entity.Notice">
+	</table>
+	<table name="finishedorder" catalog="translationbyfee"
+		class="org.translate.min.entity.FinishedOrder">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+	<table name="nofinishedorder" catalog="translationbyfee"
+		class="org.translate.min.entity.NoFinishedOrder">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+	<table name="mydraft" catalog="translationbyfee"
+		class="org.translate.min.entity.MyDraft">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+	<table name="mytranslate" catalog="translationbyfee"
+		class="org.translate.min.entity.MyTranslate">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+<table name="mylabel" catalog="translationbyfee"
+	class="org.translate.min.entity.MyLabel">
 	<primary-key>
 		<generator class="native"></generator>
 	</primary-key>

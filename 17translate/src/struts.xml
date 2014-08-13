@@ -2,7 +2,7 @@
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
 	<constant name="struts.objectFactory" value="spring"></constant>  
-	<package name="struts2" extends="struts-default">
+	<package name="struts2" namespace="/" extends="struts-default">
 
 		
 		<!-- 模板 
@@ -40,7 +40,9 @@
 		<!-- 校验码 -->
 		<action name="identifycode" class="idetifycodeaction" method="generateIdentifyCode">
 	 	</action>
-		
+		<!-- 处理我的信息上传照片 -->
+		<action name="uppicture" class="upPictureAction" method="upLoadPicture">
+		</action>
 		
 		<!-- 处理添加新译员 -->
 		<action name="joinusclub" class="joinusclubAction" method="dealJoinus">
@@ -53,15 +55,70 @@
 			<result name="success">main.jsp</result>
 		</action>
 		<!-- 用户退出 -->
-		<action name="exit" class="exitAction">
-			<result name="success">main.jsp</result>
+		<action name="myexit" class="myExitAction">
+			<result name="success">
+				main.jsp
+			</result>
 		</action>
+		<!-- 处理信息 -->
+		<action name="myclientnotice" class="myInfoAction" method="clientMyNotice">
+			<result name="success">
+				clientmynotice.jsp
+			</result>
+		</action>
+		<action name="clientfinishedorder" class="myInfoAction" method="clientFinishedOrder">
+			<result name="success">
+				clientfinishedorder.jsp
+			</result>
+		</action>
+		<action name="clientnofinishedorder" class="myInfoAction" method="clientNoFinishedOrder">
+			<result name="success">
+				clientnofinishedorder.jsp
+			</result>
+		</action>
+		
+		<action name="myfreenotice" class="myInfoAction" method="freeMyNotice">
+			<result name="success">
+				freemynotice.jsp
+			</result>
+		</action>
+		<action name="myfreedraft" class="myInfoAction" method="freeMyDraft">
+			<result name="success">
+				freemydraft.jsp
+			</result>
+		</action>
+		<action name="myfreetranslate" class="myInfoAction" method="freeMyTranslate">
+			<result name="success">
+				freemytranslate.jsp
+			</result>
+		</action>
+		
+		<action name="myliveinnotice" class="myInfoAction" method="liveinMyNotice">
+			<result name="success">
+				liveinmynotice.jsp
+			</result>
+		</action>
+		<action name="myliveindraft" class="myInfoAction" method="liveinMyDraft">
+			<result name="success">
+				liveinmydraft.jsp
+			</result>
+		</action>
+		<action name="myliveintranslate" class="myInfoAction" method="liveinMyTranslate">
+			<result name="success">
+				liveinmytranslate.jsp
+			</result>
+		</action>
+		
 	</package>
 	
 	
 	<package name="json" extends="json-default">  
-		<!-- 登录验证用户填写信息 -->
+		<!-- 登录验证用户填写信息 --> 
         <action name="mylogin" class="loginAction" method="identifyLogin">  
+                 <result type="json" ></result>  
+        </action>  
+		<!-- 登录验证管理员填写信息 --> 
+        <action name="managerlogin" class="managerLoginAction" method="checkManager">  
                  <result type="json" ></result>  
         </action>  
         <!-- 验证用户是否登录-->
@@ -80,5 +137,6 @@
 		<action name="myinfo" class="myInfoAction" method="dealMyInfo">
 			<result type="json"></result>
 		</action>
+		
     </package>  
 </struts>    

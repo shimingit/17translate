@@ -90,4 +90,29 @@ public class UtilDaoImpl extends HibernateDaoSupport implements UtilDao
 		});
 		
 	}
+
+	public boolean checkManager(final String username, final String password)
+	{
+		 return (Boolean) super.getHibernateTemplate().execute(new 
+					HibernateCallback<Object>()
+			{
+
+				public Object doInHibernate(Session session) throws HibernateException,
+						SQLException
+				{
+					Connection conn = session.connection();
+					CallableStatement poc = conn.prepareCall("call checkmanager(?,?,?)");
+					poc.setString(1, username);
+					poc.setString(2, password);
+					poc.setBoolean(3, false);
+					poc.execute();
+					//conn.commit();//Ã·Ωª
+					if(poc.getBoolean("result"))
+						return true;
+					else
+						return false;
+					
+				}
+			});
+	}
 }

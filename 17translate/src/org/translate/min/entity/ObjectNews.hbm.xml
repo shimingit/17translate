@@ -40,6 +40,11 @@
                 <comment>文章出处</comment>
             </column>
         </property>
+        <property name="newDescription" type="string">
+            <column name="newDescription">
+                <comment>文章简介</comment>
+            </column>
+        </property>
         <set name="orders" inverse="true">
             <key>
                 <column name="objectNewId">

@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*,org.translate.min.entity.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -21,19 +21,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script> 
 	
-<script type="text/javascript">
-	$(document).ready(function()
-	{
-		$(".language").mouseenter(function()
-		{
-			$(this).css("border","2px solid #DCDCDC");
-		});
-		$(".language").mouseleave(function()
-		{
-			$(this).css("border","");
-		});
-	});
-</script>
+<%
+	List<FinishedOrder> finishedorders = (List<FinishedOrder>)session.getAttribute("finishedorders");
+	if(null == finishedorders)
+		finishedorders = new ArrayList<FinishedOrder>();
+	Client clientinfo = (Client)session.getAttribute("myinfo");
+		if(clientinfo == null)
+			clientinfo = new Client();
+
+ %>
   </head>
   
   <body>
@@ -58,38 +54,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 	<div class="divname">
 				 		<table style="width: 180px;margin-top: 2px;">
 				 			<tr>
-				 				<td colspan="2" style="color:#008B8B"><a href="#" style="font-weight: bold;">toshimin130</a></td>
+				 				<td colspan="2" style="color:#008B8B"><a href="#" style="font-weight: bold;"><%=clientinfo.getUserName() %></a></td>
 				 			</tr>
 				 			<tr>
 				 				<td>姓名：</td>
-				 				<td>王芳</td>
+				 				<td><%=clientinfo.getClintName() %></td>
 				 			</tr>
 				 			<tr>
 				 				<td>电话:</td>
-				 				<td>13035310271</td>
+				 				<td><%=clientinfo.getPhoneNumber() %></td>
 				 			</tr>
 
 				 			<tr>
 				 				<td colspan="2" style="height:20px;">邮箱：</td>
 				 			</tr>
 				 			<tr>
-				 				<td colspan="2" style="height:20px">toshimin130@163.com</td>
+				 				<td colspan="2" style="height:20px"><%=clientinfo.getMailBox() %></td>
 				 			</tr>
 				 		</table>
 				 	</div>
 				    <div class="items">
 
 				    	<div id="item">
-				    		<span class="word"><a href="#">我的资料</a></span>
+				    		<span class="word"><a href="clientinfo.jsp">我的资料</a></span>
 				    	</div>
 				    	<div id="item">
-				    		<span class="word"><a href="#">我的通知</a></span>
+				    		<span class="word"><a href="myclientnotice">我的通知</a></span>
 				    	</div>
 				    	<div id="item">
-				    		<span class="word word3"><a href="#">已完成订单</a></span>
+				    		<span class="word word3"><a href="clientfinishedorder">已完成订单</a></span>
 				    	</div>
 				    	<div id="item">
-				    		<span class="word word3"><a href="#">未完成订单</a></span>
+				    		<span class="word word3"><a href="clientnofinishedorder">未完成订单</a></span>
 				    	</div>
 				    	
 				    </div>
@@ -109,23 +105,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 			<span class="word" style="margin-left:10px;">已完成订单</span>
 				 		</div>
 				 		
-				 		
+				 		<% 
+				 			for(FinishedOrder fo : finishedorders)
+				 			{
+				 				FinishedOrderId foid = fo.getId();
+				 		%>
 				 		
 				 		<div class="draftitem" >
 							<div id="drafttitle">
-								<span class="word2"><a href="#">加强我们的思想道德建设</a></span>
+								<span class="word2"><a href="#"><%=foid.getOriginNewTitle() %></a></span>
 								<span class="word1" style="light-height:30px;float: right;margin-right: 15px;"><a href="joinus.jsp">我要评价</a></span>
 							</div>
 							<div id="draftinfo">
-								<span class="word2" style="font-size:12px">下单时间：<span style="color:green">2014/8/9 15:33</span></span>
-								<span class="word2" style="font-size:12px">完成时间：<span style="color:green">2014/8/9 16:33</span></span>
-								<span class="word2" style="font-size:12px">翻译员：<span style="color:green">toshimin130</span></span>
+								<span class="word2" style="font-size:12px">下单时间：<span style="color:green"><%=foid.getOrderDate() %></span></span>
+								<span class="word2" style="font-size:12px">完成时间：<span style="color:green"><%=foid.getFinishedDate() %></span></span>
 								<span class="word2" style="font-size:12px"><span style="font-weight: bold;"><a href="#">对应译文</a></span></span>
 							</div>
 				 		</div>
 				 		
 				 		
-				 		
+				 		<% 
+				 		}
+				 		%>
 				 		
 				 	</div>
 				 </div>

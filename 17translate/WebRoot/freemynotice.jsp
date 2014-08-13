@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*,org.translate.min.entity.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -20,7 +20,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="css/freeinfo.css">
 	<link rel="stylesheet" type="text/css" href="css/freemydraft.css">
 
+<%
+	FreeTranslator free = (FreeTranslator)session.getAttribute("myinfo");
+	
+	if(null == free)
+		free = new FreeTranslator();
+	List<Notice> freenotice = (ArrayList<Notice>)session.getAttribute("freenotice");
+	
+	if(freenotice == null)
+		freenotice = new ArrayList<Notice>();
 
+ %>
   </head>
   
   <body>
@@ -46,40 +56,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 	<div class="divname">
 				 		<table style="width: 180px;margin-top: 2px;">
 				 			<tr>
-				 				<td colspan="2" style="color:#008B8B"><a href="#" style="font-weight: bold;">toshimin130</a></td>
+				 				<td colspan="2" style="color:#008B8B"><a href="#" style="font-weight: bold;"><%=free.getFuserName() %></a></td>
 				 			</tr>
 				 			<tr>
 				 				<td>电话:</td>
-				 				<td>13035310271</td>
+				 				<td><%=free.getFphoneNumber() %></td>
 				 			</tr>
 				 			<tr>
 				 				<td>翻译币：</td>
-				 				<td>100枚</td>
+				 				<td><%=free.getFtranslationCoin() %>枚</td>
 				 			</tr>
 				 			<tr>
 				 				<td>粉丝：</td>
-				 				<td>100个</td>
+				 				<td><%=free.getFfans() %>个</td>
 				 			</tr>
 				 			<tr>
 				 				<td colspan="2" style="height:20px;">邮箱：</td>
 				 			</tr>
 				 			<tr>
-				 				<td colspan="2" style="height:20px">toshimin130@163.com</td>
+				 				<td colspan="2" style="height:20px"><%=free.getFmailBox() %></td>
 				 			</tr>
 				 		</table>
 				 	</div>
 				    <div class="items">
 				    	<div id="item">
-				    		<span class="word"><a href="#">我的草稿</a></span>
+				    		<span class="word"><a href="myfreedraft">我的草稿</a></span>
 				    	</div>
 				    	<div id="item">
-				    		<span class="word"><a href="#">我的翻译</a></span>
+				    		<span class="word"><a href="myfreetranslate">我的翻译</a></span>
 				    	</div>
 				    	<div id="item">
-				    		<span class="word"><a href="#">我的资料</a></span>
+				    		<span class="word"><a href="freeinfo.jsp">我的资料</a></span>
 				    	</div>
 				    	<div id="item">
-				    		<span class="word"><a href="#">我的通知</a></span>
+				    		<span class="word"><a href="myfreenotice">我的通知</a></span>
 				    	</div>
 				    </div>
 				 </div>
@@ -105,16 +115,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 			<span class="word" style="margin-left:10px;">我的通知</span>
 				 		</div>
 				 	
+				 	
+				 	<%
+				 		for(Notice notice : freenotice)
+				 		{
+				 	 %>
+				 	
 				 		<div class="draftitem" >
 							<div id="drafttitle">
-								<span class="word2"><a href="#">您的翻译被收录，获得100个翻译笔</a></span>
-								<span class="word2" style="margin-right: 10px;font-size:12px;float: right">通知时间：<span style="color:green">2014/8/9  7:50</span></span>
+								<span class="word2"><a href="#"><%=notice.getNoticeContent() %></a></span>
+								<span class="word2" style="margin-right: 10px;font-size:12px;float: right">通知时间：<span style="color:green"><%=notice.getNoticeDate() %></span></span>
 							</div>
 							<div id="draftinfo">
-								<span class="word2" style="font-size:12px">通知类型：<span style="color:green">奖励</span></span>
+								<span class="word2" style="font-size:12px">通知类型：<span style="color:green"><%=notice.getNoticetype() %></span></span>
 							</div>
 				 		</div>
 				 		
+				 	<%
+				 	}
+				 	 %>
+				 	
+				 	
 				 	
 				 	</div>
 				 </div>

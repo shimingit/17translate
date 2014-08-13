@@ -70,7 +70,20 @@
 				</value>
 				<value>
 					org/translate/min/entity/FinishedNew.hbm.xml
-				</value></list>
+				</value>
+				<value>org/translate/min/entity/Notice.hbm.xml</value>
+				<value>
+					org/translate/min/entity/FinishedOrder.hbm.xml
+				</value>
+				<value>
+					org/translate/min/entity/NoFinishedOrder.hbm.xml
+				</value>
+				<value>org/translate/min/entity/MyDraft.hbm.xml</value>
+				
+				<value>
+					org/translate/min/entity/MyTranslate.hbm.xml
+				</value>
+				<value>org/translate/min/entity/MyLabel.hbm.xml</value></list>
 		</property></bean>
 	
 	
@@ -135,6 +148,10 @@
 	<bean id="myInfoAction" class="org.translate.min.action.MyInfoAction">
 		<property name="myinfobiz" ref="myInfoBiz"/>
 	</bean>
+	<bean id="upPictureAction" class="org.translate.min.action.UpPictureAction">
+		<property name="myinfobiz" ref="myInfoBiz"/>
+	</bean>
+
 	
 	<!-- 处理在线任务-->
 	<bean id="recomendNewsDao" class="org.translate.min.dao.impl.RecomendNewsDaoImpl">
@@ -176,8 +193,12 @@
 	<!-- 验证用户是否登录 -->
 	<bean id="isLoginAction" class="org.translate.min.action.IsLoginAction">
 	</bean>
+	<!-- 验证管理员登录 -->
+	<bean id="managerLoginAction" class="org.translate.min.action.ManagerLoginAction">
+		<property name="ubz" ref="utilBiz"/>
+	</bean>
 	<!-- 用户退出 -->
-	<bean id="exitAction" class="org.translate.min.action.ExitAction">
+	<bean id="myExitAction" class="org.translate.min.action.MyExitAction">
 	</bean>
 
 

@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*,org.translate.min.entity.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -19,7 +19,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	<link rel="stylesheet" type="text/css" href="css/freeinfo.css">
 
+<%
+	FreeTranslator free = (FreeTranslator)session.getAttribute("myinfo");
+	
+	if(null == free)
+		free = new FreeTranslator();
+	
 
+ %>
   </head>
   
   <body>
@@ -44,40 +51,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 	<div class="divname">
 				 		<table style="width: 180px;margin-top: 2px;">
 				 			<tr>
-				 				<td colspan="2" style="color:#008B8B"><a href="#" style="font-weight: bold;">toshimin130</a></td>
+				 				<td colspan="2" style="color:#008B8B"><a href="#" style="font-weight: bold;"><%=free.getFuserName() %></a></td>
 				 			</tr>
 				 			<tr>
 				 				<td>电话:</td>
-				 				<td>13035310271</td>
+				 				<td><%=free.getFphoneNumber() %></td>
 				 			</tr>
 				 			<tr>
 				 				<td>翻译币：</td>
-				 				<td>100枚</td>
+				 				<td><%=free.getFtranslationCoin() %>枚</td>
 				 			</tr>
 				 			<tr>
 				 				<td>粉丝：</td>
-				 				<td>100个</td>
+				 				<td><%=free.getFfans() %>个</td>
 				 			</tr>
 				 			<tr>
 				 				<td colspan="2" style="height:20px;">邮箱：</td>
 				 			</tr>
 				 			<tr>
-				 				<td colspan="2" style="height:20px">toshimin130@163.com</td>
+				 				<td colspan="2" style="height:20px"><%=free.getFmailBox() %></td>
 				 			</tr>
 				 		</table>
 				 	</div>
 				    <div class="items">
 				    	<div id="item">
-				    		<span class="word"><a href="#">我的草稿</a></span>
+				    		<span class="word"><a href="myfreedraft">我的草稿</a></span>
 				    	</div>
 				    	<div id="item">
-				    		<span class="word"><a href="#">我的翻译</a></span>
+				    		<span class="word"><a href="myfreetranslate">我的翻译</a></span>
 				    	</div>
 				    	<div id="item">
-				    		<span class="word"><a href="#">我的资料</a></span>
+				    		<span class="word"><a href="freeinfo.jsp">我的资料</a></span>
 				    	</div>
 				    	<div id="item">
-				    		<span class="word"><a href="#">我的通知</a></span>
+				    		<span class="word"><a href="myfreenotice">我的通知</a></span>
 				    	</div>
 				    </div>
 				 </div>
@@ -106,11 +113,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 		</div>
 				 		<div class="infoitem">
 				 			<span class="word" style="margin-left:10px;float: left;color: gray;font-size: 12px;">电话号码:</span>
-				 			<span class="word" style="margin-left:50px;float: left;color: gray;font-size: 12px;">13035310271</span>
+				 			<span class="word" style="margin-left:50px;float: left;color: gray;font-size: 12px;"><%=free.getFphoneNumber() %></span>
 				 		</div>
 				 		<div class="infoitem">
 				 			<span class="word" style="margin-left:10px;float: left;color: gray;font-size: 12px;">电子邮箱:</span>
-				 			<span class="word" style="margin-left:50px;float: left;color: gray;font-size: 12px;">13035310271@163.com</span>
+				 			<span class="word" style="margin-left:50px;float: left;color: gray;font-size: 12px;"><%=free.getFmailBox() %></span>
 				 		</div>
 				 	</div>
 				 </div>

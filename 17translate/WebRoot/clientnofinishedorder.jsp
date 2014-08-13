@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*,org.translate.min.entity.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -21,19 +21,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script> 
 	
-<script type="text/javascript">
-	$(document).ready(function()
-	{
-		$(".language").mouseenter(function()
-		{
-			$(this).css("border","2px solid #DCDCDC");
-		});
-		$(".language").mouseleave(function()
-		{
-			$(this).css("border","");
-		});
-	});
-</script>
+<%
+	List<NoFinishedOrder> nofinishedorders = (List<NoFinishedOrder>)session.getAttribute("nofinishedorders");
+	if(null == nofinishedorders)
+		nofinishedorders = new ArrayList<NoFinishedOrder>();
+	Client clientinfo = (Client)session.getAttribute("myinfo");
+		if(clientinfo == null)
+			clientinfo = new Client();
+
+ %>
   </head>
   
   <body>
@@ -62,34 +58,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 			</tr>
 				 			<tr>
 				 				<td>姓名：</td>
-				 				<td>王芳</td>
+				 				<td><%=clientinfo.getClintName() %></td>
 				 			</tr>
 				 			<tr>
 				 				<td>电话:</td>
-				 				<td>13035310271</td>
+				 				<td><%=clientinfo.getPhoneNumber() %></td>
 				 			</tr>
 
 				 			<tr>
 				 				<td colspan="2" style="height:20px;">邮箱：</td>
 				 			</tr>
 				 			<tr>
-				 				<td colspan="2" style="height:20px">toshimin130@163.com</td>
+				 				<td colspan="2" style="height:20px"><%=clientinfo.getMailBox() %></td>
 				 			</tr>
 				 		</table>
 				 	</div>
 				    <div class="items">
 
 				    	<div id="item">
-				    		<span class="word"><a href="#">我的资料</a></span>
+				    		<span class="word"><a href="clientinfo.jsp">我的资料</a></span>
 				    	</div>
 				    	<div id="item">
-				    		<span class="word"><a href="#">我的通知</a></span>
+				    		<span class="word"><a href="myclientnotice">我的通知</a></span>
 				    	</div>
 				    	<div id="item">
-				    		<span class="word word3"><a href="#">已完成订单</a></span>
+				    		<span class="word word3"><a href="clientfinishedorder">已完成订单</a></span>
 				    	</div>
 				    	<div id="item">
-				    		<span class="word word3"><a href="#">未完成订单</a></span>
+				    		<span class="word word3"><a href="clientnofinishedorder">未完成订单</a></span>
 				    	</div>
 				    	
 				    </div>
@@ -111,43 +107,62 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 		</div>
 				 		
 				 		
+				 		<%
+				 			for(NoFinishedOrder nfdo : nofinishedorders)
+				 			{
+				 				NoFinishedOrderId nfdoid = nfdo.getId();
+				 		 %>
 				 		
 				 		<div class="draftitem" >
 							<div id="drafttitle">
-								<span class="word2"><a href="#">加强我们的思想道德建设</a></span>
-								<span class="word2" style="margin-right: 10px;font-size:12px;float: right">下单时间：<span style="color:green">2014/8/9  7:50</span></span>
+								<span class="word2"><a href="#"><%= nfdoid.getTitle()%></a></span>
+								<span class="word2" style="margin-right: 10px;font-size:12px;float: right">下单时间：<span style="color:green"><%=nfdoid.getOrderDate() %></span></span>
 							</div>
+							
+							<%
+								if("no".equals(nfdoid.getIsPay()))
+								{
+							 %>
 							<div id="draftinfo">
 								<span class="word2" style="font-size:12px">付款状态：<span style="color:green">未付款</span></span>
-								<span class="word2" style="font-size:12px">须付费：<span style="color:green"> 50 </span>元</span>
+								<span class="word2" style="font-size:12px">须付费：<span style="color:green"> <%=nfdoid.getTranslationCost() %> </span>元</span>
 								<span class="word4" style="light-height:30px;float: right;margin-right: 15px;"><a href="joinus.jsp">完成付款</a></span>
 							</div>
+							<%
+								}
+								else if("findtranslator".equals(nfdoid.getTranslateStatus()))
+								{
+							 %>
+							 	<div id="draftinfo">
+									<span class="word2" style="font-size:12px">付款状态：<span style="color:green">已付款</span></span>
+									<span class="word2" style="font-size:12px">已付费：<span style="color:green"> <%=nfdoid.getTranslationCost() %> </span>元</span>
+									<span class="word4" style="light-height:30px;float: right;margin-right: 15px;">正在为您匹配翻译员...</span>
+							    </div>
+							 
+							 
+							 <%} 
+							 	else if("ontranslating".equals(nfdoid.getTranslateStatus()))
+							 	{
+							 %>
+							 <div id="draftinfo">
+								<span class="word2" style="font-size:12px">付款状态：<span style="color:green">已付款</span></span>
+								<span class="word2" style="font-size:12px">已付费：<span style="color:green"> <%=nfdoid.getTranslationCost() %> </span>元</span>
+								<span class="word4" style="light-height:30px;float: right;margin-right: 15px;">正在翻译中...</span>
+							 </div>
+							 
+							<%} 
+								else if("waitcustomer".equals(nfdoid.getTranslateStatus()))
+							%>
+							<div id="draftinfo">
+								<span class="word2" style="font-size:12px">付款状态：<span style="color:green">已付款</span></span>
+								<span class="word2" style="font-size:12px">已付费：<span style="color:green"> <%=nfdoid.getTranslationCost() %> </span>元</span>
+								<span class="word4" style="light-height:30px;float: right;margin-right: 15px;"><a href="joinus.jsp">确认验收</a></span>
+							</div>
+							
+							<%} %>
 				 		</div>
 				 		
-				 		<div class="draftitem" >
-							<div id="drafttitle">
-								<span class="word2"><a href="#">加强我们的思想道德建设</a></span>
-								<span class="word2" style="margin-right: 10px;font-size:12px;float: right">下单时间：<span style="color:green">2014/8/9  7:50</span></span>
-							</div>
-							<div id="draftinfo">
-								<span class="word2" style="font-size:12px">付款状态：<span style="color:green">已付款</span></span>
-								<span class="word2" style="font-size:12px">须付费：<span style="color:green"> 50 </span>元</span>
-								<span class="word2" style="font-size:12px">翻译状态：<span style="color:green">翻译中</span></span>
-								<span class="word2" style="font-size:12px">预计翻译时间：<span style="color:green">12 </span>小时</span>
-							</div>
-				 		</div>
-				 		<div class="draftitem" >
-							<div id="drafttitle">
-								<span class="word2"><a href="#">加强我们的思想道德建设</a></span>
-								<span class="word2" style="margin-right: 10px;font-size:12px;float: right">下单时间：<span style="color:green">2014/8/9  7:50</span></span>
-							</div>
-							<div id="draftinfo">
-								<span class="word2" style="font-size:12px">付款状态：<span style="color:green">已付款</span></span>
-								<span class="word2" style="font-size:12px">须付费：<span style="color:green"> 50 </span>元</span>
-								<span class="word2" style="font-size:12px">翻译状态：<span style="color:green">已完成</span></span>
-								<span class="word4" style="light-height:30px;float: right;margin-right: 15px;"><a href="joinus.jsp">获取译文</a></span>
-							</div>
-				 		</div>
+				 		
 				 		
 				 		
 				 		

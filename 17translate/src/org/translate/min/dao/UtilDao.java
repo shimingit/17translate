@@ -10,5 +10,6 @@ public interface UtilDao
 	public List<Field> getField(String fieldname);
 	public void addGtfield(String username,String fieldname);
 	public void addGtlanguage(String username, String languagename);
+	public boolean checkManager(String username, String password);
 }
  

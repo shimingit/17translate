@@ -47,6 +47,12 @@ public class UtilBizImpl implements UtilBiz
 		this.utildao = utildao;
 	}
 
+	public boolean checkManager(String username, String password)
+	{
+		// TODO Auto-generated method stub
+		return utildao.checkManager(username, password);
+	}
+
 
 
 	

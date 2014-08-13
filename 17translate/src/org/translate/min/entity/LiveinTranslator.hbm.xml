@@ -85,6 +85,11 @@
                 <comment>译员翻译水平级别</comment>
             </column>
         </property>
+        <property name="lrealName" type="string">
+            <column name="lrealName" length="30">
+                <comment>入驻译员名字</comment>
+            </column>
+        </property>
         <set name="goodAtFields" inverse="true">
             <key>
                 <column name="translatorId" not-null="true">

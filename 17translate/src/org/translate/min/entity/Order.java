@@ -24,6 +24,8 @@ public class Order implements java.io.Serializable
 	private String isPay;
 	private String orderSerialId;
 	private String status;
+	private boolean isPublic;
+	private Date finishedDate;
 	private Set clientComments = new HashSet(0);
 	private Set translationArranges = new HashSet(0);
 
@@ -46,7 +48,8 @@ public class Order implements java.io.Serializable
 	public Order(News news, ObjectNews objectNews, Client client,
 			Date orderDate, String objectLanguage, String anticipateTime,
 			float translationCost, String isPay, String orderSerialId,
-			String status, Set clientComments, Set translationArranges)
+			String status, boolean isPublic, Date finishedDate,
+			Set clientComments, Set translationArranges)
 	{
 		this.news = news;
 		this.objectNews = objectNews;
@@ -58,6 +61,8 @@ public class Order implements java.io.Serializable
 		this.isPay = isPay;
 		this.orderSerialId = orderSerialId;
 		this.status = status;
+		this.isPublic = isPublic;
+		this.finishedDate = finishedDate;
 		this.clientComments = clientComments;
 		this.translationArranges = translationArranges;
 	}
@@ -172,6 +177,26 @@ public class Order implements java.io.Serializable
 	public void setStatus(String status)
 	{
 		this.status = status;
+	}
+
+	public boolean getIsPublic()
+	{
+		return this.isPublic;
+	}
+
+	public void setIsPublic(boolean isPublic)
+	{
+		this.isPublic = isPublic;
+	}
+
+	public Date getFinishedDate()
+	{
+		return this.finishedDate;
+	}
+
+	public void setFinishedDate(Date finishedDate)
+	{
+		this.finishedDate = finishedDate;
 	}
 
 	public Set getClientComments()

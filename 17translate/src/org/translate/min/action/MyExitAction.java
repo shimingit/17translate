@@ -7,7 +7,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class ExitAction extends ActionSupport implements RequestAware,SessionAware
+public class MyExitAction extends ActionSupport implements RequestAware,SessionAware
 {
 	private Map<String, Object> session;
 	private Map<String, Object> request;

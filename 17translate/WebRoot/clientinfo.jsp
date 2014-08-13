@@ -18,8 +18,65 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="description" content="This is my page">
 
 	<link rel="stylesheet" type="text/css" href="css/clientinfo.css">
-	
+	<link href="css/box_style.css" type="text/css" rel="stylesheet" />
 	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script> 
+	<script type="text/javascript" src="js/jquery.XYTipsWindow.min.2.8.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function()
+	{
+		$("#img").click(function()
+		{
+			$.XYTipsWindow
+			({
+				___title:"我们会为你而感到骄傲~",
+				___content:"iframe:uppicture.jsp",
+				___width:"356",
+				___height:"175",
+				___showbg:true,
+				___drag:"___boxTitle"
+			});
+			
+			return false;
+		});
+		
+		
+	   $("#myinfo").click(function()
+       {
+       		var currentuser = $("#username").html();
+       		alert(currentuser);
+       		$.ajax({  
+            url: 'myinfo',  
+            type: 'post',  
+            data: {currentuser:currentuser},  
+            success: function(data)
+					{
+						//var dataObj = eval("(" + data +")");
+						if(data.role == "client")
+						{
+							location.href = "clientinfo.jsp";
+						}
+						else if(data.role == "free")
+						{
+							location.href = "freeinfo.jsp";
+						}
+						else if(data.role == "livein")
+						{
+							location.href = "liveininfo.jsp";
+						}
+						else
+						{
+							alert("页面跳转失败！");
+						}
+					}
+                  });
+              return false;    
+         });
+		
+		
+	
+	});
+
+	</script>
 	<%
 		Client clientinfo = (Client)session.getAttribute("myinfo");
 		if(clientinfo == null)
@@ -41,10 +98,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			<b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
 				 <div class="b d1 h">
 				 	<div class="divimg">
-				 		<img id="myimg" src="images/daren.jpg"/>
-				 		<form action="">
-				 			<input  type="button" class="button" id="img" name="img" value="上传照片"/>
-				 		</form>
+				 		<img id="myimg" src="identifycode"/>
+				 		<input  type="button" class="button" id="img" name="img" value="上传照片" />
 				 	</div>
 				 	<div class="divname">
 				 		<table style="width: 180px;margin-top: 2px;">
@@ -71,16 +126,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				    <div class="items">
 
 				    	<div id="item">
-				    		<span class="word"><a href="#">我的资料</a></span>
+				    		<span class="word"><a href="clientinfo.jsp">我的资料</a></span>
 				    	</div>
 				    	<div id="item">
-				    		<span class="word"><a href="#">我的通知</a></span>
+				    		<span class="word"><a href="myclientnotice">我的通知</a></span>
 				    	</div>
 				    	<div id="item">
-				    		<span class="word word3"><a href="#">已完成订单</a></span>
+				    		<span class="word word3"><a href="clientfinishedorder">已完成订单</a></span>
 				    	</div>
 				    	<div id="item">
-				    		<span class="word word3"><a href="#">未完成订单</a></span>
+				    		<span class="word word3"><a href="clientnofinishedorder">未完成订单</a></span>
 				    	</div>
 				    	
 				    </div>

@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*,org.translate.min.entity.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -22,7 +22,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
   </head>
-  
+  <%
+	FreeTranslator free = (FreeTranslator)session.getAttribute("myinfo");
+	
+	if(null == free)
+		free = new FreeTranslator();
+	List<MyDraft> freedraft = (ArrayList<MyDraft>)session.getAttribute("freedraft");
+	
+	if(freedraft == null)
+		freedraft = new ArrayList<MyDraft>();
+		
+
+ %>
   <body>
     <div align="center">
     
@@ -45,40 +56,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 	<div class="divname">
 				 		<table style="width: 180px;margin-top: 2px;">
 				 			<tr>
-				 				<td colspan="2" style="color:#008B8B"><a href="#" style="font-weight: bold;">toshimin130</a></td>
+				 				<td colspan="2" style="color:#008B8B"><a href="#" style="font-weight: bold;"><%=free.getFuserName() %></a></td>
 				 			</tr>
 				 			<tr>
 				 				<td>电话:</td>
-				 				<td>13035310271</td>
+				 				<td><%=free.getFphoneNumber() %></td>
 				 			</tr>
 				 			<tr>
 				 				<td>翻译币：</td>
-				 				<td>100枚</td>
+				 				<td><%=free.getFtranslationCoin() %>枚</td>
 				 			</tr>
 				 			<tr>
 				 				<td>粉丝：</td>
-				 				<td>100个</td>
+				 				<td><%=free.getFfans() %>个</td>
 				 			</tr>
 				 			<tr>
 				 				<td colspan="2" style="height:20px;">邮箱：</td>
 				 			</tr>
 				 			<tr>
-				 				<td colspan="2" style="height:20px">toshimin130@163.com</td>
+				 				<td colspan="2" style="height:20px"><%=free.getFmailBox() %></td>
 				 			</tr>
 				 		</table>
 				 	</div>
 				    <div class="items">
 				    	<div id="item">
-				    		<span class="word"><a href="#">我的草稿</a></span>
+				    		<span class="word"><a href="myfreedraft">我的草稿</a></span>
 				    	</div>
 				    	<div id="item">
-				    		<span class="word"><a href="#">我的翻译</a></span>
+				    		<span class="word"><a href="myfreetranslate">我的翻译</a></span>
 				    	</div>
 				    	<div id="item">
-				    		<span class="word"><a href="#">我的资料</a></span>
+				    		<span class="word"><a href="freeinfo.jsp">我的资料</a></span>
 				    	</div>
 				    	<div id="item">
-				    		<span class="word"><a href="#">我的通知</a></span>
+				    		<span class="word"><a href="myfreenotice">我的通知</a></span>
 				    	</div>
 				    </div>
 				 </div>
@@ -103,47 +114,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 		<div style="width:100%;height:40px;line-height: 40px;text-align: left;border-bottom: 1px dotted rgb(210,210,210);">
 				 			<span class="word" style="margin-left:10px;">我的草稿</span>
 				 		</div>
+			
+			
+						<%
+							for(MyDraft md : freedraft)	
+        					{
+								MyDraftId mdid = md.getId();
+						 %>
+				 		<div class="draftitem" >
+							<div id="drafttitle">
+								<span class="word2"><a href="#"><%=mdid.getDraftTitle() %></a></span>
+								<span class="word2" style="margin-right: 10px;font-size:12px;float: right">保存时间：<span style="color:green"><%=mdid.getSaveDate() %></span></span>
+							</div>
+							<div id="draftinfo">
+								<span class="word2" style="font-size:12px">原文语言：<span style="color:green"><%=mdid.getOriginLanguage() %></span></span>
+								<span class="word2" style="font-size:12px">目标语言：<span style="color:green"><%=mdid.getObjectLanguage() %></span></span>
+							</div>
+				 		</div>
 				 	
-				 		<div class="draftitem" >
-							<div id="drafttitle">
-								<span class="word2"><a href="#">加强我们思想道德建设</a></span>
-								<span class="word2" style="margin-right: 10px;font-size:12px;float: right">保存时间：<span style="color:green">2014/8/9  7:50</span></span>
-							</div>
-							<div id="draftinfo">
-								<span class="word2" style="font-size:12px">原文语言：<span style="color:green">中文</span></span>
-								<span class="word2" style="font-size:12px">目标语言：<span style="color:green">英语</span></span>
-							</div>
-				 		</div>
-				 		<div class="draftitem" >
-							<div id="drafttitle">
-								<span class="word2"><a href="#">加强我们思想道德建设</a></span>
-								<span class="word2" style="margin-right: 10px;font-size:12px;float: right">保存时间：<span style="color:green">2014/8/9  7:50</span></span>
-							</div>
-							<div id="draftinfo">
-								<span class="word2" style="font-size:12px">原文语言：<span style="color:green">中文</span></span>
-								<span class="word2" style="font-size:12px">目标语言：<span style="color:green">英语</span></span>
-							</div>
-				 		</div>
-				 		<div class="draftitem" >
-							<div id="drafttitle">
-								<span class="word2"><a href="#">加强我们思想道德建设</a></span>
-								<span class="word2" style="margin-right: 10px;font-size:12px;float: right">保存时间：<span style="color:green">2014/8/9  7:50</span></span>
-							</div>
-							<div id="draftinfo">
-								<span class="word2" style="font-size:12px">原文语言：<span style="color:green">中文</span></span>
-								<span class="word2" style="font-size:12px">目标语言：<span style="color:green">英语</span></span>
-							</div>
-				 		</div>
-				 		<div class="draftitem" >
-							<div id="drafttitle">
-								<span class="word2"><a href="#">加强我们思想道德建设</a></span>
-								<span class="word2" style="margin-right: 10px;font-size:12px;float: right">保存时间：<span style="color:green">2014/8/9  7:50</span></span>
-							</div>
-							<div id="draftinfo">
-								<span class="word2" style="font-size:12px">原文语言：<span style="color:green">中文</span></span>
-								<span class="word2" style="font-size:12px">目标语言：<span style="color:green">英语</span></span>
-							</div>
-				 		</div>
+				 		<%
+				 		}
+				 		 %>
+				 		
 				 	
 				 	
 				 	</div>

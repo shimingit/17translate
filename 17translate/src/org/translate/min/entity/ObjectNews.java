@@ -19,6 +19,7 @@ public class ObjectNews implements java.io.Serializable
 	private String author;
 	private String fromField;
 	private String netlink;
+	private String newDescription;
 	private Set orders = new HashSet(0);
 
 	// Constructors
@@ -30,7 +31,8 @@ public class ObjectNews implements java.io.Serializable
 
 	/** full constructor */
 	public ObjectNews(String newTitle, String newContent, Integer languageId,
-			String author, String fromField, String netlink, Set orders)
+			String author, String fromField, String netlink,
+			String newDescription, Set orders)
 	{
 		this.newTitle = newTitle;
 		this.newContent = newContent;
@@ -38,6 +40,7 @@ public class ObjectNews implements java.io.Serializable
 		this.author = author;
 		this.fromField = fromField;
 		this.netlink = netlink;
+		this.newDescription = newDescription;
 		this.orders = orders;
 	}
 
@@ -111,6 +114,16 @@ public class ObjectNews implements java.io.Serializable
 	public void setNetlink(String netlink)
 	{
 		this.netlink = netlink;
+	}
+
+	public String getNewDescription()
+	{
+		return this.newDescription;
+	}
+
+	public void setNewDescription(String newDescription)
+	{
+		this.newDescription = newDescription;
 	}
 
 	public Set getOrders()

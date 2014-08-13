@@ -1,5 +1,6 @@
 package org.translate.min.biz.impl;
 
+import java.io.InputStream;
 import java.util.List;
 
 import org.translate.min.biz.*;
@@ -12,6 +13,10 @@ public class MyInfoBizImpl implements MyInfoBiz
 
 	private MyInfoDao myinfodao;
 
+	public boolean updatePicture(String username, InputStream in)
+	{
+		return myinfodao.updatePicture(username, in);
+	}
 	public List getMyInfo(String username, String role)
 	{
 		String classname = "",namestr="";
@@ -46,6 +51,36 @@ public class MyInfoBizImpl implements MyInfoBiz
 	public void setMyinfodao(MyInfoDao myinfodao)
 	{
 		this.myinfodao = myinfodao;
+	}
+	public List<Notice> getMyNotice(String username)
+	{
+		// TODO Auto-generated method stub
+		return myinfodao.getMyNotice(username);
+	}
+	public List<FinishedOrder> getFinishedOrder(String clientname)
+	{
+		// TODO Auto-generated method stub
+		return myinfodao.getFinishedOrder(clientname);
+	}
+	public List<FinishedOrder> getNoFinishedOrder(String clientname)
+	{
+		// TODO Auto-generated method stub
+		return myinfodao.getNoFinishedOrder(clientname);
+	}
+	public List<MyDraft> getMyDraft(String username)
+	{
+		// TODO Auto-generated method stub
+		return myinfodao.getMyDraft(username);
+	}
+	public List<MyTranslate> getMyTranslate(String username)
+	{
+		// TODO Auto-generated method stub
+		return myinfodao.getMyTranslate(username);
+	}
+	public List<MyLabel> getMyLabel(String username)
+	{
+		// TODO Auto-generated method stub
+		return myinfodao.getMyLabel(username);
 	}
 
 	

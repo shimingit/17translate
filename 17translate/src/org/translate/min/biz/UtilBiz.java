@@ -11,4 +11,5 @@ public interface UtilBiz
 	public List<Field> getField(String fieldname);
 	public void addGtfields(String[] gtfields,String username);
 	public void addGtlanguages(String[] gtlanguages,String username);
+	public boolean checkManager(String username,String password);
 }

@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*,org.translate.min.entity.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -21,19 +21,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script> 
 	
-<script type="text/javascript">
-	$(document).ready(function()
-	{
-		$(".language").mouseenter(function()
-		{
-			$(this).css("border","2px solid #DCDCDC");
-		});
-		$(".language").mouseleave(function()
-		{
-			$(this).css("border","");
-		});
-	});
-</script>
+<%
+	LiveinTranslator myinfo = (LiveinTranslator)session.getAttribute("myinfo");
+	if(null == myinfo)
+		myinfo = new LiveinTranslator();
+	
+	List<MyDraft> liveindraft = (ArrayList<MyDraft>)session.getAttribute("liveindraft");
+	if(null == liveindraft)
+		liveindraft = new ArrayList<MyDraft>();
+ %>
   </head>
   
   <body>
@@ -58,40 +54,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 	<div class="divname">
 				 		<table style="width: 180px;margin-top: 2px;">
 				 			<tr>
-				 				<td colspan="2" style="color:#008B8B"><a href="#" style="font-weight: bold;">toshimin130</a></td>
+				 				<td colspan="2" style="color:#008B8B"><a href="#" style="font-weight: bold;"><%=myinfo.getLuserName() %></a></td>
 				 			</tr>
 				 			<tr>
 				 				<td>姓名：</td>
-				 				<td>王芳</td>
+				 				<td><%=myinfo.getLrealName() %></td>
 				 			</tr>
 				 			<tr>
 				 				<td>电话:</td>
-				 				<td>13035310271</td>
+				 				<td><%=myinfo.getLphoneNumber() %></td>
 				 			</tr>
 
 				 			<tr>
 				 				<td colspan="2" style="height:20px;">邮箱：</td>
 				 			</tr>
 				 			<tr>
-				 				<td colspan="2" style="height:20px">toshimin130@163.com</td>
+				 				<td colspan="2" style="height:20px"><%=myinfo.getLmailBox() %></td>
 				 			</tr>
 				 		</table>
 				 	</div>
 				    <div class="items">
 				    	<div id="item">
-				    		<span class="word"><a href="#">我的草稿</a></span>
+				    		<span class="word"><a href="myliveindraft">我的草稿</a></span>
 				    	</div>
 				    	<div id="item">
-				    		<span class="word"><a href="#">我的翻译</a></span>
+				    		<span class="word"><a href="myliveintranslate">我的翻译</a></span>
 				    	</div>
 				    	<div id="item">
-				    		<span class="word"><a href="#">我的资料</a></span>
+				    		<span class="word"><a href="liveininfo.jsp">我的资料</a></span>
 				    	</div>
 				    	<div id="item">
 				    		<span class="word"><a href="#">我的钱包</a></span>
 				    	</div>
 				    	<div id="item">
-				    		<span class="word"><a href="#">我的通知</a></span>
+				    		<span class="word"><a href="myliveinnotice">我的通知</a></span>
 				    	</div>
 				    </div>
 				 </div>
@@ -120,48 +116,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 		</div>
 				 		
 				 		
+				 		<%
+				 			for(MyDraft md : liveindraft)
+				 			{
+				 				MyDraftId mdid = md.getId();
+				 		 %>
+				 		
 				 		<div class="draftitem" >
 							<div id="drafttitle">
-								<span class="word2"><a href="#">加强我们思想道德建设</a></span>
-								<span class="word2" style="margin-right: 10px;font-size:12px;float: right">保存时间：<span style="color:green">2014/8/9  7:50</span></span>
+								<span class="word2"><a href="#"><%=mdid.getDraftTitle() %></a></span>
+								<span class="word2" style="margin-right: 10px;font-size:12px;float: right">保存时间：<span style="color:green"><%=mdid.getSaveDate() %></span></span>
 							</div>
 							<div id="draftinfo">
-								<span class="word2" style="font-size:12px">原文语言：<span style="color:green">中文</span></span>
-								<span class="word2" style="font-size:12px">目标语言：<span style="color:green">英语</span></span>
-							</div>
-				 		</div>
-				 		<div class="draftitem" >
-							<div id="drafttitle">
-								<span class="word2"><a href="#">加强我们思想道德建设</a></span>
-								<span class="word2" style="margin-right: 10px;font-size:12px;float: right">保存时间：<span style="color:green">2014/8/9  7:50</span></span>
-							</div>
-							<div id="draftinfo">
-								<span class="word2" style="font-size:12px">原文语言：<span style="color:green">中文</span></span>
-								<span class="word2" style="font-size:12px">目标语言：<span style="color:green">英语</span></span>
-							</div>
-				 		</div>
-				 		<div class="draftitem" >
-							<div id="drafttitle">
-								<span class="word2"><a href="#">加强我们思想道德建设</a></span>
-								<span class="word2" style="margin-right: 10px;font-size:12px;float: right">保存时间：<span style="color:green">2014/8/9  7:50</span></span>
-							</div>
-							<div id="draftinfo">
-								<span class="word2" style="font-size:12px">原文语言：<span style="color:green">中文</span></span>
-								<span class="word2" style="font-size:12px">目标语言：<span style="color:green">英语</span></span>
-							</div>
-				 		</div>
-				 		<div class="draftitem" >
-							<div id="drafttitle">
-								<span class="word2"><a href="#">加强我们思想道德建设</a></span>
-								<span class="word2" style="margin-right: 10px;font-size:12px;float: right">保存时间：<span style="color:green">2014/8/9  7:50</span></span>
-							</div>
-							<div id="draftinfo">
-								<span class="word2" style="font-size:12px">原文语言：<span style="color:green">中文</span></span>
-								<span class="word2" style="font-size:12px">目标语言：<span style="color:green">英语</span></span>
+								<span class="word2" style="font-size:12px">原文语言：<span style="color:green"><%=mdid.getOriginLanguage() %></span></span>
+								<span class="word2" style="font-size:12px">目标语言：<span style="color:green"><%=mdid.getObjectLanguage() %></span></span>
 							</div>
 				 		</div>
 				 		
 				 		
+				 		<%
+				 		}
+				 		 %>
 				 		
 				 		
 				 	</div>

@@ -40,7 +40,7 @@ public class JoinusClubAction extends ActionSupport implements RequestAware,Sess
 		String username = (String) session.get("username");
 		String password = (String) session.get("password");
 		
-		LiveinTranslator ltl = new LiveinTranslator(username,password,emailbox,0,
+		LiveinTranslator ltl = new LiveinTranslator(username,password,realname,emailbox,0,
 				Integer.parseInt(translatespan),
 				certification,selfdescription,null,DateUtil.creatDate(),0,null,phonenumber
 				);
