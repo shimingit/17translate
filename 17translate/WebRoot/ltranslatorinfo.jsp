@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="gbk"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -20,26 +20,101 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 	<link href="css/skin.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="jquery-easyui-1.3.3/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="jquery-easyui-1.3.3/themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="jquery-easyui-1.3.3/demo/demo.css">
+	<script type="text/javascript" src="jquery-easyui-1.3.3/jquery.min.js"></script>
+	<script type="text/javascript" src="jquery-easyui-1.3.3/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="jquery-easyui-1.3.3/locale/easyui-lang-zh_CN.js"></script>
 	
+	
+	<script type="text/javascript">
+		function newUser()
+		{
+			$('#w').window('setTitle','添加用户');
+	  		$('#w').window('open');
+			$('#ff').form('clear');
+			$('#ff').attr("action","addNews");
+		}
+		function deleteUser()
+		{
+			  var row = $("#dg").datagrid("getSelected");
+	          if(row==null)
+	          {
+	        	 $.messager.alert('提示','请选择要删除的用户!','info');
+	        	 return false;
+	          }
+	          $.messager.confirm('确认', '确定删除该用户吗?', function(r)
+	          {
+				if (r)
+				{
+					alert("您要删除的用户名是："+row.username);
+				}
+			  });
+		}
+	 function editUser() 
+	 {
+         var row = $("#dg").datagrid("getSelected");
+         if (row==null) 
+         {
+             $.messager.alert('提示','请选择要编辑的用户!','info');
+             return false;
+         }
+         
+     }
+	 
+	 
+	
+	
+	$(document).ready(function()
+	{
+		$('#dg').datagrid({onLoadSuccess : function(data)
+		{
+ 		  // $('#dg').datagrid('selectRow',1);
+ 		  
+ 		    var fields =  $('#dg').datagrid('getColumnFields');  
+		     $('#sss').searchbox(
+		     {    
+		  		  menu:'#mm'  
+		    });  
+		   
+		}});
+		
+		$("#translator").combobox({
+			url:'getfreetranslators',
+			textField:'name',
+			valueField:'fusername',
+			editable: false,
+			panelHeight: 'auto'
+		});
+		
+	
+	});
+	function searchData(value,name)
+	{
+    	$('#dg').datagrid('load', { "searchKey": name, "searchValue": value });
+	}
+	</script>
   </head>
   
   <body>
     <table width="100%" border="0" cellpadding="0" cellspacing="0">
    		
-   		<!-- 绗竴閮ㄥ垎 澶撮儴鏍囬 -->
+   		<!-- 第一部分 头部标题 -->
    		<tr>
 		    <td width="17" valign="top" background="images/mail_leftbg.gif"><img src="images/left-top-right.gif" width="17" height="29" /></td>
 		    <td valign="top" background="images/content-bg.gif">
 			    <table width="100%" height="31" border="0" cellpadding="0" cellspacing="0" class="left_topbg" id="table2">
 			      <tr>
-			        <td height="31"><div class="titlebt">璇戝憳淇℃伅</div></td>
+			        <td height="31"><div class="titlebt">译员信息</div></td>
 			      </tr>
 			    </table>
 		    </td>
 		    <td width="16" valign="top" background="images/mail_rightbg.gif"><img src="images/nav-right-bg.gif" width="16" height="29" /></td>
  		</tr>
  		
- 		<!-- 绗簩閮ㄥ垎  -->
+ 		<!-- 第二部分  -->
  		<tr>
  			<td valign="middle" background="images/mail_leftbg.gif">&nbsp;</td>
  		
@@ -56,9 +131,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			        <td valign="top">&nbsp;</td>
 			      </tr>
  				  
- 				  <!-- 鍐呭 -->
+ 				  <!-- 内容 -->
  				  <tr>
- 				  
+	 				  <td colspan="4">
+	 				  	<table id="dg" title="用户管理" class="easyui-datagrid" style="width:1100px;height:365px" url="getltranslatorinfo" toolbar="#toolbar" pagination="true" rownumbers="true" fitColumns="true" singleSelect="true">
+					        <thead>
+					            <tr>
+					            	<th data-options="field:'id',checkbox:true"></th>
+					                <th data-options="field:'username', width:25">用户名</th>
+					                <th data-options="field:'realname', width:25">姓名</th>
+					                <th data-options="field:'phonenumber', width:35">电话号码</th>
+					                <th data-options="field:'mailbox', width:35">邮箱</th>
+					                <th data-options="field:'translationcoin', width:20">翻译币</th>
+					                <th data-options="field:'fans', width:20">粉丝数</th>
+					                <th data-options="field:'liveindate', width:30">入驻日期</th>
+					                <th data-options="field:'translationlevel', width:30">翻译等级</th>
+					                <th data-options="field:'detailinfo', width:15">操作</th>
+					            </tr>
+					        </thead>
+	  				  </table>
+	  				 <div id="toolbar">
+				        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">添加用户</a>
+				        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editUser()">编辑用户</a>
+				        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="deleteUser()">删除用户</a>
+				        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+				        <input id="sss" class="easyui-searchbox" data-options="prompt:'Please Input Value'" searcher='searchData' style="width:260px;"></input>
+				   		<div id="mm" style="width:100px"> 
+				   			<div name="luserName">用户名</div> 
+				   			<div name="lrealName">姓名</div> 
+				   			<div name="lphoneNumber">电话号码</div> 
+	   				    </div>
+	  				  </td>
  				  </tr>
  				 
  				 <tr>
@@ -87,7 +190,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  		
  		</tr>
    		
-   		<!-- 绗笁閮ㄥ垎 -->
+   		<!-- 第三部分 -->
    		
    		<tr>
 		    <td valign="bottom" background="images/mail_leftbg.gif"><img src="images/buttom_left2.gif" width="17" height="17" /></td>
@@ -96,5 +199,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		</tr>
    		
     </table>
+    
+    
+    
+    
+    
+    
+    
+    
+  	
+    <div id="w" class="easyui-window" data-options="iconCls:'icon-save',closed:true,modal:true">
+		<div style="text-align:center; padding:1px;">
+			<form id="ff" method="post">
+			<table width="340px" cellspacing="1" cellpadding="2" border="0" align="center">
+					<tr>
+	                    <td style="width: 80px;height:30px" >请选择译员：</td>
+	                    <td><input style="width:200px" id="translator" name="translatorname" class="easyui-combobox"/></td>
+	                </tr>
+			</table>
+			</form>
+		</div>
+		<div style="text-align:center;padding:5px;">
+	        <a href="javascript:void(0)" onclick="$('#ff').submit();" id="btn-ok" class="easyui-linkbutton" icon="icon-save">保存</a>  
+	        <a href="javascript:void(0)" id="btn-cancel" class="easyui-linkbutton" icon="icon-cancel" onclick="$('#w').window('close');>取消</a> 
+	    </div> 
+	</div>
+	
+	
+   
+   
+   	
+	
+	
   </body>
 </html>
+ 

@@ -185,6 +185,9 @@
 	<bean id="liveinTranslatorBiz" class="org.translate.min.biz.impl.LiveinTranslatorBizImpl">
 		<property name="ltld" ref="liveinTranslatorDao"/>
 	</bean>
+	<bean id="getLtranslatorInfoAction" class="org.translate.min.action.BgTranslatorInfoAction">
+		<property name="ltlb" ref="liveinTranslatorBiz"/>
+	</bean>
 	<bean id="joinusclubAction" class="org.translate.min.action.JoinusClubAction">
 		<property name="ubz" ref="utilBiz"/>
 		<property name="ltlb" ref="liveinTranslatorBiz"/>

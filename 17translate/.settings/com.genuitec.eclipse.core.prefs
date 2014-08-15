@@ -1,4 +1,4 @@
-#Thu Aug 07 00:50:54 GMT+08:00 2014
+#Fri Aug 15 14:32:57 GMT+08:00 2014
 eclipse.preferences.version=1
-validator.Checked=WebRoot/js/jquery.min.js,WebRoot/recomendNews.jsp,WebRoot/js/jquery-ui.js,src/struts.xml,WebRoot/js/jquery-1.8.2.min.js,WebRoot/js/jquery-ui.min.js
+validator.Checked=WebRoot/js/jquery.min.js,WebRoot/recomendNews.jsp,WebRoot/jquery-easyui-1.3.3/jquery.min.js,WebRoot/js/jquery-ui.js,WebRoot/ltranslatorinfo.jsp,src/struts.xml,WebRoot/js/jquery-1.8.2.min.js,WebRoot/js/jquery-ui.min.js
 validator.Unchecked=

@@ -18,6 +18,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="description" content="This is my page">
 
 	<link rel="stylesheet" type="text/css" href="css/freeinfo.css">
+	
+	
+	
+	
 
 <%
 	FreeTranslator free = (FreeTranslator)session.getAttribute("myinfo");

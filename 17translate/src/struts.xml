@@ -108,7 +108,11 @@
 				liveinmytranslate.jsp
 			</result>
 		</action>
-		
+		<!-- 处理后台入驻译员的信息 -->
+		<action name="getltranslatorinfo" class="getLtranslatorInfoAction" method="getLTranslatorInfo">
+		</action>
+		<action name="getfreetranslators" class="getLtranslatorInfoAction" method="getFreeTranslators">
+		</action>
 	</package>
 	
 	
@@ -137,6 +141,7 @@
 		<action name="myinfo" class="myInfoAction" method="dealMyInfo">
 			<result type="json"></result>
 		</action>
+		
 		
     </package>  
 </struts>    
