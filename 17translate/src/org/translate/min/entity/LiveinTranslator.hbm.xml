@@ -30,9 +30,9 @@
                 <comment>译员电话号码</comment>
             </column>
         </property>
-        <property name="lphoto" type="binary">
-            <column name="lphoto">
-                <comment>译员上传的照片</comment>
+        <property name="lphoto" type="string">
+            <column name="lphoto" length="100">
+                <comment>译员上传的照片路径</comment>
             </column>
         </property>
         <property name="lselfDescription" type="string">

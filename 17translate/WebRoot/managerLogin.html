@@ -26,25 +26,28 @@ TD {
 			if(username.length <= 0 || username == " ")
 			{
 				alert("用户名不为空！");
+				return false;
 			}
 			else if(password.length <= 0 || password == " ")
 			{
 				alert("密码不为空！");
+				return false;
 			}
 			$.ajax({  
             url: 'managerlogin',  
             type: 'post',  
             data: {username:username, password:password},  
             success: callback,
-            });  
+            }); 
+            return false; 
 		});
-		return false;
+		
 	});
 function callback(data){
-	            var dataObj = eval("(" + data + ")");
-				if(dataObj.result == 'success')
+	            //var dataObj = eval("(" + data + ")");
+				if(data.result == 'success')
 					location.href="bgdefault.html";
-				else if(dataObj.result == "error")
+				else if(data.result == "error")
 					alert("用户没名或者密码错误，如您忘记了，请联系管理员！");
 				}
 </script>

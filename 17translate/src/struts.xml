@@ -43,6 +43,9 @@
 		<!-- 处理我的信息上传照片 -->
 		<action name="uppicture" class="upPictureAction" method="upLoadPicture">
 		</action>
+		<!-- 处理我的信息下载照片 -->
+		<action name="myphoto" class="myPictureAction" method="getMyPhoto">
+		</action>
 		
 		<!-- 处理添加新译员 -->
 		<action name="joinusclub" class="joinusclubAction" method="dealJoinus">

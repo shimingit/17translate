@@ -40,9 +40,9 @@
                 <comment>高校名称</comment>
             </column>
         </property>
-        <property name="photo" type="binary">
-            <column name="photo">
-                <comment>照片</comment>
+        <property name="photo" type="string">
+            <column name="photo" length="100">
+                <comment>照片路径</comment>
             </column>
         </property>
         <set name="orders" inverse="true">

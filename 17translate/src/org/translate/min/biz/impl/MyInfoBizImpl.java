@@ -13,9 +13,9 @@ public class MyInfoBizImpl implements MyInfoBiz
 
 	private MyInfoDao myinfodao;
 
-	public boolean updatePicture(String username, InputStream in)
+	public boolean updatePicture(String username, String imgpath)
 	{
-		return myinfodao.updatePicture(username, in);
+		return myinfodao.updatePicture(username, imgpath);
 	}
 	public List getMyInfo(String username, String role)
 	{
@@ -81,6 +81,11 @@ public class MyInfoBizImpl implements MyInfoBiz
 	{
 		// TODO Auto-generated method stub
 		return myinfodao.getMyLabel(username);
+	}
+	public String getMyPicture(String username)
+	{
+		// TODO Auto-generated method stub
+		return myinfodao.getMyPicture(username);
 	}
 
 	

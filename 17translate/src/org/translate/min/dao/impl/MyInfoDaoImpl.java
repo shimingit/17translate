@@ -1,11 +1,7 @@
 package org.translate.min.dao.impl;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -16,14 +12,8 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
-import org.translate.min.dao.FreeTranslatorDao;
-import org.translate.min.dao.LiveinTranslatorDao;
 import org.translate.min.dao.MyInfoDao;
-import org.translate.min.entity.Client;
 import org.translate.min.entity.FinishedOrder;
-import org.translate.min.entity.FreeTranslator;
-import org.translate.min.entity.LiveinTranslator;
-import org.translate.min.entity.MyDraft;
 import org.translate.min.entity.MyLabel;
 import org.translate.min.entity.MyTranslate;
 import org.translate.min.entity.NoFinishedOrder;
@@ -68,9 +58,14 @@ public class MyInfoDaoImpl extends HibernateDaoSupport implements MyInfoDao
 			}
 		});
 	}
+	
+		
+	
 	//更新用户照片
-	public boolean updatePicture(final String username, final InputStream in)
+	public boolean updatePicture(final String username, final String imgpath)
 	{
+
+		
 		 return (Boolean) super.getHibernateTemplate().execute(new 
 					HibernateCallback<Object>()
 			{
@@ -79,31 +74,16 @@ public class MyInfoDaoImpl extends HibernateDaoSupport implements MyInfoDao
 						SQLException
 				{
 					Connection conn = session.connection();
-					PreparedStatement p = conn.prepareStatement("update client set photo = ? where userName = ?");
-				//	PreparedStatement p = conn.prepareStatement("update client set photo = ? where userName = ?");
-					//CallableStatement poc = conn.prepareCall("update client set photo = ? where userName = ?");
-					long len = 0L;
-					try
-					{
-						 len=  (long)in.available();
-						System.out.println(len);
-					} catch (IOException e)
-					{
-						e.printStackTrace();
-					}
-					p.setBinaryStream(1, in,len);
-					p.setString(2, username);
-					//poc.setBinaryStream(1, in, len);
-					//poc.setString(2, username);
-					//poc.setBoolean(3, false);
-					//poc.executeUpdate();
-					//poc.execute();
+					CallableStatement poc = conn.prepareCall("call updatepicture(?,?,?)");
+					poc.setString(1, username);
+					poc.setString(2, imgpath);
+					poc.setBoolean(3, false);
+					poc.execute();
 					//conn.commit();//提交
-					p.executeUpdate();
-				//	if(poc.getBoolean("hasfinished"))
+					if(poc.getBoolean("hasfinished"))
 						return true;
-				//	else
-				//		return false;
+					else
+						return false;
 				}
 			});
 		
@@ -186,6 +166,26 @@ public class MyInfoDaoImpl extends HibernateDaoSupport implements MyInfoDao
 				return c.list();
 			}
 				});
+	}
+	public String getMyPicture(final String username)
+	{
+		return (String) super.getHibernateTemplate().execute(new 
+				HibernateCallback<Object>()
+		{
+
+			public Object doInHibernate(Session session) throws HibernateException,
+					SQLException
+			{
+				Connection conn = session.connection();
+				CallableStatement poc = conn.prepareCall("call getmypicture(?,?)");
+				poc.setString(1, username);
+				poc.setString(2, null);
+				poc.execute();
+				//conn.commit();//提交
+				return poc.getString("imagepath");
+				
+			}
+		});
 	}
 	
 	

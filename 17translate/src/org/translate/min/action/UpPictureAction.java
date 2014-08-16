@@ -2,51 +2,53 @@ package org.translate.min.action;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.util.Iterator;
-import java.util.List;
+import java.io.OutputStream;
+import java.io.Writer;
 import java.util.Map;
 
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.fileupload.FileUploadBase.SizeLimitExceededException;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.ServletRequestAware;
-import org.apache.struts2.interceptor.ServletResponseAware;
 import org.apache.struts2.interceptor.SessionAware;
 import org.translate.min.biz.MyInfoBiz;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class UpPictureAction extends ActionSupport implements ServletRequestAware,SessionAware,ServletResponseAware
+public class UpPictureAction extends ActionSupport implements ServletRequestAware,SessionAware
 {
 
 	private static final long serialVersionUID = 1L;
 	
+	private String imgname;
 	private Map<String, Object> session;
-	private HttpServletResponse response;
 	private HttpServletRequest request;
 	private MyInfoBiz myinfobiz;
 	private File picturefile;
 	
+	
 	public void upLoadPicture()
 	{
-		//String username = (String)session.get("username");
-		String username = "sa";
+		String username = (String)session.get("username");
+		String directory = "../webapps/17translate/imgrepository/" + username;
+		File file = new File(directory);
+		imgname = username + imgname.substring(imgname.lastIndexOf("."));
+		if(!file.exists())
+			file.mkdir();
+		
+		HttpServletResponse response = ServletActionContext.getResponse();
 		try
 		{   
-			ServletOutputStream out = response.getOutputStream();
+		
+			response.setContentType("text/html;charset=utf-8");
+			Writer out = response.getWriter();
 			if(null == picturefile)
 			{
-				   out.println("<script>alert('please select a picture!');history.back(-1);</script>");
+				   out.write("<script>alert('请选择一张照片!');history.back(-1);</script>");
 			}			
 			else
 			{
@@ -54,17 +56,42 @@ public class UpPictureAction extends ActionSupport implements ServletRequestAwar
 				long imgsize = in.available();//文件大小
 				if(((imgsize / 1024)/ 1024) > 2)//不超过2兆
 				{
-					out.print("<script>alert('the picture size is too large!');history.back(-1);</script>");
+					out.write("<script>alert('图片太大，请重新选择！');history.back(-1);</script>");
 				}
-				boolean isUpdateOk = myinfobiz.updatePicture(username, in);
-				if(isUpdateOk)
+			//	boolean isUpdateOk = myinfobiz.updatePicture(username, in);
+				if(true)
 				{
-					out.println("<script>history.back(-1);window.parent.window.document.getElementById('myimg').src='identifycode?'"+Math.random() +
-							";parent.$.XYTipsWindow.removeBox();</script>");
+					String fullpath = directory + "/" + imgname;
+					File imgfile = new File(fullpath);
+					if(imgfile.exists())
+					{
+						imgfile.delete();
+						imgfile.createNewFile();
+					}
+					OutputStream os = new FileOutputStream(imgfile);
+					int len = 0;
+					byte[] b = new byte[1024];
+					
+					while((len = in.read(b)) != -1)
+					{
+						os.write(b);
+					}
+					in.close();
+					os.flush();
+					os.close();
+					
+					boolean flag = myinfobiz.updatePicture(username, fullpath);
+					System.out.println("flag:" + flag);
+					if(flag)
+					out.write("<script>history.back(-1);" +
+							"window.parent.window.document.getElementById('myimg').src='myphoto?"+Math.random()+"';parent.$.XYTipsWindow.removeBox();</script>");
+					else
+						 out.write("<script>alert('图片上传发生错误！');history.back(-1);</script>");
 				}
 			}
-			
-			
+			out.flush();
+			out.close();
+			picturefile = null;
 			
 			
 			
@@ -89,10 +116,6 @@ public class UpPictureAction extends ActionSupport implements ServletRequestAwar
 		this.myinfobiz = myinfobiz;
 	}
 
-	public void setServletResponse(HttpServletResponse response)
-	{
-		this.response = response;
-	}
 
 	public void setServletRequest(HttpServletRequest request)
 	{
@@ -107,6 +130,16 @@ public class UpPictureAction extends ActionSupport implements ServletRequestAwar
 	public void setPicturefile(File picturefile)
 	{
 		this.picturefile = picturefile;
+	}
+
+	public String getImgname()
+	{
+		return imgname;
+	}
+
+	public void setImgname(String imgname)
+	{
+		this.imgname = imgname;
 	}
 	
 }

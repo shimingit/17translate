@@ -18,7 +18,7 @@ public class LiveinTranslator implements java.io.Serializable
 	private String lpassword;
 	private String lmailBox;
 	private String lphoneNumber;
-	private byte[] lphoto;
+	private String lphoto;
 	private String lselfDescription;
 	private Integer lfans;
 	private Integer ltranslationCoin;
@@ -40,6 +40,13 @@ public class LiveinTranslator implements java.io.Serializable
 	public LiveinTranslator()
 	{
 	}
+
+	/** minimal constructor */
+	public LiveinTranslator(String luserName, String lpassword)
+	{
+		this.luserName = luserName;
+		this.lpassword = lpassword;
+	}
 	public LiveinTranslator(String luserName, String lpassword,String lrealname,
 			String lmailBox, Integer liveinType, float transExperience,
 			String qualifyDescription,String lselfDescription, String resumeName, Date liveinDate,
@@ -60,16 +67,9 @@ public class LiveinTranslator implements java.io.Serializable
 		this.lphoneNumber = phonenumber;
 
 	}
-	/** minimal constructor */
-	public LiveinTranslator(String luserName, String lpassword)
-	{
-		this.luserName = luserName;
-		this.lpassword = lpassword;
-	}
-
 	/** full constructor */
 	public LiveinTranslator(String luserName, String lpassword,
-			String lmailBox, String lphoneNumber, byte[] lphoto,
+			String lmailBox, String lphoneNumber, String lphoto,
 			String lselfDescription, Integer lfans, Integer ltranslationCoin,
 			Integer liveinType, float transExperience,
 			String qualifyDescription, String resumeName, Date liveinDate,
@@ -149,12 +149,12 @@ public class LiveinTranslator implements java.io.Serializable
 		this.lphoneNumber = lphoneNumber;
 	}
 
-	public byte[] getLphoto()
+	public String getLphoto()
 	{
 		return this.lphoto;
 	}
 
-	public void setLphoto(byte[] lphoto)
+	public void setLphoto(String lphoto)
 	{
 		this.lphoto = lphoto;
 	}

@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gbk"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -37,6 +37,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		$(".btn_grey").click(function()
 		{   
 			//$(window.parent.window.document.getElementById("myimg")).attr("src","identifycode?"+Math.random()); 
+			//alert($("#picturefile").val());
+			//alert(window.parent.window.document.getElementById('myimg').src);
+			//window.parent.window.document.getElementById('myimg').src='identifycode?'+Math.random();
+			$("#imgname").val($("#picturefile").val());
 			$("form[name='form1']").submit();
 			
 			//parent.$.XYTipsWindow.removeBox();
@@ -53,19 +57,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <tr>
       <td valign="top"><table width="100%" height="145"  border="0" cellpadding="0" cellspacing="0">
         <tr>
-          <td height="49" colspan="2">&nbsp;</td>
+          <td height="49" colspan="2">&nbsp; <br></td>
         </tr>
         <tr>
           <td width="9%" height="53">&nbsp;</td>
-          <td width="91%" class="word">��ѡ���ϴ���ͼƬ��<br>
+          <td width="91%" class="word">请选择上传的图片：<br>
             <input id="picturefile" name="picturefile" type="file" size="35">
+            <input type="hidden" id="imgname" name="imgname" value="">
             <br>
-  			          ע���ļ���С�������5M���ڣ���ʽΪ��ʽΪGIF��JPG��</td>
+  			          注：文件大小请控制在5M以内，格式为格式为GIF或JPG。</td>
         </tr>
         <tr>
-          <td colspan="2" align="center"><input name="Submit" type="submit" class="btn_grey" value="�ύ">
+          <td colspan="2" align="center"><input name="Submit" type="submit" class="btn_grey" value="提交">
             &nbsp;
-            <input name="Submit2" type="button" class="btn_close" onClick="parent.$.XYTipsWindow.removeBox(); " value="�ر�"></td>
+            <input name="Submit2" type="button" class="btn_close" onClick="parent.$.XYTipsWindow.removeBox(); " value="关闭"></td>
         </tr>
       </table></td>
     </tr>

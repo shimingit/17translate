@@ -19,7 +19,7 @@ public class Client implements java.io.Serializable
 	private String clintName;
 	private String phoneNumber;
 	private String schoolName;
-	private byte[] photo;
+	private String photo;
 	private Set orders = new HashSet(0);
 	private Set newses = new HashSet(0);
 
@@ -40,7 +40,7 @@ public class Client implements java.io.Serializable
 	/** full constructor */
 	public Client(String userName, String password, String mailBox,
 			String clintName, String phoneNumber, String schoolName,
-			byte[] photo, Set orders, Set newses)
+			String photo, Set orders, Set newses)
 	{
 		this.userName = userName;
 		this.password = password;
@@ -125,12 +125,12 @@ public class Client implements java.io.Serializable
 		this.schoolName = schoolName;
 	}
 
-	public byte[] getPhoto()
+	public String getPhoto()
 	{
 		return this.photo;
 	}
 
-	public void setPhoto(byte[] photo)
+	public void setPhoto(String photo)
 	{
 		this.photo = photo;
 	}

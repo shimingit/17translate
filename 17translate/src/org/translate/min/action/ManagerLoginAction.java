@@ -26,7 +26,6 @@ public class ManagerLoginAction extends ActionSupport implements RequestAware,Se
 	
 	public String checkManager()
 	{
-		
 		boolean flag = ubz.checkManager(username, password);
 		if(flag)
 		{
@@ -35,6 +34,7 @@ public class ManagerLoginAction extends ActionSupport implements RequestAware,Se
 		}
 		else
 			result = "error";
+		System.out.println(result);
 		return SUCCESS;
 	}
 	

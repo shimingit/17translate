@@ -1,132 +1,143 @@
 package org.translate.min.entity;
 
-
-
 /**
  * FreeTranslator entity. @author MyEclipse Persistence Tools
  */
 
-public class FreeTranslator  implements java.io.Serializable {
+public class FreeTranslator implements java.io.Serializable
+{
 
+	// Fields
 
-    // Fields    
+	private Integer ftranslatorId;
+	private String fuserName;
+	private String fpassword;
+	private String fmailBox;
+	private String fphoneNumber;
+	private String fphoto;
+	private String fselfDescription;
+	private Integer ffans;
+	private Integer ftranslationCoin;
 
-     private Integer ftranslatorId;
-     private String fuserName;
-     private String fpassword;
-     private String fmailBox;
-     private String fphoneNumber;
-     private byte[] fphoto;
-     private String fselfDescription;
-     private Integer ffans;
-     private Integer ftranslationCoin;
+	// Constructors
 
-
-    // Constructors
-
-    /** default constructor */
-    public FreeTranslator() {
-    }
+	/** default constructor */
+	public FreeTranslator()
+	{
+	}
 
 	/** minimal constructor */
-    public FreeTranslator(String fuserName, String fpassword) {
-        this.fuserName = fuserName;
-        this.fpassword = fpassword;
-    }
-    
-    /** full constructor */
-    public FreeTranslator(String fuserName, String fpassword, String fmailBox, String fphoneNumber, byte[] fphoto, String fselfDescription, Integer ffans, Integer ftranslationCoin) {
-        this.fuserName = fuserName;
-        this.fpassword = fpassword;
-        this.fmailBox = fmailBox;
-        this.fphoneNumber = fphoneNumber;
-        this.fphoto = fphoto;
-        this.fselfDescription = fselfDescription;
-        this.ffans = ffans;
-        this.ftranslationCoin = ftranslationCoin;
-    }
+	public FreeTranslator(String fuserName, String fpassword)
+	{
+		this.fuserName = fuserName;
+		this.fpassword = fpassword;
+	}
 
-   
-    // Property accessors
+	/** full constructor */
+	public FreeTranslator(String fuserName, String fpassword, String fmailBox,
+			String fphoneNumber, String fphoto, String fselfDescription,
+			Integer ffans, Integer ftranslationCoin)
+	{
+		this.fuserName = fuserName;
+		this.fpassword = fpassword;
+		this.fmailBox = fmailBox;
+		this.fphoneNumber = fphoneNumber;
+		this.fphoto = fphoto;
+		this.fselfDescription = fselfDescription;
+		this.ffans = ffans;
+		this.ftranslationCoin = ftranslationCoin;
+	}
 
-    public Integer getFtranslatorId() {
-        return this.ftranslatorId;
-    }
-    
-    public void setFtranslatorId(Integer ftranslatorId) {
-        this.ftranslatorId = ftranslatorId;
-    }
+	// Property accessors
 
-    public String getFuserName() {
-        return this.fuserName;
-    }
-    
-    public void setFuserName(String fuserName) {
-        this.fuserName = fuserName;
-    }
+	public Integer getFtranslatorId()
+	{
+		return this.ftranslatorId;
+	}
 
-    public String getFpassword() {
-        return this.fpassword;
-    }
-    
-    public void setFpassword(String fpassword) {
-        this.fpassword = fpassword;
-    }
+	public void setFtranslatorId(Integer ftranslatorId)
+	{
+		this.ftranslatorId = ftranslatorId;
+	}
 
-    public String getFmailBox() {
-        return this.fmailBox;
-    }
-    
-    public void setFmailBox(String fmailBox) {
-        this.fmailBox = fmailBox;
-    }
+	public String getFuserName()
+	{
+		return this.fuserName;
+	}
 
-    public String getFphoneNumber() {
-        return this.fphoneNumber;
-    }
-    
-    public void setFphoneNumber(String fphoneNumber) {
-        this.fphoneNumber = fphoneNumber;
-    }
+	public void setFuserName(String fuserName)
+	{
+		this.fuserName = fuserName;
+	}
 
-    public byte[] getFphoto() {
-        return this.fphoto;
-    }
-    
-    public void setFphoto(byte[] fphoto) {
-        this.fphoto = fphoto;
-    }
+	public String getFpassword()
+	{
+		return this.fpassword;
+	}
 
-    public String getFselfDescription() {
-        return this.fselfDescription;
-    }
-    
-    public void setFselfDescription(String fselfDescription) {
-        this.fselfDescription = fselfDescription;
-    }
+	public void setFpassword(String fpassword)
+	{
+		this.fpassword = fpassword;
+	}
 
-    public Integer getFfans() {
-        return this.ffans;
-    }
-    
-    public void setFfans(Integer ffans) {
-        this.ffans = ffans;
-    }
+	public String getFmailBox()
+	{
+		return this.fmailBox;
+	}
 
-    public Integer getFtranslationCoin() {
-        return this.ftranslationCoin;
-    }
-    
-    public void setFtranslationCoin(Integer ftranslationCoin) {
-        this.ftranslationCoin = ftranslationCoin;
-    }
-   
+	public void setFmailBox(String fmailBox)
+	{
+		this.fmailBox = fmailBox;
+	}
 
+	public String getFphoneNumber()
+	{
+		return this.fphoneNumber;
+	}
 
+	public void setFphoneNumber(String fphoneNumber)
+	{
+		this.fphoneNumber = fphoneNumber;
+	}
 
+	public String getFphoto()
+	{
+		return this.fphoto;
+	}
 
+	public void setFphoto(String fphoto)
+	{
+		this.fphoto = fphoto;
+	}
 
+	public String getFselfDescription()
+	{
+		return this.fselfDescription;
+	}
 
+	public void setFselfDescription(String fselfDescription)
+	{
+		this.fselfDescription = fselfDescription;
+	}
 
+	public Integer getFfans()
+	{
+		return this.ffans;
+	}
+
+	public void setFfans(Integer ffans)
+	{
+		this.ffans = ffans;
+	}
+
+	public Integer getFtranslationCoin()
+	{
+		return this.ftranslationCoin;
+	}
+
+	public void setFtranslationCoin(Integer ftranslationCoin)
+	{
+		this.ftranslationCoin = ftranslationCoin;
+	}
 
 }

@@ -28,6 +28,10 @@ public class IsLoginAction extends ActionSupport implements RequestAware,Session
 			username = user;
 			isLogin = "true";
 		}
+		else
+		{
+			isLogin = "false";
+		}
 		return SUCCESS;
 	}
 	

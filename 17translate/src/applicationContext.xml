@@ -151,6 +151,9 @@
 	<bean id="upPictureAction" class="org.translate.min.action.UpPictureAction">
 		<property name="myinfobiz" ref="myInfoBiz"/>
 	</bean>
+	<bean id="myPictureAction" class="org.translate.min.action.MyPictureAction">
+		<property name="myinfobiz" ref="myInfoBiz"/>
+	</bean>
 
 	
 	<!-- 处理在线任务-->
@@ -204,7 +207,4 @@
 	<bean id="myExitAction" class="org.translate.min.action.MyExitAction">
 	</bean>
 
-
-	
-		
 	</beans>

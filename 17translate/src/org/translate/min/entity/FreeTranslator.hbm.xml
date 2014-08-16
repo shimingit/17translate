@@ -30,9 +30,9 @@
                 <comment>译员手机号码</comment>
             </column>
         </property>
-        <property name="fphoto" type="binary">
-            <column name="fphoto">
-                <comment>译员的上传的照片</comment>
+        <property name="fphoto" type="string">
+            <column name="fphoto" length="100">
+                <comment>译员的上传的照片路径</comment>
             </column>
         </property>
         <property name="fselfDescription" type="string">

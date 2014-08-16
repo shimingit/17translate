@@ -98,7 +98,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			<b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
 				 <div class="b d1 h">
 				 	<div class="divimg">
-				 		<img id="myimg" src="identifycode"/>
+				 		<img id="myimg" src="myphoto"/>
 				 		<input  type="button" class="button" id="img" name="img" value="上传照片" />
 				 	</div>
 				 	<div class="divname">
