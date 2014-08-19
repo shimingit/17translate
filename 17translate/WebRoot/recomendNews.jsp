@@ -111,7 +111,7 @@ function hideEWM(){
  %>
   </head>
   
-  <body>
+  <body style='background-color: rgb(255,255,255)'>
 	<div align="center">
 	
     <div class="divone">
@@ -122,7 +122,7 @@ function hideEWM(){
     <div class="divtwo">
     	
     	<div class="two_part01">
-	    	
+	    	<b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
 				<div class="b d1 k">
 					
 					<div style="width:100%;height:32px;border-bottom: 1px solid rgb(232,232,232);margin-top:5px;text-align: left"><span class="word" style="margin-left:6px;font-size: 15px;">在线翻译任务</span></div>
@@ -194,7 +194,7 @@ function hideEWM(){
 				</div>
 
 			
-			 <a href="placeOrder.jsp" class="button1 blue medium"><span style="color: white;">我要翻译---->下单</span></a> 
+			 <a href="selectplaceOrder.jsp" class="button1 blue medium"><span style="color: white;">我要翻译---->下单</span></a> 
 			
 		
     		</div>
@@ -213,6 +213,13 @@ function hideEWM(){
 								<b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
 									<div  class="b d1 k language" style="background: #6495ED;cursor: pointer;">
 										<span style="font-size: 15px;margin: 4px 6px 4px 6px; color:rgb(97,97,51);">全部</span>
+									</div>
+								<b class="b4b d1"></b><b class="b3b d1"></b><b class="b2b d1"></b><b class="b1b"></b>
+							</div>
+							<div  style="width:auto;height:20px;float: left;margin: 4px">
+								<b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
+									<div class="b d1 k language" style="background: #DCDCDC;cursor: pointer;">
+										<span style="font-size: 15px;margin: 4px 6px 4px 6px; color:rgb(97,97,51);">中文</span>
 									</div>
 								<b class="b4b d1"></b><b class="b3b d1"></b><b class="b2b d1"></b><b class="b1b"></b>
 							</div>

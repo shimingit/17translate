@@ -125,7 +125,7 @@ function showEWM(){
  %>
   </head>
   
-  <body>
+  <body style="background: white">
 	  <div align="center">
 	    <div class="divone">
     		<jsp:include page="loginHead.html"></jsp:include>

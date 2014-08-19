@@ -19,7 +19,6 @@ body {
 	font:normal 62.5%/1.5 Helvetica, Arial, sans-serif;
 	letter-spacing:0;
 	
-	background:#efefef url(../images/background.png) repeat top center;
 	position:relative;
 	
 	-webkit-font-smoothing: subpixel-antialiased;

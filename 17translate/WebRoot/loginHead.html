@@ -11,7 +11,6 @@
 
 <link href="css/headstyle.css" type="text/css" rel="stylesheet" />
 <link href="css/box_style.css" type="text/css" rel="stylesheet" />
-<script type="text/javascript" src="js/jquery.1.4.2-min.js"></script>
 <script type="text/javascript" src="js/jquery.XYTipsWindow.min.2.8.js"></script>
 <style type="text/css">
 * {
@@ -59,7 +58,7 @@ body {
 .menu ul li a {
 	position: relative; /* 必要元素 */
 	display: block;
-	width: 75px;
+	width: 70px;
 	height: 32px;
 	font-size: 12px;
 	font-weight: bold;
@@ -70,7 +69,7 @@ body {
 .menu ul li a span {
 	position: absolute; /* 必要元素 */
 	left: 0;
-	width: 70px;
+	width: 65px;
 }
 
 .menu ul li a span.out {
@@ -113,7 +112,7 @@ margin-right:18px;
 	background: #89A4B1;
 }
 #menu2 ul{
-	margin-left: 5px;
+	margin-left: 2px;
 }
 #menu2 ul li a {
 	color: #FFF;
@@ -132,7 +131,7 @@ margin-right:18px;
 
 </head>
 
-<body>
+<body >
 	<script type="text/javascript">
 	$(document).ready(function()
 	{
@@ -166,7 +165,7 @@ margin-right:18px;
 		$(".over",this).stop().animate({'top':'-45px'},200);
 	});
 	
-	$("#register").click(function()
+	$("#registerr").click(function()
 	{
 		$.XYTipsWindow
 		({
@@ -175,7 +174,8 @@ margin-right:18px;
 			___width:"840",
 			___height:"470",
 			___showbg:true,
-			___drag:"___boxTitle"
+			___drag:"___boxTitle",
+			___showbg:true
 		});
 		return false;
 	});
@@ -215,7 +215,6 @@ margin-right:18px;
        $("#myinfo").click(function()
        {
        		var currentuser = $("#username").html();
-       		alert(currentuser);
        		$.ajax({  
             url: 'myinfo',  
             type: 'post',  
@@ -247,20 +246,24 @@ margin-right:18px;
 	
 	
 </script>
-	<div>
+
+
+	<div >
 		<img  src="images/head.jpg" id="headimg"/>
 	</div>
-	<div class="demo">
+	<div class="demo" >
 		
 		<div id="menu2" class="menu">
 			<ul>
-				<li><a href="main.jsp">主页</a>
+				<li><a href="main.jsp" style="width: 55px;">主页&nbsp;&nbsp;&nbsp;</a>
+				</li>
+				<li><a href="#" style="width: 55px;">精选&nbsp;&nbsp;&nbsp;</a>
 				</li>
 				<li><a href="recomendnews">在线任务</a>
 				</li>
-				<li><a href="#">精选</a>
+				<li><a href="selectplaceOrder.jsp">我要翻译</a>
 				</li>
-				<li><a href="placeOrder.jsp">我要翻译</a>
+				<li><a href="selectplaceOrder.jsp">线下翻译</a>
 				</li>
 				<li><a href="#">服务范围</a>
 				</li>
@@ -270,7 +273,7 @@ margin-right:18px;
 			<div class="las1" style="display: block;">
 			 <a href="login.jsp">登录</a>
 				
-			 <a id="register" href="#">注册</a>		
+			 <a id="registerr" href="#">注册</a>		
 			</div>
 			<div class="las2" style="display: none;">
 			 <span>您好，<span id="username"></span></span>
@@ -280,5 +283,6 @@ margin-right:18px;
 			</div>
 		</div>
 	</div>
+
 </body>
 </html>

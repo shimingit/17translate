@@ -71,7 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
   </head>
   
-  <body>
+  <body style="background: white">
     <div align="center">
     
     	<div class="divone">
@@ -85,7 +85,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<div class="divtwo">
     	
     		<div class="two_desc">
-					<div  class="b d1 k" >
+    		<b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
+					<div  class="b d1 h"  >
 						<div id="title">
 							<span class="baseword">译员入驻</span>
 						</div>

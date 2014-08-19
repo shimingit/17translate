@@ -22,10 +22,12 @@
 	<link rel="stylesheet" type="text/css" href="css/newsSpecial.css">
 	<link  rel="stylesheet" type="text/css" href="css/xuanfustyle.css">
 	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" src="js/posfixed.js"></script>
 <style type="text/css">
 .divone {
-	width: 99.5%;
+	width: 100%;
 	height: auto;
+	z-index:1000;
 }
 
 .divtwo {
@@ -51,7 +53,7 @@
 }
 .divthree {
 	width:997.18px;
-	height: 255px;
+	height: 1005px;
 	margin-top:10px;
 	text-align: center;
 	font-size: 13px;
@@ -65,7 +67,6 @@
 	font-size: 13px;
 	border-top: 1.5px solid lightgray;
 	color: gray;
-	
 }
 .partone{
 	width: 33%;
@@ -94,11 +95,11 @@
 }
 .news{
 	width:100%;
-	height:215px;
+	height:225px;
 	margin-top: 6px;
 	overflow: hidden;
 	border-top-width: 1px;
-	border-top-color: gray;
+	border-top-color: lightgray;
 	border-top-style: dashed;
 }
 .news li{
@@ -107,7 +108,8 @@
 	overflow:hidden;
 	position:relative;
 	padding:0 70px 0 30px;
-	margin:5px 0 10px 0;
+	margin:5px 4px 10px 6px;
+	text-align: left;
 }
 .news li em{
 	background-color:lightgray;
@@ -136,7 +138,7 @@
 .news .top p a{
 	font:normal 62.5%/1.5 Helvetica, Arial, sans-serif;
 	color: #808080;
-	font-size: 13.5px;
+	font-size: 13px;
 }
 
 </style>
@@ -168,7 +170,13 @@ $(document).ready(function(){
 	{
 		$(this).attr("id","daimag");
 	});
-	
+	$('.divone').posfixed({
+		distance : 0,
+		pos : 'top',
+		type : 'while',
+		hide : false
+	});
+
 });
 function showEWM(){
 			document.getElementById("EWM").style.display = 'block';
@@ -188,7 +196,6 @@ function hideEWM(){
 	
 	
 
-
 	<div align="center">
 		<div class="divone">
 			<jsp:include page="loginHead.html"></jsp:include>
@@ -200,7 +207,7 @@ function hideEWM(){
 			<div class="logindiv">
 				
 				
-				<iframe src="tabs.html" width="100%" height="100%">
+				<iframe src="tabs.html" width="100%" height="100%" >
 				</iframe>
 				
 				
@@ -217,37 +224,38 @@ function hideEWM(){
 				<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b2"></b><b class="b4"></b>
 				<div class="boxcontent">
 				<h1 >推荐翻译
-					<span style="margin-left: 270px;font-style: italic;font-size: 14px;"><a href="recomendNews.jsp" style="color: #FF6347;">更多</a></span>
+					<span style="font-style: italic;font-size: 14px;float: right;margin-right: 6px"><a href="recomendNews.jsp" style="color: #FF6347;">更多</a></span>
 				</h1>
 				<div class="news">
 					<ul>
 						<li class="top">
-							<em>01</em><p><a href="#" target="_blank">新闻01新闻01新闻01新闻01新闻01新闻01</a></p><span class="num">100人点击</span>
+							<em>01</em><p><a href="#" target="_blank">新闻01新闻01新闻01新闻01新闻01新闻01新闻01新闻01新闻01新闻01新闻01新闻01</a></p><span class="num">100人点击</span>
 						</li>
 						<li class="top">
-							<em>02</em><p><a href="#" target="_blank">新闻02新闻02新闻02新闻02新闻02新闻02</a></p><span class="num">100人点击</span>
+							<em>02</em><p><a href="#" target="_blank">新闻02新闻02新闻02新闻02新闻02新闻02新闻02新闻02新闻02新闻02新闻02新闻02</a></p><span class="num">100人点击</span>
 						</li>
 						<li class="top">
-							<em>03</em><p><a href="#" target="_blank">新闻03新闻03新闻03新闻03新闻03新闻03</a></p><span class="num">100人点击</span>
+							<em>03</em><p><a href="#" target="_blank">新闻03新闻03新闻03新闻03新闻03新闻03新闻03新闻03新闻03新闻03新闻03新闻03</a></p><span class="num">100人点击</span>
 						</li>
 						<li class="top">
-							<em>04</em><p><a href="#" target="_blank">新闻04新闻04新闻04新闻04新闻04新闻04</a></p><span class="num">100人点击</span>
+							<em>04</em><p><a href="#" target="_blank">新闻04新闻04新闻04新闻04新闻04新闻04新闻04新闻04新闻04新闻04新闻04新闻04</a></p><span class="num">100人点击</span>
 						</li>
 						<li class="top">
-							<em>05</em><p><a href="#" target="_blank">新闻05新闻05新闻05新闻05新闻05新闻05</a></p><span class="num">100人点击</span>
+							<em>05</em><p><a href="#" target="_blank">新闻05新闻05新闻05新闻05新闻05新闻05新闻05新闻05新闻05新闻05新闻05新闻05</a></p><span class="num">100人点击</span>
 						</li>
 						<li class="top">
-							<em>06</em><p><a href="#" target="_blank">新闻06新闻06新闻06新闻06新闻06新闻06</a></p><span class="num">100人点击</span>
+							<em>06</em><p><a href="#" target="_blank">新闻06新闻06新闻06新闻06新闻06新闻06新闻06新闻06新闻06新闻06新闻06新闻06</a></p><span class="num">100人点击</span>
 						</li>
 						<li class="top">
-							<em>07</em><p><a href="#" target="_blank">新闻05新闻05新闻05新闻05新闻05新闻05</a></p><span class="num">100人点击</span>
+							<em>07</em><p><a href="#" target="_blank">新闻05新闻05新闻05新闻05新闻05新闻05新闻05新闻05新闻05新闻05新闻05新闻05</a></p><span class="num">100人点击</span>
 						</li>
+						<li class="top">
+							<em>08</em><p><a href="#" target="_blank">新闻05新闻05新闻05新闻05新闻05新闻05新闻05新闻05新闻05新闻05新闻05新闻05</a></p><span class="num">100人点击</span>
+						</li>
+						
 					
 					</ul>
 				</div>
-				
-				
-				
 				</div>
 				<b class="b4"></b><b class="b2"></b><b class="b3"></b><b class="b2"></b><b class="b1"></b>
 			</div>
@@ -255,85 +263,233 @@ function hideEWM(){
 			<div class="join">
 			
 				<div class="da">
-					<h1>翻译达人
-					<span>-------- 优秀是一种习惯</span>
+					<h1 style="line-height: 25px">招兵买马
+						<img  src="images/m4.jpg" style="width: 40px;height:30px;vertical-align: middle;"/>
 					</h1>
 				</div>
 				<div class="dawrap">
-					<div class="dadesc1">
-						<img id="daimag" class="daimag" src="images/daren.jpg" title="恐高的鸟 粉丝:10" align="left">
-					</div>
-					<div class="dadesc1">
-						<img id="daimag" class="daimag" src="images/daren01.jpg" title="恐高的鸟 粉丝:10" align="left">
-					</div>
-					<div class="dadesc1">
-						<img id="daimag" class="daimag" src="images/daren02.jpg" title="恐高的鸟 粉丝:10" align="left">
-					</div>
-					<div class="dadesc1">
-						<img id="daimag" class="daimag" src="images/daren03.jpg" title="恐高的鸟 粉丝:10" align="left">
-					</div>
-					<div class="dadesc1">
-						<img id="daimag" class="daimag" src="images/daren04.jpg" title="恐高的鸟 粉丝:10" align="left">
-					</div>
-					<div class="dadesc1">
-						<img id="daimag" class="daimag" src="images/daren05.jpg" title="恐高的鸟 粉丝:10" align="left">
-					</div>
-					<div class="dadesc1">
-						<img id="daimag" class="daimag" src="images/daren06.jpg" title="恐高的鸟 粉丝:10" align="left">
-					</div>
-					<div class="dadesc1">
-						<img id="daimag" class="daimag" src="images/daren07.jpg" title="恐高的鸟 粉丝:10" align="left">
-					</div>
-					<div class="dadesc1">
-						<img id="daimag" class="daimag" src="images/daren08.jpg" title="恐高的鸟 粉丝:10" align="left">
-					</div>
-					<div class="dadesc1">
-						<img id="daimag" class="daimag" src="images/weixind.jpg" title="恐高的鸟 粉丝:10" align="left">
-					</div>
-					<div class="dadesc1">
-						<img id="daimag" class="daimag" src="images/daren07.jpg" title="恐高的鸟 粉丝:10" align="left">
-					</div>
-					<div class="dadesc1">
-						<img id="daimag" class="daimag" src="images/daren07.jpg" title="恐高的鸟 粉丝:10" align="left">
-					</div>
-					<div class="dadesc1">
-						<img id="daimag" class="daimag" src="images/daren07.jpg" title="恐高的鸟 粉丝:10" align="left">
-					</div>
-					<div class="dadesc1">
-						<img id="daimag" class="daimag" src="images/daren07.jpg" title="恐高的鸟 粉丝:10" align="left">
-					</div>
-					<div class="dadesc1">
-						<img id="daimag" class="daimag" src="images/daren07.jpg" title="恐高的鸟 粉丝:10" align="left">
-					</div>
-					<div class="dadesc1">
-						<img id="daimag" class="daimag" src="images/daren07.jpg" title="恐高的鸟 粉丝:10" align="left">
-					</div>
-					<div class="dadesc1">
-						<img id="daimag" class="daimag" src="images/daren07.jpg" title="恐高的鸟 粉丝:10" align="left">
-					</div>
-					<div class="dadesc1">
-						<img id="daimag" class="daimag" src="images/daren07.jpg" title="恐高的鸟 粉丝:10" align="left">
-					</div>
-					<div class="dadesc1">
-						<img id="daimag" class="daimag" src="images/daren07.jpg" title="恐高的鸟 粉丝:10" align="left">
-					</div>
-					<div class="dadesc1">
-						<img id="daimag" class="daimag" src="images/daren07.jpg" title="恐高的鸟 粉丝:10" align="left">
-					</div>
-					
-					
-				</div>
-				<div class="dawrap">
+
 					<div class="lizhi">
 						<ul>
-							<li>1.如果您自信译文水平可以达到我们对译文的要求</li>
-							<li>2.如果您有责任心，可以按约定时间完成稿件翻译任务</li>
-							<li>3.如果您接受编辑的修改意见并即时返回成稿</li>
+							<li>如果您自信译文水平可以达到我们对译文的要求</li>
+							<li>如果您有责任心，可以按约定时间完成稿件翻译任务</li>
+							<li>如果您接受编辑的修改意见并即时返回成稿</li>
+							<li>如果您接受编辑的修改意见并即时返回成稿</li>
+							<li>如果您接受编辑的修改意见并即时返回成稿</li>
+							<li>如果您接受编辑的修改意见并即时返回成稿</li>
+							<li>如果您接受编辑的修改意见并即时返回成稿</li>
+							<li>如果您接受编辑的修改意见并即时返回成稿</li>
+							
 						</ul>
-						<div><a href="joinus.jsp" style="font-size: 16px;font-weight: bold;margin-left: 100px;color: #DEB887;font-style: italic;text-decoration: underline;">加入我们吧</a></div>
-					</div>
+						
+					</div> 
+					
+					<div ><a href="joinus.jsp" style="font-size: 16px;font-weight: bold;color: #DEB887;font-style: italic;text-decoration: underline;">
+							<img src="images/jus4.jpg" style="width:100%;height:50px;margin-top: 8px">
+					</a></div> 		
+				</div>
+				
+			</div>
+			
+			<div class="divadd">
+				<div class="addone">
+					<b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
+					    <div class="b d1 k">
+					    	
+					    	<div class="da"><h1 style="line-height: 25px">成功案例
+					    		<span style="font-style: italic;font-size: 14px;font-weight:bold;float: right;margin-right: 20px"><a href="#" style="color: #FF6347;">更多</a></span>
+					    	</h1></div>
+					    	 
+					    	<div class="successorder">
+					    		<p class="word1"><a href="#" style="color:gray">经济发展靠市场的手而非政府</a>&nbsp;&nbsp;&nbsp;<span style="font-size: 13px;color: blue;">来自：shimin</span></p>
+					    		<p class="word1" style="font-size: 13px;color:gray">目标语种：英语&nbsp;&nbsp;&nbsp;来自领域：重要会议
+					    			<span style="float: right;" class="word"><a href="#" style="color:gray;margin-right: 20px;font-size: 13px">查看评论</a></span>
+					    		</p>
+					    	</div>
+					    	<div class="successorder">
+					    		<p class="word1"><a href="#" style="color:gray">经济发展靠市场的手而非政府</a>&nbsp;&nbsp;&nbsp;<span style="font-size: 13px;color: blue;">来自：shimin</span></p>
+					    		<p class="word1" style="font-size: 13px;color:gray">目标语种：英语&nbsp;&nbsp;&nbsp;来自领域：重要会议
+					    			<span style="float: right;" class="word"><a href="#" style="color:gray;margin-right: 20px;font-size: 13px">查看评论</a></span>
+					    		</p>
+					    	</div>
+					    	<div class="successorder">
+					    		<p class="word1"><a href="#" style="color:gray">经济发展靠市场的手而非政府</a>&nbsp;&nbsp;&nbsp;<span style="font-size: 13px;color: blue;">来自：shimin</span></p>
+					    		<p class="word1" style="font-size: 13px;color:gray">目标语种：英语&nbsp;&nbsp;&nbsp;来自领域：重要会议
+					    			<span style="float: right;" class="word"><a href="#" style="color:gray;margin-right: 20px;font-size: 13px">查看评论</a></span>
+					    		</p>
+					    	</div>
+					    	<div class="successorder">
+					    		<p class="word1"><a href="#" style="color:gray">经济发展靠市场的手而非政府</a>&nbsp;&nbsp;&nbsp;<span style="font-size: 13px;color: blue;">来自：shimin</span></p>
+					    		<p class="word1" style="font-size: 13px;color:gray">目标语种：英语&nbsp;&nbsp;&nbsp;来自领域：重要会议
+					    			<span style="float: right;" class="word"><a href="#" style="color:gray;margin-right: 20px;font-size: 13px">查看评论</a></span>
+					    		</p>
+					    	</div>
+					    	<div class="successorder">
+					    		<p class="word1"><a href="#" style="color:gray">经济发展靠市场的手而非政府</a>&nbsp;&nbsp;&nbsp;<span style="font-size: 13px;color: blue;">来自：shimin</span></p>
+					    		<p class="word1" style="font-size: 13px;color:gray">目标语种：英语&nbsp;&nbsp;&nbsp;来自领域：重要会议
+					    			<span style="float: right;" class="word"><a href="#" style="color:gray;margin-right: 20px;font-size: 13px">查看评论</a></span>
+					    		</p>
+					    	</div>
+					    
+						</div>
+				    <b class="b4b d1"></b><b class="b3b d1"></b><b class="b2b d1"></b><b class="b1b"></b>	
+				</div>
+				
+				<div class="addtwo">
+					<b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
+					    <div class="b d1 k">
+					    	
+					    	<div id="t1">
+					    		<span class="word">翻译达人</span>
+					    		<img src="images/superman4.jpg" style="width:40px;height:30px;vertical-align: middle;">
+					    	</div>
+					    
+					    	<div id="t2">
+					    		<div class="dadesc1">
+									<img id="daimag" class="daimag" src="images/daren.jpg" title="恐高的鸟 粉丝:10" align="left">
+								</div>
+					    		<div class="dadesc1">
+									<img id="daimag" class="daimag" src="images/daren01.jpg" title="恐高的鸟 粉丝:10" align="left">
+								</div>
+								<div class="dadesc1">
+									<img id="daimag" class="daimag" src="images/daren02.jpg" title="恐高的鸟 粉丝:10" align="left">
+								</div>
+								<div class="dadesc1">
+									<img id="daimag" class="daimag" src="images/daren03.jpg" title="恐高的鸟 粉丝:10" align="left">
+								</div>
+								<div class="dadesc1">
+									<img id="daimag" class="daimag" src="images/daren04.jpg" title="恐高的鸟 粉丝:10" align="left">
+								</div>
+								<div class="dadesc1">
+									<img id="daimag" class="daimag" src="images/daren05.jpg" title="恐高的鸟 粉丝:10" align="left">
+								</div>
+								<div class="dadesc1">
+									<img id="daimag" class="daimag" src="images/daren06.jpg" title="恐高的鸟 粉丝:10" align="left">
+								</div>
+								<div class="dadesc1">
+									<img id="daimag" class="daimag" src="images/daren07.jpg" title="恐高的鸟 粉丝:10" align="left">
+								</div>
+								<div class="dadesc1">
+									<img id="daimag" class="daimag" src="images/daren08.jpg" title="恐高的鸟 粉丝:10" align="left">
+								</div>
+								<div class="dadesc1">
+									<img id="daimag" class="daimag" src="images/weixind.jpg" title="恐高的鸟 粉丝:10" align="left">
+								</div>
+								<div class="dadesc1">
+									<img id="daimag" class="daimag" src="images/daren07.jpg" title="恐高的鸟 粉丝:10" align="left">
+								</div>
+								<div class="dadesc1">
+									<img id="daimag" class="daimag" src="images/daren07.jpg" title="恐高的鸟 粉丝:10" align="left">
+								</div>
+								<div class="dadesc1">
+									<img id="daimag" class="daimag" src="images/daren07.jpg" title="恐高的鸟 粉丝:10" align="left">
+								</div>
+								<div class="dadesc1">
+									<img id="daimag" class="daimag" src="images/daren07.jpg" title="恐高的鸟 粉丝:10" align="left">
+								</div>
+								
+					    	</div>
+						
+						</div>
+				    <b class="b4b d1"></b><b class="b3b d1"></b><b class="b2b d1"></b><b class="b1b"></b>	
 				</div>
 			</div>
+			
+			
+			
+			
+			
+			<div class="divadd" style="height:200px">
+				<div class="addone" style="height:200px">
+					<b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
+					    <div class="b d1 k">
+					    	
+					    	<div class="da"><h1 style="line-height: 25px">服务理念</h1></div>
+					    	<div class="concept">
+					    		<ul>
+							         <li>我们的服务范围主要包括 各类高校新闻，学术论文，毕业论文等与校园息息相关的领域</li>
+							         <li>对于您的任务，我们会为您匹配最佳解决方案。我们力求把简单做到极致。</li>
+							         <li>我们起点简单，但是我们追求卓越。我们有耐心，不怕您不放心。</li>
+							    </ul>
+					    	</div>
+					    	<div class="procedure">
+					    		<p class="word" style="font-weight: normal;">服务流程:</p>
+					    		<p class="word" style="margin-left: 20px;color: rgba(168, 141, 141, 1);">
+					    			注册<img src="images/jiantou.jpg" style="width:40px;height:25px;vertical-align: middle;margin-bottom: 4px;">
+					    			上传或粘贴原稿<img src="images/jiantou.jpg" style="width:40px;height:25px;vertical-align: middle;margin-bottom: 4px;">
+					    			确认订单，付款<img src="images/jiantou.jpg" style="width:40px;height:25px;vertical-align: middle;margin-bottom: 4px;">
+					    			等待译文，验收，评价
+					    		</p>
+					    	</div>
+					    
+						</div>
+				    <b class="b4b d1"></b><b class="b3b d1"></b><b class="b2b d1"></b><b class="b1b"></b>	
+				</div>
+				
+				<div class="addtwo" style="height:200px">
+					<b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
+					    <div class="b d1 k">
+					    	
+					    	<div id="t1">
+					    		<span class="word">联系我们</span>
+					    	</div>
+					    
+					    	<div id="t2">
+					    		
+					    		<div id="item" style="height: 40px">
+					    			<p class="word2">我们的服务电话：<span style="color:#1F4E6B;">13203234617（陈）</span></p>
+					    			<p class="word2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					    			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					    			<span style="color:#1F4E6B;">13035310271（石）</span></p>
+					    		</div>
+					    		<div id="item">
+					    			<span class="word2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们的邮箱：<span style="color:#1F4E6B;">&nbsp;toshimin132@gmail.com</span></span>
+					    		</div>
+					    		
+					    		<div id="item" style="height:40px;">
+					    			<p class="word2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们的QQ：<span style="color:#1F4E6B;">&nbsp;1045446965</span></p>
+					    			<p class="word2">
+					    			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					    			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					    			<span style="color:#1F4E6B;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;45712902</span></p>
+					    		</div>
+								<span class="word2" style="line-height: 40px">扫描右侧二维码关注我们</span>
+					    	</div>
+						
+						</div>
+				    <b class="b4b d1"></b><b class="b3b d1"></b><b class="b2b d1"></b><b class="b1b"></b>	
+				</div>
+			</div>
+			
+			
+			
+			
+			<div class="threebuttom">
+				<b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
+					    <div class="b d1 k">
+					    	
+					    	<div class="comment">
+					    		<p class="word" style="font-weight: normal;">留言&评论:</p>
+					    		<p class="word" style="font-weight: normal;">标题：<input type="text" id="commenttitle" name="commenttitle" style="height:30px;width:350px"/></p>
+					    		<p class="word" style="font-weight: normal;">内容：<textarea  id="content" name="content" style="height:83px;width:350px;vertical-align:top;font-weight: normal;"/></textarea></p>
+					    		<p><button id="submit" style="padding:2px 10px 2px 10px;margin:2px auto auto 276px">提交</button>&nbsp;
+					    			<button id="reset" style="padding:2px 10px 2px 10px;margin:2px auto auto auto">清除</button>
+					    		</p>
+					    	</div>
+					    	
+					    	<div class="concern">
+					    		<p class="word" style="font-weight: normal;margin-left: 25px;line-height: 30px">关注我们微信号 <span style="color:green;">woyaofanyi</span></p>
+					    		<p class="word" style="font-weight: normal;margin-left: 125px"><img src="images/weixin.jpg" style="width:120px;height:120px"/></p>
+					    		<p class="word" style="font-weight: normal;margin-left: 120px">微信扫一扫关注我们</p>
+					    	</div>
+					    
+					    </div>
+				<b class="b4b d1"></b><b class="b3b d1"></b><b class="b2b d1"></b><b class="b1b"></b>	
+			</div>
+			
+			
+			
+			
 		</div>
 		
 	<div class="divfour">

@@ -19,6 +19,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+	
 	<style type="text/css">
 		.divone{
 			width:1359.17px;
@@ -43,11 +45,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
   <div align="center">
-   <div class="divone">
-    <jsp:include page="loginHead.html"></jsp:include>
+   <div class="divone" >
+    
+   <jsp:include page="loginHead.html"></jsp:include>
    </div>
    <div class="divtwo" align="center">
-   	<jsp:include page="loginframe.jsp"></jsp:include>
+   	<jsp:include page="loginframe.jsp"></jsp:include> 
    </div>
    <div class="divthree">
    Copyright © 2014 17translate.com

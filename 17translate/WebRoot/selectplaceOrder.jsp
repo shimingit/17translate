@@ -27,7 +27,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript">
 		$(document).ready(function()
 		{
-				$(window).scroll(function() {
+		
+			$("#allsubmit").click(function()
+			{
+				alert($("#articlefile").val());
+				return  false;
+			});
+		
+		
+			$(window).scroll(function() {
 			if ($(window).scrollTop() > 300) {
 				$('#jump li:eq(0)').fadeIn(800);
 			} else {
@@ -127,45 +135,55 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	</div>
     	
     	
-    	<div class="divtwo">
-    	<form action="placeorder" method="post">
+    	<div class="divtwo" style="height:360px">
+    	<form enctype="multipart/form-data"  action="#"  method="post">
     		<div class="two_part01">
 		    	<div class="articleinfo">
 		    		<b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
 						<div class="b d1 k">
-							<div class="art word" style="font-size: 16px;color:black">原文信息</div>
-							<div>
-								<div class="infocont"><span class="word">链接:</span><input type="text" id="link" name="link" style="height:35px;width:350px"/></div>
+							<div class="art word" style="font-size: 16px;color:black">提交原文方式</div>
+							<div class="zhantie">
+								<div style="width:150px;height:94%;float: left" align="right">
+									<span class="baseword">方式一：</span>
+								</div>
+								<div style="width:470px;height:94%;float: right">
+									 <a href="placeOrder.jsp" class="button1 blue medium"><span style="color: white;">粘贴原稿</span></a> 
+								</div>
+								<div></div>
 							</div>
-							<div>
-								<div class="infocont"><span class="word">标题:</span><input type="text" id="title" name="title" style="height:35px;width:350px"/><span style="color:red;margin:auto 2px auto 2px">*</span></div>
+							<div class="shangchuan">
+								<div style="width:150px;height:94%;float: left;padding-top: 12px" align="right">
+									<span class="baseword">方式二：</span>
+								</div>
+								<div style="width:470px;height:94%;float: right">
+									<p style="margin-top: 10px"> 
+										<span class="word" style="font-size:15px">请选择上传的文件:</span>
+										<input type="file" id="articlefile" name="articlefile" style="display: none;" onchange="ye.value=value">
+										<input name="ye" style="color: green;border: 1px solid green">
+										<input type="button" value="选择文件" onclick="articlefile.click()" style="border: 1px solid gray;background:rgb(220,220,220);width: 60px">
+									</p>
+									<p style="margin-left: 137px;margin-top: 10px">
+										<span class="word">目前只支持word,txt,pdf等格式</span>
+									</p>
+								</div>
+								
+								
+								
 							</div>
-							<div>
-								<div class="infocont"><span class="word">作者:</span><input type="text" id="author" name="author" style="height:35px;width:350px"/></div>
-							</div>
-							<div>
-								<div class="infocont" style="height:78px"><span class="word">简介:</span><textarea class="word" id="description" name="description" style="height:73px;width:350px;vertical-align: middle;"/></textarea></div>
-							</div>
+							
 						</div>
 					<b class="b4b d1"></b><b class="b3b d1"></b><b class="b2b d1"></b><b class="b1b"></b>
 		    	</div>
 		    	
-		    	<div class="articlecontent">
-		    		<b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
-						<div class="b d1 k">
-							<div class="art word" style="font-size: 16px;color:black">原文内容</div>
-							<jsp:include page="textedit.html"></jsp:include>
-						</div>
-					<b class="b4b d1"></b><b class="b3b d1"></b><b class="b2b d1"></b><b class="b1b"></b>
-		    	</div>
 		    	<div class="sub" style="height: 50px;text-align: left;text-align: left">
 					<input type="submit" id="allsubmit" name="allsubmit" value="提交订单" style="background: #FFE4C4;color: black;font-size: 14px;font-weight: bold;height: 40px;width:180px;border-color: #808000"/>
 					<input type="reset" id="allreset" name="allreset" value="重置订单" style="background: #FFE4C4;color: black;font-size: 14px;font-weight: bold;height: 40px;width:180px;margin-left: 40px;border-color: #808000"/>		
 			    </div>
+		    	
 	    	</div>
     		
     		
-    		<div class="two_part02">
+    		<div class="two_part02" >
     			<b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
 					<div class="b d1 k">
 						<div class="art word" style="font-size: 16px;color:black">语种分类</div>

@@ -19,14 +19,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	
+	
 <style type="text/css">
 
-	.shadow{
+	.shadoww{
 		background: #cccccc;
 		position: relative;
 		width:60%;
 	}
-	.shadow .content{
+	.shadoww .contentt{
 		background: #f0fff0;
 		padding:2px;
 		height:360px;
@@ -35,14 +37,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  left:-2px;
 	  border:0.5px solid lightgray;
 	}
-	.shadow .login{
+	.shadoww .loginn{
 		border-right:1px solid lightgray;
 		width: 50%;
 		height:auto;
 		margin-top:20px;
 		float: left;
 	}
-	.shadow .weixin{
+	.shadoww .weixinn{
 	width: 49%;
 	height:250px;
 	float:right;
@@ -53,12 +55,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
   <div align="center">
-  <div class="shadow">
-    <div class="content">
-	    <div class="login">
+  <div class="shadoww">
+    <div class="contentt">
+	    <div class="loginn">
 	   	 <jsp:include page="login.html"></jsp:include>
 	    </div>
-	    <div class="weixin">
+	    <div class="weixinn">
 	    	<img  src="images/weixin.jpg" style="width: 130px;height: 130px;margin-top: 80px">
 	    	<div>微信扫描二维码登录</div>
 	    	<div style="border:width:150px; height:60px;margin-top:10px">
