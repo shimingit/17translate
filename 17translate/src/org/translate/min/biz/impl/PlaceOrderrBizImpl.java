@@ -9,13 +9,13 @@ public class PlaceOrderrBizImpl implements PlaceOrderBiz
 
 	private PlaceOrderDao pod;
 	
-	public boolean dealPlaceorder(String username, String passworde, String link,
+	public boolean dealPlaceorder(String username, String link,
 			String title, String author, String description,
 			String articlecontent, String originlanguage,
-			String objectlanguage, String fromfield, int wordcount, String orderserialid)
+			String objectlanguage, String fromfield, int wordcount, String orderserialid,float cost,String filepath)
 	{
-		return pod.dealPlaceorder(username, passworde, link, title, author, description, 
-				articlecontent, originlanguage, objectlanguage, fromfield, wordcount,orderserialid);
+		return pod.dealPlaceorder(username,link, title, author, description, 
+				articlecontent, originlanguage, objectlanguage, fromfield, wordcount,orderserialid,cost,filepath);
 	}
 	public void addNews(News news)
 	{
@@ -30,6 +30,14 @@ public class PlaceOrderrBizImpl implements PlaceOrderBiz
 	public void setPod(PlaceOrderDao pod)
 	{
 		this.pod = pod;
+	}
+	public boolean dealPlaceorder(String username, String uoriginlanguage,
+			String uobjectlanguage, String ufromfield, int wordcount,
+			float cost, String orderId, String fullpath,String outpath)
+	{
+		// TODO Auto-generated method stub
+		return pod.dealPlaceorder(username, uoriginlanguage, uobjectlanguage, 
+				ufromfield, wordcount, cost, orderId, fullpath,outpath);
 	}
 
 	

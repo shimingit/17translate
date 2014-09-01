@@ -25,6 +25,7 @@ public class UpPictureAction extends ActionSupport implements ServletRequestAwar
 	private static final long serialVersionUID = 1L;
 	
 	private String imgname;
+	private String sign;
 	private Map<String, Object> session;
 	private HttpServletRequest request;
 	private MyInfoBiz myinfobiz;
@@ -83,11 +84,20 @@ public class UpPictureAction extends ActionSupport implements ServletRequestAwar
 					boolean flag = myinfobiz.updatePicture(username, fullpath);
 					System.out.println("flag:" + flag);
 					if(flag)
-					out.write("<script>history.back(-1);" +
-							"window.parent.window.document.getElementById('myimg').src='myphoto?"+Math.random()+"';parent.$.XYTipsWindow.removeBox();</script>");
+					{System.out.println("sign:" + sign);
+						if("register".equals(sign))
+						{
+							sign = null;
+							out.write("<script>history.back(-1);" +"window.parent.window.document.getElementById('myimg').style.display='block';"+
+									"window.parent.window.document.getElementById('myimg').src='myphoto?"+Math.random()+"'</script>");
+						}
+						else
+							out.write("<script>history.back(-1);" +
+									"window.parent.window.document.getElementById('myimg').src='myphoto?"+Math.random()+"';parent.$.XYTipsWindow.removeBox();</script>");
+					}
 					else
 						 out.write("<script>alert('图片上传发生错误！');history.back(-1);</script>");
-				}
+				} 
 			}
 			out.flush();
 			out.close();
@@ -140,6 +150,16 @@ public class UpPictureAction extends ActionSupport implements ServletRequestAwar
 	public void setImgname(String imgname)
 	{
 		this.imgname = imgname;
+	}
+
+	public String getSign()
+	{
+		return sign;
+	}
+
+	public void setSign(String sign)
+	{
+		this.sign = sign;
 	}
 	
 }

@@ -83,7 +83,10 @@
 				<value>
 					org/translate/min/entity/MyTranslate.hbm.xml
 				</value>
-				<value>org/translate/min/entity/MyLabel.hbm.xml</value></list>
+				<value>org/translate/min/entity/MyLabel.hbm.xml</value>
+				<value>
+					org/translate/min/entity/FieldAllocate.hbm.xml
+				</value></list>
 		</property></bean>
 	
 	
@@ -111,7 +114,17 @@
 	<!-- 处理微信业务逻辑 -->  
 	<bean id="weixinDealAction" class="org.translate.min.action.WeixinDealAction"></bean>
 	<!-- 主页转发 -->
-	<bean id="mainAction" class="org.translate.min.action.MainAction"></bean>
+	<bean id="mainAction" class="org.translate.min.action.MainAction">
+		<property name="utilbiz" ref="utilBiz"/>
+	</bean>
+	<!-- 请求某个领域 -->
+	<bean id="areaTranslatorAction" class="org.translate.min.action.AreaTranslatorAction">
+		<property name="utilbiz" ref="utilBiz"/>
+	</bean>
+	<!-- 请求译员详细信息-->
+	<bean id="translatorDetailInfoAction" class="org.translate.min.action.TranslatorDetailInfoAction">
+		<property name="utilbiz" ref="utilBiz"/>
+	</bean>
 	<!-- 生成 验证码-->
 	<bean id="identifycode" class="org.translate.min.biz.impl.IdentifyCodeImpl"></bean>
 	<bean id="idetifycodeaction" class="org.translate.min.action.IdentifyCodeAction">
@@ -128,6 +141,9 @@
 	<bean id="placeOrderAction" class="org.translate.min.action.PlaceOrderAction">
 		<property name="pob" ref="placeOrderBiz"/>
 	</bean>
+	<bean id="placeOrderByFileAction" class="org.translate.min.action.PlaceOrderByFileAction">
+		<property name="pob" ref="placeOrderBiz"/>
+	</bean>
 	<!-- 查找登陆用户 -->
 	<bean id="freeTranslatorDao" class="org.translate.min.dao.impl.FreeTranslateDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"/>
@@ -138,6 +154,16 @@
 	<bean id="loginAction" class="org.translate.min.action.LoginAction">
 		<property name="ftlb" ref="freeTranslatorBiz"/>
 	</bean>
+	<!-- 客户业务 -->
+	<bean id="clientDao" class="org.translate.min.dao.impl.ClientDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="clientBiz" class="org.translate.min.biz.impl.ClientBizImpl">
+		<property name="clientdao" ref="clientDao"/>
+	</bean>
+	<bean id="clientRegisterAction" class="org.translate.min.action.ClientRegisterAction">
+		<property name="clientbiz" ref="clientBiz"/>
+	</bean>
 	<!-- 处理我的信息 -->
 	<bean id="myInfoDao" class="org.translate.min.dao.impl.MyInfoDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"/>
@@ -147,10 +173,12 @@
 	</bean>
 	<bean id="myInfoAction" class="org.translate.min.action.MyInfoAction">
 		<property name="myinfobiz" ref="myInfoBiz"/>
+		<property name="utilbiz" ref="utilBiz"/>
 	</bean>
 	<bean id="upPictureAction" class="org.translate.min.action.UpPictureAction">
 		<property name="myinfobiz" ref="myInfoBiz"/>
 	</bean>
+	
 	<bean id="myPictureAction" class="org.translate.min.action.MyPictureAction">
 		<property name="myinfobiz" ref="myInfoBiz"/>
 	</bean>
@@ -190,6 +218,9 @@
 	</bean>
 	<bean id="getLtranslatorInfoAction" class="org.translate.min.action.BgTranslatorInfoAction">
 		<property name="ltlb" ref="liveinTranslatorBiz"/>
+	</bean>
+	<bean id="translatorRegisterAction" class="org.translate.min.action.TranslatorRegisterAction">
+		<property name="ltb" ref="liveinTranslatorBiz"/>
 	</bean>
 	<bean id="joinusclubAction" class="org.translate.min.action.JoinusClubAction">
 		<property name="ubz" ref="utilBiz"/>

@@ -32,6 +32,10 @@
 		<action name="placeorder" class="placeOrderAction" method="dealPlaceOrder">
 			<result name="success">payfee.jsp?totalwords=${wordcount}&amp;totalcost=${cost}&amp;origin=${originlanguage}&amp;object=${objectlanguage}&amp;orderId=${orderId}</result>
 		</action>
+		<!-- 处理用户下单 -->
+		<action name="placeorderbyfile" class="placeOrderByFileAction" method="dealPlaceOrder">
+			<result name="success">payfee.jsp?totalwords=${wordcount}&amp;totalcost=${cost}&amp;origin=${uoriginlanguage}&amp;object=${uobjectlanguage}&amp;orderId=${orderId}</result>
+		</action>
 		<!-- 微信 -->
 		<action name="weixinAction" class="weixinDealAction" method="dealPostAndGet">
 			<result name="success">index.jsp</result>
@@ -43,6 +47,7 @@
 		<!-- 处理我的信息上传照片 -->
 		<action name="uppicture" class="upPictureAction" method="upLoadPicture">
 		</action>
+		
 		<!-- 处理我的信息下载照片 -->
 		<action name="myphoto" class="myPictureAction" method="getMyPhoto">
 		</action>
@@ -57,10 +62,22 @@
 		<action name="fanyi" class="mainAction">
 			<result name="success">main.jsp</result>
 		</action>
+		<!-- 请求某个领域 -->
+		<action name="areatranslator" class="areaTranslatorAction">
+			<result name="success">areatranslators.jsp</result>
+		</action>
+		<!-- 请求某个译员详细信息 -->
+		<action name="translatordetailinfo" class="translatorDetailInfoAction">
+			<result name="success">translatordetailinfo.jsp</result>
+		</action>
+		<!-- 管理员登录转发 -->
+		<action name="manager" class="org.translate.min.action.ManagerAction">
+			<result name="success">managerLogin.html</result>
+		</action>
 		<!-- 用户退出 -->
 		<action name="myexit" class="myExitAction">
-			<result name="success">
-				main.jsp
+			<result type="redirect">
+				fanyi
 			</result>
 		</action>
 		<!-- 处理信息 -->
@@ -111,6 +128,8 @@
 				liveinmytranslate.jsp
 			</result>
 		</action>
+		<action name="addbelongsfield" class="myInfoAction" method="addBelongsField">
+		</action>
 		<!-- 处理后台入驻译员的信息 -->
 		<action name="getltranslatorinfo" class="getLtranslatorInfoAction" method="getLTranslatorInfo">
 		</action>
@@ -142,6 +161,14 @@
 		</action>
 		<!-- 处理我的信息 -->
 		<action name="myinfo" class="myInfoAction" method="dealMyInfo">
+			<result type="json"></result>
+		</action>
+		<!-- 客户注册 -->
+		<action name="clientregister" class="clientRegisterAction" method="clientRegister">
+			<result type="json"></result>
+		</action>
+		<!-- 翻译员注册 -->
+		<action name="translatorregister" class="translatorRegisterAction" method="translatorRegister">
 			<result type="json"></result>
 		</action>
 		

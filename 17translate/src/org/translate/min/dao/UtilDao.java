@@ -10,6 +10,10 @@ public interface UtilDao
 	public List<Field> getField(String fieldname);
 	public void addGtfield(String username,String fieldname);
 	public void addGtlanguage(String username, String languagename);
+	public void addFieldAllocate(FieldAllocate fieldAllocate);
 	public boolean checkManager(String username, String password);
+	public List<String> getFieldAllocateResult();
+	public List<String> getAreaTranslators(int fieldid);
+	public List<LiveinTranslator> getLiveinTranslator(String username);
 }
  

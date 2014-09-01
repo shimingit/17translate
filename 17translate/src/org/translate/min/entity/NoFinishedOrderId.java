@@ -1,6 +1,5 @@
 package org.translate.min.entity;
 
-import java.util.Date;
 
 /**
  * NoFinishedOrderId entity. @author MyEclipse Persistence Tools
@@ -12,19 +11,17 @@ public class NoFinishedOrderId implements java.io.Serializable
 	// Fields
 
 	private Integer orderId;
+	private String orderSerialId;
 	private String clientName;
 	private String isPay;
 	private String translateStatus;
-	private Date orderDate;
+	private String orderDate;
 	private String originLanguage;
 	private String objectLanguage;
 	private float translationCost;
-	private String title;
-	private String author;
 	private String fromfield;
-	private String netlink;
-	private String description;
-	private String content;
+	private String hasfile;
+	private String storepath;
 
 	// Constructors
 
@@ -35,25 +32,22 @@ public class NoFinishedOrderId implements java.io.Serializable
 
 	/** minimal constructor */
 	public NoFinishedOrderId(Integer orderId, String clientName,
-			String translateStatus, String originLanguage, String title,
-			String content)
+			String originLanguage)
 	{
 		this.orderId = orderId;
 		this.clientName = clientName;
-		this.translateStatus = translateStatus;
 		this.originLanguage = originLanguage;
-		this.title = title;
-		this.content = content;
 	}
 
 	/** full constructor */
-	public NoFinishedOrderId(Integer orderId, String clientName, String isPay,
-			String translateStatus, Date orderDate, String originLanguage,
-			String objectLanguage, float translationCost, String title,
-			String author, String fromfield, String netlink,
-			String description, String content)
+	public NoFinishedOrderId(Integer orderId, String orderSerialId,
+			String clientName, String isPay, String translateStatus,
+			String orderDate, String originLanguage, String objectLanguage,
+			float translationCost, String fromfield, String hasfile,
+			String storepath)
 	{
 		this.orderId = orderId;
+		this.orderSerialId = orderSerialId;
 		this.clientName = clientName;
 		this.isPay = isPay;
 		this.translateStatus = translateStatus;
@@ -61,12 +55,9 @@ public class NoFinishedOrderId implements java.io.Serializable
 		this.originLanguage = originLanguage;
 		this.objectLanguage = objectLanguage;
 		this.translationCost = translationCost;
-		this.title = title;
-		this.author = author;
 		this.fromfield = fromfield;
-		this.netlink = netlink;
-		this.description = description;
-		this.content = content;
+		this.hasfile = hasfile;
+		this.storepath = storepath;
 	}
 
 	// Property accessors
@@ -79,6 +70,16 @@ public class NoFinishedOrderId implements java.io.Serializable
 	public void setOrderId(Integer orderId)
 	{
 		this.orderId = orderId;
+	}
+
+	public String getOrderSerialId()
+	{
+		return this.orderSerialId;
+	}
+
+	public void setOrderSerialId(String orderSerialId)
+	{
+		this.orderSerialId = orderSerialId;
 	}
 
 	public String getClientName()
@@ -111,12 +112,12 @@ public class NoFinishedOrderId implements java.io.Serializable
 		this.translateStatus = translateStatus;
 	}
 
-	public Date getOrderDate()
+	public String getOrderDate()
 	{
 		return this.orderDate;
 	}
 
-	public void setOrderDate(Date orderDate)
+	public void setOrderDate(String orderDate)
 	{
 		this.orderDate = orderDate;
 	}
@@ -151,26 +152,6 @@ public class NoFinishedOrderId implements java.io.Serializable
 		this.translationCost = translationCost;
 	}
 
-	public String getTitle()
-	{
-		return this.title;
-	}
-
-	public void setTitle(String title)
-	{
-		this.title = title;
-	}
-
-	public String getAuthor()
-	{
-		return this.author;
-	}
-
-	public void setAuthor(String author)
-	{
-		this.author = author;
-	}
-
 	public String getFromfield()
 	{
 		return this.fromfield;
@@ -181,34 +162,24 @@ public class NoFinishedOrderId implements java.io.Serializable
 		this.fromfield = fromfield;
 	}
 
-	public String getNetlink()
+	public String getHasfile()
 	{
-		return this.netlink;
+		return this.hasfile;
 	}
 
-	public void setNetlink(String netlink)
+	public void setHasfile(String hasfile)
 	{
-		this.netlink = netlink;
+		this.hasfile = hasfile;
 	}
 
-	public String getDescription()
+	public String getStorepath()
 	{
-		return this.description;
+		return this.storepath;
 	}
 
-	public void setDescription(String description)
+	public void setStorepath(String storepath)
 	{
-		this.description = description;
-	}
-
-	public String getContent()
-	{
-		return this.content;
-	}
-
-	public void setContent(String content)
-	{
-		this.content = content;
+		this.storepath = storepath;
 	}
 
 	public boolean equals(Object other)
@@ -224,6 +195,11 @@ public class NoFinishedOrderId implements java.io.Serializable
 		return ((this.getOrderId() == castOther.getOrderId()) || (this
 				.getOrderId() != null && castOther.getOrderId() != null && this
 				.getOrderId().equals(castOther.getOrderId())))
+				&& ((this.getOrderSerialId() == castOther.getOrderSerialId()) || (this
+						.getOrderSerialId() != null
+						&& castOther.getOrderSerialId() != null && this
+						.getOrderSerialId()
+						.equals(castOther.getOrderSerialId())))
 				&& ((this.getClientName() == castOther.getClientName()) || (this
 						.getClientName() != null
 						&& castOther.getClientName() != null && this
@@ -251,26 +227,17 @@ public class NoFinishedOrderId implements java.io.Serializable
 						.getObjectLanguage().equals(
 								castOther.getObjectLanguage())))
 				&& (this.getTranslationCost() == castOther.getTranslationCost())
-				&& ((this.getTitle() == castOther.getTitle()) || (this
-						.getTitle() != null && castOther.getTitle() != null && this
-						.getTitle().equals(castOther.getTitle())))
-				&& ((this.getAuthor() == castOther.getAuthor()) || (this
-						.getAuthor() != null && castOther.getAuthor() != null && this
-						.getAuthor().equals(castOther.getAuthor())))
 				&& ((this.getFromfield() == castOther.getFromfield()) || (this
 						.getFromfield() != null
 						&& castOther.getFromfield() != null && this
 						.getFromfield().equals(castOther.getFromfield())))
-				&& ((this.getNetlink() == castOther.getNetlink()) || (this
-						.getNetlink() != null && castOther.getNetlink() != null && this
-						.getNetlink().equals(castOther.getNetlink())))
-				&& ((this.getDescription() == castOther.getDescription()) || (this
-						.getDescription() != null
-						&& castOther.getDescription() != null && this
-						.getDescription().equals(castOther.getDescription())))
-				&& ((this.getContent() == castOther.getContent()) || (this
-						.getContent() != null && castOther.getContent() != null && this
-						.getContent().equals(castOther.getContent())));
+				&& ((this.getHasfile() == castOther.getHasfile()) || (this
+						.getHasfile() != null && castOther.getHasfile() != null && this
+						.getHasfile().equals(castOther.getHasfile())))
+				&& ((this.getStorepath() == castOther.getStorepath()) || (this
+						.getStorepath() != null
+						&& castOther.getStorepath() != null && this
+						.getStorepath().equals(castOther.getStorepath())));
 	}
 
 	public int hashCode()
@@ -279,6 +246,10 @@ public class NoFinishedOrderId implements java.io.Serializable
 
 		result = 37 * result
 				+ (getOrderId() == null ? 0 : this.getOrderId().hashCode());
+		result = 37
+				* result
+				+ (getOrderSerialId() == null ? 0 : this.getOrderSerialId()
+						.hashCode());
 		result = 37
 				* result
 				+ (getClientName() == null ? 0 : this.getClientName()
@@ -301,19 +272,11 @@ public class NoFinishedOrderId implements java.io.Serializable
 						.hashCode());
 		result = 37 * result + (int) this.getTranslationCost();
 		result = 37 * result
-				+ (getTitle() == null ? 0 : this.getTitle().hashCode());
-		result = 37 * result
-				+ (getAuthor() == null ? 0 : this.getAuthor().hashCode());
-		result = 37 * result
 				+ (getFromfield() == null ? 0 : this.getFromfield().hashCode());
 		result = 37 * result
-				+ (getNetlink() == null ? 0 : this.getNetlink().hashCode());
-		result = 37
-				* result
-				+ (getDescription() == null ? 0 : this.getDescription()
-						.hashCode());
+				+ (getHasfile() == null ? 0 : this.getHasfile().hashCode());
 		result = 37 * result
-				+ (getContent() == null ? 0 : this.getContent().hashCode());
+				+ (getStorepath() == null ? 0 : this.getStorepath().hashCode());
 		return result;
 	}
 

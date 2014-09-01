@@ -21,13 +21,19 @@ public class MyPictureAction extends ActionSupport implements
 	private HttpServletRequest request;
 	private HttpServletResponse response;
 	private MyInfoBiz myinfobiz;
+	private String username;
 
 	public void getMyPhoto() throws Exception
 	{
 		response = ServletActionContext.getResponse();
-		String username = (String)request.getSession().getAttribute("username");
+		if(username == null)
+			username = (String)request.getSession().getAttribute("username");
+		
 		String imgpath = myinfobiz.getMyPicture(username);
+		
+		System.out.println(username + " 请求下载照片！Ta的照片路径是 " + imgpath);
 		InputStream is = new FileInputStream(new File(imgpath));
+		
 		response.setContentType("image/jpg"); 
 		ServletOutputStream sout = response.getOutputStream();
 		byte b[] = new byte[is.available()];// 创建byte数组用作缓冲
@@ -40,6 +46,7 @@ public class MyPictureAction extends ActionSupport implements
 	        sout.flush(); 
 	        sout.close(); //关闭输入流
 		}
+		username = null;
 	}
 
 	public void setServletResponse(HttpServletResponse response)
@@ -60,6 +67,16 @@ public class MyPictureAction extends ActionSupport implements
 	public void setMyinfobiz(MyInfoBiz myinfobiz)
 	{
 		this.myinfobiz = myinfobiz;
+	}
+
+	public String getUsername()
+	{
+		return username;
+	}
+
+	public void setUsername(String username)
+	{
+		this.username = username;
 	}
 	
 }

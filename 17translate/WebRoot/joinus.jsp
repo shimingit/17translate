@@ -58,6 +58,68 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	{
 		$(this).css("border","1px solid lightgray");
 	});
+	
+	$("#allsubmit").click(function()
+	{
+		var realname=$("#realname").val();
+		var galanCount=0;
+		var gafieldCount=0;
+   	    $("[name='gtlanguages']").each(function()
+   	    {
+	        if($(this).attr("checked")){
+	            galanCount++;
+	        }
+   		});
+   	    $("[name='gtfields']").each(function()
+   	    {
+	        if($(this).attr("checked")){
+	            gafieldCount++;
+	        }
+   		});
+		var selfdescription = $("#selfdescription").val();
+		var certification = $("#certification").val();
+		
+		if(realname.length <= 0)
+		{
+			alert('请填写您的真实姓名！');
+			return false;
+		}
+		if(galanCount <= 0)
+		{
+			alert("请选择至少一种擅长的语言！");
+			return false;
+		}
+		if(gafieldCount <= 0)
+		{
+			alert("请选择至少一种擅长的领域！");
+			return false;
+		}
+		if(selfdescription.length < 15)
+		{
+			alert("自我介绍太短！");
+			return false;
+		}
+		if(certification.length < 15)
+		{
+			alert("翻译资质太短！");
+			return false;
+		}
+		if($("#myimg").css('display') == "none")
+		{
+			alert("请选择一张个人照片！");
+			return false;
+		}
+		
+		return true;
+	});
+	
+	$("#allreset").click(function()
+	{
+		$("#myimg").css('display','none');
+		return true;
+	});
+	
+	
 	});
 	
 
@@ -116,19 +178,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="two_content tc_01" >
 							<p class="word" style="font-size:16px;margin: 10px 0 auto 8px;">请如实填写您的相关信息<span style="font-size: 12px;color: #F4A460">( 星号为必填信息 )</span></p>
 						</div>
-						<form action="joinusclub" method="get">
-						<div class="two_content ">
+						<form action="joinusclub" method="post">
+						<div class="two_content " style="height:80px">
 							<div class="namediv">
-								<span class="word" style="font-size: 16px">姓名：</span><input class="inout" name="realname" type="text" value=""><span style="color:red;margin:auto 2px auto 2px">*</span>
+								<span class="word" style="font-size: 16px">姓名：</span><input class="inout" id="realname" name="realname" type="text" value=""><span style="color:red;margin:auto 2px auto 2px">*</span>
 							</div>
 							<div class="namediv">
-								<span class="word" style="font-size: 16px">电话号码：</span><input class="inout" name="phonenumber" type="text" value=""><span style="color:red;margin:auto 2px auto 2px">*</span>
-							</div>
-							<div class="namediv">
-								<span class="word" style="font-size: 16px">邮箱：</span><input class="inout" name="emailbox" type="text" value=""><span style="color:rgb(247,248,249);margin:auto 2px auto 2px">*</span>
-							</div>
-							<div class="namediv">
-								<span class="word" style="font-size: 16px">翻译经验：</span><select class="inout" name="translatespan" value="">
+								<span class="word" style="font-size: 16px">翻译经验：</span><select class="inout"  name="translatespan" value="">
 									<option value="0">0 - 1年
 									<option value="1">1 - 2年
 									<option value="2">2 - 3年
@@ -206,6 +262,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 						
 						</div>
+						<div class="two_content" style="height:50px;">
+							<div class="namediv" style="width:400px">
+								<span class="word" style="font-size: 16px">你想分配到哪个领域：</span><select class="inout"  name="myfield" value="重要会议">
+									<option value="1">重要会议
+									<option value="2">重要通知
+									<option value="3">校园广播
+									<option value="4">招生简章
+									<option value="5">学生论文
+									<option value="6">老师简介
+									<option value="7">趣味生活
+									<option value="8">院系介绍
+								</select><span style="color:rgb(247,248,249);margin:auto 2px auto 2px">*</span>
+							</div>
+						</div>
 						<div class="two_content" style="height:190px;">
 							<div class="selfdesc word"><span style="font-size: 16px">自我介绍:</span></div>
 							<div class="desc" style="text-align: left">
@@ -219,11 +289,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 						</div>
 						<div class="two_content" style="height:80px">
-							<div class="fileupload word"><span style="font-size: 16px">上传凭证:</span></div>
+							<div class="fileupload word"><span style="font-size: 16px">上传照片:</span></div>
 							<div class="upload" >
 							<iframe src="upload.html" style="WIDTH:100%; HEIGHT:80%;" scrolling="no" frameborder="no">
 							</iframe>
-							
+							<div style="width:80px;height:85px;float:right;margin-top: -76px;margin-right: 220px">
+								<img id="myimg"  src="myphoto" style="width:100%;height:100%;display: none;" />
+							</div>
 							</div>
 						<div class="two_content" >
 							<div class="subspace"></div>
@@ -244,6 +316,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						
 						
 					</div></form>
+			</div>
 				<b class="b4b d1"></b><b class="b3b d1"></b><b class="b2b d1"></b><b class="b1b"></b>
     		</div>
     			

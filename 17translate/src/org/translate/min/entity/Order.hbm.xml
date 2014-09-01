@@ -70,6 +70,11 @@
                 <comment>订单完成时间</comment>
             </column>
         </property>
+        <property name="hasfile" type="string">
+            <column name="hasfile" length="10">
+                <comment>提交原稿方式</comment>
+            </column>
+        </property>
         <set name="clientComments" inverse="true">
             <key>
                 <column name="orderId" not-null="true">

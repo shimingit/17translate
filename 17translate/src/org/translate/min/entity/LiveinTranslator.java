@@ -30,6 +30,9 @@ public class LiveinTranslator implements java.io.Serializable
 	private float liveinSpan;
 	private String translationLevel;
 	private String lrealName;
+	private String hasLivein;
+	private String hasregister;
+	private String status;
 	private Set goodAtFields = new HashSet(0);
 	private Set goodAtLanguages = new HashSet(0);
 	private Set translationArranges = new HashSet(0);
@@ -47,25 +50,17 @@ public class LiveinTranslator implements java.io.Serializable
 		this.luserName = luserName;
 		this.lpassword = lpassword;
 	}
-	public LiveinTranslator(String luserName, String lpassword,String lrealname,
-			String lmailBox, Integer liveinType, float transExperience,
-			String qualifyDescription,String lselfDescription, String resumeName, Date liveinDate,
-			float liveinSpan, String translationLevel,String phonenumber)
+	public LiveinTranslator(String luserName,String lrealname,
+			 float transExperience,
+			String qualifyDescription,String lselfDescription, 
+			String translationLevel)
 	{
 		this.luserName = luserName;
-		this.lpassword = lpassword;
 		this.lrealName = lrealname;
-		this.lmailBox = lmailBox;
-		this.liveinType = liveinType;
 		this.transExperience = transExperience;
 		this.qualifyDescription = qualifyDescription;
-		this.resumeName = resumeName;
-		this.liveinDate = liveinDate;
-		this.liveinSpan = liveinSpan;
 		this.translationLevel = translationLevel;
 		this.lselfDescription = lselfDescription;
-		this.lphoneNumber = phonenumber;
-
 	}
 	/** full constructor */
 	public LiveinTranslator(String luserName, String lpassword,
@@ -74,6 +69,7 @@ public class LiveinTranslator implements java.io.Serializable
 			Integer liveinType, float transExperience,
 			String qualifyDescription, String resumeName, Date liveinDate,
 			float liveinSpan, String translationLevel, String lrealName,
+			String hasLivein, String hasregister, String status,
 			Set goodAtFields, Set goodAtLanguages, Set translationArranges)
 	{
 		this.luserName = luserName;
@@ -92,6 +88,9 @@ public class LiveinTranslator implements java.io.Serializable
 		this.liveinSpan = liveinSpan;
 		this.translationLevel = translationLevel;
 		this.lrealName = lrealName;
+		this.hasLivein = hasLivein;
+		this.hasregister = hasregister;
+		this.status = status;
 		this.goodAtFields = goodAtFields;
 		this.goodAtLanguages = goodAtLanguages;
 		this.translationArranges = translationArranges;
@@ -267,6 +266,36 @@ public class LiveinTranslator implements java.io.Serializable
 	public void setLrealName(String lrealName)
 	{
 		this.lrealName = lrealName;
+	}
+
+	public String getHasLivein()
+	{
+		return this.hasLivein;
+	}
+
+	public void setHasLivein(String hasLivein)
+	{
+		this.hasLivein = hasLivein;
+	}
+
+	public String getHasregister()
+	{
+		return this.hasregister;
+	}
+
+	public void setHasregister(String hasregister)
+	{
+		this.hasregister = hasregister;
+	}
+
+	public String getStatus()
+	{
+		return this.status;
+	}
+
+	public void setStatus(String status)
+	{
+		this.status = status;
 	}
 
 	public Set getGoodAtFields()

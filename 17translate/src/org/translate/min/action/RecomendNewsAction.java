@@ -28,7 +28,9 @@ public class RecomendNewsAction extends ActionSupport implements RequestAware,
 		
 		List<PublicNewsId> publicnews = new ArrayList<PublicNewsId>();
 		for(PublicNews news : newsList)
+		{
 			publicnews.add(news.getId());
+		}
 
 		session.put("publicnews", publicnews);
 		return SUCCESS;

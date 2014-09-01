@@ -11,7 +11,7 @@
 <head>
 <base href="<%=basePath%>">
 
-<title>My JSP 'main.jsp' starting page</title>
+<title>我要翻译在线平台</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
@@ -102,15 +102,15 @@
 	border-top-color: lightgray;
 	border-top-style: dashed;
 }
-.news li{
-	height:16px;
-	line-height:16px;
-	overflow:hidden;
-	position:relative;
-	padding:0 70px 0 30px;
-	margin:5px 4px 10px 6px;
+.news div{
+	width:175.6px;
+	height:60px;
+	margin: 8px 10px 2px 10px;
+	float: left;
 	text-align: left;
+	
 }
+
 .news li em{
 	background-color:lightgray;
 	width:20px;
@@ -185,7 +185,12 @@ function hideEWM(){
 	document.getElementById("EWM").style.display = 'none';
 }
 </script>
-
+<%
+	List<String> fieldallocateresult = (List<String>)session.getAttribute("fieldallocateresult");
+	
+	if(fieldallocateresult == null)
+		fieldallocateresult = new ArrayList<String>();
+ %>
 </head>
 
 <body>
@@ -223,39 +228,32 @@ function hideEWM(){
 			<div class="pillar">
 				<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b2"></b><b class="b4"></b>
 				<div class="boxcontent">
-				<h1 >推荐翻译
-					<span style="font-style: italic;font-size: 14px;float: right;margin-right: 6px"><a href="recomendNews.jsp" style="color: #FF6347;">更多</a></span>
+				<h1 >热门领域
+					<span style="font-style: italic;font-size: 14px;float: right;margin-right: 6px"><a href="#" style="color: #FF6347;">更多</a></span>
 				</h1>
-				<div class="news">
-					<ul>
-						<li class="top">
-							<em>01</em><p><a href="#" target="_blank">新闻01新闻01新闻01新闻01新闻01新闻01新闻01新闻01新闻01新闻01新闻01新闻01</a></p><span class="num">100人点击</span>
-						</li>
-						<li class="top">
-							<em>02</em><p><a href="#" target="_blank">新闻02新闻02新闻02新闻02新闻02新闻02新闻02新闻02新闻02新闻02新闻02新闻02</a></p><span class="num">100人点击</span>
-						</li>
-						<li class="top">
-							<em>03</em><p><a href="#" target="_blank">新闻03新闻03新闻03新闻03新闻03新闻03新闻03新闻03新闻03新闻03新闻03新闻03</a></p><span class="num">100人点击</span>
-						</li>
-						<li class="top">
-							<em>04</em><p><a href="#" target="_blank">新闻04新闻04新闻04新闻04新闻04新闻04新闻04新闻04新闻04新闻04新闻04新闻04</a></p><span class="num">100人点击</span>
-						</li>
-						<li class="top">
-							<em>05</em><p><a href="#" target="_blank">新闻05新闻05新闻05新闻05新闻05新闻05新闻05新闻05新闻05新闻05新闻05新闻05</a></p><span class="num">100人点击</span>
-						</li>
-						<li class="top">
-							<em>06</em><p><a href="#" target="_blank">新闻06新闻06新闻06新闻06新闻06新闻06新闻06新闻06新闻06新闻06新闻06新闻06</a></p><span class="num">100人点击</span>
-						</li>
-						<li class="top">
-							<em>07</em><p><a href="#" target="_blank">新闻05新闻05新闻05新闻05新闻05新闻05新闻05新闻05新闻05新闻05新闻05新闻05</a></p><span class="num">100人点击</span>
-						</li>
-						<li class="top">
-							<em>08</em><p><a href="#" target="_blank">新闻05新闻05新闻05新闻05新闻05新闻05新闻05新闻05新闻05新闻05新闻05新闻05</a></p><span class="num">100人点击</span>
-						</li>
-						
+				
+			<div class="news">
 					
-					</ul>
-				</div>
+					
+					<% 
+						for(String result : fieldallocateresult)
+						{ 
+							String[] params = result.split("&");
+					%>
+					<div>
+						<div style="width:45px;height:53px;margin: 2px"><a href="#"><img src="images/area1.gif" style="width:40px;height:38px"/></a></div>
+						<div style="width:118px;height:53px;margin: 2px;">
+							<p class="word" style="font-size: 13px;margin-left: 0"><a id="<%=params[0] %>" href="areatranslator?fieldid=<%=params[0] %>" style="color:gray"><%=params[1] %></a></p>
+							<p class="word" style="font-size: 13px;font-weight:normal;margin-left: 0;margin-top: -4px">目前译员数：<%=params[2] %>个</p>
+						</div>
+					</div>
+					<%
+					}
+					 %>
+				
+					
+					
+			</div>
 				</div>
 				<b class="b4"></b><b class="b2"></b><b class="b3"></b><b class="b2"></b><b class="b1"></b>
 			</div>
@@ -279,7 +277,6 @@ function hideEWM(){
 							<li>如果您接受编辑的修改意见并即时返回成稿</li>
 							<li>如果您接受编辑的修改意见并即时返回成稿</li>
 							<li>如果您接受编辑的修改意见并即时返回成稿</li>
-							
 						</ul>
 						
 					</div> 
@@ -468,14 +465,7 @@ function hideEWM(){
 				<b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
 					    <div class="b d1 k">
 					    	
-					    	<div class="comment">
-					    		<p class="word" style="font-weight: normal;">留言&评论:</p>
-					    		<p class="word" style="font-weight: normal;">标题：<input type="text" id="commenttitle" name="commenttitle" style="height:30px;width:350px"/></p>
-					    		<p class="word" style="font-weight: normal;">内容：<textarea  id="content" name="content" style="height:83px;width:350px;vertical-align:top;font-weight: normal;"/></textarea></p>
-					    		<p><button id="submit" style="padding:2px 10px 2px 10px;margin:2px auto auto 276px">提交</button>&nbsp;
-					    			<button id="reset" style="padding:2px 10px 2px 10px;margin:2px auto auto auto">清除</button>
-					    		</p>
-					    	</div>
+					    	
 					    	
 					    	<div class="concern">
 					    		<p class="word" style="font-weight: normal;margin-left: 25px;line-height: 30px">关注我们微信号 <span style="color:green;">woyaofanyi</span></p>

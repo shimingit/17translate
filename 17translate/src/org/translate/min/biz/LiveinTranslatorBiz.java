@@ -13,4 +13,5 @@ public interface LiveinTranslatorBiz
 	public List<LiveinInfo> getTranslators(String page, String rows, String key, String value);
 	public int getLiveinTotal();
 	public List<String> getFreeTranslators();
+	public String register(String name,String password,String account,String phone);
 }

@@ -1,11 +1,17 @@
 package org.translate.min.action;
 
+import java.io.IOException;
+import java.io.Writer;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 import org.translate.min.biz.MyInfoBiz;
+import org.translate.min.biz.UtilBiz;
 import org.translate.min.entity.FinishedOrder;
 import org.translate.min.entity.MyDraft;
 import org.translate.min.entity.MyLabel;
@@ -20,11 +26,33 @@ public class MyInfoAction extends ActionSupport implements RequestAware,SessionA
 	private Map<String, Object> request;
 	private String currentuser;
 	private String role;
+	private int[] field;
 	
 	private MyInfoBiz myinfobiz;
+	private UtilBiz utilbiz;
 
+	
 	private static final long serialVersionUID = 1L;
 
+	public void addBelongsField()
+	{
+		String username =(String)session.get("username");
+		utilbiz.addFieldAllocate(username, field);
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setContentType("text/html;charset=utf-8");
+		try
+		{
+			Writer out = response.getWriter();
+			out.write("<script>history.back(-1);" +
+					"window.parent.location.href='myinfo';parent.$.XYTipsWindow.removeBox();</script>");
+			out.flush();
+			out.close();
+		} catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
 	public String liveinMyDraft()
 	{
 		String username = (String)session.get("username");
@@ -96,7 +124,7 @@ public class MyInfoAction extends ActionSupport implements RequestAware,SessionA
 	public String clientNoFinishedOrder()
 	{
 		String clientname = (String)session.get("username");
-		List<FinishedOrder> nofinishedorders = myinfobiz.getFinishedOrder(clientname);
+		List<FinishedOrder> nofinishedorders = myinfobiz.getNoFinishedOrder(clientname);
 		session.put("nofinishedorders", nofinishedorders);
 		return SUCCESS;
 	}
@@ -115,12 +143,14 @@ public class MyInfoAction extends ActionSupport implements RequestAware,SessionA
 			//获取对应客户信息并保存在session中
 			Object myinfo = myinfobiz.getMyInfo(username, role).get(0);
 			session.put("myinfo", myinfo);
-			System.out.println(myinfobiz.getMyInfo(username, role).size());
+			//System.out.println(myinfobiz.getMyInfo(username, role).size());
 			
 			if("livein".equals(role))
 			{
-				List<MyLabel> mylabel = myinfobiz.getMyLabel(username);
+				List<String> mylabel = myinfobiz.getMyLabel(username);
+				List<String> mybelongsfield = myinfobiz.getMyBelongsField(username);
 				session.put("mylabel", mylabel);
+				session.put("mybelongsfield", mybelongsfield);
 			}
 		}
 		else
@@ -162,5 +192,19 @@ public class MyInfoAction extends ActionSupport implements RequestAware,SessionA
 	{
 		this.currentuser = currentuser;
 	}
-	
+
+	public int[] getField()
+	{
+		return field;
+	}
+
+	public void setField(int[] field)
+	{
+		this.field = field;
+	}
+	public void setUtilbiz(UtilBiz utilbiz)
+	{
+		this.utilbiz = utilbiz;
+	}
+
 }

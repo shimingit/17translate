@@ -15,6 +15,7 @@ public interface MyInfoBiz
 	public List<FinishedOrder> getNoFinishedOrder(String clientname);
 	public List<MyDraft> getMyDraft(String username);
 	public List<MyTranslate> getMyTranslate(String username);
-	public List<MyLabel> getMyLabel(String username);
+	public List<String> getMyLabel(String username);
+	public List<String> getMyBelongsField(String username);
 	
 }

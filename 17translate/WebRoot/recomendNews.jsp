@@ -134,7 +134,7 @@ function hideEWM(){
 					<%
 						for(int i = newsindex; i < newsindex + 8 && (i + 1) <= publicnews.size();i++)
 						{					
-							PublicNewsId news = publicnews.get(newsindex);
+							PublicNewsId news = publicnews.get(i);
 					 %>
 					<div  class="specialnews">
 						<div class="title" >

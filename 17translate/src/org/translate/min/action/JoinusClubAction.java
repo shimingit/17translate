@@ -8,7 +8,6 @@ import org.translate.min.biz.LiveinTranslatorBiz;
 import org.translate.min.biz.UtilBiz;
 import org.translate.min.entity.LiveinTranslator;
 import org.translate.min.util.CodingUtil;
-import org.translate.min.util.DateUtil;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -17,13 +16,12 @@ public class JoinusClubAction extends ActionSupport implements RequestAware,Sess
 
 	private static final long serialVersionUID = 1L;
 	private String realname;
-	private String phonenumber;
-	private String emailbox;
 	private String translatespan;
 	private String[] gtlanguages;
 	private String[] gtfields;
 	private String selfdescription;
 	private String certification;
+	private int myfield;
 	private UtilBiz ubz;
 	private LiveinTranslatorBiz ltlb;
 	private Map<String, Object> session;
@@ -33,22 +31,21 @@ public class JoinusClubAction extends ActionSupport implements RequestAware,Sess
 	public String dealJoinus()
 	{
 		//对用户上传信息进行重新编码
-		encodeInfo();
+		//encodeInfo();
 		
+		//System.out.println(realname+">"+translatespan+">gtlanguages:"+gtlanguages.length+">gtfields:"+gtfields.length+">"+selfdescription+">"+certification+">"+myfield);
 				
 		//获取当前登录用户的账号密码
 		String username = (String) session.get("username");
-		String password = (String) session.get("password");
 		
-		LiveinTranslator ltl = new LiveinTranslator(username,password,realname,emailbox,0,
-				Integer.parseInt(translatespan),
-				certification,selfdescription,null,DateUtil.creatDate(),0,null,phonenumber
-				);
+		LiveinTranslator ltl = new LiveinTranslator(username,realname,
+				Float.parseFloat(translatespan),
+				certification,selfdescription,"初级译者");
 		
 		ltlb.addLiveinTranslator(ltl);
 		ubz.addGtfields(gtfields,username);
 		ubz.addGtlanguages(gtlanguages,username);
-		
+		ubz.addFieldAllocate(username, new int[]{myfield});
 		
 		return SUCCESS;
 	}
@@ -74,22 +71,7 @@ public class JoinusClubAction extends ActionSupport implements RequestAware,Sess
 	{
 		this.realname = realname;
 	}
-	public String getPhonenumber()
-	{
-		return phonenumber;
-	}
-	public void setPhonenumber(String phonenumber)
-	{
-		this.phonenumber = phonenumber;
-	}
-	public String getEmailbox()
-	{
-		return emailbox;
-	}
-	public void setEmailbox(String emailbox)
-	{
-		this.emailbox = emailbox;
-	}
+	
 	public String getTranslatespan()
 	{
 		return translatespan;
@@ -155,6 +137,14 @@ public class JoinusClubAction extends ActionSupport implements RequestAware,Sess
 	public void setLtlb(LiveinTranslatorBiz ltlb)
 	{
 		this.ltlb = ltlb;
+	}
+	public int getMyfield()
+	{
+		return myfield;
+	}
+	public void setMyfield(int myfield)
+	{
+		this.myfield = myfield;
 	}
 	
 }

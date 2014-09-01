@@ -34,18 +34,24 @@
 					],
 					loadStyles: ['css/enhanced.css']
 				});
+				function imgsubmit()
+				{
+					document.getElementById("imgform").submit();
+				}
 		    </script>
 	</head>
 	<body>
 
 	<!-- realistic form attributes: <form action="#" method="post" enctype="multipart/form-data"> -->
 	<div align="left">
-	<form action="#">
+	<form id="imgform" enctype="multipart/form-data" method="post" action="uppicture" >
 	
-			<label for="file" class="word">请选择图片</label>
-			<input type="file" name="file" id="file" />
-			<input type="submit" name="upload" id="upload" value="上传图片" />
+			<label for="file" class="word">请选择一张个人照片，大小不超过1M</label><br/>
+			<input type="file" name="picturefile" id="file" onchange="imgname.value=this.value;imgsubmit();" />
+			<input type="hidden" name="imgname" id="imgname" value="">
+			<input type="hidden" name="sign" value="register">
 	</form>
+	
 		</div>
 	</body>
 	

@@ -71,12 +71,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	<%
 		//获取用户下单参数
-		/* int totalwords = Integer.parseInt(request.getParameter("totalwords"));
+		int totalwords = Integer.parseInt(request.getParameter("totalwords"));
 		float totalcost = Float.parseFloat(request.getParameter("totalcost"));
 		String orderid = request.getParameter("orderId");
 		String origin = request.getParameter("origin");
 		String object = request.getParameter("object");
-		String username = (String)session.getAttribute("username"); */
+		String username = (String)session.getAttribute("username"); 
 		
 	 %>
 	 
@@ -94,9 +94,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		<b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
 					<div  class="b d1 k"  >
 						<div id="t"><span class="word" style="margin-left:4px;color:green">订单信息</span></div>
-						<div id="info"><span class="word"style="font-size:15px;"><span style="color:#FFA500">shimin</span>&nbsp;您好，订单已提交，请尽快付款<span class="word"style="color:#1E90FF;font-size:12px;">（我们在您付款成功后会尽快安排翻译）</span></span></div>
-						<div id="info"><span class="word"style="font-size:15px;">原文语言：中文&nbsp;&nbsp;&nbsp;&nbsp;目标语言：英语，总字数：<span style="color:#FFA500">1000</span>字</span></div>
-						<div id="info"><span class="word">订单号：<span style="color:#FFA500">1000028755121007</span>，您需要支付 <span style="color:#FFA500">50 </span>元。</span></div>
+						<div id="info"><span class="word"style="font-size:15px;"><span style="color:#FFA500"><%=username %></span>&nbsp;您好，订单已提交，请尽快付款<span class="word"style="color:#1E90FF;font-size:12px;">（我们在您付款成功后会尽快安排翻译）</span></span></div>
+						<div id="info"><span class="word"style="font-size:15px;">原文语言：<%=origin %>&nbsp;&nbsp;&nbsp;&nbsp;目标语言：<%=object %>，总字数：<span style="color:#FFA500"><%= totalwords%></span>字</span></div>
+						<div id="info"><span class="word">订单号：<span style="color:#FFA500"><%= orderid%></span>，您需要支付 <span style="color:#FFA500"><%=totalcost %> </span>元。</span></div>
 						
 			        </div>
 		    <b class="b4b d1"></b><b class="b3b d1"></b><b class="b2b d1"></b><b class="b1b"></b>

@@ -36,14 +36,18 @@ public class PlaceOrderAction extends ActionSupport implements RequestAware,
 		//encodeinfo();
 		//获取当前登录用户的用户名密码
 		String username = (String) session.get("username");
-		String password = (String) session.get("password");
+		
+		String directory = "../webapps/17translate/filerepository/" + username;
+		
 		//计算原文字数
 		wordcount = ArticleUtil.countwords(originlanguage, articlecontent);
 		cost = ArticleUtil.conutcost(wordcount, originlanguage, objectlanguage);
 		orderId = ArticleUtil.getOrderIdByUUId();
+		
 		//更新数据库
-		boolean hasfinished = pob.dealPlaceorder(username, password, link, title, author, description, articlecontent, originlanguage,
-				objectlanguage, fromfield, wordcount,orderId);
+		String outpath = directory + "/out" + orderId+".pdf";
+		boolean hasfinished = pob.dealPlaceorder(username, link, title, author, description, articlecontent, originlanguage,
+				objectlanguage, fromfield, wordcount,orderId,cost,outpath);
 		
 		
 		return SUCCESS;
@@ -62,8 +66,6 @@ public class PlaceOrderAction extends ActionSupport implements RequestAware,
 		objectlanguage = CodingUtil.encode(objectlanguage);
 		fromfield = CodingUtil.encode(fromfield);
 	}
-	
-	
 	
 	
 	public void setSession(Map<String, Object> session)

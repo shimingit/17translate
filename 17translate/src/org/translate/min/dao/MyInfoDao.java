@@ -14,5 +14,6 @@ public interface MyInfoDao
 	public List<FinishedOrder> getNoFinishedOrder(String clientName);
 	public List<MyDraft> getMyDraft(String username);
 	public List<MyTranslate> getMyTranslate(String username);
-	public List<MyLabel> getMyLabel(String username);
+	public List<String> getMyLabel(String username);
+	public List<String> getMyBelongsField(String username);
 }

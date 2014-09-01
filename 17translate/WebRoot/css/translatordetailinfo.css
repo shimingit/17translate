@@ -1,0 +1,34 @@
+.translatordetail{
+	width:100%;
+	height:auto;
+	
+}
+#info1{
+	width:100%;
+	height:140px;
+	margin: 2px auto 4px 2px;
+}
+#info2{
+	width:100%;
+	border-top:1px dashed lightgray;
+	margin: 2px auto 4px 0px;
+}
+#info2 p{
+	font-weight: normal;
+	margin-top: 10px;
+	margin-left: 4px;
+}
+#info1 #left{
+	width:120px;
+	height:140px;
+	float:left;
+}
+#info1 #right{
+	width:510px;
+	height:140px;
+	float:left;
+	margin-left:10px;
+}
+#info1 #right p{
+	line-height: 30px;
+}

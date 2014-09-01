@@ -20,6 +20,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="css/clientinfo.css">
 	
 	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script> 
+	<link href="css/box_style.css" type="text/css" rel="stylesheet" />
+	<script type="text/javascript" src="js/jquery.XYTipsWindow.min.2.8.js"></script>
 	
 <%
 	List<NoFinishedOrder> nofinishedorders = (List<NoFinishedOrder>)session.getAttribute("nofinishedorders");
@@ -31,7 +33,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
  %>
   </head>
-  
+  <script type="text/javascript">
+  		$(function()
+  		{
+  			$("#img").click(function()
+			{
+				$.XYTipsWindow
+				({
+					___title:"我们会为你而感到骄傲~",
+					___content:"iframe:uppicture.jsp",
+					___width:"356",
+					___height:"175",
+					___showbg:true,
+					___drag:"___boxTitle"
+				});
+				
+				return false;
+			});
+  		});
+  </script>
   <body>
     <div align="center">
     
@@ -46,7 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			<b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
 				 <div class="b d1 h">
 				 	<div class="divimg">
-				 		<img id="myimg" src="images/daren.jpg"/>
+				 		<img id="myimg" src="myphoto"/>
 				 		<form action="">
 				 			<input  type="button" class="button" id="img" name="img" value="上传照片"/>
 				 		</form>
@@ -115,8 +135,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 		
 				 		<div class="draftitem" >
 							<div id="drafttitle">
-								<span class="word2"><a href="#"><%= nfdoid.getTitle()%></a></span>
-								<span class="word2" style="margin-right: 10px;font-size:12px;float: right">下单时间：<span style="color:green"><%=nfdoid.getOrderDate() %></span></span>
+								<span class="word2">订单号：<a href="#"><%= nfdoid.getOrderSerialId()%></a></span>
+								<span class="word2" style="margin-left: 30px;font-size:12px;">下单时间：<span style="color:green"><%=nfdoid.getOrderDate().substring(0, nfdoid.getOrderDate().lastIndexOf(".")) %></span></span>
 							</div>
 							
 							<%
@@ -126,7 +146,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div id="draftinfo">
 								<span class="word2" style="font-size:12px">付款状态：<span style="color:green">未付款</span></span>
 								<span class="word2" style="font-size:12px">须付费：<span style="color:green"> <%=nfdoid.getTranslationCost() %> </span>元</span>
-								<span class="word4" style="light-height:30px;float: right;margin-right: 15px;"><a href="joinus.jsp">完成付款</a></span>
+								<span class="word4" style="light-height:30px;float: right;margin-right: 15px;"><a href="finishpay?orderid=<%=nfdoid.getOrderId()%>">完成付款</a></span>
 							</div>
 							<%
 								}
@@ -152,6 +172,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							 
 							<%} 
 								else if("waitcustomer".equals(nfdoid.getTranslateStatus()))
+								{
 							%>
 							<div id="draftinfo">
 								<span class="word2" style="font-size:12px">付款状态：<span style="color:green">已付款</span></span>
@@ -159,9 +180,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<span class="word4" style="light-height:30px;float: right;margin-right: 15px;"><a href="joinus.jsp">确认验收</a></span>
 							</div>
 							
-							<%} %>
+							<%} 
+							%>
 				 		</div>
-				 		
+				 		<%} %>
 				 		
 				 		
 				 		

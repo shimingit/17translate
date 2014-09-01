@@ -1,10 +1,8 @@
 package org.translate.min.biz.impl;
 
-import java.io.InputStream;
 import java.util.List;
 
 import org.translate.min.biz.*;
-import org.translate.min.dao.LiveinTranslatorDao;
 import org.translate.min.dao.MyInfoDao;
 import org.translate.min.entity.*;
 
@@ -77,7 +75,7 @@ public class MyInfoBizImpl implements MyInfoBiz
 		// TODO Auto-generated method stub
 		return myinfodao.getMyTranslate(username);
 	}
-	public List<MyLabel> getMyLabel(String username)
+	public List<String> getMyLabel(String username)
 	{
 		// TODO Auto-generated method stub
 		return myinfodao.getMyLabel(username);
@@ -86,6 +84,11 @@ public class MyInfoBizImpl implements MyInfoBiz
 	{
 		// TODO Auto-generated method stub
 		return myinfodao.getMyPicture(username);
+	}
+	public List<String> getMyBelongsField(String username)
+	{
+		// TODO Auto-generated method stub
+		return myinfodao.getMyBelongsField(username);
 	}
 
 	

@@ -21,11 +21,11 @@ public class PlaceOrderDaoImpl extends HibernateDaoSupport implements PlaceOrder
 		super.getHibernateTemplate().save(news);
 	}
 
-	public boolean dealPlaceorder(final String username, final String passworde, final String link,
+	public boolean dealPlaceorder(final String username, final String link,
 			final String title, final String author, final String description,
 			final String articlecontent, final String originlanguage,
 			final String objectlanguage, final String fromfield, 
-			final int wordcount, final String orderserialid)
+			final int wordcount, final String orderserialid, final float cost,final String filepath)
 	{
 		return (Boolean) super.getHibernateTemplate().execute(new 
 				HibernateCallback<Object>()
@@ -35,9 +35,9 @@ public class PlaceOrderDaoImpl extends HibernateDaoSupport implements PlaceOrder
 					SQLException
 			{
 				Connection conn = session.connection();
-				CallableStatement poc = conn.prepareCall("call dealPlaceOrder(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+				CallableStatement poc = conn.prepareCall("call dealPlaceOrder(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 				poc.setString(1, username);
-				poc.setString(2, passworde);
+				poc.setFloat(2, cost);
 				poc.setString(3, link);
 				poc.setString(4, title);
 				poc.setString(5, author);
@@ -48,7 +48,43 @@ public class PlaceOrderDaoImpl extends HibernateDaoSupport implements PlaceOrder
 				poc.setString(10, fromfield);
 				poc.setInt(11, wordcount);
 				poc.setString(12, orderserialid);
-				poc.setBoolean(13, false);
+				poc.setString(13, filepath);
+				poc.setBoolean(14, false);
+				poc.execute();
+				//conn.commit();//提交
+				//System.out.println(poc.);
+				if(poc.getBoolean("hasfinished"))
+					return true;
+				else
+					return false;
+			}
+		});
+	}
+
+	public boolean dealPlaceorder(final String username, final String uoriginlanguage,
+			final String uobjectlanguage, final String ufromfield, final int wordcount,
+			final float cost, final String orderId, final String fullpath,final String outpath)
+	{
+		return (Boolean) super.getHibernateTemplate().execute(new 
+				HibernateCallback<Object>()
+		{
+
+			public Object doInHibernate(Session session) throws HibernateException,
+					SQLException
+			{
+				Connection conn = session.connection();
+				CallableStatement poc = conn.prepareCall("call dealPlaceOrderByFile(?,?,?,?,?,?,?,?,?,?)");
+				poc.setString(1, username);
+				poc.setString(2, uoriginlanguage);
+				poc.setString(3, uobjectlanguage);
+				poc.setString(4, ufromfield);
+				poc.setInt(5, wordcount);
+				poc.setFloat(6, cost);
+				poc.setString(7, orderId);
+				poc.setString(8, fullpath);
+				poc.setString(9, outpath);
+				poc.setBoolean(10, false);
+				
 				poc.execute();
 				//conn.commit();//提交
 				//System.out.println(poc.);

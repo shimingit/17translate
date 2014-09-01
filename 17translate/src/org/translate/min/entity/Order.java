@@ -26,6 +26,7 @@ public class Order implements java.io.Serializable
 	private String status;
 	private boolean isPublic;
 	private Date finishedDate;
+	private String hasfile;
 	private Set clientComments = new HashSet(0);
 	private Set translationArranges = new HashSet(0);
 
@@ -48,7 +49,7 @@ public class Order implements java.io.Serializable
 	public Order(News news, ObjectNews objectNews, Client client,
 			Date orderDate, String objectLanguage, String anticipateTime,
 			float translationCost, String isPay, String orderSerialId,
-			String status, boolean isPublic, Date finishedDate,
+			String status, boolean isPublic, Date finishedDate, String hasfile,
 			Set clientComments, Set translationArranges)
 	{
 		this.news = news;
@@ -63,6 +64,7 @@ public class Order implements java.io.Serializable
 		this.status = status;
 		this.isPublic = isPublic;
 		this.finishedDate = finishedDate;
+		this.hasfile = hasfile;
 		this.clientComments = clientComments;
 		this.translationArranges = translationArranges;
 	}
@@ -197,6 +199,16 @@ public class Order implements java.io.Serializable
 	public void setFinishedDate(Date finishedDate)
 	{
 		this.finishedDate = finishedDate;
+	}
+
+	public String getHasfile()
+	{
+		return this.hasfile;
+	}
+
+	public void setHasfile(String hasfile)
+	{
+		this.hasfile = hasfile;
 	}
 
 	public Set getClientComments()

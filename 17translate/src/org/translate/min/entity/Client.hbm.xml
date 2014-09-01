@@ -21,7 +21,7 @@
             </column>
         </property>
         <property name="mailBox" type="string">
-            <column name="mailBox" length="30">
+            <column name="mailBox" length="100">
                 <comment>注册邮箱</comment>
             </column>
         </property>

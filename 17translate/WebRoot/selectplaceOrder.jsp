@@ -27,14 +27,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript">
 		$(document).ready(function()
 		{
-		
-			$("#allsubmit").click(function()
-			{
-				alert($("#articlefile").val());
-				return  false;
-			});
-		
-		
 			$(window).scroll(function() {
 			if ($(window).scrollTop() > 300) {
 				$('#jump li:eq(0)').fadeIn(800);
@@ -116,6 +108,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			    $("#domain").hide(); 
 				return false;
 			});
+			
+			$("#allsubmit").click(function()
+			{
+				var originlanguage = $("#originlanguage").val();
+				var objectlanguage = $("#objectlanguage").val();
+				var fromfield = $("#fromfield").val();
+				var filename = $("#articlefile").val();
+				
+				var postfix = filename.substr(filename.lastIndexOf(".") + 1);
+				
+				if((postfix.toLowerCase() != 'pdf') && (postfix.toLowerCase() != 'word') && (postfix.toLowerCase() != 'txt'))
+				{
+					alert("请上传word,text,pdf等格式的原稿！");
+					return false;
+				}
+				
+				$("#ufilename").val(filename);
+				$("#uoriginlanguage").val(originlanguage);
+				$("#uobjectlanguage").val(objectlanguage);
+				$("#ufromfield").val(fromfield);
+				
+				return true;
+			});
+			
+			$("#allreset").click(function()
+			{
+				$("#ye").vaulu("");
+				return true;
+			});
+			
+			
 		});
 	function showEWM(){
 			document.getElementById("EWM").style.display = 'block';
@@ -136,7 +159,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	
     	
     	<div class="divtwo" style="height:360px">
-    	<form enctype="multipart/form-data"  action="#"  method="post">
+    	<form enctype="multipart/form-data"  action="placeorderbyfile"  method="post">
     		<div class="two_part01">
 		    	<div class="articleinfo">
 		    		<b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
@@ -159,8 +182,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<p style="margin-top: 10px"> 
 										<span class="word" style="font-size:15px">请选择上传的文件:</span>
 										<input type="file" id="articlefile" name="articlefile" style="display: none;" onchange="ye.value=value">
-										<input name="ye" style="color: green;border: 1px solid green">
+										<input id="ye" name="ye" style="color: green;border: 1px solid green">
 										<input type="button" value="选择文件" onclick="articlefile.click()" style="border: 1px solid gray;background:rgb(220,220,220);width: 60px">
+										<input id="ufilename" name="ufilename" type="hidden" value="" />
+										<input id="uoriginlanguage" name="uoriginlanguage" type="hidden" value=""/>
+										<input id="uobjectlanguage" name="uobjectlanguage" type="hidden" value=""/>
+										<input id="ufromfield" name="ufromfield" type="hidden" value=""/>
 									</p>
 									<p style="margin-left: 137px;margin-top: 10px">
 										<span class="word">目前只支持word,txt,pdf等格式</span>

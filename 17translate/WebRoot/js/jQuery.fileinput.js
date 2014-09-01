@@ -9,6 +9,7 @@
 (function( $ ){
 	$.fn.customFileInput = function(){
 		//apply events and styles for file input element
+		
 		var fileInput = $(this)
 			.addClass('customfile-input') //add class for CSS
 			.mouseover(function(){ upload.addClass('customfile-hover'); })
@@ -16,6 +17,7 @@
 			.focus(function(){
 				upload.addClass('customfile-focus');
 				fileInput.data('val', fileInput.val());
+				
 			})
 			.blur(function(){
 				upload.removeClass('customfile-focus');
@@ -36,7 +38,9 @@
 			})
 			.bind('change',function(){
 				//get file name
+			
 				var fileName = $(this).val().split(/\\/).pop();
+			
 				//get file extension
 				var fileExt = 'customfile-ext-' + fileName.split('.').pop().toLowerCase();
 				//update the feedback

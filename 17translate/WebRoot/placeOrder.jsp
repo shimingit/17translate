@@ -24,6 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script> 
 	
 	
+	
 	<script type="text/javascript">
 		$(document).ready(function()
 		{
@@ -107,6 +108,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			    var value = $(this).attr("rel"); 
 			    $("#domain").hide(); 
 				return false;
+			});
+			
+			$("#allsubmit").click(function()
+			{
+				
+				var title = $("#title").val();
+				var wysiwyg = $("#wysiwyg").val();
+				var originlanguage = $("#originlanguage").val();
+				var objectlanguage = $("#objectlanguage").val();
+				var fromfield = $("#fromfield").val();
+				
+				if(title.length <= 0)
+				{
+					alert("文章标题不为空！");
+					return false;
+				}
+				if(wysiwyg.length <= 20)
+				{
+					alert("原文字数太少！");
+					return false;
+				}
+				
+				var flag = confirm("原文语言："+ originlanguage+",目标语言:"+objectlanguage+",来自领域:"+fromfield);
+				if(!flag) return false;	
+				return true;
+			});
+			
+			$("#allreset").click(function()
+			{
+				 var flag = confirm("你确定放弃所填写的信息？");
+				 if(flag)
+				 {
+				 	$("#wysiwyg").html("");
+				 	return true;
+				 }
+				 return false;
 			});
 		});
 	function showEWM(){

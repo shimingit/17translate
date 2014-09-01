@@ -221,7 +221,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<div style="text-align:center;padding:5px;">
 	        <a href="javascript:void(0)" onclick="$('#ff').submit();" id="btn-ok" class="easyui-linkbutton" icon="icon-save">保存</a>  
-	        <a href="javascript:void(0)" id="btn-cancel" class="easyui-linkbutton" icon="icon-cancel" onclick="$('#w').window('close');>取消</a> 
+	        <a href="javascript:void(0)" id="btn-cancel" class="easyui-linkbutton" icon="icon-cancel" onclick="$('#w').window('close');">取消</a> 
 	    </div> 
 	</div>
 	

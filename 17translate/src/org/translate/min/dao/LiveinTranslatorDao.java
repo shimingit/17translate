@@ -9,8 +9,9 @@ public interface LiveinTranslatorDao
 {
 	public List<LiveinTranslator> getTranslator(String username);
 	public List<LiveinTranslator> getTranslator(String username, String password);
-	public void addLiveinTranslator(LiveinTranslator translator);
+	public String addLiveinTranslator(LiveinTranslator translator);
 	public int getLiveinTotal();
 	public List<LiveinInfo> getTranslators(int start, int end,String key, String value);
 	public List<String> getFreeTranslators();
+	public String register(String name,String password,String account,String phone);
 }

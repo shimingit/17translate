@@ -90,6 +90,21 @@
                 <comment>入驻译员名字</comment>
             </column>
         </property>
+        <property name="hasLivein" type="string">
+            <column name="hasLivein" length="10">
+                <comment>是否入驻</comment>
+            </column>
+        </property>
+        <property name="hasregister" type="string">
+            <column name="hasregister" length="10">
+                <comment>是否实名认证</comment>
+            </column>
+        </property>
+        <property name="status" type="string">
+            <column name="status" length="10">
+                <comment>译员状态</comment>
+            </column>
+        </property>
         <set name="goodAtFields" inverse="true">
             <key>
                 <column name="translatorId" not-null="true">

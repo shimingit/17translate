@@ -44,10 +44,10 @@ public class WeixinUtil
 	    String url = menu_create_url.replace("ACCESS_TOKEN", accessToken);
 	    // 将菜单对象转换成json字符串  
 	    String jsonMenu = JSONObject.fromObject(menu).toString(); 
-	    
+	    System.out.println(jsonMenu.toString());
 	    // 调用接口创建菜单  
 	    JSONObject jsonObject = httpRequest(url, "POST", jsonMenu);  
-	    
+	    System.out.println(jsonObject.toString());
 	    if (null != jsonObject) {  
 	        if (0 != jsonObject.getInt("errcode")) {  
 	            result = jsonObject.getInt("errcode");  
@@ -62,7 +62,7 @@ public class WeixinUtil
 	
 	public static Menu getMenu()
 	{
-		CommonButton btn11 = new CommonButton();  
+		/*CommonButton btn11 = new CommonButton();  
         btn11.setName("天气预报");  
         btn11.setType("click");  
         btn11.setKey("11");  
@@ -110,37 +110,38 @@ public class WeixinUtil
         CommonButton btn31 = new CommonButton();  
         btn31.setName("Q友圈");  
         btn31.setType("click");  
-        btn31.setKey("31");  
+        btn31.setKey("31");*/  
   
-        CommonButton btn32 = new CommonButton();  
-        btn32.setName("电影排行榜");  
-        btn32.setType("click");  
-        btn32.setKey("32");  
+        ViewButton btn32 = new ViewButton();  
+        btn32.setName("我要翻译");  
+        btn32.setType("view");  
+        btn32.setUrl("http://toshimin.com/17translate/fanyi");  
   
         CommonButton btn33 = new CommonButton();  
-        btn33.setName("幽默笑话");  
+        btn33.setName("注意事项");  
         btn33.setType("click");  
         btn33.setKey("33");  
         
         ViewButton btn34 = new ViewButton();  
         btn34.setName("使用帮助");  
         btn34.setType("view");  
-        btn34.setUrl("http://liufeng.gotoip2.com/xiaoqrobot/help.jsp");  
+        btn34.setUrl("http://2.17translate.sinaapp.com/");  
   
-        ComplexButton mainBtn1 = new ComplexButton();  
-        mainBtn1.setName("生活助手");  
-        mainBtn1.setSub_button(new Button[] { btn11, btn12, btn13, btn14 });  
-  
-        ComplexButton mainBtn2 = new ComplexButton();  
-        mainBtn2.setName("休闲驿站");  
-        mainBtn2.setSub_button(new Button[] { btn21, btn22, btn23, btn24, btn25 });  
-  
-        ComplexButton mainBtn3 = new ComplexButton();  
-        mainBtn3.setName("更多体验");  
-        mainBtn3.setSub_button(new Button[] { btn31, btn32, btn33, btn34 });  
+//        ComplexButton mainBtn1 = new ComplexButton();  
+//        mainBtn1.setName("生活助手");  
+//        mainBtn1.setSub_button(new Button[] { btn11, btn12, btn13, btn14 });  
+//   
+//  
+//        ComplexButton mainBtn2 = new ComplexButton();  
+//        mainBtn2.setName("休闲驿站");  
+//        mainBtn2.setSub_button(new Button[] { btn21, btn22, btn23, btn24, btn25 });  
+//  
+//        ComplexButton mainBtn3 = new ComplexButton();  
+//        mainBtn3.setName("更多体验");  
+//        mainBtn3.setSub_button(new Button[] { btn31, btn32, btn33, btn34 });  
  
         Menu menu = new Menu();  
-        menu.setButton(new Button[] { mainBtn1, mainBtn2, mainBtn3 });  
+        menu.setButton(new Button[] { btn32, btn33, btn34 });  
   
         return menu;  
 	}

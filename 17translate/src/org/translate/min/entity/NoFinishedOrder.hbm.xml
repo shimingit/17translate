@@ -10,6 +10,9 @@
             <key-property name="orderId" type="integer">
                 <column name="orderId" />
             </key-property>
+            <key-property name="orderSerialId" type="string">
+                <column name="orderSerialId" length="20" />
+            </key-property>
             <key-property name="clientName" type="string">
                 <column name="clientName" length="30" />
             </key-property>
@@ -31,23 +34,14 @@
             <key-property name="translationCost" type="float">
                 <column name="translationCost" precision="12" scale="0" />
             </key-property>
-            <key-property name="title" type="string">
-                <column name="title" />
-            </key-property>
-            <key-property name="author" type="string">
-                <column name="author" length="20" />
-            </key-property>
             <key-property name="fromfield" type="string">
                 <column name="fromfield" length="30" />
             </key-property>
-            <key-property name="netlink" type="string">
-                <column name="netlink" />
+            <key-property name="hasfile" type="string">
+                <column name="hasfile" length="10" />
             </key-property>
-            <key-property name="description" type="string">
-                <column name="description" />
-            </key-property>
-            <key-property name="content" type="string">
-                <column name="content" />
+            <key-property name="storepath" type="string">
+                <column name="storepath" length="100" />
             </key-property>
         </composite-id>
     </class>

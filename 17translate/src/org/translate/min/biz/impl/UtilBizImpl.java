@@ -5,7 +5,10 @@ import java.util.List;
 import org.translate.min.biz.UtilBiz;
 import org.translate.min.dao.UtilDao;
 import org.translate.min.entity.Field;
+import org.translate.min.entity.FieldAllocate;
+import org.translate.min.entity.FieldAllocateId;
 import org.translate.min.entity.Language;
+import org.translate.min.entity.LiveinTranslator;
 
 public class UtilBizImpl implements UtilBiz
 {
@@ -51,6 +54,31 @@ public class UtilBizImpl implements UtilBiz
 	{
 		// TODO Auto-generated method stub
 		return utildao.checkManager(username, password);
+	}
+
+	public void addFieldAllocate(String username, int[] fieldids)
+	{
+		for(int id : fieldids)
+			utildao.addFieldAllocate(new FieldAllocate(new FieldAllocateId(username, id)));
+		
+	}
+
+	public List<String> getFieldAllocateResult()
+	{
+		// TODO Auto-generated method stub
+		return utildao.getFieldAllocateResult();
+	}
+
+	public List<String> getAreaTranslators(int fieldid)
+	{
+		// TODO Auto-generated method stub
+		return utildao.getAreaTranslators(fieldid);
+	}
+
+	public List<LiveinTranslator> getLiveinTranslator(String username)
+	{
+		// TODO Auto-generated method stub
+		return utildao.getLiveinTranslator(username);
 	}
 
 

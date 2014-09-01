@@ -66,6 +66,13 @@ public class LiveinTranslatorBizImpl implements LiveinTranslatorBiz
 		return ltld.getFreeTranslators();
 	}
 
+	public String register(String name, String password, String account,
+			String phone)
+	{
+		// TODO Auto-generated method stub
+		return ltld.register(name, password, account, phone);
+	}
+
 
 	
 	

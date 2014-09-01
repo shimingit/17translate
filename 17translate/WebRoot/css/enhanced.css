@@ -9,8 +9,8 @@ input#upload:hover { background: #eee; color: #111; border-color:#777; }
 
 .customfile {float:left; width: 400px; background: #DCDCDC; cursor: pointer; overflow: hidden; padding: 2px; border: 1px solid #444; -moz-border-radius:7px; -webkit-border-radius:7px; border-radius:7px;  position: relative; margin-left: 4px}
 .customfile-disabled { opacity: .5; filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0); cursor: default;  }
-.customfile-feedback { display: block; margin: 1px 1px 1px 5px; font-size: 1.2em; color: #fff; font-style: italic; padding: .3em .6em; }
-.customfile-feedback-populated { color: #fff; font-style: normal; font-weight: bold; padding-left: 20px; background: url(../images/icon-generic.gif) left 4px no-repeat; }
+.customfile-feedback { display: block; margin: 1px 1px 1px 5px; font-size: 1.2em; color: rgb(14, 11, 11); font-style: italic; padding: .3em .6em; }
+.customfile-feedback-populated { color: rgb(27, 19, 19); font-style: normal; font-weight: bold; padding-left: 20px; background: url(../images/icon-generic.gif) left 4px no-repeat; }
 .customfile-button { border: 1px solid #999; background: #333 url(../images/bg-btn.png) bottom repeat-x;  color: #696969; font-weight: bold; float: right; width: 50px; padding: .3em .6em;  text-align: center; text-decoration: none;  font-size: 1.2em; -moz-border-radius:5px; -webkit-border-radius:5px; border-radius:5px;  }
 .customfile-hover .customfile-button, .customfile-focus .customfile-button  { color:#111; background: #aaa url(../images/bg-btn.png) bottom repeat-x; border-color:#aaa;  padding: .3em .6em;  }
 .customfile-focus .customfile-button { outline: 1px dotted #ccc;  }
