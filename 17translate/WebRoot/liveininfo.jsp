@@ -60,7 +60,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					$('#w').window('setTitle','实名认证');
 			  		$('#w').window('open');
 					$('#ff').form('clear');
-					$('#ff').attr("action","addNews");
+					$('#ff').attr("action","translatorrolein");
 				}
 			);
 			
@@ -69,8 +69,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				var inputcount = $("input[name='zhengjian']").size()+1;
 				var idname= 'zhengjian' + inputcount;
 				var trname = 'tr' + inputcount;
-				var trelement = "<tr id='"+trname+"'><td></td><td>" +'<input type="file" id='+idname+' name="zhengjian" style="display: none;" onchange="ye2.value=value">'+
-									'&nbsp;<input name="ye2" style="color: green;height: 25px"><input type="button" value="选择图片" onclick="'+idname+'.click()" style="border: 1px solid gray;background:rgb(220,220,220);width: 60px">'+
+				var idfm = 'ye' + inputcount;
+				var trelement = "<tr id='"+trname+"'><td></td><td>" +'<input type="file" id='+idname+' name="zhengjian" style="display: none;" onchange="'+ idfm +'.value=value">'+
+									'&nbsp;<input id="'+ idfm +'" name="zhengjianfm" style="color: green;height: 25px"><input type="button" value="选择图片" onclick="'+idname+'.click()" style="border: 1px solid gray;background:rgb(220,220,220);width: 60px">'+
 									'&nbsp;<input type="button" value="删除" onclick="removetr(\''+trname+'\');" style="border: 1px solid gray;background:rgb(220,220,220);width: 60px">'
 													+
 									"</td></tr>";
@@ -221,11 +222,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 		<div class="infoitem">
 				 			<span class="word" style="margin-left:10px;float: left;color: gray;font-size: 12px;">完成翻译任务：</span>
 				 			&nbsp;&nbsp;&nbsp;&nbsp;
-				 			<span class="word" style="margin-left:10px;float: left;color: gray;font-size: 12px;">20 次</span>
+				 			<span class="word" style="margin-left:10px;float: left;color: gray;font-size: 12px;"><%=myinfo.getFinishedamount() %> 次</span>
+				 		</div>
+				 		<div class="infoitem">
+				 			<span class="word" style="margin-left:10px;float: left;color: gray;font-size: 12px;">我的积分值：</span>
+				 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				 			<span class="word" style="margin-left:20px;float: left;color: gray;font-size: 12px;"><%=myinfo.getLtranslationCoin() %></span>
+				 		</div>
+				 		<div class="infoitem">
+				 			<span class="word" style="margin-left:10px;float: left;color: gray;font-size: 12px;">我的信誉值：</span>
+				 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				 			<span class="word" style="margin-left:20px;float: left;color: gray;font-size: 12px;"><%=myinfo.getCreditvalue() %></span>
 				 		</div>
 				 		<div class="infoitem">
 				 			<span class="word" style="margin-left:10px;float: left;color: gray;font-size: 12px;">我的粉丝：</span>
-				 			<span class="word" style="margin-left:50px;float: left;color: gray;font-size: 12px;"><%=myinfo.getLfans() %> 个</span>
+				 			<span class="word" style="margin-left:34px;float: left;color: gray;font-size: 12px;"><%=myinfo.getLfans() %> 个</span>
 				 		</div>
 				 	</div>
 				 	<div class="detialinfo" style="border-bottom: 1px dotted rgb(210,210,210);">
@@ -293,8 +304,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<tr>
 	                    <td style="width: 80px;height:30px">身份证正面图</td>
 	                    <td>
-	                    	<input type="file" id="certificate" name="certificate" style="display: none;" onchange="ye.value=value">
-							<input name="ye" style="color: green;height: 25px">
+	                    	<input type="file" id="certificate" name="certificate" style="display: none;" onchange="certificatefm.value=value">
+							<input name="certificatefm" style="color: green;height: 25px">
 							<input type="button" value="选择文件" onclick="certificate.click()" style="border: 1px solid gray;background:rgb(220,220,220);width: 60px">
 	                    </td>
 	                </tr>
@@ -308,18 +319,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                    <td style="width: 80px;height:30px">证书照片</td>
 	                    <td>
 	                    	<input type="file" id="zhengjian1" name="zhengjian" style="display: none;" onchange="ye1.value=value">
-							<input name="ye1" style="color: green;height: 25px">
-							<input type="button" value="选择文件" onclick="zhengjian1.click()" style="border: 1px solid gray;background:rgb(220,220,220);width: 60px">
+							<input id="ye1" name="zhengjianfm" style="color: green;height: 25px">
+							<input type="button" value="选择图片" onclick="zhengjian1.click()" style="border: 1px solid gray;background:rgb(220,220,220);width: 60px">
 							<input id="addimg" type="button" value="继续上传" style="border: 1px solid gray;background:rgb(220,220,220);width: 60px">
 	                    </td>
 	                </tr>
 	                <tr>
 	                    <td style="width: 80px;height:30px" >电话号码</td>
-	                    <td><input type="text" style="width:230px;height: 25px" id="realname" name="realname"/></td>
+	                    <td><input type="text" style="width:230px;height: 25px" id="phonenumber" name="phonenumber"/></td>
 	                </tr>
 	                <tr>
 	                    <td style="width: 80px;height:30px" >验证信息</td>
-	                    <td><input type="text" style="width:98px;height: 25px" id="realname" name="realname"/><input id="addimg" type="button" value="获取验证码" style="border: 1px solid gray;background:rgb(220,220,220);width: 72px"></td>
+	                    <td><input type="text" style="width:98px;height: 25px" id="ensureinfo" name="ensureinfo"/><input id="addimg" type="button" value="获取验证码" style="border: 1px solid gray;background:rgb(220,220,220);width: 72px"></td>
 	                </tr>
 			</table>
 			</form>

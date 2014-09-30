@@ -25,7 +25,7 @@ public class PlaceOrderDaoImpl extends HibernateDaoSupport implements PlaceOrder
 			final String title, final String author, final String description,
 			final String articlecontent, final String originlanguage,
 			final String objectlanguage, final String fromfield, 
-			final int wordcount, final String orderserialid, final float cost,final String filepath)
+			final int wordcount, final String orderserialid, final float cost,final String latestdate,final String filepath)
 	{
 		return (Boolean) super.getHibernateTemplate().execute(new 
 				HibernateCallback<Object>()
@@ -49,7 +49,8 @@ public class PlaceOrderDaoImpl extends HibernateDaoSupport implements PlaceOrder
 				poc.setInt(11, wordcount);
 				poc.setString(12, orderserialid);
 				poc.setString(13, filepath);
-				poc.setBoolean(14, false);
+				poc.setString(14, latestdate);
+				poc.setBoolean(15, false);
 				poc.execute();
 				//conn.commit();//提交
 				//System.out.println(poc.);
@@ -63,7 +64,7 @@ public class PlaceOrderDaoImpl extends HibernateDaoSupport implements PlaceOrder
 
 	public boolean dealPlaceorder(final String username, final String uoriginlanguage,
 			final String uobjectlanguage, final String ufromfield, final int wordcount,
-			final float cost, final String orderId, final String fullpath,final String outpath)
+			final float cost, final String latestdate, final String orderId, final String fullpath,final String outpath)
 	{
 		return (Boolean) super.getHibernateTemplate().execute(new 
 				HibernateCallback<Object>()
@@ -73,7 +74,7 @@ public class PlaceOrderDaoImpl extends HibernateDaoSupport implements PlaceOrder
 					SQLException
 			{
 				Connection conn = session.connection();
-				CallableStatement poc = conn.prepareCall("call dealPlaceOrderByFile(?,?,?,?,?,?,?,?,?,?)");
+				CallableStatement poc = conn.prepareCall("call dealPlaceOrderByFile(?,?,?,?,?,?,?,?,?,?,?)");
 				poc.setString(1, username);
 				poc.setString(2, uoriginlanguage);
 				poc.setString(3, uobjectlanguage);
@@ -83,7 +84,8 @@ public class PlaceOrderDaoImpl extends HibernateDaoSupport implements PlaceOrder
 				poc.setString(7, orderId);
 				poc.setString(8, fullpath);
 				poc.setString(9, outpath);
-				poc.setBoolean(10, false);
+				poc.setString(10, latestdate);
+				poc.setBoolean(11, false);
 				
 				poc.execute();
 				//conn.commit();//提交

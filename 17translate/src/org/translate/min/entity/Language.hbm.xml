@@ -29,7 +29,7 @@
                     <comment>原文语言，外键</comment>
                 </column>
             </key>
-            <one-to-many class="org.translate.min.entity.News"/>
+            <one-to-many  class="org.translate.min.entity.News"/>
         </set>
     </class>
 </hibernate-mapping>

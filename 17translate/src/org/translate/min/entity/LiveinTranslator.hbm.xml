@@ -105,6 +105,16 @@
                 <comment>译员状态</comment>
             </column>
         </property>
+        <property name="creditvalue" type="integer">
+            <column name="creditvalue">
+                <comment>译员信誉值</comment>
+            </column>
+        </property>
+        <property name="finishedamount" type="integer">
+            <column name="finishedamount">
+                <comment>已完成翻译文章数量</comment>
+            </column>
+        </property>
         <set name="goodAtFields" inverse="true">
             <key>
                 <column name="translatorId" not-null="true">

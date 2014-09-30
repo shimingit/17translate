@@ -24,6 +24,7 @@ public class PlaceOrderAction extends ActionSupport implements RequestAware,
 	private String objectlanguage;
 	private String fromfield;
 	private String orderId;
+	private String latestdate;
 	private PlaceOrderBiz pob;
 	private int wordcount;
 	private float cost;
@@ -47,7 +48,7 @@ public class PlaceOrderAction extends ActionSupport implements RequestAware,
 		//更新数据库
 		String outpath = directory + "/out" + orderId+".pdf";
 		boolean hasfinished = pob.dealPlaceorder(username, link, title, author, description, articlecontent, originlanguage,
-				objectlanguage, fromfield, wordcount,orderId,cost,outpath);
+				objectlanguage, fromfield, wordcount,orderId,cost,latestdate,outpath);
 		
 		
 		return SUCCESS;
@@ -186,6 +187,14 @@ public class PlaceOrderAction extends ActionSupport implements RequestAware,
 	public void setOrderId(String orderId)
 	{
 		this.orderId = orderId;
+	}
+	public String getLatestdate()
+	{
+		return latestdate;
+	}
+	public void setLatestdate(String latestdate)
+	{
+		this.latestdate = latestdate;
 	}
 	
 }

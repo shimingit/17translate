@@ -56,7 +56,7 @@
             </column>
         </property>
         <property name="status" type="string">
-            <column name="status" length="20" not-null="true">
+            <column name="status" length="20">
                 <comment>翻译状态</comment>
             </column>
         </property>
@@ -65,14 +65,19 @@
                 <comment>是否作为在线任务</comment>
             </column>
         </property>
-        <property name="finishedDate" type="date">
-            <column name="finishedDate" length="10">
+        <property name="finishedDate" type="timestamp">
+            <column name="finishedDate" length="19">
                 <comment>订单完成时间</comment>
             </column>
         </property>
         <property name="hasfile" type="string">
             <column name="hasfile" length="10">
                 <comment>提交原稿方式</comment>
+            </column>
+        </property>
+        <property name="latestdate" type="timestamp">
+            <column name="latestdate" length="19">
+                <comment>最迟交付时间</comment>
             </column>
         </property>
         <set name="clientComments" inverse="true">

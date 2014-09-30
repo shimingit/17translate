@@ -80,6 +80,9 @@
 				fanyi
 			</result>
 		</action>
+		<!-- 译员实名认证 -->
+		<action name="translatorrolein" class="translatorRoleInAction" method="dealrolein">
+		</action>
 		<!-- 处理信息 -->
 		<action name="myclientnotice" class="myInfoAction" method="clientMyNotice">
 			<result name="success">

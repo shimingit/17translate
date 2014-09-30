@@ -26,8 +26,9 @@ public class MyPictureAction extends ActionSupport implements
 	public void getMyPhoto() throws Exception
 	{
 		response = ServletActionContext.getResponse();
-		if(username == null)
-			username = (String)request.getSession().getAttribute("username");
+		System.out.println("pic_username:" + username);
+		//if(username == null)
+		username = (String)request.getSession().getAttribute("username");
 		
 		String imgpath = myinfobiz.getMyPicture(username);
 		

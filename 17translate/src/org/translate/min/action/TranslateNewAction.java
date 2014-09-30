@@ -24,8 +24,9 @@ public class TranslateNewAction extends ActionSupport implements RequestAware,Se
 		List<News> news = redb.getNewsById(newsid);
 		if(news.size() > 0)
 		{
+			//News n = news.get(0);
 			session.put("thisnews", news.get(0));
-			System.out.println(news.get(0).getLanguage().getLanguageName());
+		//	System.out.println(news.get(0).getLanguage().getLanguageName());
 		    return SUCCESS;
 		}
 		return ERROR;

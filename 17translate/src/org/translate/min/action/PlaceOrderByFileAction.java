@@ -30,6 +30,7 @@ public class PlaceOrderByFileAction extends ActionSupport implements ServletRequ
 	private HttpServletRequest request;
 	private PlaceOrderBiz pob;
 	private File articlefile;
+	private String latestdate;
 	
 	private int wordcount;
 	private float cost;
@@ -39,9 +40,8 @@ public class PlaceOrderByFileAction extends ActionSupport implements ServletRequ
 	public String dealPlaceOrder()
 	{
 		String username = (String)session.get("username");
-		
-		//System.out.println(username+">"+ufilename+">"+uoriginlanguage+">"+uobjectlanguage+">"+ufromfield+">"+articlefile.getName());
-		
+//		System.out.println(username+">"+ufilename+">"+uoriginlanguage+">"+uobjectlanguage+">"+ufromfield+">"+articlefile.getName());
+		System.out.println(latestdate);
 		orderId = ArticleUtil.getOrderIdByUUId();
 		
 	//	pob.dealPlaceorder(username, uoriginlanguage, uobjectlanguage, ufromfield, wordcount, cost, orderId,);
@@ -90,7 +90,7 @@ public class PlaceOrderByFileAction extends ActionSupport implements ServletRequ
 			//System.out.println("content:"+ contentbuffer.toString()+" wordcount:" + wordcount+" cost:"+cost);
 			
 			
-			boolean flag = pob.dealPlaceorder(username, uoriginlanguage, uobjectlanguage, ufromfield, wordcount, cost, orderId, fullpath,outpath);
+			boolean flag = pob.dealPlaceorder(username, uoriginlanguage, uobjectlanguage, ufromfield, wordcount, cost,latestdate, orderId, fullpath,outpath);
 			
 		} catch (Exception e)
 		{
@@ -199,6 +199,16 @@ public class PlaceOrderByFileAction extends ActionSupport implements ServletRequ
 	public void setOrderId(String orderId)
 	{
 		this.orderId = orderId;
+	}
+
+	public String getLatestdate()
+	{
+		return latestdate;
+	}
+
+	public void setLatestdate(String latestdate)
+	{
+		this.latestdate = latestdate;
 	}
 	
 	

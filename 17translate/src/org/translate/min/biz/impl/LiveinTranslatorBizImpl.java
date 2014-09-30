@@ -73,8 +73,9 @@ public class LiveinTranslatorBizImpl implements LiveinTranslatorBiz
 		return ltld.register(name, password, account, phone);
 	}
 
-
-	
-	
-
+	public boolean addImgPath(String username, String imgpath, String imgtype)
+	{
+		// TODO Auto-generated method stub
+		return ltld.addImgPath(username, imgpath, imgtype);
+	}
 }

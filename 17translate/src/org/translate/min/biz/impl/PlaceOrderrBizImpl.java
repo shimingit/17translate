@@ -12,10 +12,10 @@ public class PlaceOrderrBizImpl implements PlaceOrderBiz
 	public boolean dealPlaceorder(String username, String link,
 			String title, String author, String description,
 			String articlecontent, String originlanguage,
-			String objectlanguage, String fromfield, int wordcount, String orderserialid,float cost,String filepath)
+			String objectlanguage, String fromfield, int wordcount, String orderserialid,float cost,String latestdate,String filepath)
 	{
 		return pod.dealPlaceorder(username,link, title, author, description, 
-				articlecontent, originlanguage, objectlanguage, fromfield, wordcount,orderserialid,cost,filepath);
+				articlecontent, originlanguage, objectlanguage, fromfield, wordcount,orderserialid,cost,latestdate,filepath);
 	}
 	public void addNews(News news)
 	{
@@ -33,11 +33,11 @@ public class PlaceOrderrBizImpl implements PlaceOrderBiz
 	}
 	public boolean dealPlaceorder(String username, String uoriginlanguage,
 			String uobjectlanguage, String ufromfield, int wordcount,
-			float cost, String orderId, String fullpath,String outpath)
+			float cost, String latestdate, String orderId, String fullpath,String outpath)
 	{
 		// TODO Auto-generated method stub
 		return pod.dealPlaceorder(username, uoriginlanguage, uobjectlanguage, 
-				ufromfield, wordcount, cost, orderId, fullpath,outpath);
+				ufromfield, wordcount, cost, latestdate, orderId, fullpath,outpath);
 	}
 
 	

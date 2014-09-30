@@ -199,5 +199,29 @@ public class LiveinTranslateDaoImpl extends HibernateDaoSupport implements Livei
 		});
 	}
 
+	public boolean addImgPath(final String username, final String imgpath, final String imgtype)
+	{
+		return (Boolean) super.getHibernateTemplate().execute(new 
+				HibernateCallback<Object>()
+		{
+
+			public Object doInHibernate(Session session) throws HibernateException,
+					SQLException
+			{
+				Connection conn = session.connection();
+				CallableStatement poc = conn.prepareCall("call addimgpath(?,?,?,?)");
+				poc.setString(1, username);
+				poc.setString(2, imgpath);
+				poc.setString(3, imgtype);
+				poc.setString(4, "false");
+				poc.execute();
+				//conn.commit();//Ã·Ωª
+				
+				return poc.getBoolean("isaddok");
+				
+			}
+		});
+	}
+
 
 }

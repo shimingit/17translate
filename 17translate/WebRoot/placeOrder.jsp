@@ -21,7 +21,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 	<link  rel="stylesheet" type="text/css" href="css/xuanfustyle.css">
 	<link  rel="stylesheet" type="text/css" href="css/placeOrder.css">
+	<link  rel="stylesheet" type="text/css" href="css/jquery.simple-dtpicker.css">
+	
 	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script> 
+	<script type="text/javascript" src="js/jquery.simple-dtpicker.js"></script> 
 	
 	
 	
@@ -255,6 +258,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								        <li><a href="#" rel="5">娱乐生活</a></li> 
 								        <li><a href="#" rel="5">学生论文</a></li> 
 								    </ul> 
+							</div> 
+						
+						</div>
+						<div class="laclass">
+							<div class="min"><span class="word" style="font-size: 14px">最迟交付时间:</span></div>
+							<div class="dropdown"> 
+							    <input type="text" name="latestdate" value="" style="width:180px">
+									<script type="text/javascript">
+										$(function(){
+											$('*[name=latestdate]').appendDtpicker();
+										});
+									</script>
 							</div> 
 						
 						</div>

@@ -86,6 +86,9 @@
 				<value>org/translate/min/entity/MyLabel.hbm.xml</value>
 				<value>
 					org/translate/min/entity/FieldAllocate.hbm.xml
+				</value>
+				<value>
+					org/translate/min/entity/ImgRepository.hbm.xml
 				</value></list>
 		</property></bean>
 	
@@ -224,6 +227,9 @@
 	</bean>
 	<bean id="joinusclubAction" class="org.translate.min.action.JoinusClubAction">
 		<property name="ubz" ref="utilBiz"/>
+		<property name="ltlb" ref="liveinTranslatorBiz"/>
+	</bean>
+	<bean id="translatorRoleInAction" class="org.translate.min.action.TranslatorRoleInAction">
 		<property name="ltlb" ref="liveinTranslatorBiz"/>
 	</bean>
 	

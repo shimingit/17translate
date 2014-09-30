@@ -14,4 +14,5 @@ public interface LiveinTranslatorBiz
 	public int getLiveinTotal();
 	public List<String> getFreeTranslators();
 	public String register(String name,String password,String account,String phone);
+	public boolean addImgPath(String username, String imgpath, String imgtype);
 }

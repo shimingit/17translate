@@ -33,6 +33,8 @@ public class LiveinTranslator implements java.io.Serializable
 	private String hasLivein;
 	private String hasregister;
 	private String status;
+	private Integer creditvalue;
+	private Integer finishedamount;
 	private Set goodAtFields = new HashSet(0);
 	private Set goodAtLanguages = new HashSet(0);
 	private Set translationArranges = new HashSet(0);
@@ -70,7 +72,8 @@ public class LiveinTranslator implements java.io.Serializable
 			String qualifyDescription, String resumeName, Date liveinDate,
 			float liveinSpan, String translationLevel, String lrealName,
 			String hasLivein, String hasregister, String status,
-			Set goodAtFields, Set goodAtLanguages, Set translationArranges)
+			Integer creditvalue, Integer finishedamount, Set goodAtFields,
+			Set goodAtLanguages, Set translationArranges)
 	{
 		this.luserName = luserName;
 		this.lpassword = lpassword;
@@ -91,6 +94,8 @@ public class LiveinTranslator implements java.io.Serializable
 		this.hasLivein = hasLivein;
 		this.hasregister = hasregister;
 		this.status = status;
+		this.creditvalue = creditvalue;
+		this.finishedamount = finishedamount;
 		this.goodAtFields = goodAtFields;
 		this.goodAtLanguages = goodAtLanguages;
 		this.translationArranges = translationArranges;
@@ -296,6 +301,26 @@ public class LiveinTranslator implements java.io.Serializable
 	public void setStatus(String status)
 	{
 		this.status = status;
+	}
+
+	public Integer getCreditvalue()
+	{
+		return this.creditvalue;
+	}
+
+	public void setCreditvalue(Integer creditvalue)
+	{
+		this.creditvalue = creditvalue;
+	}
+
+	public Integer getFinishedamount()
+	{
+		return this.finishedamount;
+	}
+
+	public void setFinishedamount(Integer finishedamount)
+	{
+		this.finishedamount = finishedamount;
 	}
 
 	public Set getGoodAtFields()

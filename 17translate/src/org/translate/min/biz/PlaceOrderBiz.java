@@ -10,9 +10,9 @@ public interface PlaceOrderBiz
 			String title, String author, String description,
 			String articlecontent, String originlanguage,
 			String objectlanguage, String fromfield,
-			int wordcount, String orderserialid,float cost,String filepath);
+			int wordcount, String orderserialid,float cost,String latestdate,String filepath);
 	public void addNews(News news);
 	public boolean dealPlaceorder(String username, String uoriginlanguage,
 			String uobjectlanguage, String ufromfield, int wordcount,
-			float cost, String orderId, String fullpath,String outpath);
+			float cost, String latestdate, String orderId, String fullpath,String outpath);
 }
