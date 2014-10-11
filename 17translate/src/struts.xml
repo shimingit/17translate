@@ -136,8 +136,11 @@
 		<!-- 处理后台入驻译员的信息 -->
 		<action name="getltranslatorinfo" class="getLtranslatorInfoAction" method="getLTranslatorInfo">
 		</action>
+		<action name="getidentifyrequest" class="getIdentifyRequestAction" method="getIdentifyRequest">
+		</action>
 		<action name="getfreetranslators" class="getLtranslatorInfoAction" method="getFreeTranslators">
 		</action>
+		
 	</package>
 	
 	
@@ -175,6 +178,15 @@
 			<result type="json"></result>
 		</action>
 		
+		<action name="getidentifyimgpath" class="getIdentifyImgPathAction" method="getIdentifyImgPath">
+			<result type="json"></result>
+		</action>
+		<action name="passidentifyrequest" class="passIdentifyRequestAction" method="passIdentifyRequest">
+			<result type="json"></result>
+		</action>
+		<action name="bidrequest" class="bidRequestAction" method="bidRequest">
+			<result type="json"></result>
+		</action>
 		
     </package>  
 </struts>    

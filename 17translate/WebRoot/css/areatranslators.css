@@ -21,7 +21,7 @@
 	font-weight: normal;
 	padding-left: 4px;
 }
-.translator a:HOVER,.translator a:VISITED{
+.translator a:HOVER,.translator a:VISITED,#lusername a:HOVER,#lusername a:VISITED{
 	color: gray;
 	text-decoration: none;
 }

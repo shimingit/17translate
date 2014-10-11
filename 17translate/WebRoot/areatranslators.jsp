@@ -137,7 +137,7 @@ function hideEWM(){
 					
 					
 				<div style="width:100%;height:712px;text-align: left">
-				
+					<table width="100%" cellspacing="1" cellpadding="2" border="0" align="center" class="word1" style="text-align: left;margin-left: 4px">
 					
 						<% 
 							for(int i = newsindex; (i < newsindex + pageNum) && i < areatranslators.size(); i++ )
@@ -151,31 +151,226 @@ function hideEWM(){
 								String status = params[4];
 								String imgpath = basePath + "imgrepository/" + username +  "/" + username + ".jpg";
 						%>
-					<div class="translator">
-						
 					
-						
-						 <div id="trans1">
-							<div style="float:left"><a href="translatordetailinfo?username='<%=username %>'"><img src='<%=imgpath%>'></a></div>
-							<div style="float:left">
-								<p><a href="translatordetailinfo?username=<%=username %>" style="font-size: 15px;font-weight: bold;margin-left: 10PX"><%=username %></a></p>
-								<p>
-									 <input class="button" type="submit" value="找TA翻译" style="padding: 6px">
-								</p>
-							</div>
-						</div>
-						
-						<div id="trans2">
-							 <p>已完成翻译文章： <a href="#" style="color:blue"><%=finishednewsnum %></a>  篇</p>
-							 <p>Ta的评论： <a href="#" style="color:blue"><%=commentnum %></a> 条</p>
-							 <p>目前状态： <%=status %></p>
-							 <p>粉丝数： <%=fans %> 个</p>
-						</div>
-					</div>
 					
 					<% 
 						}
 					%>
+						
+						<tr style="background: rgba(242, 242, 242, 1);height: 32px">
+							<th style="width:40%">服务</th>
+							<th style="width:15%">价格</th>
+							<th style="width:15%">Ta的评价</th>
+							<th style="width:14%">保障</th>
+							<th style="width:16%;">操作</th>
+						</tr>
+						<tr style="height:8px"></tr>
+						<tr style="border-bottom: 1px solid rgba(233, 230, 230, 1);">
+							<td>
+								<div style="float: left;width:36%;height:100px">
+									<img id="timg" src="" style="width:100%;height:100%">
+								</div>
+								<div style="float: left;width:60%;height:100px;margin-left: 4px;font-weight: normal;">
+									<p id="lusername"  style="line-height: 20px">用户名：<a style="cursor: pointer;color:green;font-weight: bold">小石头</a></p>
+									<p id="fanscount" style="line-height:20px">粉丝数：<span style="color:green">98</span> 个</p>
+									<p id="finishednewsnum" style="line-height:20px">已完成翻译：<span style="color:green">2</span> 次</p>
+									<p id="tstatus" style="line-height:20px">当前状态：空闲 </p>
+									<p id="connectme" style="line-height:20px"><a href="" style="color:blue">Ta的联系方式</a></p>
+								</div>
+							</td>
+							<td style="vertical-align: top;">
+								￥<span style="color:red;font-size: 18px">50.00</span>
+							</td>
+							<td style="vertical-align: top">
+								<span style="font-weight: normal;"><a href="" style="color:green;font-size: 16px">32</a>条评论</span>
+							</td>
+							<td style="vertical-align: top">
+								<div style="width:100%;height:20px;">
+									<span style="font-weight: normal;line-height: 24px"><img src="images/bao.jpg" style="width:18px;height:20px">按时交稿</span>
+								</div>
+								<div style="width:100%;height:20px;">
+									<span style="font-weight: normal;line-height: 24px"><img src="images/bao.jpg" style="width:18px;height:20px">保证原创</span>
+								</div>
+								<div style="width:100%;height:20px;">
+									<span style="font-weight: normal;line-height: 24px"><img src="images/bao.jpg" style="width:18px;height:20px">免费修改</span>
+								</div>
+								<div style="width:100%;height:20px;">
+									<span style="font-weight: normal;line-height: 24px"><img src="images/bao.jpg" style="width:18px;height:20px">物归原主</span>
+								</div>
+							</td>
+							<td style="vertical-align: top">
+								 <input class="button" type="submit" value="详细信息" style="padding: 6px;font-weight: normal;" >
+								 <input class="button" type="submit" value="找TA翻译" style="padding: 6px;font-weight: normal;color: rgba(136, 7, 144, 1)">
+							</td>
+						</tr>
+						
+						<tr style="height:24px"></tr>
+					
+						<tr style="border-bottom: 1px solid rgba(233, 230, 230, 1);">
+							<td>
+								<div style="float: left;width:36%;height:100px">
+									<img id="timg" src="" style="width:100%;height:100%">
+								</div>
+								<div style="float: left;width:60%;height:100px;margin-left: 4px;font-weight: normal;">
+									<p id="lusername"  style="line-height: 20px">用户名：<a style="cursor: pointer;color:green;font-weight: bold">小石头</a></p>
+									<p id="fanscount" style="line-height:20px">粉丝数：<span style="color:green">98</span> 个</p>
+									<p id="finishednewsnum" style="line-height:20px">已完成翻译：<span style="color:green">2</span> 次</p>
+									<p id="tstatus" style="line-height:20px">当前状态：空闲 </p>
+									<p id="connectme" style="line-height:20px"><a href="" style="color:blue">Ta的联系方式</a></p>
+								</div>
+							</td>
+							<td style="vertical-align: top;">
+								￥<span style="color:red;font-size: 18px">50.00</span>
+							</td>
+							<td style="vertical-align: top">
+								<span style="font-weight: normal;"><a href="" style="color:green;font-size: 16px">32</a>条评论</span>
+							</td>
+							<td style="vertical-align: top">
+								<div style="width:100%;height:20px;">
+									<span style="font-weight: normal;line-height: 24px"><img src="images/bao.jpg" style="width:18px;height:20px">按时交稿</span>
+								</div>
+								<div style="width:100%;height:20px;">
+									<span style="font-weight: normal;line-height: 24px"><img src="images/bao.jpg" style="width:18px;height:20px">保证原创</span>
+								</div>
+								<div style="width:100%;height:20px;">
+									<span style="font-weight: normal;line-height: 24px"><img src="images/bao.jpg" style="width:18px;height:20px">免费修改</span>
+								</div>
+								<div style="width:100%;height:20px;">
+									<span style="font-weight: normal;line-height: 24px"><img src="images/bao.jpg" style="width:18px;height:20px">物归原主</span>
+								</div>
+							</td>
+							<td style="vertical-align: top">
+								 <input class="button" type="submit" value="详细信息" style="padding: 6px;font-weight: normal;" >
+								 <input class="button" type="submit" value="找TA翻译" style="padding: 6px;font-weight: normal;color: rgba(136, 7, 144, 1)">
+							</td>
+						</tr>
+						<tr style="height:24px"></tr>
+					
+						<tr style="border-bottom: 1px solid rgba(233, 230, 230, 1);">
+							<td>
+								<div style="float: left;width:36%;height:100px">
+									<img id="timg" src="" style="width:100%;height:100%">
+								</div>
+								<div style="float: left;width:60%;height:100px;margin-left: 4px;font-weight: normal;">
+									<p id="lusername"  style="line-height: 20px">用户名：<a style="cursor: pointer;color:green;font-weight: bold">小石头</a></p>
+									<p id="fanscount" style="line-height:20px">粉丝数：<span style="color:green">98</span> 个</p>
+									<p id="finishednewsnum" style="line-height:20px">已完成翻译：<span style="color:green">2</span> 次</p>
+									<p id="tstatus" style="line-height:20px">当前状态：空闲 </p>
+									<p id="connectme" style="line-height:20px"><a href="" style="color:blue">Ta的联系方式</a></p>
+								</div>
+							</td>
+							<td style="vertical-align: top;">
+								￥<span style="color:red;font-size: 18px">50.00</span>
+							</td>
+							<td style="vertical-align: top">
+								<span style="font-weight: normal;"><a href="" style="color:green;font-size: 16px">32</a>条评论</span>
+							</td>
+							<td style="vertical-align: top">
+								<div style="width:100%;height:20px;">
+									<span style="font-weight: normal;line-height: 24px"><img src="images/bao.jpg" style="width:18px;height:20px">按时交稿</span>
+								</div>
+								<div style="width:100%;height:20px;">
+									<span style="font-weight: normal;line-height: 24px"><img src="images/bao.jpg" style="width:18px;height:20px">保证原创</span>
+								</div>
+								<div style="width:100%;height:20px;">
+									<span style="font-weight: normal;line-height: 24px"><img src="images/bao.jpg" style="width:18px;height:20px">免费修改</span>
+								</div>
+								<div style="width:100%;height:20px;">
+									<span style="font-weight: normal;line-height: 24px"><img src="images/bao.jpg" style="width:18px;height:20px">物归原主</span>
+								</div>
+							</td>
+							<td style="vertical-align: top">
+								 <input class="button" type="submit" value="详细信息" style="padding: 6px;font-weight: normal;" >
+								 <input class="button" type="submit" value="找TA翻译" style="padding: 6px;font-weight: normal;color: rgba(136, 7, 144, 1)">
+							</td>
+						</tr>
+						<tr style="height:24px"></tr>
+					
+						<tr style="border-bottom: 1px solid rgba(233, 230, 230, 1);">
+							<td>
+								<div style="float: left;width:36%;height:100px">
+									<img id="timg" src="" style="width:100%;height:100%">
+								</div>
+								<div style="float: left;width:60%;height:100px;margin-left: 4px;font-weight: normal;">
+									<p id="lusername"  style="line-height: 20px">用户名：<a style="cursor: pointer;color:green;font-weight: bold">小石头</a></p>
+									<p id="fanscount" style="line-height:20px">粉丝数：<span style="color:green">98</span> 个</p>
+									<p id="finishednewsnum" style="line-height:20px">已完成翻译：<span style="color:green">2</span> 次</p>
+									<p id="tstatus" style="line-height:20px">当前状态：空闲 </p>
+									<p id="connectme" style="line-height:20px"><a href="" style="color:blue">Ta的联系方式</a></p>
+								</div>
+							</td>
+							<td style="vertical-align: top;">
+								￥<span style="color:red;font-size: 18px">50.00</span>
+							</td>
+							<td style="vertical-align: top">
+								<span style="font-weight: normal;"><a href="" style="color:green;font-size: 16px">32</a>条评论</span>
+							</td>
+							<td style="vertical-align: top">
+								<div style="width:100%;height:20px;">
+									<span style="font-weight: normal;line-height: 24px"><img src="images/bao.jpg" style="width:18px;height:20px">按时交稿</span>
+								</div>
+								<div style="width:100%;height:20px;">
+									<span style="font-weight: normal;line-height: 24px"><img src="images/bao.jpg" style="width:18px;height:20px">保证原创</span>
+								</div>
+								<div style="width:100%;height:20px;">
+									<span style="font-weight: normal;line-height: 24px"><img src="images/bao.jpg" style="width:18px;height:20px">免费修改</span>
+								</div>
+								<div style="width:100%;height:20px;">
+									<span style="font-weight: normal;line-height: 24px"><img src="images/bao.jpg" style="width:18px;height:20px">物归原主</span>
+								</div>
+							</td>
+							<td style="vertical-align: top">
+								 <input class="button" type="submit" value="详细信息" style="padding: 6px;font-weight: normal;" >
+								 <input class="button" type="submit" value="找TA翻译" style="padding: 6px;font-weight: normal;color: rgba(136, 7, 144, 1)">
+							</td>
+						</tr>
+						<tr style="height:24px"></tr>
+					
+						<tr style="border-bottom: 1px solid rgba(233, 230, 230, 1);">
+							<td>
+								<div style="float: left;width:36%;height:100px">
+									<img id="timg" src="" style="width:100%;height:100%">
+								</div>
+								<div style="float: left;width:60%;height:100px;margin-left: 4px;font-weight: normal;">
+									<p id="lusername"  style="line-height: 20px">用户名：<a style="cursor: pointer;color:green;font-weight: bold">小石头</a></p>
+									<p id="fanscount" style="line-height:20px">粉丝数：<span style="color:green">98</span> 个</p>
+									<p id="finishednewsnum" style="line-height:20px">已完成翻译：<span style="color:green">2</span> 次</p>
+									<p id="tstatus" style="line-height:20px">当前状态：空闲 </p>
+									<p id="connectme" style="line-height:20px"><a href="" style="color:blue">Ta的联系方式</a></p>
+								</div>
+							</td>
+							<td style="vertical-align: top;">
+								￥<span style="color:red;font-size: 18px">50.00</span>
+							</td>
+							<td style="vertical-align: top">
+								<span style="font-weight: normal;"><a href="" style="color:green;font-size: 16px">32</a>条评论</span>
+							</td>
+							<td style="vertical-align: top">
+								<div style="width:100%;height:20px;">
+									<span style="font-weight: normal;line-height: 24px"><img src="images/bao.jpg" style="width:18px;height:20px">按时交稿</span>
+								</div>
+								<div style="width:100%;height:20px;">
+									<span style="font-weight: normal;line-height: 24px"><img src="images/bao.jpg" style="width:18px;height:20px">保证原创</span>
+								</div>
+								<div style="width:100%;height:20px;">
+									<span style="font-weight: normal;line-height: 24px"><img src="images/bao.jpg" style="width:18px;height:20px">免费修改</span>
+								</div>
+								<div style="width:100%;height:20px;">
+									<span style="font-weight: normal;line-height: 24px"><img src="images/bao.jpg" style="width:18px;height:20px">物归原主</span>
+								</div>
+							</td>
+							<td style="vertical-align: top">
+								 <input class="button" type="submit" value="详细信息" style="padding: 6px;font-weight: normal;" >
+								 <input class="button" type="submit" value="找TA翻译" style="padding: 6px;font-weight: normal;color: rgba(136, 7, 144, 1)">
+							</td>
+						</tr>
+						
+						
+						
+					
+					</table>
+					
+					
 					<%
 						if(areatranslators.size() == 0)
 						{

@@ -137,8 +137,14 @@
 			<generator class="native"></generator>
 		</primary-key>
 	</table>
-<table name="imgrepository" catalog="translationbyfee"
-	class="org.translate.min.entity.ImgRepository">
+	<table name="imgrepository" catalog="translationbyfee"
+		class="org.translate.min.entity.ImgRepository">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+<table name="onlinebidarticle" catalog="translationbyfee"
+	class="org.translate.min.entity.OnlineBidArticle">
 	<primary-key>
 		<generator class="native"></generator>
 	</primary-key>

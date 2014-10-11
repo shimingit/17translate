@@ -17,7 +17,9 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.translate.min.dao.LiveinTranslatorDao;
+import org.translate.min.entity.ImgRepository;
 import org.translate.min.entity.LiveinTranslator;
+import org.translate.min.pojo.IdentifyRequestInfo;
 import org.translate.min.pojo.LiveinInfo;
 
 public class LiveinTranslateDaoImpl extends HibernateDaoSupport implements LiveinTranslatorDao
@@ -213,7 +215,7 @@ public class LiveinTranslateDaoImpl extends HibernateDaoSupport implements Livei
 				poc.setString(1, username);
 				poc.setString(2, imgpath);
 				poc.setString(3, imgtype);
-				poc.setString(4, "false");
+				poc.setBoolean(4, false);
 				poc.execute();
 				//conn.commit();//提交
 				
@@ -223,5 +225,125 @@ public class LiveinTranslateDaoImpl extends HibernateDaoSupport implements Livei
 		});
 	}
 
+	public boolean updateNP(final String username, final String realname, final String phonenumber)
+	{
+		return (Boolean) super.getHibernateTemplate().execute(new 
+				HibernateCallback<Object>()
+		{
 
+			public Object doInHibernate(Session session) throws HibernateException,
+					SQLException
+			{
+				Connection conn = session.connection();
+				CallableStatement poc = conn.prepareCall("call updateNP(?,?,?,?)");
+				poc.setString(1, username);
+				poc.setString(2, realname);
+				poc.setString(3, phonenumber);
+				poc.setBoolean(4, false);
+				poc.execute();
+				//conn.commit();//提交
+				return poc.getBoolean("result");
+			}
+		});
+	}
+
+	public List getIdentifyRequest(final int start, final int end,
+			final String key, final String value)
+	{
+		return super.getHibernateTemplate().executeFind(new 
+				HibernateCallback<Object>()
+		{
+			public Object doInHibernate(Session session) throws HibernateException,
+					SQLException
+			{
+				//Criteria c = session.createCriteria(LiveinTranslator.class);
+				Connection conn = session.connection();
+				PreparedStatement p = null;
+				String sql = "SELECT * from livein_translators where hasregister='upload' ORDER BY ltranslatorId ASC limit ?,?";
+				if(key != null && value != null && !key.trim().equals("") && !value.trim().equals(""))
+				{
+					sql = "SELECT * from livein_translators where  " + key + "='" + value + "' and hasregister='upload'";
+					p = conn.prepareStatement(sql);
+				}
+				else
+				{
+					p = conn.prepareStatement(sql);
+					p.setInt(1, start);
+					p.setInt(2, end);
+				}
+				System.out.println(sql);
+				ResultSet rs = p.executeQuery();
+				List<IdentifyRequestInfo> li = new ArrayList<IdentifyRequestInfo>();
+				while(rs.next())
+				{
+					int id = rs.getInt("ltranslatorId");
+					IdentifyRequestInfo linfo = new IdentifyRequestInfo();
+
+					linfo.setRealname(rs.getString("lrealName"));
+					linfo.setUsername(rs.getString("luserName"));
+					linfo.setPhonenumber( rs.getString("lphoneNumber"));
+					
+					li.add(linfo);
+				}
+				return  li;
+			}
+		});
+	}
+
+	public int getRequestTotal()
+	{
+		 return (Integer) super.getHibernateTemplate().execute(new 
+					HibernateCallback<Object>()
+			{
+
+				public Object doInHibernate(Session session) throws HibernateException,
+						SQLException
+				{
+					Connection conn = session.connection();
+					PreparedStatement p = conn.prepareStatement("SELECT COUNT(*) AS total FROM livein_translators where hasregister='upload'");
+					ResultSet rs = p.executeQuery();
+					if(rs.next())
+						return rs.getInt("total");
+					else
+						return 0;
+				}
+			});
+	}
+
+	public List getRequestImgPath(final String username)
+	{
+		return super.getHibernateTemplate().executeFind(new 
+				HibernateCallback<Object>()
+		{
+			public Object doInHibernate(Session session) throws HibernateException,
+					SQLException
+			{
+				Criteria c = session.createCriteria(ImgRepository.class);
+				c.add(Restrictions.eq("username", username));
+				return c.list();
+			}
+		});
+	}
+
+	public String passIdentifyRequest(final String username)
+	{
+		return (String) super.getHibernateTemplate().execute(new 
+				HibernateCallback<Object>()
+		{
+
+			public Object doInHibernate(Session session) throws HibernateException,
+					SQLException
+			{
+				Connection conn = session.connection();
+				CallableStatement poc = conn.prepareCall("call passidentifyrequest(?,?)");
+				poc.setString(1,username);
+				poc.setString(2, "@result");
+				poc.execute();
+				//conn.commit();//提交
+				
+				return poc.getString("result");
+				
+			}
+		});
+	}
 }

@@ -6,16 +6,24 @@
 -->
 <hibernate-mapping>
     <class name="org.translate.min.entity.ImgRepository" table="imgrepository" catalog="translationbyfee">
-        <composite-id name="id" class="org.translate.min.entity.ImgRepositoryId">
-            <key-property name="username" type="string">
-                <column name="username" length="30" />
-            </key-property>
-            <key-property name="imgpath" type="string">
-                <column name="imgpath" length="120" />
-            </key-property>
-            <key-property name="imgtype" type="string">
-                <column name="imgtype" length="10" />
-            </key-property>
-        </composite-id>
+        <id name="id" type="integer">
+            <column name="id" />
+            <generator class="native"></generator>
+        </id>
+        <property name="username" type="string">
+            <column name="username" length="30">
+                <comment>用户名</comment>
+            </column>
+        </property>
+        <property name="imgpath" type="string">
+            <column name="imgpath" length="120">
+                <comment>图片保存路径</comment>
+            </column>
+        </property>
+        <property name="imgtype" type="string">
+            <column name="imgtype" length="30">
+                <comment>图片类型</comment>
+            </column>
+        </property>
     </class>
 </hibernate-mapping>

@@ -89,6 +89,9 @@
 				</value>
 				<value>
 					org/translate/min/entity/ImgRepository.hbm.xml
+				</value>
+				<value>
+					org/translate/min/entity/OnlineBidArticle.hbm.xml
 				</value></list>
 		</property></bean>
 	
@@ -222,6 +225,15 @@
 	<bean id="getLtranslatorInfoAction" class="org.translate.min.action.BgTranslatorInfoAction">
 		<property name="ltlb" ref="liveinTranslatorBiz"/>
 	</bean>
+	<bean id="getIdentifyRequestAction" class="org.translate.min.action.BgIdentifyRequestAction">
+		<property name="ltlb" ref="liveinTranslatorBiz"/>
+	</bean>
+	<bean id="getIdentifyImgPathAction" class="org.translate.min.action.IdentifyRequestImgAction">
+		<property name="ltlb" ref="liveinTranslatorBiz"/>
+	</bean>
+	<bean id="passIdentifyRequestAction" class="org.translate.min.action.IdentifyOkAction">
+		<property name="ltlb" ref="liveinTranslatorBiz"/>
+	</bean>
 	<bean id="translatorRegisterAction" class="org.translate.min.action.TranslatorRegisterAction">
 		<property name="ltb" ref="liveinTranslatorBiz"/>
 	</bean>
@@ -230,6 +242,9 @@
 		<property name="ltlb" ref="liveinTranslatorBiz"/>
 	</bean>
 	<bean id="translatorRoleInAction" class="org.translate.min.action.TranslatorRoleInAction">
+		<property name="ltlb" ref="liveinTranslatorBiz"/>
+	</bean>
+	<bean id="bidRequestAction" class="org.translate.min.action.BidRequestAction">
 		<property name="ltlb" ref="liveinTranslatorBiz"/>
 	</bean>
 	

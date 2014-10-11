@@ -19,7 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="description" content="This is my page">
 
 
-
+	
 
 	
 	<link rel="stylesheet" type="text/css" href="css/recomendNews.css">
@@ -27,8 +27,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link  rel="stylesheet" type="text/css" href="css/areatranslators.css">
 	<link  rel="stylesheet" type="text/css" href="css/translatordetailinfo.css">
 	
-	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script> 
-	
+	<link rel="stylesheet" type="text/css" href="css/style.css" media="all" />
+	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
 	
 	
 	
@@ -42,6 +42,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript">
 $(document).ready(function()
 { 
+	 $('.tabPanel ul li').click(function(){
+		$(this).addClass('hit').siblings().removeClass('hit');
+		$('.panes>div:eq('+$(this).index()+')').show().siblings().hide();	
+	})
+	 
+	 
 	$(window).scroll(function() {
 		if ($(window).scrollTop() > 300) {
 			$('#jump li:eq(0)').fadeIn(800);
@@ -120,53 +126,123 @@ function hideEWM(){
     
     </div>
 
-    <div class="divtwo">
+    <div class="divtwo" style="height: auto">
     	
-    	<div class="two_part01">
-		<b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
-				<div class="b d1 k">
+    	<div class="two_part01" style="float: right;width:74%;height:auto">
+		marg
+				<div class="b d1 k" style="height:auto">
 					
 					<div style="width:100%;height:32px;border-bottom: 1px solid rgb(232,232,232);margin-top:5px;text-align: left"><span class="word" style="margin-left:6px;font-size: 15px;">校园新闻领域翻译员</span>
-						<span class="word" style="float: right"><a id="return" href="#">返回</a>&nbsp;&nbsp;&nbsp;&nbsp;</span>
 					</div>
 					
 					
 					
-				<div style="width:100%;height:712px;text-align: left">
+				<div style="width:100%;text-align: left">
 				
 					
 					<div class="translatordetail">
 						<div id="info1">
 							<div id="left">
-								<img src="<%=imgpath %>" style="height:110px;width:90px;margin: 2px auto 2px 14px;">
-								<p class="word" style="font-weight: normal;margin-left:28px "><%=translatordetailinfo.getLuserName() %></p>
+								<img src="#" style="height:300px;width:308px;margin: 2px auto 2px 6px;">
 								
 							</div>
 							
 							<div id="right">
-								<p class="word" style="font-weight: normal">电话号码：<%=translatordetailinfo.getLphoneNumber() %></p>
-								<p class="word" style="font-weight: normal">常用邮箱：<%=translatordetailinfo.getLmailBox() %></p>
-								<p class="word" style="font-weight: normal">翻译等级：<%=translatordetailinfo.getTranslationLevel() %></p>
-								<p> 
-									<input class="button" type="submit" value="找TA翻译" style="padding: 6px">
-									<input class="button" type="submit" value="给TA发短信" style="padding: 6px">
-								</p>
+								<div style="width:100%;height:40px;background: #fff6e3;">
+									<p style="line-height: 40px;padding-left: 4px"><img  src="images/shopbg.png" />为了保障交易双方的最大化利益和规范交易流程，建议通过平台交易</p>
+								</div>
+								
+								<div style="width:100%;height:30px;">
+									<span class="word1" style="line-height: 30px;margin-left: 20px;color: rgba(132, 50, 50, 1);font-size: 16px">已通过实名认证</span>
+								</div>	
+								<div style="width:100%;height:32px;">
+									<span class="word1" style="font-weight: normal;margin-left: 20px">起步价：￥<span style="line-height: 32px;color: red;font-size: 22px">50</span></span>
+								</div>	
+								<div style="width:100%;height:32px;">
+									<span class="word1" style="font-weight: normal;margin-left: 20px;line-height: 32px">支付方式：<img src="images/zhifubao.jpg" style="width:48px;height:32px;cursor: pointer;"/></span>
+								</div>	
+								<div style="width:100%;height:32px;">
+									<span class="word1" style="font-weight: normal;margin-left: 20px">累计成交次数：<span style="line-height: 32px;color: red;">20</span> 次</span>
+								</div>	
+								<div style="width:100%;height:32px;">
+									<span class="word1" style="font-weight: normal;margin-left: 20px">所有评论：<span style="line-height: 32px;"><a href="#" style="color: blue;">25</a></span> 条</span>
+								</div>	
+								<div style="width:100%;height:32px;">
+									<span class="word1" style="font-weight: normal;margin-left: 20px;line-height: 32px">当前状态：空闲</span>
+								</div>	
+								
+								<div style="width:100%;height:32px;">
+									<span class="word1" style="font-weight: normal;margin-left: 20px;line-height: 32px">浏览次数：132 次</span>
+								</div>	
+																
+								<div style="height:10px"></div>
+								<div> 
+									<input class="button" type="submit" value="找TA翻译" style="padding: 6px;margin-left: 20px">&nbsp;&nbsp;
+									<input class="button" type="submit" value="Ta的联系方式" style="padding: 6px">
+								</div>
+								
+								
+								
 							</div>
 						</div>					
 						<div id="info2">
-							<p class="word">Ta的简介：</p>
-							<p class="word" style="padding: 4px">
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							
-							</p>
-							<br/><br/>	
+						
+							<div class="tabPanel" style="margin-top:10px">
+								<ul>
+									<li class="hit">翻译经验</li>
+									<li>评价详情</li>
+									<li>成交记录</li>
+									<li>给Ta留言</li>
+								</ul>
+								<div class="panes">
+									<div class="pane" style="display:block;">
+										<div style="width:98%;">
+											<p class="word1" style="font-size: 18px;color:red">服务内容：</p>
+											<p class="word1" style="font-size: 18px;font-weight: normal;">
+												服务内容描述
+											</p>
+										</div>
+										<div style="width:98%;">
+											<p class="word1" style="font-size: 18px;color:red">相关经验：</p>
+											<p class="word1" style="font-size: 18px;font-weight: normal;">
+												相关经验描述
+											</p>
+										</div>
+									</div>
+									
+									<div class="pane">
+										<p class="word1" style="font-size: 18px;font-weight: normal;">
+											评价内容
+										</p>
+									</div>
+									<div class="pane">
+										<div style="width:100%;height:38px;border-bottom: 2px solid rgba(185, 80, 22, 0.87);">
+										
+											<p class="word1" style="line-height: 26px;font-size: 15px;font-weight: bold;">成交记录</p>
+										
+										</div>
+										<br>
+										<table width="100%" cellspacing="1" cellpadding="2" border="0" align="center" class="word1" style="font-size: 13px;">
+											<tr style="border-bottom:1px solid rgba(233, 203, 203, 1);height: 30px">
+												<th style="font-weight: bold">客户</th>
+												<th style="font-weight: bold">订单号</th>
+												<th style="font-weight: bold">成交金额</th>
+												<th style="font-weight: bold">交易时间</th>
+											</tr>
+										
+										</table>								
+									</div>
+									<div class="pane">
+										<p class="word1" style="font-size: 18px;font-weight: normal;">
+											留言内容
+										</p>
+									</div>
+								</div>
+						    </div>
+						
 						</div>
 					</div>
-					
-				
 				</div>
-					
-					
 					
 					
 					
@@ -176,28 +252,99 @@ function hideEWM(){
 			<b class="b4b d1"></b><b class="b3b d1"></b><b class="b2b d1"></b><b class="b1b"></b>
     	</div>
     	
-    	<div class="two_part02">
+    	<div class="two_part02" style="margin-left:0;width:24%;height: auto">
     	
-    		<div id="types" style="height:150px;margin-top: 0px">
+    		<div id="type" style="margin-top: 0px;">
     		
     			<b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
-				<div class="b d1 k">
-					<div class="d01">
+				<div class="b d1 k" style="height: auto">
+					<div class="d01" style="height:auto">
 							<div style="width:100%;height:27px;border-bottom:1px solid lightgray;text-align: left;margin-top: 2px">
-								<span style="font-size: 15;font-weight: bold;color:#A9A9A9;margin-left:10px">翻译说明</span>
+								<span style="font-size: 15;font-weight: bold;color:rgba(16, 111, 101, 1);margin-left:10px">译员信息</span>
 							</div>
 						
-							<div style="width:97%;height:70px;text-align: left">
-								<ul >
-									<li style="color:gray;font-size: 14px">1.下单成功后系统可以为您匹配最佳翻译员</li>
-									<li style="color:gray;font-size: 14px">2.您也可以选择该领域特定的翻译员翻译,如果该译员无法认领任务，系统仍然为您匹配最佳翻译员</li>
-								</ul>
+							<div style="width:100%;height:180px;text-align: left;border-bottom:1px solid rgba(225, 219, 219, 1);margin-top: 4px;padding: 4px">
+								<div style="width:40%;height:100px;float: left">
+									<img id="trnimg" src="" style="width:100%;height:100%">
+								</div>
+								<div style="width:50%;height:100px;float: left;margin-left: 10px">
+									<p class="word1" style="font-weight: normal;line-height: 22px">用户名：小石头</p>
+									<p class="word1" style="font-weight: normal;line-height: 22px">翻译等级：中级</p>
+									<p class="word1" style="font-weight: normal;line-height: 22px">粉丝数：20 个</p>
+									<p class="word1" style="font-weight: normal;line-height: 22px">信誉值：120</p>
+									
+								</div>
+								<div style="width:96%;height:76px;float: left;margin-top: 4px">
+									<p class="word1" style="font-weight: normal;line-height: 22px">翻译积分：100</p>
+									<p class="word1" style="font-weight: normal;line-height: 22px">交易次数：100 次</p>
+									<p class="word1" style="font-weight: normal;line-height: 22px">参与翻译：100 次</p>
+								</div>
 							</div>
-					
+							
+							<div style="width:100%;border-bottom:1px solid rgba(225, 219, 219, 1)">
+								<div style="width:100%;height:25px;text-align: left;background: rgba(219, 226, 231, 0.5)">
+									<span class="word1">&nbsp;&nbsp;服务保障</span>
+								</div>
+								<div style="width:100%;text-align: left;padding-left: 4px">
+									<div style="width:100%;height:20px;">
+										<span style="font-weight: normal;line-height: 24px"><img src="images/bao.jpg" style="width:18px;height:20px">按时交稿</span>
+									</div>
+									<div style="width:100%;height:20px;">
+										<span style="font-weight: normal;line-height: 24px"><img src="images/bao.jpg" style="width:18px;height:20px">保证原创</span>
+									</div>
+									<div style="width:100%;height:20px;">
+										<span style="font-weight: normal;line-height: 24px"><img src="images/bao.jpg" style="width:18px;height:20px">免费修改</span>
+									</div>
+									<div style="width:100%;height:20px;">
+										<span style="font-weight: normal;line-height: 24px"><img src="images/bao.jpg" style="width:18px;height:20px">物归原主</span>
+									</div>
+									<div style="height:4px"></div>
+								</div>
+							</div>
+							
+							<div style="width:100%;">
+								<div style="width:100%;height:25px;text-align: left;background: rgba(219, 226, 231, 0.5)">
+									<span class="word1">&nbsp;&nbsp;人才标签</span>
+								</div>
+								<div style="width:100%;text-align: left;">
+									<div style="width:50px;height:20px;border:1px solid rgba(128, 128, 128, 0.11);background:rgba(231, 224, 224, 0.47);padding: 0 2px 0 3px;cursor: pointer;margin: 6px 4px 2px 6px;float: left">
+										校园广播
+									</div>
+									<div style="width:50px;height:20px;border:1px solid rgba(128, 128, 128, 0.11);background:rgba(231, 224, 224, 0.47);padding: 0 2px 0 3px;cursor: pointer;margin: 6px 4px 2px 6px;float: left">
+										重要会议
+									</div>
+									<div style="width:50px;height:20px;border:1px solid rgba(128, 128, 128, 0.11);background:rgba(231, 224, 224, 0.47);padding: 0 2px 0 3px;cursor: pointer;margin: 6px 4px 2px 6px;float: left">
+										学生论文
+									</div>
+									<div style="width:50px;height:20px;border:1px solid rgba(128, 128, 128, 0.11);background:rgba(231, 224, 224, 0.47);padding: 0 2px 0 3px;cursor: pointer;margin: 6px 4px 2px 6px;float: left">
+										校园新闻
+									</div>
+									<div style="width:50px;height:20px;border:1px solid rgba(128, 128, 128, 0.11);background:rgba(231, 224, 224, 0.47);padding: 0 2px 0 3px;cursor: pointer;margin: 6px 4px 2px 6px;float: left">
+										校园新闻
+									</div>
+									<div style="width:50px;height:20px;border:1px solid rgba(128, 128, 128, 0.11);background:rgba(231, 224, 224, 0.47);padding: 0 2px 0 3px;cursor: pointer;margin: 6px 4px 2px 6px;float: left">
+										校园新闻
+									</div>
+									<div style="width:50px;height:20px;border:1px solid rgba(128, 128, 128, 0.11);background:rgba(231, 224, 224, 0.47);padding: 0 2px 0 3px;cursor: pointer;margin: 6px 4px 2px 6px;float: left">
+										校园新闻
+									</div>
+									
+									<div style="height:6px;float: left;width: 100%;border-bottom:1px solid rgba(225, 219, 219, 1)"></div>
+								</div>
+							</div>
+							
+							<div style="width:100%;float: left">
+								<div style="width:100%;height:25px;text-align: left;background: rgba(219, 226, 231, 0.5)">
+									<span class="word1">&nbsp;&nbsp;Ta的简介</span>
+								</div>
+								<div>
+									<p class="word1" style="font-weight: normal;text-align: left;padding: 4px">&nbsp;&nbsp;&nbsp;中华人民共和国</p>
+								</div>
+								<div style="height:30px"></div>
+							</div>
+							
 					</div>
 					
-					
-				
 					
 					
 				</div>
@@ -207,8 +354,8 @@ function hideEWM(){
     	</div>
     
     </div>
-
-	<div class="divthree">
+	<div style="height: 2px;clear: both;"></div>
+	<div class="divthree" style="">
 		
 		<div class="partone">
 				<ul>

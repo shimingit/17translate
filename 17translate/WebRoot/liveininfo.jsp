@@ -130,7 +130,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<div class="divtwo">
     	
     		<div class="two_partone">
-    			<b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
 				 <div class="b d1 h">
 				 	<div class="divimg">
 				 		<img id="myimg" src='<%=basePath+"imgrepository/minshi/minshi.jpg"%>'/>
@@ -194,7 +193,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 	<%}else if(myinfo.getHasregister().equals("no")){%>
 				 		<span class="word" style="line-height: 30px;margin-left: 10px;font-size: 13px;font-weight: normal;color: rgba(237, 10, 58, 1)">你还未进行实名认证，认证通过后将优先推荐翻译任务</span>
 				 		<input id="rolein" class="button" type="submit" value="马上实名认证" style="padding: 6px;vertical-align: -2px;margin-top: 0px;">
-				 	<% }%>
+				 	<% }else if(myinfo.getHasregister().equals("upload")){%>
+				 		<span class="word" style="line-height: 30px;margin-left: 10px;font-size: 13px;font-weight: normal;color: rgba(237, 10, 58, 1)">你的认证信息已上传，请耐心等待认证结果</span>
+				 	<%} else{%>
+				 		<span class="word" style="line-height: 30px;margin-left: 10px;font-size: 13px;font-weight: normal;color: green">已通过平台认证！</span>
+				 	<%} %>
 				 	
 				 	</div>
 				 	<div class="desc">

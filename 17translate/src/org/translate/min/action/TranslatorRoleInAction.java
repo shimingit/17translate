@@ -166,7 +166,10 @@ public class TranslatorRoleInAction extends ActionSupport implements RequestAwar
 					return;
 				}
 				
+				flag = ltlb.updateNP(username, realname, phonenumber);
 				
+				if(flag)
+					out.write("<script>alert('您的信息上传成功，请耐心等待认证结果！');history.back(-1);this.location.href='myinfo'</script>");;
 			}
 			
 		} catch (Exception e)

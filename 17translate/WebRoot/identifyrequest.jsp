@@ -2,6 +2,7 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+System.out.println(basePath);
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -30,43 +31,83 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	
 	<script type="text/javascript">
-		function newUser()
+		function detailinfo()
 		{
-			$('#w').window('setTitle','添加用户');
+			var row = $("#dg").datagrid("getSelected");
+			if (row==null) 
+        	{
+            	 $.messager.alert('提示','请选择用户!','info');
+             	 return false;
+        	}
+			
+			var username = row.username;
+			var realname = row.realname;
+			var phonenumber = row.phonenumber;
+			var basepath = '<%=basePath%>' + 'imgrepository/' + username + "/renzheng/";
+			$.ajax({  
+            url: 'getidentifyimgpath',  
+            type: 'post',  
+            data: {currentuser:username},  
+            success: function(data)
+					{
+						//var dataObj = eval("(" + data +")");
+						for(var key in data.imgpathmap)
+						{
+							var path = data.imgpathmap[key];
+							var count = 0;
+							var fullpath = basepath + path;
+							
+							if('certificate' == key)
+									$('#certificateid').attr('src', fullpath);	
+							else
+							{
+								var title = "证件" + (++count) + "的图片："; 
+								var identifyimg = "<tr>\
+												  <td style='width: 90px;text-align: right;vertical-align: top;' >"+ title +"</td>\
+	                                               <td style='height:200px;'>\
+	                    	                       <img id='certificateid' src='"+ fullpath +"' style='width:380px;height:300px'>\
+	                                               </td>\
+	                                               </tr>";
+	                            $(identifyimg).insertAfter("#insertpoint");
+							}												
+						}
+					}
+                  });
+			$('#un').text(username);
+			$('#rn').text(realname);
+			$('#pn').text(phonenumber);
+			
+			
+			$('#w').window('setTitle','用户 ' + username + ' 的认证信息');
 	  		$('#w').window('open');
-			$('#ff').form('clear');
-			$('#ff').attr("action","addNews");
 		}
-		function deleteUser()
-		{
-			  var row = $("#dg").datagrid("getSelected");
-	          if(row==null)
-	          {
-	        	 $.messager.alert('提示','请选择要删除的用户!','info');
-	        	 return false;
-	          }
-	          $.messager.confirm('确认', '确定删除该用户吗?', function(r)
-	          {
-				if (r)
-				{
-					alert("您要删除的用户名是："+row.username);
-				}
-			  });
-		}
-	 function editUser() 
+
+	 function identifyok() 
 	 {
          var row = $("#dg").datagrid("getSelected");
          if (row==null) 
          {
-             $.messager.alert('提示','请选择要编辑的用户!','info');
+             $.messager.alert('提示','请选择用户!','info');
              return false;
-         }
+             
+         } 
+         var username = row.username;
          
+         
+         $.ajax({  
+            url: 'passidentifyrequest',  
+            type: 'post',  
+            data: {currentuser:username},  
+            success: function(data)
+					{
+						//var dataObj = eval("(" + data +")");
+						if(data.result == 'true')
+							$.messager.alert('提示','操作成功!','info');
+							$('#dg').datagrid('load');
+					}
+                  });
      }
 	 
-	 
-	
-	
 	$(document).ready(function()
 	{
 		$('#dg').datagrid({onLoadSuccess : function(data)
@@ -107,7 +148,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    <td valign="top" background="images/content-bg.gif">
 			    <table width="100%" height="31" border="0" cellpadding="0" cellspacing="0" class="left_topbg" id="table2">
 			      <tr>
-			        <td height="31"><div class="titlebt">译员信息</div></td>
+			        <td height="31"><div class="titlebt">实名请求</div></td>
 			      </tr>
 			    </table>
 		    </td>
@@ -134,26 +175,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  				  <!-- 内容 -->
  				  <tr>
 	 				  <td colspan="4">
-	 				  	<table id="dg" title="用户管理" class="easyui-datagrid" style="width:1100px;height:385px" url="getltranslatorinfo" toolbar="#toolbar" pagination="true" rownumbers="true" fitColumns="true" singleSelect="true">
+	 				  	<table id="dg" title="实名请求管理" class="easyui-datagrid" style="width:1100px;height:385px" url="getidentifyrequest" toolbar="#toolbar" pagination="true" rownumbers="true" fitColumns="true" singleSelect="true">
 					        <thead>
 					            <tr>
 					            	<th data-options="field:'id',checkbox:true"></th>
 					                <th data-options="field:'username', width:25">用户名</th>
 					                <th data-options="field:'realname', width:25">姓名</th>
 					                <th data-options="field:'phonenumber', width:35">电话号码</th>
-					                <th data-options="field:'mailbox', width:35">邮箱</th>
-					                <th data-options="field:'translationcoin', width:20">翻译币</th>
-					                <th data-options="field:'fans', width:20">粉丝数</th>
-					                <th data-options="field:'liveindate', width:30">入驻日期</th>
-					                <th data-options="field:'translationlevel', width:30">翻译等级</th>
-					                <th data-options="field:'detailinfo', width:15">操作</th>
+					        
 					            </tr>
 					        </thead>
 	  				  </table>
 	  				 <div id="toolbar">
-				        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">添加用户</a>
-				        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editUser()">编辑用户</a>
-				        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="deleteUser()">删除用户</a>
+				        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="identifyok();">认证通过</a>
+				        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="detailinfo();">详细信息</a>
 				        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
 				        <input id="sss" class="easyui-searchbox" data-options="prompt:'Please Input Value'" searcher='searchData' style="width:260px;"></input>
 				   		<div id="mm" style="width:100px"> 
@@ -210,18 +245,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	
     <div id="w" class="easyui-window" data-options="iconCls:'icon-save',closed:true,modal:true">
 		<div style="text-align:center; padding:1px;">
-			<form id="ff" method="post">
-			<table width="340px" cellspacing="1" cellpadding="2" border="0" align="center">
+			<table width="480px" cellspacing="1" cellpadding="2" border="0" align="center">
 					<tr>
-	                    <td style="width: 80px;height:30px" >请选择译员：</td>
-	                    <td><input style="width:200px" id="translator" name="translatorname" class="easyui-combobox"/></td>
+	                    <td style="width: 90px;height:30px;text-align: right" >用户名：</td>
+	                    <td><span id="un"></span></td>
+	                </tr>
+					<tr>
+	                    <td style="width: 90px;height:30px;text-align: right" >姓   名：</td>
+	                    <td><span id="rn"></span></td>
+	                </tr>
+					<tr>
+	                    <td style="width: 90px;height:30px;text-align: right" >电话号码：</td>
+	                    <td><span id="pn"></span></td>
+	                </tr>
+					<tr id="insertpoint">
+	                    <td style="width: 90px;text-align: right;vertical-align: top;" >身份证正面图：</td>
+	                    <td style="height:200px">
+	                    	<img id="certificateid" src="" style="width:380px;height:300px">
+	                    </td>
 	                </tr>
 			</table>
-			</form>
 		</div>
 		<div style="text-align:center;padding:5px;">
-	        <a href="javascript:void(0)" onclick="$('#ff').submit();" id="btn-ok" class="easyui-linkbutton" icon="icon-save">保存</a>  
-	        <a href="javascript:void(0)" id="btn-cancel" class="easyui-linkbutton" icon="icon-cancel" onclick="$('#w').window('close');">取消</a> 
+	        <a href="javascript:void(0)" id="btn-cancel" class="easyui-linkbutton" icon="icon-cancel" onclick="$('#w').window('close');">关闭</a> 
 	    </div> 
 	</div>
 	

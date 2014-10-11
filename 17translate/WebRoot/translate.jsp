@@ -122,6 +122,8 @@ function showEWM(){
 </script>
 <%
 	News thisnews = (News)session.getAttribute("thisnews");
+	if(thisnews == null)
+		thisnews = new News();
  %>
   </head>
   
