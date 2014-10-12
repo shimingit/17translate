@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*,org.translate.min.entity.PublicNewsId" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*,org.translate.min.entity.*" pageEncoding="UTF-8"%>
 
 <%
 String path = request.getContextPath();
@@ -150,26 +150,50 @@ function hideEWM(){
 	document.getElementById("EWM").style.display = 'none';
 }
 
+function detailbidinfo(orderid)
+{
+	 $.ajax({  
+            url: 'bidarticleinfo',  
+            type: 'post',  
+            data: {orderid:orderid},  
+            success: function(data)
+					{
+						//var dataObj = eval("(" + data +")");
+						if(data.result == 'nologin')
+						{
+							$.messager.alert('提示','您还没有登录哦!','info');
+						}
+						if(data.result == 'ok')
+						{
+							location.href = "bidarticleinfo.jsp";
+						}
+						
+					}
+            });
+	
+	
+}
 </script>
 <%
-	List<PublicNewsId> publicnews = (List<PublicNewsId> )session.getAttribute("publicnews");
-	if(null == publicnews)
-		publicnews = new ArrayList<PublicNewsId>();
+	List<OnlineBidArticleId> onlinebidarticle = (List<OnlineBidArticleId> )session.getAttribute("onlinebidarticle");
+	if(null == onlinebidarticle)
+		onlinebidarticle = new ArrayList<OnlineBidArticleId>();
 	int currentpage = -1;//当前页面
 	int totalpage = -1;//总共页数
-	int pageNum = 8;//每页最多显示8条新闻
+	int pageNum = 6;//每页最多显示6条新闻
 	int newsindex = -1;//当前指向第几条新闻
 	if(null == request.getParameter("currentpage"))
 		currentpage = 1;
 	else 
 		currentpage = Integer.parseInt(request.getParameter("currentpage"));
-	if(publicnews.size() % 8 == 0 && publicnews.size() != 0)
-		totalpage = publicnews.size() / 8;
+	if(onlinebidarticle.size() % 6 == 0 && onlinebidarticle.size() != 0)
+		totalpage = onlinebidarticle.size() / 6;
 	else
-		totalpage = publicnews.size() / 8 + 1;
+		totalpage = onlinebidarticle.size() / 6 + 1;
 	if(currentpage > totalpage)
 		currentpage = totalpage;
-	newsindex = (currentpage - 1) * 8;
+	newsindex = (currentpage - 1) * 6;
+	
 	
  %>
   </head> 
@@ -194,29 +218,50 @@ function hideEWM(){
 					
 				<div style="width:100%;height:712px;">
 				
+				
+				<% 
+					for(int i = newsindex; (i < newsindex + pageNum) && (i < 3); ++i)
+					{
+						OnlineBidArticleId oba = onlinebidarticle.get(i);
+				%>
+				
 					<div  class="specialnews" style="border-bottom:1px solid rgba(230,225,225,1);height:110px">
 						<div class="title" >
-							<span class="word1"><a href="#" style="color:rgba(37,110,206,1)">春天里的一米阳光</a>&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">作者：小石头</span></span>
+							<span class="word1"><a href="#" style="color:rgba(37,110,206,1)"><%=oba.getArticletitle() %></a>&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">作者：<%=oba.getArticleauthor() %></span></span>
 						</div>
 						<div class="field">
 							<span class="word1" style="font-weight: normal">
-								原文语种：中文&nbsp;&nbsp;目标语种：英语&nbsp;&nbsp;建议翻译价格：￥<span style="color:rgba(183,21,21,1);font-weight: bold">100</span>
+								原文语种：<%=oba.getOriginlanguage() %>&nbsp;&nbsp;目标语种：<%=oba.getObjectlanguage() %>&nbsp;&nbsp;建议翻译价格：￥<span style="color:rgba(183,21,21,1);font-weight: bold"><%=oba.getRecomendcost() %></span>
 							</span>
-							<span class="word1" style="float: right;font-weight: normal">翻译状态：<span style="color:red">待翻译</span></span>
+							
+							<%
+								if(oba.getTranslationstatus().equals("needtranslate"))
+								{
+							 %>	
+									<span class="word1" style="float: right;font-weight: normal">翻译状态：<span style="color:red">待翻译</span></span>
+							<% 
+								}else if(oba.getTranslationstatus().equals("translating"))
+								{
+							%>
+								<span class="word1" style="float: right;font-weight: normal">翻译状态：<span style="color:red">翻译中</span></span>
+							<%
+								}
+							 %>
+						
 						</div>
 						<div class="field">
 							<span class="word1" style="font-weight: normal">
-								翻译领域：<span style="color:rgba(164,60,52,1)">学生论文</span>&nbsp;&nbsp;原文字数：<span style="color:rgba(164,60,52,1)">1000</span>&nbsp;&nbsp;最迟交付时间：<span style="color:rgba(164,60,52,1)">2014-10-09 21:31</span>
+								翻译领域：<span style="color:rgba(164,60,52,1)"><%=oba.getTranslatearea() %></span>&nbsp;&nbsp;原文字数：<span style="color:rgba(164,60,52,1)"><%=oba.getArticlewordscount() %></span>&nbsp;&nbsp;最迟交付时间：<span style="color:rgba(164,60,52,1)"><%=oba.getLatestsubmitdate() %></span>
 							</span>
 							
 							<span class="word1" style="float: right">
-								<input class="button" id="detailbidinfo" type="button" value="详细信息" style="padding:2px 4px 2px 4px;font-weight: normal"/>
+								<input class="button" id="<%=oba.getOrdersid() %>" type="button" value="详细信息" style="padding:2px 4px 2px 4px;font-weight: normal" onclick="detailbidinfo(<%=oba.getOrdersid()%>);"/>
 							</span>
 							
 						</div>
 						<div class="field">
 							<span class="word1" style="font-weight: normal">
-								原文链接：<a href="#" style="color:rgb(106,106,140,1)">################</a>
+								原文链接：<a href="#" style="color:rgb(106,106,140,1)"><%=oba.getArticlelink() %></a>
 							</span>
 							
 							<span class="word1" style="float: right;font-weight: normal">
@@ -225,181 +270,30 @@ function hideEWM(){
 							
 						</div>
 					</div>
-					<div  class="specialnews" style="border-bottom:1px solid rgba(230,225,225,1);height:110px">
-						<div class="title" >
-							<span class="word1"><a href="#" style="color:rgba(37,110,206,1)">春天里的一米阳光</a>&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">作者：小石头</span></span>
-						</div>
-						<div class="field">
-							<span class="word1" style="font-weight: normal">
-								原文语种：中文&nbsp;&nbsp;目标语种：英语&nbsp;&nbsp;建议翻译价格：￥<span style="color:rgba(183,21,21,1);font-weight: bold">100</span>
-							</span>
-							<span class="word1" style="float: right;font-weight: normal">翻译状态：<span style="color:red">待翻译</span></span>
-						</div>
-						<div class="field">
-							<span class="word1" style="font-weight: normal">
-								翻译领域：<span style="color:rgba(164,60,52,1)">学生论文</span>&nbsp;&nbsp;译文字数：<span style="color:rgba(164,60,52,1)">1000</span>&nbsp;&nbsp;最迟交付时间：<span style="color:rgba(164,60,52,1)">2014-10-09 21:31</span>
-							</span>
-							
-							<span class="word1" style="float: right">
-								<input class="button" id="detailbidinfo" type="button" value="详细信息" style="padding:2px 4px 2px 4px;font-weight: normal"/>
-							</span>
-							
-						</div>
-						<div class="field">
-							<span class="word1" style="font-weight: normal">
-								原文链接：<a href="#" style="color:rgb(106,106,140,1)">################</a>
-							</span>
-							
-							<span class="word1" style="float: right;font-weight: normal">
-								<input class="button" id="51bid" type="button" value="我要竞标" style="padding:2px;color:rgba(125,132,9,1)"/>
-							</span>
-							
-						</div>
-					</div>
-					<div  class="specialnews" style="border-bottom:1px solid rgba(230,225,225,1);height:110px">
-						<div class="title" >
-							<span class="word1"><a href="#" style="color:rgba(37,110,206,1)">春天里的一米阳光</a>&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">作者：小石头</span></span>
-						</div>
-						<div class="field">
-							<span class="word1" style="font-weight: normal">
-								原文语种：中文&nbsp;&nbsp;目标语种：英语&nbsp;&nbsp;建议翻译价格：￥<span style="color:rgba(183,21,21,1);font-weight: bold">100</span>
-							</span>
-							<span class="word1" style="float: right;font-weight: normal">翻译状态：<span style="color:red">待翻译</span></span>
-						</div>
-						<div class="field">
-							<span class="word1" style="font-weight: normal">
-								翻译领域：<span style="color:rgba(164,60,52,1)">学生论文</span>&nbsp;&nbsp;译文字数：<span style="color:rgba(164,60,52,1)">1000</span>&nbsp;&nbsp;最迟交付时间：<span style="color:rgba(164,60,52,1)">2014-10-09 21:31</span>
-							</span>
-							
-							<span class="word1" style="float: right">
-								<input class="button" id="detailbidinfo" type="button" value="详细信息" style="padding:2px 4px 2px 4px;font-weight: normal"/>
-							</span>
-							
-						</div>
-						<div class="field">
-							<span class="word1" style="font-weight: normal">
-								原文链接：<a href="#" style="color:rgb(106,106,140,1)">################</a>
-							</span>
-							
-							<span class="word1" style="float: right;font-weight: normal">
-								<input class="button" id="51bid" type="button" value="我要竞标" style="padding:2px;color:rgba(125,132,9,1)"/>
-							</span>
-							
-						</div>
-					</div>
-					<div  class="specialnews" style="border-bottom:1px solid rgba(230,225,225,1);height:110px">
-						<div class="title" >
-							<span class="word1"><a href="#" style="color:rgba(37,110,206,1)">春天里的一米阳光</a>&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">作者：小石头</span></span>
-						</div>
-						<div class="field">
-							<span class="word1" style="font-weight: normal">
-								原文语种：中文&nbsp;&nbsp;目标语种：英语&nbsp;&nbsp;建议翻译价格：￥<span style="color:rgba(183,21,21,1);font-weight: bold">100</span>
-							</span>
-							<span class="word1" style="float: right;font-weight: normal">翻译状态：<span style="color:red">待翻译</span></span>
-						</div>
-						<div class="field">
-							<span class="word1" style="font-weight: normal">
-								翻译领域：<span style="color:rgba(164,60,52,1)">学生论文</span>&nbsp;&nbsp;译文字数：<span style="color:rgba(164,60,52,1)">1000</span>&nbsp;&nbsp;最迟交付时间：<span style="color:rgba(164,60,52,1)">2014-10-09 21:31</span>
-							</span>
-							
-							<span class="word1" style="float: right">
-								<input class="button" id="detailbidinfo" type="button" value="详细信息" style="padding:2px 4px 2px 4px;font-weight: normal"/>
-							</span>
-							
-						</div>
-						<div class="field">
-							<span class="word1" style="font-weight: normal">
-								原文链接：<a href="#" style="color:rgb(106,106,140,1)">################</a>
-							</span>
-							
-							<span class="word1" style="float: right;font-weight: normal">
-								<input class="button" id="51bid" type="button" value="我要竞标" style="padding:2px;color:rgba(125,132,9,1)"/>
-							</span>
-							
-						</div>
-					</div>
-					<div  class="specialnews" style="border-bottom:1px solid rgba(230,225,225,1);height:110px">
-						<div class="title" >
-							<span class="word1"><a href="#" style="color:rgba(37,110,206,1)">春天里的一米阳光</a>&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">作者：小石头</span></span>
-						</div>
-						<div class="field">
-							<span class="word1" style="font-weight: normal">
-								原文语种：中文&nbsp;&nbsp;目标语种：英语&nbsp;&nbsp;建议翻译价格：￥<span style="color:rgba(183,21,21,1);font-weight: bold">100</span>
-							</span>
-							<span class="word1" style="float: right;font-weight: normal">翻译状态：<span style="color:red">待翻译</span></span>
-						</div>
-						<div class="field">
-							<span class="word1" style="font-weight: normal">
-								翻译领域：<span style="color:rgba(164,60,52,1)">学生论文</span>&nbsp;&nbsp;译文字数：<span style="color:rgba(164,60,52,1)">1000</span>&nbsp;&nbsp;最迟交付时间：<span style="color:rgba(164,60,52,1)">2014-10-09 21:31</span>
-							</span>
-							
-							<span class="word1" style="float: right">
-								<input class="button" id="detailbidinfo" type="button" value="详细信息" style="padding:2px 4px 2px 4px;font-weight: normal"/>
-							</span>
-							
-						</div>
-						<div class="field">
-							<span class="word1" style="font-weight: normal">
-								原文链接：<a href="#" style="color:rgb(106,106,140,1)">################</a>
-							</span>
-							
-							<span class="word1" style="float: right;font-weight: normal">
-								<input class="button" id="51bid" type="button" value="我要竞标" style="padding:2px;color:rgba(125,132,9,1)"/>
-							</span>
-							
-						</div>
-					</div>
-					<div  class="specialnews" style="border-bottom:1px solid rgba(230,225,225,1);height:110px">
-						<div class="title" >
-							<span class="word1"><a href="#" style="color:rgba(37,110,206,1)">春天里的一米阳光</a>&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">作者：小石头</span></span>
-						</div>
-						<div class="field">
-							<span class="word1" style="font-weight: normal">
-								原文语种：中文&nbsp;&nbsp;目标语种：英语&nbsp;&nbsp;建议翻译价格：￥<span style="color:rgba(183,21,21,1);font-weight: bold">100</span>
-							</span>
-							<span class="word1" style="float: right;font-weight: normal">翻译状态：<span style="color:red">待翻译</span></span>
-						</div>
-						<div class="field">
-							<span class="word1" style="font-weight: normal">
-								翻译领域：<span style="color:rgba(164,60,52,1)">学生论文</span>&nbsp;&nbsp;译文字数：<span style="color:rgba(164,60,52,1)">1000</span>&nbsp;&nbsp;最迟交付时间：<span style="color:rgba(164,60,52,1)">2014-10-09 21:31</span>
-							</span>
-							
-							<span class="word1" style="float: right">
-								<input class="button" id="detailbidinfo" type="button" value="详细信息" style="padding:2px 4px 2px 4px;font-weight: normal"/>
-							</span>
-							
-						</div>
-						<div class="field">
-							<span class="word1" style="font-weight: normal">
-								原文链接：<a href="#" style="color:rgb(106,106,140,1)">################</a>
-							</span>
-							
-							<span class="word1" style="float: right;font-weight: normal">
-								<input class="button" id="51bid" type="button" value="我要竞标" style="padding:2px;color:rgba(125,132,9,1)"/>
-							</span>
-							
-						</div>
-					</div>
 					
+					
+				<% 
+					}
+				%>
 					
 				</div>
 					
 					<div class="page">
 						<span class="word1">
 							共&nbsp;<span style="color:green"><%=totalpage %></span>&nbsp;页&nbsp;&nbsp;当前页面&nbsp;&nbsp;第&nbsp;<span style="color:green"><%=currentpage %></span>&nbsp;页&nbsp;&nbsp;
-							<a href="recomendNews.jsp?currentpage=1" style="color:green">首页</a>
+							<a href="onlinebid.jsp?currentpage=1" style="color:green">首页</a>
 							<%if(currentpage == 1){ %>
-							&nbsp;&nbsp;<a href="recomendNews.jsp?currentpage=1" style="color:green">上一页</a>
-							&nbsp;&nbsp;<a href="recomendNews.jsp?currentpage=<%=(currentpage + 1) %>" style="color:green">下一页</a>
+							&nbsp;&nbsp;<a href="onlinebid.jsp?currentpage=1" style="color:green">上一页</a>
+							&nbsp;&nbsp;<a href="onlinebid.jsp?currentpage=<%=(currentpage + 1) %>" style="color:green">下一页</a>
 							<%}else if(currentpage == totalpage){ %>
-							&nbsp;&nbsp;<a href="recomendNews.jsp?currentpage=<%=currentpage - 1 %>" style="color:green">上一页</a>
-							&nbsp;&nbsp;<a href="recomendNews.jsp?currentpage=<%=totalpage %>" style="color:green">下一页</a>	
+							&nbsp;&nbsp;<a href="onlinebid.jsp?currentpage=<%=currentpage - 1 %>" style="color:green">上一页</a>
+							&nbsp;&nbsp;<a href="onlinebid.jsp?currentpage=<%=totalpage %>" style="color:green">下一页</a>	
 							<%} 
 							else{%>
-							&nbsp;&nbsp;<a href="recomendNews.jsp?currentpage=<%=currentpage-1 %>" style="color:green">上一页</a>
-							&nbsp;&nbsp;<a href="recomendNews.jsp?currentpage=<%=(currentpage + 1) %>" style="color:green">下一页</a>
+							&nbsp;&nbsp;<a href="onlinebid.jsp?currentpage=<%=currentpage-1 %>" style="color:green">上一页</a>
+							&nbsp;&nbsp;<a href="onlinebid.jsp?currentpage=<%=(currentpage + 1) %>" style="color:green">下一页</a>
 							<%} %>
-							&nbsp;&nbsp;<a href="recomendNews.jsp?currentpage=<%=totalpage %>" style="color:green">尾页</a>
+							&nbsp;&nbsp;<a href="onlinebid.jsp?currentpage=<%=totalpage %>" style="color:green">尾页</a>
 						</span>
 					</div>
 					

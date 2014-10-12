@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*,org.translate.min.entity.News,org.translate.min.entity.PublicNewsId" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*,org.translate.min.entity.*" pageEncoding="UTF-8"%>
 
 <%
 String path = request.getContextPath();
@@ -168,7 +168,14 @@ function hideEWM(){
 
 </script>
 <%
-	//News thisnews = (News)session.getAttribute("thisnews");
+	//News thisnews = (News)session.getAttribute("thisnews");a
+	
+	OnlineBidArticleId obaid = (OnlineBidArticleId)session.getAttribute("obaid");
+	String thisbidarticle = (String)session.getAttribute("thisbidarticle");
+	
+	if(obaid == null)
+		obaid = new OnlineBidArticleId();
+	
  %>
   </head>
   
@@ -189,9 +196,9 @@ function hideEWM(){
 					
 				
 			
-						&nbsp;&nbsp;你好世界，世界你好。					
+						&nbsp;&nbsp;<%=thisbidarticle %>					
 	
-					
+					 
 					
 				</div>
 			<b class="b4b d1"></b><b class="b3b d1"></b><b class="b2b d1"></b><b class="b1b"></b>
@@ -216,34 +223,35 @@ function hideEWM(){
 								   		<span class="word1" >标题：</span>
 								   </div>
 								   <div class="item">
-								   		<span class="word1" style="font-size: 15px;color:rgba(154, 174, 55, 1)">1232324</span>
+								   		<span class="word1" style="font-size: 15px;color:rgba(154, 174, 55, 1)"><%=obaid.getArticletitle() %></span>
 								   </div>
 								   <div class="item" style="height: 20px">
-								   		<span class="word1" >作者：<span style="color:rgb(110,110,110)">12</span></span>
+								   		<span class="word1" >作者：<span style="color:rgb(110,110,110)"><%=obaid.getArticleauthor() %></span></span>
 								   </div>
 								   <div class="item">
-								   		<span class="word1">原文语言：<span style="color:rgb(110,110,110)">中文</span>&nbsp;&nbsp;目标语言：<span style="color:rgb(110,110,110)">英语</span></span>
+								   		<span class="word1">原文语言：<span style="color:rgb(110,110,110)"><%=obaid.getOriginlanguage() %></span>&nbsp;&nbsp;目标语言：<span style="color:rgb(110,110,110)"><%=obaid.getObjectlanguage() %></span></span>
 								   </div>
 								   <div class="item">
-								   		<span class="word1">翻译领域：<span style="color:rgba(164,60,52,1)">学生论文</span>&nbsp;&nbsp;原文字数：<span style="color:rgba(164,60,52,1)">1200</span></span>
+								   		<span class="word1">翻译领域：<span style="color:rgba(164,60,52,1)"><%=obaid.getTranslatearea() %></span>&nbsp;&nbsp;原文字数：<span style="color:rgba(164,60,52,1)"><%=obaid.getArticlewordscount() %></span></span>
 								   </div>
 								   <div class="item" style="height: 20px">
-								   		<span class="word1">最迟交付时间：<span style="color:rgba(164,60,52,1)">2014-10-09 21:31</span></span>
+								   		<span class="word1">最迟交付时间：<span style="color:rgba(164,60,52,1)"><%=obaid.getLatestsubmitdate()
+								   		 %></span></span>
 								   </div>
 								   <div class="item" style="height: 20px">
-								   		<span class="word1">建议竞标价格：<span style="color:rgba(183,21,21,1);font-weight: bold">￥100</span></span>
+								   		<span class="word1">建议竞标价格：<span style="color:rgba(183,21,21,1);font-weight: bold">￥<%=obaid.getRecomendcost() %></span></span>
 								   </div>
 								   <div class="item" style="height: 20px">
 								   		<span class="word1" >原文链接：</span>
 								   </div>
 								   <div class="item">
-								   		<span><a href="" style="color:rgb(110,110,110)">12</a></span>
+								   		<span><a href="" style="color:rgb(110,110,110)"><%=obaid.getArticlelink() %></a></span>
 								   </div>
 								   <div class="item">
 								   		<span class="word1" >简介：</span>
 								   </div>
 								   <div class="item" style="height:80px;overflow: auto">
-										<span class="word1" style="color:rgb(110,110,110)">12</span>
+										<span class="word1" style="color:rgb(110,110,110)"><%=obaid.getArticledescriprion() %></span>
 								   </div>
 								</div>
 								

@@ -129,7 +129,6 @@ function hideEWM(){
     <div class="divtwo" style="height: auto">
     	
     	<div class="two_part01" style="float: right;width:74%;height:auto">
-		marg
 				<div class="b d1 k" style="height:auto">
 					
 					<div style="width:100%;height:32px;border-bottom: 1px solid rgb(232,232,232);margin-top:5px;text-align: left"><span class="word" style="margin-left:6px;font-size: 15px;">校园新闻领域翻译员</span>

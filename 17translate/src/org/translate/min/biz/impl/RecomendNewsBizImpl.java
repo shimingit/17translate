@@ -6,6 +6,8 @@ import org.translate.min.biz.RecomendNewsBiz;
 import org.translate.min.dao.RecomendNewsDao;
 import org.translate.min.entity.DraftNews;
 import org.translate.min.entity.News;
+import org.translate.min.entity.OnlineBidArticle;
+import org.translate.min.entity.OnlineBidArticleId;
 import org.translate.min.entity.PublicNews;
 
 public class RecomendNewsBizImpl implements RecomendNewsBiz
@@ -45,6 +47,23 @@ public class RecomendNewsBizImpl implements RecomendNewsBiz
 	public void setRed(RecomendNewsDao red)
 	{
 		this.red = red;
+	}
+
+	public List<OnlineBidArticle> getOnllineBidNews()
+	{
+		// TODO Auto-generated method stub
+		return red.getOnlineBidNews();
+	}
+	public OnlineBidArticleId getOnllineBidNews(int ordersid)
+	{
+		// TODO Auto-generated method stub
+		return red.getOnlineBidNews(ordersid);
+	}
+
+	public String getThisOriginArticle(int ordersid)
+	{
+		// TODO Auto-generated method stub
+		return red.getThisOriginArticle(ordersid);
 	}
 
 	

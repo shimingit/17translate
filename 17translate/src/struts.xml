@@ -28,6 +28,9 @@
 		<action name="recomendnews" class="recomendNewsAction" method="dealRecomendNewsAction">
 			<result name="success">recomendNews.jsp</result>
 		</action>
+		<action name="onlinebidarticle" class="onlineBidArticleAction" method="dealOnlineBidArticle">
+			<result name="success">onlinebid.jsp</result>
+		</action>
 		<!-- 处理用户下单 -->
 		<action name="placeorder" class="placeOrderAction" method="dealPlaceOrder">
 			<result name="success">payfee.jsp?totalwords=${wordcount}&amp;totalcost=${cost}&amp;origin=${originlanguage}&amp;object=${objectlanguage}&amp;orderId=${orderId}</result>
@@ -187,6 +190,8 @@
 		<action name="bidrequest" class="bidRequestAction" method="bidRequest">
 			<result type="json"></result>
 		</action>
-		
+		<action name="bidarticleinfo" class="onlineBidArticleAction" method="dealBidArticleInfo">
+			<result type="json"></result>
+		</action>
     </package>  
 </struts>    
